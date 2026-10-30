@@ -50,7 +50,7 @@ ROTULO = {
 TIPOS = ("reel", "carrossel", "foto", "story")
 MIDIA = {".jpg", ".jpeg", ".png", ".heic", ".webp", ".gif",
          ".mp4", ".mov", ".m4v", ".avi", ".mkv", ".3gp"}
-CAMPOS = ["titulo", "tipo", "data", "link", "midia", "plays", "curtidas",
+CAMPOS = ["titulo", "tipo", "categoria", "data", "link", "midia", "plays", "curtidas",
           "comentarios", "origem", "obs"]
 
 
@@ -125,20 +125,20 @@ def gerar():
             md.append("Nada aqui ainda.")
             continue
         if status == "1-postados":
-            md += ["| data | tipo | título | plays | curtidas | link | pasta |",
-                   "| --- | --- | --- | --- | --- | --- | --- |"]
+            md += ["| data | tipo | categoria | título | plays | curtidas | link | pasta |",
+                   "| --- | --- | --- | --- | --- | --- | --- | --- |"]
             for i in sorted(grupo, key=lambda i: i.get("data", "")):
                 link = f"[abrir]({i['link']})" if i.get("link") else "falta o link"
-                md.append(f"| {i.get('data', '')} | {i.get('tipo', '')} | {celula(i.get('titulo', ''))} "
-                          f"| {i.get('plays', '')} | {i.get('curtidas', '')} | {link} "
+                md.append(f"| {i.get('data', '')} | {i.get('tipo', '')} | {i.get('categoria', '')} "
+                          f"| {celula(i.get('titulo', ''))} | {i.get('plays', '')} | {i.get('curtidas', '')} | {link} "
                           f"| `{status}/{i['pasta']}` |")
         else:
-            md += ["| data | tipo | título | mídia | pasta |",
-                   "| --- | --- | --- | --- | --- |"]
+            md += ["| data | tipo | categoria | título | mídia | pasta |",
+                   "| --- | --- | --- | --- | --- | --- |"]
             for i in sorted(grupo, key=lambda i: i.get("data", "")):
                 midia = ", ".join(i["arquivos"]) or celula(i.get("midia", "")) or "sem mídia"
-                md.append(f"| {i.get('data', '')} | {i.get('tipo', '')} | {celula(i.get('titulo', ''))} "
-                          f"| {celula(midia)} | `{status}/{i['pasta']}` |")
+                md.append(f"| {i.get('data', '')} | {i.get('tipo', '')} | {i.get('categoria', '')} "
+                          f"| {celula(i.get('titulo', ''))} | {celula(midia)} | `{status}/{i['pasta']}` |")
 
     md += ["", "## Material bruto sem uso", ""]
     md += [f"- `{BRUTO}/{nome}`" for nome in soltos] or ["Nada aqui ainda."]
@@ -147,11 +147,11 @@ def gerar():
     # Ponto e vírgula e BOM: é o que o Excel em português abre sem perguntar nada.
     with open(RAIZ / "catalogo.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f, delimiter=";")
-        w.writerow(["status", "data", "tipo", "titulo", "link", "plays", "curtidas",
+        w.writerow(["status", "data", "tipo", "categoria", "titulo", "link", "plays", "curtidas",
                     "comentarios", "midia", "pasta", "legenda"])
         for i in itens:
             w.writerow([ROTULO[i["status"]], i.get("data", ""), i.get("tipo", ""),
-                        i.get("titulo", ""), i.get("link", ""), i.get("plays", ""),
+                        i.get("categoria", ""), i.get("titulo", ""), i.get("link", ""), i.get("plays", ""),
                         i.get("curtidas", ""), i.get("comentarios", ""),
                         ", ".join(i["arquivos"]) or i.get("midia", ""),
                         f"{i['status']}/{i['pasta']}", i.get("legenda", "")])
