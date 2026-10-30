@@ -5,7 +5,7 @@ Gerado por `catalogo.py` em 2026-10-30. Não edite à mão: edite o `info.md` de
 | status | quantos |
 | --- | --- |
 | Já postados | 12 |
-| Prontos para postar | 0 |
+| Prontos para postar | 1 |
 | Em produção | 0 |
 | Ideias (sem gravação) | 10 |
 | Material bruto sem uso | 0 arquivos |
@@ -29,7 +29,9 @@ Gerado por `catalogo.py` em 2026-10-30. Não edite à mão: edite o `info.md` de
 
 ## Prontos para postar
 
-Nada aqui ainda.
+| data | tipo | categoria | título | mídia | pasta |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-29 | reel | Bastidores | Bastidores da MP Marcenaria (arte em pixel da oficina) | 2026-10-29_oficina-pixel_reels_9x16.mp4, 2026-10-29_oficina-pixel_capa_9x16.png, 2026-10-29_oficina-pixel_feed_3x4.png | `2-prontos-para-postar/2026-10-29_reel_bastidores-oficina-pixel-art` |
 
 ## Em produção
 
