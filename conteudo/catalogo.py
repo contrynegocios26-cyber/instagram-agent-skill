@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 catalogo.py - mantém o catálogo de conteúdo da MP Marcenaria em dia.
 
 Cada conteúdo é uma pasta com nome AAAA-MM-DD_tipo_tema, guardada dentro da
@@ -21,6 +21,10 @@ Uso
   python catalogo.py novo reel "painel ripado com led"
   python catalogo.py novo carrossel "cozinha verde" --status prontos --data 2026-11-03
   python catalogo.py postar 2026-11-03_reel_painel-ripado-com-led --link https://www.instagram.com/reel/XXXX/
+
+Montar a pasta local no PC, com os arquivos de verdade dentro de cada pasta
+(o campo arquivos_pc do info.md diz o que copiar; nada é movido nem apagado):
+  python catalogo.py montar --origem "D:\Usuario\Downloads\projetos.arquitetos\conteudo_redes_sociais" --destino "D:\Usuario\Downloads\projetos.arquitetos\MP_CONTEUDO"
 """
 
 import argparse
@@ -50,8 +54,8 @@ ROTULO = {
 TIPOS = ("reel", "carrossel", "foto", "story")
 MIDIA = {".jpg", ".jpeg", ".png", ".heic", ".webp", ".gif",
          ".mp4", ".mov", ".m4v", ".avi", ".mkv", ".3gp"}
-CAMPOS = ["titulo", "tipo", "categoria", "data", "link", "midia", "plays", "curtidas",
-          "comentarios", "origem", "obs"]
+CAMPOS = ["titulo", "tipo", "categoria", "data", "link", "midia", "arquivos_pc", "plays",
+          "curtidas", "comentarios", "origem", "obs"]
 
 
 def slug(texto):
@@ -65,7 +69,7 @@ def ler_info(pasta):
     dados = {"pasta": pasta.name}
     if not arquivo.exists():
         return dados
-    texto = arquivo.read_text(encoding="utf-8")
+    texto = arquivo.read_text(encoding="utf-8").replace("\r\n", "\n")
     m = re.match(r"---\n(.*?)\n---\n?(.*)", texto, re.S)
     if not m:
         return dados
@@ -87,6 +91,15 @@ def arquivos_de_midia(pasta):
     return sorted(p.name for p in pasta.iterdir() if p.suffix.lower() in MIDIA)
 
 
+def resumo_de_midia(pasta):
+    """Os nomes, se forem poucos. Um carrossel de 9 fotos vira uma contagem."""
+    achados = sorted(p for p in pasta.rglob("*") if p.suffix.lower() in MIDIA)
+    if len(achados) <= 4:
+        return ", ".join(p.relative_to(pasta).as_posix() for p in achados)
+    videos = sum(1 for p in achados if p.suffix.lower() in {".mp4", ".mov", ".m4v", ".avi", ".mkv", ".3gp"})
+    return f"{len(achados)} arquivos ({len(achados) - videos} fotos, {videos} vídeos)"
+
+
 def conteudos():
     for status in STATUS.values():
         base = RAIZ / status
@@ -96,7 +109,7 @@ def conteudos():
             if pasta.is_dir():
                 info = ler_info(pasta)
                 info["status"] = status
-                info["arquivos"] = arquivos_de_midia(pasta)
+                info["arquivos"] = resumo_de_midia(pasta)
                 yield info
 
 
@@ -136,7 +149,7 @@ def gerar():
             md += ["| data | tipo | categoria | título | mídia | pasta |",
                    "| --- | --- | --- | --- | --- | --- |"]
             for i in sorted(grupo, key=lambda i: i.get("data", "")):
-                midia = ", ".join(i["arquivos"]) or celula(i.get("midia", "")) or "sem mídia"
+                midia = i["arquivos"] or i.get("midia", "") or "sem mídia"
                 md.append(f"| {i.get('data', '')} | {i.get('tipo', '')} | {i.get('categoria', '')} "
                           f"| {celula(i.get('titulo', ''))} | {celula(midia)} | `{status}/{i['pasta']}` |")
 
@@ -153,7 +166,7 @@ def gerar():
             w.writerow([ROTULO[i["status"]], i.get("data", ""), i.get("tipo", ""),
                         i.get("categoria", ""), i.get("titulo", ""), i.get("link", ""), i.get("plays", ""),
                         i.get("curtidas", ""), i.get("comentarios", ""),
-                        ", ".join(i["arquivos"]) or i.get("midia", ""),
+                        i["arquivos"] or i.get("midia", ""),
                         f"{i['status']}/{i['pasta']}", i.get("legenda", "")])
     print(f"{len(itens)} conteúdos, {len(soltos)} arquivos soltos no material bruto.")
     print("CATALOGO.md e catalogo.csv atualizados.")
@@ -191,6 +204,36 @@ def postar(args):
     gerar()
 
 
+def montar(args):
+    """Copia o catálogo para a pasta local e traz os arquivos do PC para cada pasta."""
+    global RAIZ
+    origem, destino = Path(args.origem), Path(args.destino)
+    if not origem.is_dir():
+        sys.exit(f"Não achei a pasta de origem: {origem}")
+    shutil.copytree(RAIZ, destino, dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    RAIZ = destino
+    copiados, faltando = 0, []
+    for status in STATUS.values():
+        for pasta in sorted((destino / status).glob("*/")):
+            for item in filter(None, (x.strip() for x in ler_info(pasta).get("arquivos_pc", "").split(","))):
+                fonte = origem / item
+                alvo = pasta / fonte.name
+                if fonte.is_dir():
+                    shutil.copytree(fonte, alvo, dirs_exist_ok=True)
+                elif fonte.is_file():
+                    if not alvo.exists():
+                        shutil.copy2(fonte, alvo)
+                else:
+                    faltando.append(f"{pasta.name}: {item}")
+                    continue
+                copiados += 1
+    print(f"Pasta local montada em {destino}. {copiados} arquivos ou pastas copiados.")
+    for linha in faltando:
+        print(f"  não achei: {linha}")
+    gerar()
+
+
 def main():
     ap = argparse.ArgumentParser(description="Catálogo de conteúdo da MP Marcenaria.")
     sub = ap.add_subparsers(dest="cmd")
@@ -204,11 +247,16 @@ def main():
     p.add_argument("pasta")
     p.add_argument("--link", required=True)
     p.add_argument("--data", help="data em que foi ao ar, AAAA-MM-DD")
+    m = sub.add_parser("montar", help="cria a pasta local no PC com os arquivos dentro")
+    m.add_argument("--origem", required=True, help="a pasta conteudo_redes_sociais do PC")
+    m.add_argument("--destino", required=True, help="onde criar a pasta organizada")
     args = ap.parse_args()
     if args.cmd == "novo":
         novo(args)
     elif args.cmd == "postar":
         postar(args)
+    elif args.cmd == "montar":
+        montar(args)
     else:
         gerar()
 
