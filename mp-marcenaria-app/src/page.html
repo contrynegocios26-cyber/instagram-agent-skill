@@ -1,0 +1,43 @@
+<title>MP Marcenaria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#F7F4EF">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+
+<div class="app" id="app">
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="MP Marcenaria, início">
+      <span class="brand-mark" id="brandMark" aria-hidden="true">MP</span>
+      <span>
+        <span class="brand-name">MP Marcenaria</span><br>
+        <span class="brand-sub">Alto Paraná – PR</span>
+      </span>
+    </a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="btnNotif" aria-label="Notificações">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="dot" id="notifDot" hidden></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="view" id="view-inicio" data-view="inicio"></section>
+    <section class="view" id="view-projeto" data-view="projeto" hidden></section>
+    <section class="view" id="view-orcamento" data-view="orcamento" hidden></section>
+    <section class="view" id="view-inspiracoes" data-view="inspiracoes" hidden></section>
+    <section class="view" id="view-mais" data-view="mais" hidden></section>
+  </main>
+
+  <nav class="tabbar" aria-label="Navegação principal">
+    <div class="tabbar-inner" id="tabs"></div>
+  </nav>
+</div>
+
+<div id="sheetRoot"></div>
+<div id="toastRoot"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>

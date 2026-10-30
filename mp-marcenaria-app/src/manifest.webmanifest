@@ -1,0 +1,21 @@
+{
+  "name": "MP Marcenaria",
+  "short_name": "MP Marcenaria",
+  "description": "Orçamento, acompanhamento da obra, aprovação do projeto 3D, pagamentos e pós-venda dos seus móveis planejados.",
+  "lang": "pt-BR",
+  "start_url": "./index.html#inicio",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F4EF",
+  "theme_color": "#2B2B2B",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Pedir orçamento", "url": "./index.html#orcamento" },
+    { "name": "Meu projeto", "url": "./index.html#projeto" }
+  ]
+}
