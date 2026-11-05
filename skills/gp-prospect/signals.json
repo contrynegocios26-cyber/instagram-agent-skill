@@ -1,0 +1,87 @@
+{
+  "_sobre": "Sinais de que um negócio local é bom prospect para o Growth Partner IA. Pontos somados por score.py. Edite os pesos conforme o nicho. O corte de abordagem é 8.",
+  "sinais": [
+    {
+      "coluna": "resposta_min",
+      "nome": "WhatsApp demorou mais de 2 horas para responder (teste do usuário)",
+      "tipo": "limiar",
+      "regra": ">= 120",
+      "pontos": 5,
+      "por_que": "A única dor que ele não consegue negar na reunião. Mostre os horários."
+    },
+    {
+      "coluna": "resposta_min",
+      "nome": "WhatsApp demorou mais de 30 minutos",
+      "tipo": "limiar",
+      "regra": ">= 30",
+      "pontos": 2,
+      "por_que": "Já perde quem está comparando três fornecedores."
+    },
+    {
+      "coluna": "anuncia",
+      "nome": "Já investe em anúncio (Instagram ou Google)",
+      "tipo": "sim",
+      "pontos": 4,
+      "por_que": "Sabe que marketing custa dinheiro. Você vende melhoria, não conceito."
+    },
+    {
+      "coluna": "nota_google",
+      "nome": "Avaliação no Google acima de 4,5",
+      "tipo": "limiar",
+      "regra": ">= 4.5",
+      "pontos": 3,
+      "por_que": "Produto bom, marketing ruim. O sistema resolve, ele enxerga rápido."
+    },
+    {
+      "coluna": "seguidores",
+      "nome": "Mais de 1.000 seguidores",
+      "tipo": "limiar",
+      "regra": ">= 1000",
+      "pontos": 1,
+      "por_que": "Tem alguma audiência para reativar."
+    },
+    {
+      "coluna": "posts_30d",
+      "nome": "Menos de 4 posts nos últimos 30 dias",
+      "tipo": "limiar",
+      "regra": "<= 4",
+      "pontos": 2,
+      "por_que": "Instagram parado. Não falta dinheiro, falta tempo."
+    },
+    {
+      "coluna": "site",
+      "nome": "Sem site ou site parado",
+      "tipo": "nao",
+      "pontos": 2,
+      "por_que": "Mais uma peça do funil que falta."
+    },
+    {
+      "coluna": "teve_agencia",
+      "nome": "Já teve agência",
+      "tipo": "sim",
+      "pontos": 2,
+      "por_que": "Conhece o valor e foi mal atendido. Pergunte o que faltou."
+    },
+    {
+      "coluna": "ticket",
+      "nome": "Ticket médio acima de R$ 3.000",
+      "tipo": "limiar",
+      "regra": ">= 3000",
+      "pontos": 3,
+      "por_que": "Uma venda a mais por mês paga a mensalidade."
+    }
+  ],
+  "vetos": [
+    {
+      "coluna": "ticket",
+      "regra": "< 300",
+      "motivo": "Ticket abaixo de R$ 300: a mensalidade não fecha na conta dele."
+    },
+    {
+      "coluna": "resposta_min",
+      "regra": "<= 5",
+      "motivo": "Responde em até 5 minutos. A dor principal não existe. Só aborde se o Instagram estiver parado e o ticket for alto."
+    }
+  ],
+  "corte": 8
+}

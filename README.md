@@ -70,6 +70,30 @@ out loud.
 | `/ig-repurpose` | One video, podcast or newsletter into a week of reels and carousels that each stand alone. |
 | `/ig-audit` | Post-mortem on what you already posted. Ranks by outlier multiple and sends per reach, not views. |
 
+## Growth Partner IA: the four skills that turn this into a business
+
+Four more skills, in Portuguese, for running the pack as a paid service to
+local businesses (content + a WhatsApp agent + a weekly money report). The
+full plan is in [`docs/PROJETO-IA-MARKETING-DIGITAL.md`](docs/PROJETO-IA-MARKETING-DIGITAL.md)
+and the day-one guide in [`docs/COMECE-AQUI.md`](docs/COMECE-AQUI.md).
+
+| command | what it does |
+| --- | --- |
+| `/gp-prospect` | The daily list of 30. Scores each business on the signals that predict a sale (`score.py`), writes the three-part first message and the 4-minute audit video script. |
+| `/gp-onboard` | A new client in 7 days. From the onboarding call transcript: the client's `voice.md`, the agent's knowledge base and prompt, 30 test conversations, the first month plan, the go-live checklist. |
+| `/gp-report` | Monday. Sums the client's week, computes return over the fee, finds the funnel bottleneck (`report.py`), then the five-line report the owner actually reads. |
+| `/gp-daily` | The manager. Reads every client and the pipeline and prints today's five actions in order of money at stake (`daily.py`). |
+
+The operating files (offer, pricing, contract outline, proposal, call
+scripts, knowledge-base template, agent prompt, CSV schemas) are in
+[`templates/gp/`](templates/gp/).
+
+```bash
+python3 skills/gp-prospect/score.py templates/gp/prospects.csv --top 10
+python3 skills/gp-report/report.py metricas-cliente.csv --mensalidade 2500
+python3 skills/gp-daily/daily.py
+```
+
 ## The five tools that actually run
 
 No dependencies, no network, nothing uploaded. They run on your machine, on
