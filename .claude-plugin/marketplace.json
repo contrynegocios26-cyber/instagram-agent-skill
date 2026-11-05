@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "instagram-agent-skill",
-  "description": "The Instagram agent skill pack for Claude",
+  "description": "The Instagram agent skill pack for Claude, plus the Web3 training pack",
   "owner": {
     "name": "Jake Schincariol",
     "url": "https://opusjake.ai"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "instagram-agent",
-      "description": "Thirteen Claude skills that run an Instagram account, including a scored hook panel, a viral research skill, a caption linter and a humanizer.",
+      "description": "Thirteen Claude skills that run an Instagram account, including a scored hook panel, a viral research skill, a caption linter and a humanizer. Also ships the Web3 training pack (pt-BR): ten agents, four local tools and an exam bank.",
       "source": "./",
       "category": "productivity",
       "homepage": "https://github.com/Jakeschincariol/instagram-agent-skill"

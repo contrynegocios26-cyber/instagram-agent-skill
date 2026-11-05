@@ -1,0 +1,1066 @@
+[
+  {
+    "id": "seg01",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "O 'suporte' da sua carteira manda DM pedindo a seed phrase para 'sincronizar'. O que você faz?",
+    "opcoes": [
+      "Envio, porque é o suporte oficial",
+      "Envio só as 6 primeiras palavras",
+      "Não envio nada: quem pede seed é golpe, sem exceção",
+      "Pergunto o número do protocolo antes de enviar"
+    ],
+    "resposta": 3,
+    "explicacao": "Nenhum suporte legítimo pede seed. Quem pede é golpe, sempre."
+  },
+  {
+    "id": "seg02",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Onde a seed phrase pode ficar guardada?",
+    "opcoes": [
+      "Foto no celular",
+      "Nota no gerenciador de senhas",
+      "Papel ou metal, duas cópias, dois lugares físicos",
+      "E-mail para mim mesmo"
+    ],
+    "resposta": 3,
+    "explicacao": "Seed nunca entra em nada digital. Papel ou metal, offline."
+  },
+  {
+    "id": "seg03",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "A tela de assinatura mostra 'setApprovalForAll' num site de mint. Você:",
+    "opcoes": [
+      "Assino, é padrão de mint",
+      "Cancelo e saio do site",
+      "Assino só se o gas for baixo",
+      "Assino com a carteira de cofre"
+    ],
+    "resposta": 2,
+    "explicacao": "setApprovalForAll dá a um contrato poder sobre todos os seus NFTs daquela coleção. Drainer clássico. Cancelar nunca custou nada."
+  },
+  {
+    "id": "seg04",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Por que ter uma carteira de queima e um cofre separados?",
+    "opcoes": [
+      "Para ter mais endereços para airdrop",
+      "Porque um erro na carteira que interage com sites não leva tudo",
+      "Para pagar menos gas",
+      "Não precisa, basta uma senha forte"
+    ],
+    "resposta": 2,
+    "explicacao": "O cofre nunca conecta em site. Um drainer só alcança o que está na carteira de queima."
+  },
+  {
+    "id": "seg05",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Um token de 'US$ 300' que você nunca comprou apareceu na sua carteira. O que fazer?",
+    "opcoes": [
+      "Vender imediatamente",
+      "Aprovar e trocar por USDC",
+      "Ignorar e esconder; nunca interagir",
+      "Mandar para o cofre"
+    ],
+    "resposta": 3,
+    "explicacao": "Token envenenado: interagir (vender, aprovar) dispara o drainer. Ignorar."
+  },
+  {
+    "id": "seg06",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Você vai mandar fundos para um endereço habitual e copia do histórico. Qual é o risco?",
+    "opcoes": [
+      "Nenhum, o histórico é confiável",
+      "Endereço envenenado: um golpista mandou tx de 0 de um endereço parecido",
+      "O gas será maior",
+      "A transação pode demorar"
+    ],
+    "resposta": 2,
+    "explicacao": "Golpistas plantam endereços com mesmo começo e fim no seu histórico. Confira o endereço inteiro ou use a agenda da carteira."
+  },
+  {
+    "id": "seg07",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Approval infinito dado há 4 meses a um contrato que acabou de ser hackeado. O que acontece?",
+    "opcoes": [
+      "Nada, o approval expira",
+      "O atacante pode mover seu saldo daquele token agora",
+      "Só afeta quem ainda usa o site",
+      "A carteira bloqueia automaticamente"
+    ],
+    "resposta": 2,
+    "explicacao": "Approval dura até ser revogado. Faxina semanal de approvals existe por isso."
+  },
+  {
+    "id": "seg08",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Qual é o jeito certo de instalar a carteira?",
+    "opcoes": [
+      "Primeiro resultado da busca",
+      "Link que um amigo mandou no grupo",
+      "Site oficial digitado na barra, conferindo a URL",
+      "Qualquer extensão com o mesmo nome e mais downloads"
+    ],
+    "resposta": 3,
+    "explicacao": "Extensões falsas vivem em anúncios e lojas. URL digitada e conferida."
+  },
+  {
+    "id": "seg09",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Depois de escrever a seed no papel, qual passo quase ninguém faz e é o mais importante?",
+    "opcoes": [
+      "Plastificar",
+      "Apagar a carteira e restaurar do papel para provar que está certa",
+      "Tirar uma foto de segurança",
+      "Guardar no cofre do banco"
+    ],
+    "resposta": 2,
+    "explicacao": "Teste de restauração. Descobrir que o papel está errado no dia do incêndio é tarde."
+  },
+  {
+    "id": "seg10",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Você assinou um approve malicioso e percebeu. Primeira ação:",
+    "opcoes": [
+      "Mover os fundos para outra carteira",
+      "Revogar o approval antes de mover qualquer coisa",
+      "Pagar um serviço de recuperação",
+      "Esperar para ver se acontece algo"
+    ],
+    "resposta": 2,
+    "explicacao": "O drainer pode estar esperando saldo entrar. Revogar primeiro. Serviço de recuperação é o segundo golpe."
+  },
+  {
+    "id": "seg11",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "A partir de que ponto o cofre deve ir para uma hardware wallet?",
+    "opcoes": [
+      "Nunca, extensão basta",
+      "Quando o saldo doeria perder (regra: acima de um mês de custo de vida)",
+      "Só acima de US$ 100 mil",
+      "Quando a exchange recomendar"
+    ],
+    "resposta": 2,
+    "explicacao": "Hardware mostra na própria tela o que assina. Compra direto do fabricante, nunca usada."
+  },
+  {
+    "id": "seg12",
+    "modulo": "seguranca",
+    "agente": "web3-seguranca",
+    "pergunta": "Chegou um link de 'claim' do airdrop que você farmava, por DM de um perfil com o nome do projeto. Você:",
+    "opcoes": [
+      "Clico, estava esperando isso",
+      "Clico mas uso a carteira de queima",
+      "Ignoro: anúncio real vem pelo site oficial e canais que eu já seguia",
+      "Pergunto no grupo se é real e clico se disserem que sim"
+    ],
+    "resposta": 3,
+    "explicacao": "Todo claim que chega por DM, menção ou comentário é golpe. Semana de snapshot é a semana dos golpistas."
+  },
+  {
+    "id": "fun01",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "O que é a chave privada?",
+    "opcoes": [
+      "O endereço que você mostra para receber",
+      "A senha que ninguém pode redefinir e que assina suas transações",
+      "A senha da extensão",
+      "Um código da exchange"
+    ],
+    "resposta": 2,
+    "explicacao": "A seed gera a chave, a chave gera o endereço. Não existe o caminho de volta nem 'esqueci minha senha'."
+  },
+  {
+    "id": "fun02",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "O gas depende principalmente de:",
+    "opcoes": [
+      "Do valor enviado",
+      "Da fila da rede e da complexidade da operação",
+      "Do saldo da carteira",
+      "Do horário no Brasil"
+    ],
+    "resposta": 2,
+    "explicacao": "Gas é pedágio: a fila define o preço, não o tamanho do carro."
+  },
+  {
+    "id": "fun03",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "Uma L2 é mais barata porque:",
+    "opcoes": [
+      "Tem menos segurança",
+      "Processa transações fora da L1 e liquida o resultado nela",
+      "É uma rede sem taxas",
+      "Usa outra moeda"
+    ],
+    "resposta": 2,
+    "explicacao": "Rollups executam fora e publicam na L1. Por isso custam centavos e herdam a segurança da base."
+  },
+  {
+    "id": "fun04",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "O que é um token ERC-20, na prática?",
+    "opcoes": [
+      "Uma moeda guardada na sua carteira",
+      "Um contrato que mantém uma tabela de quem tem quanto; seu saldo é uma linha nela",
+      "Um arquivo no seu computador",
+      "Uma conta na exchange"
+    ],
+    "resposta": 2,
+    "explicacao": "É por isso que tokens podem ser congelados, impressos e sumir: a tabela tem dono."
+  },
+  {
+    "id": "fun05",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "Qual stablecoin exige mais cautela?",
+    "opcoes": [
+      "Lastreada em dólar por empresa auditada",
+      "Sobrecolateralizada em cripto com liquidação automática",
+      "Algorítmica sem colateral cheio",
+      "Todas são iguais"
+    ],
+    "resposta": 3,
+    "explicacao": "Mecanismo sem lastro cheio historicamente quebra. Trate como degrau 6."
+  },
+  {
+    "id": "fun06",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "O que um 'approve' faz?",
+    "opcoes": [
+      "Confirma que você leu os termos",
+      "Dá a um contrato permissão para mover seu token, até você revogar",
+      "Verifica sua identidade",
+      "Aumenta o limite de gas"
+    ],
+    "resposta": 2,
+    "explicacao": "É a chave do carro para o manobrista. Dura até você pegá-la de volta."
+  },
+  {
+    "id": "fun07",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "Numa AMM, o preço sai de:",
+    "opcoes": [
+      "Um livro de ofertas como na bolsa",
+      "Da proporção entre os dois tokens na pool e uma fórmula",
+      "Da cotação da exchange",
+      "Da decisão do criador da pool"
+    ],
+    "resposta": 2,
+    "explicacao": "Por isso uma ordem grande move o preço: ela muda a proporção."
+  },
+  {
+    "id": "fun08",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "Se um explorador de blocos não mostra sua transação:",
+    "opcoes": [
+      "Ela aconteceu, mas está privada",
+      "Ela não aconteceu",
+      "A exchange ainda vai processar",
+      "O gas foi insuficiente mas vai passar"
+    ],
+    "resposta": 2,
+    "explicacao": "Se não está no explorador, não aconteceu. É o extrato público de tudo."
+  },
+  {
+    "id": "fun09",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "Mandar um token pela rede errada para uma carteira própria:",
+    "opcoes": [
+      "Chega normalmente",
+      "Quase sempre é irreversível ou muito caro de recuperar",
+      "É devolvido em 24h",
+      "Só perde o gas"
+    ],
+    "resposta": 2,
+    "explicacao": "Formatos de endereço e redes diferentes. Conferir rede é parte de toda transferência."
+  },
+  {
+    "id": "fun10",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "Saldo numa exchange é:",
+    "opcoes": [
+      "Uma linha na blockchain com sua chave",
+      "Uma promessa da exchange; a chave é deles",
+      "Igual à carteira própria",
+      "Garantido pelo governo"
+    ],
+    "resposta": 2,
+    "explicacao": "Autocustódia: só sua chave move. Exchange: é um passivo deles com você."
+  },
+  {
+    "id": "fun11",
+    "modulo": "fundamentos",
+    "agente": "web3-fundamentos",
+    "pergunta": "O que um oráculo faz num protocolo de lending?",
+    "opcoes": [
+      "Audita o contrato",
+      "Informa o preço externo que o contrato não consegue saber sozinho",
+      "Paga o yield",
+      "Vota na governança"
+    ],
+    "resposta": 2,
+    "explicacao": "A rede não sabe o preço do dólar. Alguém informa, e esse alguém é um ponto de falha."
+  },
+  {
+    "id": "def01",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "A pergunta que vem antes de qualquer yield:",
+    "opcoes": [
+      "Qual o APY?",
+      "Quem está pagando esse yield e por quê?",
+      "Qual a rede mais barata?",
+      "Qual influenciador recomendou?"
+    ],
+    "resposta": 2,
+    "explicacao": "Se a resposta é 'o token do protocolo, impresso', o yield é diluição com outro nome."
+  },
+  {
+    "id": "def02",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Diferença entre APR e APY:",
+    "opcoes": [
+      "Não há diferença",
+      "APY inclui juros compostos; APR é a taxa simples",
+      "APR é mensal, APY é anual",
+      "APY é líquido de imposto"
+    ],
+    "resposta": 2,
+    "explicacao": "Protocolos mostram o maior na vitrine. O que importa é o líquido do período."
+  },
+  {
+    "id": "def03",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "US$ 100 a 8% ao ano por 30 dias, com US$ 3 de gas de entrada e saída:",
+    "opcoes": [
+      "Lucro de cerca de US$ 0,66",
+      "Prejuízo de cerca de US$ 2,34",
+      "Lucro de US$ 8",
+      "Empate"
+    ],
+    "resposta": 2,
+    "explicacao": "0,66 de rendimento menos 3 de custo. defi_calc.py custo faz a conta antes de entrar."
+  },
+  {
+    "id": "def04",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Numa pool 50/50, um ativo dobra de preço. A perda contra simplesmente segurar é de cerca de:",
+    "opcoes": [
+      "0%",
+      "5,7%",
+      "25%",
+      "50%"
+    ],
+    "resposta": 2,
+    "explicacao": "Impermanent loss. Taxas compensam ou não; a calculadora responde."
+  },
+  {
+    "id": "def05",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Por qual degrau todo mundo começa?",
+    "opcoes": [
+      "LP em par volátil",
+      "Stablecoin em lending de protocolo grande, com US$ 10",
+      "Loop alavancado",
+      "Farm de pontos em protocolo novo"
+    ],
+    "resposta": 2,
+    "explicacao": "Degrau 1. Um degrau novo por vez, nunca antes de 30 dias registrados no anterior."
+  },
+  {
+    "id": "def06",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Yield pago em token do protocolo se registra no diário:",
+    "opcoes": [
+      "Pelo preço do dia em que foi prometido",
+      "Convertido para stablecoin pelo preço do dia do recebimento",
+      "Só quando vender",
+      "Pelo APY anunciado"
+    ],
+    "resposta": 2,
+    "explicacao": "É assim que se descobre que 40% APY virou 4% quando o token caiu 90%."
+  },
+  {
+    "id": "def07",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Stablecoin a 45% APY, TVL dobrou em 3 dias, incentivo em token próprio. Sinal de:",
+    "opcoes": [
+      "Oportunidade rara, entrar forte",
+      "Armadilha: TVL veio por incentivo e vai embora com ele",
+      "Protocolo sólido",
+      "Nada, é normal"
+    ],
+    "resposta": 2,
+    "explicacao": "APY sem quem paga, TVL por emissão. Vai para /web3-onchain antes de qualquer centavo."
+  },
+  {
+    "id": "def08",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Antes de montar uma posição real, o que precisa estar escrito?",
+    "opcoes": [
+      "Só o valor",
+      "Tese, tamanho, custo, yield, pior caso, condição de saída e data de revisão",
+      "O nome do influenciador",
+      "Nada, DeFi é rápido"
+    ],
+    "resposta": 2,
+    "explicacao": "O bloco POSIÇÃO no diário. Sem saída escrita não entra."
+  },
+  {
+    "id": "def09",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Sua posição de lending está a 15% da liquidação e o mercado cai. O certo é:",
+    "opcoes": [
+      "Esperar, vai voltar",
+      "Reduzir a dívida ou adicionar colateral agora, pela regra escrita",
+      "Tomar mais emprestado para comprar a queda",
+      "Fechar os olhos"
+    ],
+    "resposta": 2,
+    "explicacao": "Em cripto 15% acontece numa madrugada. Margem abaixo de 30% já era para ter reduzido."
+  },
+  {
+    "id": "def10",
+    "modulo": "defi",
+    "agente": "web3-defi",
+    "pergunta": "Protocolo novo numa rede nova com ponte nova:",
+    "opcoes": [
+      "Três oportunidades empilhadas",
+      "Três riscos novos empilhados",
+      "Mais seguro por ser novo",
+      "Igual a qualquer outro"
+    ],
+    "resposta": 2,
+    "explicacao": "Cada camada nova é uma camada sem histórico. Carteira de queima e valor a zero, se entrar."
+  },
+  {
+    "id": "onc01",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Contrato não verificado no explorador significa:",
+    "opcoes": [
+      "É mais privado",
+      "Não entra, ponto",
+      "Só exige auditoria extra",
+      "É normal em projetos novos"
+    ],
+    "resposta": 2,
+    "explicacao": "Sem código verificado ninguém sabe o que o contrato faz. Veto."
+  },
+  {
+    "id": "onc02",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Top 10 holders não identificados com 60% da oferta:",
+    "opcoes": [
+      "Bom, mãos fortes",
+      "Bandeira vermelha: podem derrubar o preço quando quiserem",
+      "Irrelevante se a liquidez for alta",
+      "Só importa em NFT"
+    ],
+    "resposta": 2,
+    "explicacao": "Concentração em carteiras desconhecidas é veto no score.py."
+  },
+  {
+    "id": "onc03",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Liquidez da pool não travada e LP tokens com o criador:",
+    "opcoes": [
+      "Normal",
+      "Rug pull a um clique: ele pode retirar a liquidez",
+      "Só importa em L1",
+      "Melhor, mostra confiança"
+    ],
+    "resposta": 2,
+    "explicacao": "Quem detém os LP tokens pode levar a liquidez. Travada ou queimada, ou não entra."
+  },
+  {
+    "id": "onc04",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "O dono pode mintar, pausar e colocar endereços em lista negra, sem timelock nem multisig:",
+    "opcoes": [
+      "Flexibilidade saudável",
+      "Bandeira vermelha",
+      "Aceitável se a equipe for pública",
+      "Só importa para stablecoin"
+    ],
+    "resposta": 2,
+    "explicacao": "Poderes de dono sem trava são poderes sobre o seu dinheiro."
+  },
+  {
+    "id": "onc05",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "TVL alto e receita real zero significa:",
+    "opcoes": [
+      "Protocolo lucrativo",
+      "O TVL veio por incentivo e sai com ele",
+      "Usuários leais",
+      "Nada"
+    ],
+    "resposta": 2,
+    "explicacao": "Receita é taxa paga por usuário. Emissão não é receita."
+  },
+  {
+    "id": "onc06",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Nota 85/100 no score.py significa:",
+    "opcoes": [
+      "Bom investimento, pode entrar",
+      "Riscos conhecidos mapeados; tamanho é com /web3-risco",
+      "Preço vai subir",
+      "Pode ignorar bandeiras amarelas"
+    ],
+    "resposta": 2,
+    "explicacao": "Nota alta nunca significa 'bom investimento'. Significa que você sabe no que está entrando."
+  },
+  {
+    "id": "onc07",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Campo do checklist que você não conseguiu verificar:",
+    "opcoes": [
+      "Chuta pela média",
+      "Pontua zero e entra na lista 'não sei'",
+      "Pontua máximo por boa fé",
+      "Ignora"
+    ],
+    "resposta": 2,
+    "explicacao": "'Não sei' é informação. Pontua zero e aparece no relatório."
+  },
+  {
+    "id": "onc08",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Desbloqueio de 18% da oferta para investidores nos próximos 60 dias:",
+    "opcoes": [
+      "Irrelevante",
+      "Pressão vendedora prevista: bandeira amarela e tamanho menor",
+      "Sinal de alta",
+      "Só importa se o preço cair"
+    ],
+    "resposta": 2,
+    "explicacao": "Vesting é público. Quem não lê é vendido por quem leu."
+  },
+  {
+    "id": "onc09",
+    "modulo": "onchain",
+    "agente": "web3-onchain",
+    "pergunta": "Com que frequência uma posição aberta é reanalisada?",
+    "opcoes": [
+      "Nunca, já analisei",
+      "A cada 30 dias ou em qualquer anúncio grande",
+      "Só quando cair",
+      "Todo dia"
+    ],
+    "resposta": 2,
+    "explicacao": "A maioria das perdas evitáveis é de quem analisou uma vez e nunca mais olhou."
+  },
+  {
+    "id": "air01",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "O que mais pesou historicamente nos airdrops que pagaram bem?",
+    "opcoes": [
+      "Dez swaps de US$ 1 na véspera",
+      "Meses de uso real, volume consistente, diversidade de ações",
+      "Muitas carteiras iguais",
+      "Seguir no Twitter"
+    ],
+    "resposta": 2,
+    "explicacao": "Tempo, volume acumulado, diversidade, consistência. Não volume de véspera."
+  },
+  {
+    "id": "air02",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "Vinte carteiras fazendo as mesmas ações no mesmo padrão:",
+    "opcoes": [
+      "Vinte airdrops",
+      "Sybil: detectadas e cortadas, e tempo e gas perdidos",
+      "Estratégia recomendada",
+      "Só problema se forem da mesma seed"
+    ],
+    "resposta": 2,
+    "explicacao": "Uma carteira usada de verdade vale mais que vinte robóticas."
+  },
+  {
+    "id": "air03",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "Qual linha do registro semanal é a mais importante?",
+    "opcoes": [
+      "Hash",
+      "Custo acumulado em gas e taxas",
+      "Nome do protocolo",
+      "Data"
+    ],
+    "resposta": 2,
+    "explicacao": "O custo é certo, o token é incerto. Quem não anota o custo não sabe se está ganhando."
+  },
+  {
+    "id": "air04",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "Protocolo que já tem token lançado:",
+    "opcoes": [
+      "Melhor para farmar",
+      "O airdrop já passou; pontua 0 no critério",
+      "Vai fazer um segundo",
+      "Indiferente"
+    ],
+    "resposta": 2,
+    "explicacao": "Critério 1 do score de escolha. Airdrop retroativo premia quem veio antes do token."
+  },
+  {
+    "id": "air05",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "Página de claim real pede, no máximo:",
+    "opcoes": [
+      "Approve infinito",
+      "Assinatura de mensagem ou transação de claim",
+      "Transferência de 'taxa de liberação'",
+      "Sua seed para verificar"
+    ],
+    "resposta": 2,
+    "explicacao": "Approve, setApprovalForAll ou transferência na hora do claim é drainer."
+  },
+  {
+    "id": "air06",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "Custo acumulado passou de 30% do valor esperado e 3 meses sem novidade:",
+    "opcoes": [
+      "Insistir, está perto",
+      "Cortar o protocolo; cortar é parte da rotina",
+      "Dobrar o volume",
+      "Abrir mais carteiras"
+    ],
+    "resposta": 2,
+    "explicacao": "Revisão fria a cada 30 dias. Cortar não é fracasso."
+  },
+  {
+    "id": "air07",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "Quantos protocolos para começar?",
+    "opcoes": [
+      "Quantos der",
+      "No máximo três",
+      "Um só",
+      "Dez, para diversificar"
+    ],
+    "resposta": 2,
+    "explicacao": "Mais que três dilui tempo e aumenta erro de segurança."
+  },
+  {
+    "id": "air08",
+    "modulo": "airdrops",
+    "agente": "web3-airdrops",
+    "pergunta": "A carteira usada para farmar é:",
+    "opcoes": [
+      "O cofre, para parecer mais rica",
+      "Uma carteira de queima dedicada, com seed separada",
+      "A mesma da exchange",
+      "Qualquer uma"
+    ],
+    "resposta": 2,
+    "explicacao": "Farming interage com muitos contratos. Um drainer só alcança a carteira de queima."
+  },
+  {
+    "id": "dev01",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Reentrancy acontece quando:",
+    "opcoes": [
+      "O contrato usa muito gas",
+      "Há chamada externa antes de atualizar o estado, e o chamado volta e saca de novo",
+      "Duas transações no mesmo bloco",
+      "O dono chama duas vezes"
+    ],
+    "resposta": 2,
+    "explicacao": "Checks-effects-interactions e guarda de reentrada. O teste que explora o bug é a aula."
+  },
+  {
+    "id": "dev02",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Usar tx.origin para controle de acesso:",
+    "opcoes": [
+      "É o padrão",
+      "É vulnerável a contrato intermediário; use msg.sender",
+      "É mais barato",
+      "É obrigatório em proxies"
+    ],
+    "resposta": 2,
+    "explicacao": "tx.origin é quem iniciou a cadeia, não quem chamou você."
+  },
+  {
+    "id": "dev03",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Um contrato está 'pronto' quando:",
+    "opcoes": [
+      "Compila",
+      "Tem teste por função pública, cobre o que move valor, e foi revisado",
+      "O dono aprovou",
+      "Deployou na mainnet"
+    ],
+    "resposta": 2,
+    "explicacao": "O agente recusa revisar sem teste. Primeiro o teste."
+  },
+  {
+    "id": "dev04",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Preço lido diretamente de uma pool AMM dentro da mesma transação:",
+    "opcoes": [
+      "Preciso e confiável",
+      "Manipulável por flash loan; usar oráculo externo ou TWAP",
+      "Mais barato e seguro",
+      "Padrão da indústria"
+    ],
+    "resposta": 2,
+    "explicacao": "Oráculo manipulável é uma das maiores categorias de exploit."
+  },
+  {
+    "id": "dev05",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Pagar vários destinatários num laço com push:",
+    "opcoes": [
+      "Eficiente",
+      "Um destinatário que reverte trava todos; usar pull over push",
+      "Padrão ERC-20",
+      "Só problema em L1"
+    ],
+    "resposta": 2,
+    "explicacao": "DoS por push. Cada um saca o seu."
+  },
+  {
+    "id": "dev06",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "O que vai no bloco SPEC antes de escrever código?",
+    "opcoes": [
+      "Nome e símbolo do token",
+      "Faz, não faz, quem chama, por onde o valor entra e sai, estados, invariantes, pior caso",
+      "O preço de lançamento",
+      "Nada, código primeiro"
+    ],
+    "resposta": 2,
+    "explicacao": "Invariantes viram testes de fuzzing. É o que separa quem passa num bounty."
+  },
+  {
+    "id": "dev07",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Assinatura off-chain sem nonce nem chain id:",
+    "opcoes": [
+      "Mais leve",
+      "Pode ser reutilizada, inclusive em outra rede",
+      "Segura por padrão",
+      "Só funciona uma vez"
+    ],
+    "resposta": 2,
+    "explicacao": "Replay. Nonce, chain id e prazo."
+  },
+  {
+    "id": "dev08",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Por que dev é a trilha com renda mais previsível?",
+    "opcoes": [
+      "Porque token de dev sobe",
+      "Porque recebe por código em stablecoin, independente do mercado, e a oferta de quem testa bem é pequena",
+      "Porque não precisa de inglês",
+      "Porque tem menos concorrência em tudo"
+    ],
+    "resposta": 2,
+    "explicacao": "Bounty, auditoria, freelance, vaga remota. Pagam pelo que você sabe fazer, não pelo mercado."
+  },
+  {
+    "id": "dev09",
+    "modulo": "dev",
+    "agente": "web3-dev",
+    "pergunta": "Quem faz o deploy em mainnet?",
+    "opcoes": [
+      "O agente, com a chave",
+      "O usuário, da própria máquina, com carteira de deploy separada do cofre",
+      "A exchange",
+      "Qualquer um com o bytecode"
+    ],
+    "resposta": 2,
+    "explicacao": "Nenhum agente tem chave. Carteira de deploy é de queima."
+  },
+  {
+    "id": "ren01",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "A forma mais rápida e previsível de dinheiro em Web3 para quem começa:",
+    "opcoes": [
+      "Comprar token cedo",
+      "Vender trabalho para projetos, pago em stablecoin",
+      "Farmar airdrop",
+      "Yield em DeFi"
+    ],
+    "resposta": 2,
+    "explicacao": "Projetos têm tesouro em USDC, poucos profissionais com contexto, e pagam na semana."
+  },
+  {
+    "id": "ren02",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "A prova que abre a conversa com um projeto:",
+    "opcoes": [
+      "Currículo completo",
+      "Uma peça feita para um projeto real, antes de pedir",
+      "Um certificado de curso",
+      "Número de seguidores"
+    ],
+    "resposta": 2,
+    "explicacao": "Prova feita antes de pedir. PR aceito, tradução publicada, redesign não solicitado."
+  },
+  {
+    "id": "ren03",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "Cliente pagou US$ 800 em vez de 500 e pede 300 de volta para 'outra carteira':",
+    "opcoes": [
+      "Devolvo, é justo",
+      "Não devolvo para outra carteira: golpe clássico de 'devolver a diferença'",
+      "Devolvo com desconto",
+      "Devolvo só depois do fim de semana"
+    ],
+    "resposta": 2,
+    "explicacao": "Overpayment scam. O pagamento 'a mais' some ou foi roubado, e a devolução é real."
+  },
+  {
+    "id": "ren04",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "Como cotar no começo?",
+    "opcoes": [
+      "Por hora",
+      "Por entrega, em USDC",
+      "De graça para portfólio",
+      "Pelo preço do cliente"
+    ],
+    "resposta": 2,
+    "explicacao": "Hora pune quem é rápido. Grátis não gera depoimento. Primeiro trabalho: mercado menos 20% em troca de depoimento."
+  },
+  {
+    "id": "ren05",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "Para quem prospectar?",
+    "opcoes": [
+      "Os maiores protocolos",
+      "Projetos pequenos e médios que acabaram de levantar ou lançar",
+      "Influenciadores",
+      "Exchanges"
+    ],
+    "resposta": 2,
+    "explicacao": "Têm tesouro, pressa e não têm time. Gigantes têm fila."
+  },
+  {
+    "id": "ren06",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "Serviço recebido em USDC é:",
+    "opcoes": [
+      "Isento",
+      "Renda, tributável; registrar data, valor, cotação, hash",
+      "Só tributável se converter",
+      "Presente"
+    ],
+    "resposta": 2,
+    "explicacao": "Registrar desde o dia 1 e consultar contador antes do primeiro saque relevante."
+  },
+  {
+    "id": "ren07",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "Dez contatos por semana, taxa de resposta baixa. O agente ajusta:",
+    "opcoes": [
+      "Tudo de uma vez",
+      "Uma variável por vez: prova, nicho, preço ou volume",
+      "Desiste da trilha",
+      "Manda cem contatos"
+    ],
+    "resposta": 2,
+    "explicacao": "A taxa de resposta diz qual é o problema. Uma mudança por vez para saber o que funcionou."
+  },
+  {
+    "id": "ren08",
+    "modulo": "renda",
+    "agente": "web3-renda",
+    "pergunta": "Quando construir audiência?",
+    "opcoes": [
+      "Antes de tudo",
+      "Depois de ter oferta e clientes; audiência sem oferta é hobby",
+      "Nunca",
+      "Só com vídeo"
+    ],
+    "resposta": 2,
+    "explicacao": "Serviço paga as contas, produto escala, audiência barateia a venda. Nessa ordem."
+  },
+  {
+    "id": "ris01",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Dívida de cartão a 12% ao mês e R$ 2.000 'sobrando'. Capital de risco é:",
+    "opcoes": [
+      "R$ 2.000",
+      "Zero: quitar a dívida vem antes; nenhum yield cobre 12% ao mês",
+      "R$ 1.000",
+      "Depende do token"
+    ],
+    "resposta": 2,
+    "explicacao": "Juros acima de 2% ao mês é uma posição vendida que nada cobre. Trilha de habilidade até quitar."
+  },
+  {
+    "id": "ris02",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Capital de risco de 5.000, perda máxima aceita 2%, pior cenário do token -100%. Tamanho:",
+    "opcoes": [
+      "500",
+      "100",
+      "1.000",
+      "2.500"
+    ],
+    "resposta": 2,
+    "explicacao": "2% de 5.000 = 100 de perda máxima; dividido por 100% = 100 de posição."
+  },
+  {
+    "id": "ris03",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Exposição máxima por protocolo ou rede:",
+    "opcoes": [
+      "50%",
+      "30%",
+      "100% se for seguro",
+      "10%"
+    ],
+    "resposta": 2,
+    "explicacao": "Ponte conta como protocolo, stablecoin conta como emissor."
+  },
+  {
+    "id": "ris04",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Perdeu 30% esta semana e tem uma 'certeza' para recuperar. Quanto entra hoje?",
+    "opcoes": [
+      "O dobro, para recuperar",
+      "Nada hoje: nunca operar depois de uma perda no mesmo dia",
+      "2%",
+      "Tudo"
+    ],
+    "resposta": 2,
+    "explicacao": "Regra 8. A segunda decisão depois de uma perda é a mais cara do mês."
+  },
+  {
+    "id": "ris05",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Perda de 50% exige ganho de:",
+    "opcoes": [
+      "50%",
+      "100%",
+      "75%",
+      "25%"
+    ],
+    "resposta": 2,
+    "explicacao": "É por isso que o tamanho vem antes da tese. risco.py drawdown mostra."
+  },
+  {
+    "id": "ris06",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "No balanço semanal, 'entrou' e 'saiu':",
+    "opcoes": [
+      "Somados no líquido direto",
+      "Mostrados separados antes de qualquer soma",
+      "Só o líquido importa",
+      "Só entradas"
+    ],
+    "resposta": 2,
+    "explicacao": "É a diferença entre saber que o serviço pagou e o farming custou, e achar que 'deu certo no geral'."
+  },
+  {
+    "id": "ris07",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Alavancagem no primeiro ano:",
+    "opcoes": [
+      "Até 2x",
+      "Nunca",
+      "Só em stablecoin",
+      "Só em L2"
+    ],
+    "resposta": 2,
+    "explicacao": "Depois, só com margem acima de 50% de queda até a liquidação."
+  },
+  {
+    "id": "ris08",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "Uma posição sem condição de saída escrita:",
+    "opcoes": [
+      "Entra e decide depois",
+      "Não entra",
+      "Entra com metade",
+      "Entra se o APY for alto"
+    ],
+    "resposta": 2,
+    "explicacao": "Regra 6. Saída escrita antes da entrada."
+  },
+  {
+    "id": "ris09",
+    "modulo": "risco",
+    "agente": "web3-risco",
+    "pergunta": "O que vai numa linha NOTA do diário?",
+    "opcoes": [
+      "Nada, só valores",
+      "Quase-erro, mudança de regra, decisão difícil",
+      "Preço do bitcoin",
+      "Opinião de influenciador"
+    ],
+    "resposta": 2,
+    "explicacao": "O que não tem valor e importa. O mentor lê isso na revisão."
+  }
+]

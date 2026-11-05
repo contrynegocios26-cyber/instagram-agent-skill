@@ -1,6 +1,7 @@
 # The Instagram agent skill
 
-Thirteen Claude skills that run an Instagram account. Free, MIT, no signup, no
+Thirteen Claude skills that run an Instagram account, plus a [Web3 training pack](#o-pack-web3-pt-br)
+with ten agents (pt-BR). Free, MIT, no signup, no
 API key, nothing to connect.
 
 One of them writes your Reels off 26 hook formulas and scores the hook before
@@ -336,3 +337,89 @@ Sibling repo, same idea for a different platform:
 ## License
 
 MIT. Take it, change it, ship it.
+
+---
+
+# O pack Web3 (pt-BR)
+
+Dez agentes que moram na mesma pasta `skills/`, com o prefixo `web3-`. Eles
+pegam alguém do zero e levam até o primeiro pagamento em stablecoin, o primeiro
+contrato deployado ou a primeira posição DeFi dimensionada, começando hoje.
+Sem API, sem conta, sem rede: as quatro ferramentas Python rodam na sua
+máquina, nos seus números.
+
+**A premissa honesta:** a maioria de quem entra em cripto para "fazer dinheiro
+rápido" perde dinheiro. O dinheiro previsível em Web3 vem de habilidade (código,
+texto, design, comunidade, vendas) paga em USDC, não de aposta. Por isso toda
+trilha tem uma linha de renda por serviço, a semana 1 é sempre segurança, e
+nada com dinheiro real é liberado antes de 9/10 no treino de segurança.
+
+**Nenhum agente assina, guarda seed ou toca na sua carteira.** Eles ensinam,
+calculam e registram. Você clica.
+
+## Instalar
+
+```bash
+git clone https://github.com/Jakeschincariol/instagram-agent-skill.git
+cp -r instagram-agent-skill/skills/web3-* ~/.claude/skills/
+mkdir -p ~/.claude/web3
+cp instagram-agent-skill/templates/web3-perfil.md ~/.claude/web3/perfil.md
+```
+
+Depois abra o Claude e diga `/web3-mentor`. Ele preenche o perfil com você e
+gera o plano de 30 dias.
+
+## Os dez agentes
+
+| comando | o agente | o que faz |
+| --- | --- | --- |
+| `/web3-mentor` | Coordenador | Diagnostica nível, tempo e capital, escolhe a trilha (Construtor, Operador, Caçador, Prestador), gera o plano de 30/90 dias com `plano.py`, revisa toda semana e muda o que não funcionou. |
+| `/web3-fundamentos` | Professor | 16 conceitos em ordem, cada um com uma transação de centavos para fazer na hora. Sem aula sem exercício. |
+| `/web3-seguranca` | Guardião | Carteira certa no dia 1, teste de restauração, os seis golpes pelo mecanismo, checklist de 20 segundos antes de assinar, faxina de approvals, o que fazer quando já deu errado. |
+| `/web3-defi` | Estrategista | Escada de seis degraus de risco, de onde vem cada yield, impermanent loss sem mistério, o ritual da posição escrita antes de entrar. `defi_calc.py` faz APR/APY, IL, custo líquido e distância da liquidação. |
+| `/web3-airdrops` | Caçador | Critério de 10 pontos para escolher onde farmar, o que conta como uso real, rotina semanal com custo registrado, revisão fria a cada 30 dias, e o corte. |
+| `/web3-onchain` | Analista | Checklist de due diligence em 4 blocos. `score.py` dá nota 0 a 100, lista bandeiras vermelhas (veto), amarelas e "não sei". Nota alta nunca significa "compra". |
+| `/web3-dev` | Engenheiro | Solidity construindo: ambiente, ERC-20 e 721 do zero, testes obrigatórios, os 7 bugs que pagam bounty com o teste que explora cada um, spec antes de código, produto de portfólio. |
+| `/web3-renda` | Monetização | Mapa de 10 formas de ganhar, do mais previsível (serviço em USDC) ao menos (comprar token), com faixa e prazo honestos. Oferta, prova, mensagem de 4 linhas, preço, cobrança e a escada de renda. |
+| `/web3-risco` | Gestor de risco | As 8 regras, o diário em formato que soma, o balanço semanal com entrada e saída separadas, o registro para imposto, e a conversa quando você quer dobrar. `risco.py` faz tamanho, exposição, balanço e drawdown. |
+| `/web3-treino` | Examinador | 76 questões em 8 módulos, simulações de cenário, nota por módulo em `progresso.json`, e a trava que bloqueia dinheiro real abaixo do mínimo. |
+
+## As quatro ferramentas que rodam
+
+```bash
+# o plano de 30 dias, a partir do perfil ou de flags
+python3 skills/web3-mentor/plano.py --nivel zero --horas 5 --capital 0
+
+# a conta antes de entrar em qualquer yield
+python3 skills/web3-defi/defi_calc.py custo --valor 100 --apr 8 --dias 30 --entrada 1.5 --saida 1.5
+python3 skills/web3-defi/defi_calc.py il --variacao 2 --apr 40 --dias 30
+
+# nota de due diligence de um projeto
+python3 skills/web3-onchain/score.py --modelo > projeto.json   # preencha
+python3 skills/web3-onchain/score.py projeto.json
+
+# tamanho de posição, exposição e balanço
+python3 skills/web3-risco/risco.py tamanho --capital 5000 --perda-pct 100
+python3 skills/web3-risco/risco.py balanco ~/.claude/web3/diario.md --horas 10
+
+# o exame
+python3 skills/web3-treino/quiz.py --modulo seguranca
+python3 skills/web3-treino/quiz.py --progresso
+```
+
+## Os arquivos que os agentes compartilham
+
+| arquivo | quem escreve | quem lê |
+| --- | --- | --- |
+| `~/.claude/web3/perfil.md` | você, ou o mentor | todos |
+| `~/.claude/web3/plano.md` | `plano.py` | mentor |
+| `~/.claude/web3/diario.md` | todos, uma linha por evento | risco, mentor |
+| `~/.claude/web3/progresso.json` | `quiz.py` | todos, antes de pedir transação real |
+
+## O que este pack não é
+
+Não é recomendação de investimento, não promete retorno, não escolhe token.
+Ganhos com cripto são tributáveis no Brasil; os agentes registram tudo no
+diário e mandam consultar a Receita Federal ou um contador antes do primeiro
+saque relevante. Dívida com juros acima de 2% ao mês vem antes de qualquer
+posição, e o mentor vai insistir nisso.
