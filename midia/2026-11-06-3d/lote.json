@@ -1,0 +1,86 @@
+[
+ {
+  "cod": "S01",
+  "tipo": "story_video",
+  "arquivos": [
+   "S01.mp4"
+  ]
+ },
+ {
+  "cod": "S02",
+  "tipo": "story_video",
+  "arquivos": [
+   "S02.mp4"
+  ]
+ },
+ {
+  "cod": "S03",
+  "tipo": "story_video",
+  "arquivos": [
+   "S03.mp4"
+  ]
+ },
+ {
+  "cod": "S04",
+  "tipo": "story_video",
+  "arquivos": [
+   "S04.mp4"
+  ]
+ },
+ {
+  "cod": "S05",
+  "tipo": "story_video",
+  "arquivos": [
+   "S05.mp4"
+  ]
+ },
+ {
+  "cod": "S06",
+  "tipo": "story_video",
+  "arquivos": [
+   "S06.mp4"
+  ]
+ },
+ {
+  "cod": "S07",
+  "tipo": "story_video",
+  "arquivos": [
+   "S07.mp4"
+  ]
+ },
+ {
+  "cod": "S08",
+  "tipo": "story",
+  "arquivos": [
+   "S08.jpg"
+  ]
+ },
+ {
+  "cod": "S09",
+  "tipo": "story",
+  "arquivos": [
+   "S09.jpg"
+  ]
+ },
+ {
+  "cod": "S10",
+  "tipo": "story",
+  "arquivos": [
+   "S10.jpg"
+  ]
+ },
+ {
+  "cod": "S11",
+  "tipo": "story",
+  "arquivos": [
+   "S11.jpg"
+  ]
+ },
+ {
+  "cod": "S12",
+  "tipo": "story",
+  "arquivos": [
+   "S12.jpg"
+  ]
+ }
+]
