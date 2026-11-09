@@ -15,7 +15,7 @@ Criado em 09/11/2026. Tudo marcado com **[confirmar]** é estimativa até a MP p
 | `catalogo-presentes-2026.pdf` | O mesmo catálogo em A4, para e-mail ou impressão. |
 | `cartao-presente-2026.pdf` / `.png` | O cartão que vai dentro de cada caixa, em 9 × 5 cm, frente e verso. |
 | `empresas-alvo.md` | Empresas reais da região para abordar, com fonte, e os preços de mercado pesquisados. |
-| `gerador/` | O programa que monta o catálogo e o cartão. Também faz a **proposta personalizada** com o logo do cliente gravado na tábua. |
+| `gerador/` | O programa que monta o catálogo e o cartão (`gerar.py`). Também faz a **proposta personalizada** com o logo do cliente gravado na tábua. O `planilha.py` recria a planilha do zero; não rode depois de lançar pedidos, porque ele apaga a aba Pedidos. |
 
 ## Esta semana, antes de mandar o primeiro catálogo
 
@@ -47,17 +47,30 @@ Ficha técnica completa (madeira, acabamento, canaleta, gravação, embalagem) n
 
 A planilha calcula: **preço = custo direto ÷ (1 − imposto − comissão − margem)**, arredondado para cima com final ,90. A margem cai conforme a quantidade sobe, mas nunca fica abaixo de 25%.
 
-Tabela atual, com os custos de referência (muda sozinha quando a MP preencher as premissas):
+Tabela atual, com os custos de referência e gravação a laser terceirizada a R$ 6 a peça (muda sozinha quando a MP preencher as premissas):
 
 | Kit | 20 a 49 | 50 a 99 | 100 a 199 | 200 ou mais |
 |---|---|---|---|---|
-| Essencial | R$ 69,90 | R$ 64,90 | R$ 59,90 | R$ 54,90 |
-| Churrasco | R$ 109,90 | R$ 99,90 | R$ 89,90 | R$ 84,90 |
-| Premium | R$ 319,90 | R$ 289,90 | R$ 264,90 | R$ 244,90 |
+| Essencial | R$ 64,90 | R$ 59,90 | R$ 54,90 | R$ 49,90 |
+| Churrasco | R$ 104,90 | R$ 94,90 | R$ 84,90 | R$ 79,90 |
+| Premium | R$ 259,90 | R$ 234,90 | R$ 214,90 | R$ 199,90 |
 
-Mais a **taxa de personalização de R$ 290 por pedido abaixo de 100 peças**, isenta a partir de 100. Ela cobre a arte e o ferro de marcar e serve de argumento para o cliente subir de faixa.
+Mais a **taxa de personalização de R$ 290 por pedido abaixo de 100 peças**, isenta a partir de 100. Ela cobre a arte e o ajuste da gravação e serve de argumento para o cliente subir de faixa.
 
-Preços de mercado para comparar: ver `empresas-alvo.md`, parte 2.
+**A faixa conta o total de peças do cliente.** Quem compra 20 Premium para os maiores clientes e 100 Churrasco para o resto paga o preço da faixa de 100 a 199 nos dois kits, sem taxa. A aba Pedidos já faz essa conta: lance cada kit numa linha com o mesmo nome de cliente. Ofereça essa combinação. É o jeito mais fácil de vender o Premium.
+
+### Comparação com o mercado (pesquisa de 09/11/2026, fontes em `empresas-alvo.md`)
+
+| O que o mercado vende | Preço por peça | Onde a MP fica |
+|---|---|---|
+| Tábua simples ou de bambu gravada, no atacado | R$ 22 a R$ 43 | A MP não compete aqui. O Essencial é maior e maciço, e o argumento é "não vai para a gaveta". |
+| Tábua de 40 × 30 cm gravada | a partir de R$ 81 | **Churrasco: R$ 79,90 a R$ 104,90.** No preço do mercado, mas com madeira maciça, canaleta e alça. É o kit para empurrar. |
+| Tábua, faca e garfo em estojo (10 a 200 peças) | R$ 89 a R$ 134 | **Premium: R$ 199,90 a R$ 259,90.** Custa o dobro porque o estojo também é de madeira maciça e leva duas gravações. É o kit VIP: poucas unidades, para os maiores clientes. |
+| Caixa completa com 7 a 17 itens | R$ 80 a R$ 205 | Não fazemos. |
+
+Quase todo kit do mercado usa tábua de bambu ou pinus. "Madeira maciça de verdade, feita por marcenaria" é o diferencial, e precisa aparecer em toda conversa.
+
+**Gravação:** o laser terceirizado custa de R$ 2 a R$ 10 por peça em lote. O ferro de marcar personalizado custa de R$ 190 a R$ 850 e demora uns 20 dias para chegar. Por isso a planilha usa laser como padrão: com o ferro, um pedido fechado hoje só começaria a ser gravado em dezembro.
 
 ## Capacidade e prazos
 
@@ -83,7 +96,16 @@ Com 8 h por dia de 16/11 a 18/12, são **200 h de fábrica**, o que dá uns 330 
    - Construtoras, imobiliárias e lojas de material que já indicaram a MP.
    - Clientes da madeireira que são empresa.
 2. **Associações comerciais da região.** Uma divulgação no grupo ou no informativo da ACI alcança centenas de empresas de uma vez.
-3. **Lista fria:** `empresas-alvo.md`, começando pela prioridade A.
+3. **Lista fria:** `empresas-alvo.md`, começando pela prioridade A. São 36 empresas: 14 de prioridade A, 18 de prioridade B e 4 de prioridade C, das quais 5 são associações e sindicatos que servem de canal. As 10 melhores:
+   - Cocamar e Cocamar Máquinas (John Deere), em Paranavaí
+   - Usina Santa Terezinha (unidades de Paranacity e Terra Rica)
+   - Sicredi Dexis e Cresol Pioneira, em Paranavaí
+   - Sicredi Rio Paraná, com sede em Nova Londrina
+   - Equagril (New Holland) e Prat's, em Paranavaí
+   - Coopcana, em Paraíso do Norte
+   - Podium Alimentos, em Tamboara
+
+   A pesquisa não conseguiu abrir os sites oficiais, então confirme telefone e endereço antes de ligar. Em Alto Paraná não apareceu nenhuma empresa grande na internet: vale um levantamento presencial.
 
 Lance cada contato na aba **Pedidos** como "Proposta enviada", mesmo antes de fechar, para ver as horas que estão em jogo.
 
@@ -126,7 +148,7 @@ A prévia é a proposta personalizada: `python3 gerar.py --empresa "[empresa]" -
 
 ## A amostra que fecha pedido grande
 
-Para as 10 empresas com maior potencial (as de prioridade A), vale levar **uma tábua de verdade com o logo delas já gravado**. Custa uns R$ 50 de peça, mais o deslocamento, e é muito difícil recusar o próprio logo queimado na madeira. Só compensa com laser ou CNC: com ferro de marcar, cada amostra pediria um ferro novo.
+Para as 10 empresas com maior potencial (as de prioridade A), vale levar **uma tábua de verdade com o logo delas já gravado**. Custa uns R$ 50 de peça (com a gravação avulsa a laser, de R$ 10 a R$ 50), mais o deslocamento, e é muito difícil recusar o próprio logo queimado na madeira. Só compensa com laser ou CNC: com ferro de marcar, cada amostra pediria um ferro novo.
 
 ## O cartão e o QR
 
