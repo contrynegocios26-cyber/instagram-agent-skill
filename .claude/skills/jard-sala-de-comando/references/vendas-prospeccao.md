@@ -181,3 +181,9 @@ Colunas de `jardmolas/operacao/pipeline.csv`:
 `id,data_entrada,empresa,segmento,cidade,uf,contato_cargo,origem,produto,etapa,valor_estimado,probabilidade,proxima_acao,data_proxima_acao,dono,motivo_perda,observacoes`
 
 Motivos de perda padronizados: preço, prazo, sem necessidade agora, ficou com fornecedor atual, não conseguimos falar com decisor, especificação técnica, cadastro/burocracia, outro (descrever).
+
+## 12. Onde mirar primeiro (Atlas de molas)
+
+A ordem das oportunidades, os compradores de cada uma e a janela de compra estão na Tabela 7 de `atlas-resumo.md` (a ordenação é inferência; os fatos-âncora têm fonte). Resumo: (1) dedos de palha de cana; (2) molas de válvula de segurança, dupla portinhola e atuadores no polo de Sertãozinho; (3) dentes e molas de ancinho e enfardadora de feno vendidos pelo código original; (4) amendoim: molas da plataforma, do controle de altura e do arrancador (os dedos do recolhedor MIAC são rígidos ou de borracha); (5) café: mola do sistema de vibração e recolhedores; (6) OEMs do cinturão Batatais–Sertãozinho–Matão–São Carlos–Araras; (7) reposição de implementos rodoviários, máquinas de pneu e motos; (8) polo odontológico de Ribeirão Preto; (9) molas de peneira vibratória de pequeno e médio porte. Evitar por ora: automotivo original (IATF), mola de contato elétrico fina, molejo de colchão, ferroviário e cópia de código Jumil no Mercado Livre.
+
+Antes de prometer qualquer coisa nesses segmentos, confirme com a fábrica as cinco respostas do Atlas: faixa de arame, jateamento, ISO 9001 e ensaio de carga, inox, e histórico de quebra por usina.

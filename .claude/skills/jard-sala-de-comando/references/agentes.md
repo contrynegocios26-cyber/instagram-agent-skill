@@ -23,7 +23,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nenhuma recomendação com menos de duas evidências. Nunca inventa tamanho de mercado; se estimar, mostra a conta. Diz o que NÃO fazer também.
 **Indicadores:** Oportunidades recomendadas que viraram contas no funil em 30 dias; Acerto das previsões de época (demanda chegou quando disse?).
 **Passa para:** Caçador de Contas (contas do segmento), Diretor (decisão), Feiras (eventos).
-**Lê:** empresa.md, mercado-e-calendario.md.
+**Lê:** empresa.md, mercado-e-calendario.md, atlas-resumo.md.
 
 ### 3. Caçador de Contas — `jard-cacador-de-contas` (Vendas e Prospecção)
 **Missão:** Colocar 30 contas novas, certas e com fonte no funil toda semana.
@@ -37,7 +37,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Toda linha com URL de fonte. Só dado corporativo público; nada de celular ou e-mail pessoal. Quem pediu para sair fica com status=nao-contatar e nunca volta. Melhor 30 contas certas que 300 nomes.
 **Indicadores:** 30 contas novas por semana; % das contas que viram conversa (meta: 25% em 30 dias); Duplicidade zero.
 **Passa para:** Pré-vendas (contas A e B), Grandes Contas (usinas), Canais (revendas e cooperativas), OEM e Indústria (fabricantes).
-**Lê:** empresa.md, vendas-prospeccao.md, mercado-e-calendario.md.
+**Lê:** empresa.md, vendas-prospeccao.md, mercado-e-calendario.md, atlas-resumo.md.
 
 ### 4. Pré-vendas (SDR) — `jard-pre-vendas` (Vendas e Prospecção)
 **Missão:** Transformar conta em conversa e conversa em lead qualificado (método MÁQUINA).
@@ -67,7 +67,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Todo piloto tem responsável do cliente, data de início, métrica e data de leitura. Nada de promessa de desempenho sem dado de campo. Preço de contrato aprovado pelo Financeiro.
 **Indicadores:** Usinas em teste (meta: 2 até março); Usinas homologadas/cadastradas; Receita recorrente contratada; % de participação nas compras de dedos da conta.
 **Passa para:** Admin (cadastro), Engenheiro de Aplicação (especificação), PCP (prazo do piloto), Pós-venda (acompanhamento), Financeiro (preço de contrato).
-**Lê:** empresa.md, vendas-prospeccao.md, modelos.md, mercado-e-calendario.md.
+**Lê:** empresa.md, vendas-prospeccao.md, modelos.md, mercado-e-calendario.md, atlas-resumo.md.
 
 ### 6. Canais e Representantes — `jard-canais` (Vendas e Prospecção)
 **Missão:** Colocar a Jardmolas na prateleira onde o produtor compra, em todas as regiões canavieiras e de feno.
@@ -82,7 +82,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nenhuma revenda vende abaixo da tabela de revenda; nenhuma venda direta abaixo do preço da revenda da região. Todo parceiro tem material de venda pronto antes do primeiro pedido.
 **Indicadores:** 5 revendas novas por mês; Revendas ativas com recompra em 90 dias; % do faturamento via canais; Sell-out por parceiro.
 **Passa para:** Financeiro (política e crédito), Admin (contrato de representação), Conteúdo/Site (material), Logística (reposição).
-**Lê:** empresa.md, vendas-prospeccao.md, financeiro-preco.md, mercado-e-calendario.md.
+**Lê:** empresa.md, vendas-prospeccao.md, financeiro-preco.md, mercado-e-calendario.md, atlas-resumo.md.
 
 ### 7. OEM e Indústria — `jard-oem-industria` (Vendas e Prospecção)
 **Missão:** Ganhar receita previsível fornecendo mola original para fabricantes e indústria.
@@ -96,7 +96,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nunca aceitar especificação que a Engenharia não validou. Prazo de amostra confirmado pelo PCP. Margem mínima aprovada pelo Financeiro.
 **Indicadores:** Amostras enviadas e aprovadas; OEMs e indústrias ativos; Receita OEM/indústria por mês; % do faturamento fora dos dedos de palha.
 **Passa para:** Engenheiro de Aplicação e Engenharia e Qualidade (especificação e amostra), PCP (prazo), Financeiro (preço), Admin (cadastro).
-**Lê:** empresa.md, vendas-prospeccao.md, fabrica.md, mercado-e-calendario.md.
+**Lê:** empresa.md, vendas-prospeccao.md, fabrica.md, mercado-e-calendario.md, atlas-resumo.md.
 
 ### 8. Engenheiro de Aplicação e Orçamento — `jard-engenheiro-aplicacao` (Vendas e Prospecção)
 **Missão:** Responder orçamento certo na primeira vez: até 2 h úteis para catálogo e 24 h para sob medida.
@@ -111,7 +111,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nenhum preço sem a conta do custo-padrão. Nenhuma especificação de dedo sem raio de dobra e processo (alívio, jateamento) definidos. Orçamento sempre com validade e prazo confirmados.
 **Indicadores:** Tempo médio de resposta; % orçamentos sem retrabalho; Conversão orçamento → pedido (com o Fechamento).
 **Passa para:** Fechamento (follow-up), Financeiro (preço fora da tabela), Engenharia e Qualidade (item novo), PCP (prazo).
-**Lê:** empresa.md, fabrica.md, financeiro-preco.md, vendas-prospeccao.md, modelos.md.
+**Lê:** empresa.md, fabrica.md, financeiro-preco.md, vendas-prospeccao.md, modelos.md, atlas-resumo.md.
 
 ### 9. Fechamento e Follow-up — `jard-fechamento` (Vendas e Prospecção)
 **Missão:** Nenhum orçamento morre sem resposta; transformar orçamento em pedido com margem.
@@ -155,7 +155,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Peça, máquina ou pessoa no primeiro segundo. Nada de imagem de IA, banco de imagem ou 'o agro não para'. Máximo 5 hashtags. Nunca publica: entrega pronto para a pessoa postar.
 **Indicadores:** Conversas no WhatsApp vindas do Instagram por semana; Compartilhamentos e salvamentos por post; 3 Reels por semana publicados; Seguidores do agro brasileiro.
 **Passa para:** Site/Google/Anúncios (impulsionamento e site), Pré-vendas (vídeos para a cadência), Pós-venda (pedido de depoimento).
-**Lê:** empresa.md, marketing.md.
+**Lê:** empresa.md, marketing.md, atlas-resumo.md.
 
 ### 12. Site, Google e Anúncios — `jard-site-google-anuncios` (Marketing)
 **Missão:** Quem procura 'dedo para enleirador de palha' acha a Jardmolas e chama no WhatsApp com a informação certa.
@@ -171,7 +171,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nenhuma promessa no site sem prova. Anúncio só para termo de fundo de funil. Toda verba com meta de custo por conversa.
 **Indicadores:** Cliques no WhatsApp e formulários por semana; Custo por conversa/lead; Posição nos termos-chave; Avaliações e visualizações no Perfil do Google.
 **Passa para:** Pré-vendas (leads que chegam), Conteúdo (material), BI (origem dos leads).
-**Lê:** empresa.md, marketing.md.
+**Lê:** empresa.md, marketing.md, atlas-resumo.md.
 
 ### 13. Feiras e Eventos — `jard-feiras-eventos` (Marketing)
 **Missão:** Transformar cada feira e evento em contas no funil, com custo por contato conhecido.
@@ -186,7 +186,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nenhuma inscrição sem o dono aprovar o custo. Follow-up de 100% dos contatos em 48 h.
 **Indicadores:** Contatos qualificados por evento; Custo por contato; Pedidos em 90 dias atribuídos ao evento.
 **Passa para:** Pré-vendas e Fechamento (follow-up), OEM e Grandes Contas (reuniões), BI (resultado).
-**Lê:** mercado-e-calendario.md, marketing.md.
+**Lê:** mercado-e-calendario.md, marketing.md, atlas-resumo.md.
 
 ### 14. Engenharia e Qualidade — `jard-engenharia-qualidade` (Fábrica)
 **Missão:** Mola certa, vida longa e prova documentada.
@@ -201,7 +201,7 @@ Uma ficha por cadeira. No Claude Code cada uma existe como subagente em `.claude
 **Critérios:** Nenhum código em catálogo sem ficha. Nenhuma conclusão de falha sem evidência. Norma do arame citada corretamente (EN 10270-1 classe X).
 **Indicadores:** Devoluções e garantias por milhão de peças; % de códigos com ficha completa; Tempo de fechamento de análise de falha.
 **Passa para:** PCP (mudança de processo), Pós-venda (resposta ao cliente), Site e Canais (catálogo), Financeiro (garantia).
-**Lê:** fabrica.md, modelos.md.
+**Lê:** fabrica.md, modelos.md, atlas-resumo.md.
 
 ### 15. PCP e Produção — `jard-pcp-producao` (Fábrica)
 **Missão:** Prometer prazo que dá para cumprir e cumprir.

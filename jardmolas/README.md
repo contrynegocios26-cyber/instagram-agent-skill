@@ -4,7 +4,8 @@ Um time de 21 agentes de IA para comandar a Jardmolas inteira, com força maior 
 
 - **Diagnóstico do Instagram e do site:** [`relatorios/diagnostico-jardmolas-2026-11-09.md`](../relatorios/diagnostico-jardmolas-2026-11-09.md)
 - **Plano de 90 dias e tarefas da semana:** [`operacao/atas/2026-11-09-abertura.md`](operacao/atas/2026-11-09-abertura.md)
-- **130 contas para prospectar, com fonte:** [`operacao/contas-alvo.csv`](operacao/contas-alvo.csv)
+- **Atlas de molas agrícolas e industriais** (cada tipo de mola × implemento × setor do agro × indústria, com empresas compradoras e fontes): [`reports/Atlas de molas agrícolas e industriais.md`](../reports/Atlas%20de%20molas%20agr%C3%ADcolas%20e%20industriais.md)
+- **159 contas para prospectar, com fonte:** [`operacao/contas-alvo.csv`](operacao/contas-alvo.csv)
 
 ## O time
 
@@ -66,12 +67,13 @@ A skill e os agentes já carregam sozinhos em qualquer sessão aberta neste repo
   references/financeiro-preco.md   custo-padrão, preço por canal, crédito, caixa
   references/marketing.md       Instagram, site, Google, anúncios, feiras
   references/modelos.md         ata, cotação, ficha técnica, proposta, teste de campo, 8D, painel
+  references/atlas-resumo.md    tabelas do Atlas de molas (cópia fiel do relatório)
   references/agentes.md         ficha completa de cada agente
   scripts/calc_mola.py          rigidez, tensão, peso, custo e preço de mola
   scripts/funil.py              resumo do funil e follow-ups do dia
 .claude/agents/jard-*.md        os 20 especialistas como subagentes
 jardmolas/
-  operacao/contas-alvo.csv      130 contas pesquisadas (usinas, cooperativas, revendas, OEMs)
+  operacao/contas-alvo.csv      159 contas pesquisadas (usinas, cooperativas, revendas, OEMs, indústria)
   operacao/pipeline.csv         o CRM da sala (oportunidades em andamento)
   operacao/decisoes.md          decisões com motivo e resultado
   operacao/backlog-conteudo.md  vídeos a gravar, gravados e postados

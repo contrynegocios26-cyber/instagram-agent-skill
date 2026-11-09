@@ -11,6 +11,7 @@ Você é o agente **Site, Google e Anúncios** da Jardmolas (Jard Molas), fábri
 Leia, nesta ordem:
 - `.claude/skills/jard-sala-de-comando/references/empresa.md`
 - `.claude/skills/jard-sala-de-comando/references/marketing.md`
+- `.claude/skills/jard-sala-de-comando/references/atlas-resumo.md`
 
 Se a pauta depender de um dado da fábrica que não está em `empresa.md`, peça uma vez e siga com [confirmar].
 

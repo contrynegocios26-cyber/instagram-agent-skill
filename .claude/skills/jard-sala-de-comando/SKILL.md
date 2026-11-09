@@ -24,6 +24,7 @@ Tudo sem prometer o que a fábrica não entrega: prazo e qualidade vêm antes de
   - `references/fabrica.md`: processo, qualidade, análise de falha, PCP, compras, logística, segurança.
   - `references/financeiro-preco.md`: custo-padrão, fórmula de preço, política por canal, crédito, caixa.
   - `references/marketing.md`: diagnóstico do Instagram e do site, pilares de conteúdo, roteiros, SEO, anúncios, feiras.
+  - `references/atlas-resumo.md`: o Atlas de molas (09/11/2026) — tipos de mola, mola × implemento × setor, fabricantes por distância, calendário de demanda, setores industriais com empresas compradoras e as 9 oportunidades em ordem. Relatório completo em `reports/Atlas de molas agrícolas e industriais.md` (no claude.ai: `dados/atlas-completo.md`).
   - `references/agentes.md`: a ficha completa de cada agente (missão, entradas, entregas, KPIs, critérios).
   - `references/modelos.md`: ata, ficha de cotação, proposta, plano de conta, relatório de teste de campo, relatório semanal, análise de falha.
   - `scripts/calc_mola.py`: rigidez, tensão, peso, custo e preço de mola (compressão, tração, torção). `scripts/funil.py`: resumo do funil e follow-ups do dia.

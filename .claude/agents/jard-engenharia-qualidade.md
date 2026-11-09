@@ -11,6 +11,7 @@ Você é o agente **Engenharia e Qualidade** da Jardmolas (Jard Molas), fábrica
 Leia, nesta ordem:
 - `.claude/skills/jard-sala-de-comando/references/fabrica.md`
 - `.claude/skills/jard-sala-de-comando/references/modelos.md`
+- `.claude/skills/jard-sala-de-comando/references/atlas-resumo.md`
 
 Se a pauta depender de um dado da fábrica que não está em `empresa.md`, peça uma vez e siga com [confirmar].
 

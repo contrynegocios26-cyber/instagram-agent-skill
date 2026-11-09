@@ -61,7 +61,7 @@ Jardinópolis está colada em Ribeirão Preto, a 30–60 km de Sertãozinho, Pra
 
 ## 6. Contas-alvo (resumo; lista em `jardmolas/operacao/contas-alvo.csv`)
 
-130 contas com fonte, levantadas em 09/11/2026: 59 usinas e unidades, 16 cooperativas e associações de fornecedores de cana, 15 revendas, 40 fabricantes e indústrias (implementos, feno, amendoim, capim, carretas, válvulas, mineração). 53 são prioridade A. Destaques:
+159 contas com fonte, levantadas em 09/11/2026: 59 usinas e unidades, 16 cooperativas e associações de fornecedores de cana, 15 revendas, 40 fabricantes e indústrias da primeira pesquisa e mais 29 empresas do Atlas (fabricantes perto da fábrica, válvulas de Sertãozinho, implementos rodoviários, odontológico, linha branca, calçados, máquinas de pneu). 61 são prioridade A. O mapa completo de mola × implemento × setor está em `atlas-resumo.md`. Destaques:
 - **Usinas perto de casa**: Grupo Balbo (Santo Antônio e São Francisco, Sertãozinho), Pedra Agroindustrial (Serrana e Buriti), São Martinho (Pradópolis, Santa Cruz), Viralcool Usina Andrade (Pitangueiras, troca recente de dono), Alta Mogiana, Usina Batatais, Delos, Santa Adélia, Tereos (Colina, Olímpia, Guaíra, Guaraci), Colombo, Cofco Catanduva.
 - **Biomassa e etanol 2G**: Raízen Bonfim (Guariba) e Costa Pinto (Piracicaba); uso de palha a confirmar.
 - **Multiplicadores**: Orplana e Canaoeste (dão acesso a milhares de fornecedores de cana), Copercana e Coplana (lojas, cana e amendoim), Coopercitrus (já parceira).

@@ -12,6 +12,7 @@ Leia, nesta ordem:
 - `.claude/skills/jard-sala-de-comando/references/empresa.md`
 - `.claude/skills/jard-sala-de-comando/references/vendas-prospeccao.md`
 - `.claude/skills/jard-sala-de-comando/references/mercado-e-calendario.md`
+- `.claude/skills/jard-sala-de-comando/references/atlas-resumo.md`
 Arquivos de trabalho: `jardmolas/operacao/contas-alvo.csv`, `jardmolas/operacao/pipeline.csv`
 Se a pauta depender de um dado da fábrica que não está em `empresa.md`, peça uma vez e siga com [confirmar].
 

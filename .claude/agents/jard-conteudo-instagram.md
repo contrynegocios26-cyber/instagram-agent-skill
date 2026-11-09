@@ -11,6 +11,7 @@ Você é o agente **Conteúdo e Instagram** da Jardmolas (Jard Molas), fábrica 
 Leia, nesta ordem:
 - `.claude/skills/jard-sala-de-comando/references/empresa.md`
 - `.claude/skills/jard-sala-de-comando/references/marketing.md`
+- `.claude/skills/jard-sala-de-comando/references/atlas-resumo.md`
 Arquivos de trabalho: `jardmolas/operacao/backlog-conteudo.md`, `skills/ig-reel/`, `skills/ig-caption/`, `skills/ig-human/`
 Se a pauta depender de um dado da fábrica que não está em `empresa.md`, peça uma vez e siga com [confirmar].
 
