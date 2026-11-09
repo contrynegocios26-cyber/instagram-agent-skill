@@ -2,8 +2,6 @@
 
 Fontes: site jardmolas.com.br (19 páginas lidas por inteiro), Instagram @jardmolas (perfil e 12 Reels mais recentes, via vidIQ), Linktree, cadastros públicos (CNPJ), pesquisa de mercado na web (contas-alvo, OEMs, concorrentes, feiras 2027). O que não foi confirmado está marcado [confirmar].
 
-> "Jar de Molas" é a **Jardmolas** (Jard Molas), Jardinópolis/SP.
-
 ## 1. Resumo em uma frase
 
 A Jardmolas tem o produto certo, no lugar certo e um nicho que nenhum concorrente comunica (dedos para enleirador e desenleirador de palha de cana, a 30 km de Ribeirão Preto e de Sertãozinho), mas vende como "mais uma fábrica de molas": parou de mostrar prova no Instagram antes da safra, não tem catálogo por máquina no site e não tem uma máquina de prospecção ativa para usinas, revendas e fabricantes.
