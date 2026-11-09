@@ -1,0 +1,2 @@
+id,data_entrada,empresa,segmento,cidade,uf,contato_cargo,origem,produto,etapa,valor_estimado,probabilidade,proxima_acao,data_proxima_acao,dono,motivo_perda,observacoes
+P000,2026-11-09,EXEMPLO Usina Modelo (apague esta linha),usina,Sertãozinho,SP,coordenador de mecanização agrícola,prospecção ativa,dedos enleirador JM 0573,4-orcamento-enviado,12000,40,follow-up D+1: recebeu o orçamento?,2026-11-10,Fechamento,,linha de exemplo: o funil.py ignora empresas que começam com EXEMPLO
