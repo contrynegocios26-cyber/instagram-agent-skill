@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>MP Marcenaria · Presentes de fim de ano 2026</title>
+<style>
+  @page { size: 210mm 297mm; margin: 0 }
+  :root {
+    --bg1: #1d0c0d; --bg2: #0a0606; --ink: #f4ede7; --soft: #d9cdc5; --muted: #a8988f;
+    --copper: #c99367; --red: #a3201f; --card: rgba(255,255,255,.035); --line: rgba(255,255,255,.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  html, body { width: 210mm; height: 297mm; background: var(--bg2) }
+  body { font-family: Inter, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact }
+  .page {
+    width: 210mm; height: 297mm; padding: 12mm 14mm 9mm; display: flex; flex-direction: column;
+    background: radial-gradient(120% 60% at 85% 18%, #3a1a14 0%, rgba(58,26,20,0) 60%), linear-gradient(180deg, var(--bg1), var(--bg2));
+    overflow: hidden;
+  }
+  .top { display: flex; justify-content: space-between; font-size: 8pt; color: var(--muted); letter-spacing: .05em; text-transform: uppercase }
+  .top b { color: var(--ink); font-weight: 600 }
+  .hero { display: grid; grid-template-columns: 88mm 1fr; gap: 2mm; align-items: center; margin-top: 4mm; height: 72mm }
+  .eyebrow { color: var(--copper); font-weight: 600; font-size: 8.5pt; letter-spacing: .09em; text-transform: uppercase }
+  h1 { font-size: 24pt; line-height: 1.06; font-weight: 700; letter-spacing: -.02em; margin-top: 3mm }
+  .lead { margin-top: 3.5mm; font-size: 9.8pt; line-height: 1.5; color: var(--soft) }
+  .filete { width: 15mm; height: .9mm; background: var(--red); margin-top: 4.5mm }
+  .art { height: 72mm; display: flex; align-items: center; justify-content: center }
+  .art svg { width: 108%; height: auto; margin-right: -6mm }
+  .art img { width: 100%; height: 100%; object-fit: cover; border-radius: 3mm }
+  .kits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 4mm }
+  .kit { background: var(--card); border: .3mm solid var(--line); border-radius: 3mm; padding: 3.5mm 4mm 4mm; position: relative; display: flex; flex-direction: column }
+  .kit.destaque { border-color: rgba(201,147,103,.7); background: rgba(201,147,103,.07) }
+  .tag { position: absolute; top: -2.4mm; left: 4mm; background: var(--copper); color: #1b0b0c; font-size: 6.5pt; font-weight: 700;
+         padding: .7mm 2mm; border-radius: 1mm; letter-spacing: .08em; text-transform: uppercase }
+  .kit .mini { height: 25mm; display: flex; align-items: center; justify-content: center }
+  .kit .mini svg { width: 100%; height: 100% }
+  .kit h3 { font-size: 12pt; font-weight: 700; margin-top: 1.5mm }
+  .kit p { font-size: 8pt; color: var(--soft); line-height: 1.45; margin-top: 1mm; flex: 1 }
+  .precos { margin-top: 2.5mm; border-top: .3mm solid var(--line); padding-top: 1.8mm }
+  .precos div { display: flex; justify-content: space-between; font-size: 8pt; padding: .55mm 0; color: var(--muted) }
+  .precos b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums }
+  .precos div:last-child b { color: var(--copper) }
+  .nota { font-size: 7.3pt; color: var(--muted); margin-top: 2.5mm; line-height: 1.4 }
+  h2 { font-size: 8.5pt; font-weight: 600; color: var(--copper); letter-spacing: .09em; text-transform: uppercase; margin-top: 5mm }
+  .porque { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 2.5mm }
+  .porque div { border-left: .6mm solid var(--red); padding-left: 2.5mm; font-size: 7.8pt; line-height: 1.4; color: var(--soft) }
+  .porque b { display: block; color: var(--ink); font-size: 8.8pt; margin-bottom: .6mm }
+  .passos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 2.5mm; counter-reset: p }
+  .passos div { font-size: 8pt; line-height: 1.4; color: var(--soft); counter-increment: p }
+  .passos div::before { content: counter(p); display: block; font-size: 15pt; font-weight: 700; color: var(--copper); line-height: 1; margin-bottom: 1.2mm }
+  .cta { display: grid; grid-template-columns: 1fr 29mm; gap: 6mm; align-items: center;
+         border: .3mm solid rgba(201,147,103,.5); border-radius: 3mm; padding: 4mm 5mm 4mm 6mm; margin-top: 5mm;
+         background: linear-gradient(90deg, rgba(163,32,31,.22), rgba(201,147,103,.08)) }
+  .cta .prazo { font-size: 15pt; font-weight: 700; letter-spacing: -.01em }
+  .cta .sub { font-size: 8.5pt; color: var(--soft); margin-top: 1.2mm; line-height: 1.45 }
+  .cta .zap { font-size: 13pt; font-weight: 700; color: var(--copper); margin-top: 2.5mm; font-variant-numeric: tabular-nums }
+  .qr { background: #f4ede7; padding: 0; border-radius: 2mm; overflow: hidden; width: 29mm; height: 29mm }
+  .qr svg { width: 100%; height: 100%; display: block }
+  .rodape { display: flex; justify-content: space-between; margin-top: auto; padding-top: 3mm; font-size: 7pt; color: var(--muted) }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top"><span><b>MP Marcenaria</b> · Alto Paraná, PR</span><span>{{topo_direita}}</span></div>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">{{eyebrow}}</div>
+      <h1>{{titulo}}</h1>
+      <p class="lead">Tábuas de churrasco feitas uma a uma na nossa fábrica. O presente vai para a mesa do seu cliente e fica lá por anos, e a sua marca aparece em todo churrasco.</p>
+      <div class="filete"></div>
+    </div>
+    <div class="art">{{arte_heroi}}</div>
+  </section>
+
+  <section class="kits">{{kits}}</section>
+  <p class="nota">Preço por peça, já com gravação da sua marca, embalagem e cartão com a mensagem da sua empresa. {{taxa}} Entrega com nota fiscal.</p>
+
+  <h2>Por que madeira maciça</h2>
+  <section class="porque">
+    <div><b>Madeira de verdade</b>Tiras de madeira nobre coladas. Nada de MDF ou pinus tratado.</div>
+    <div><b>Segura para alimento</b>Acabamento com óleo mineral e cera de abelha, sem verniz.</div>
+    <div><b>Feita por marceneiro</b>A mesma fábrica que faz as nossas portas e móveis sob medida.</div>
+    <div><b>Dura anos</b>Aceita lixar e renovar. Presente que não vai para a gaveta.</div>
+  </section>
+
+  <h2>Como funciona</h2>
+  <section class="passos">
+    <div>Mande o logo e a quantidade pelo WhatsApp.</div>
+    <div>Você aprova a arte em até 2 dias úteis.</div>
+    <div>Com o sinal de 50%, a produção começa.</div>
+    <div>Entrega com nota fiscal até {{entrega}}, no noroeste do Paraná.</div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <div class="prazo">Pedidos até {{prazo}}.</div>
+      <div class="sub">A produção é limitada e segue a ordem dos pedidos fechados. Aponte a câmera para o código e peça o orçamento no WhatsApp.</div>
+      <div class="zap">(44) 99884-6314</div>
+    </div>
+    <div class="qr">{{qr}}</div>
+  </section>
+
+  <div class="rodape"><span>MP Marcenaria · CNPJ 44.034.053/0001-07 · @mp.marcenariaa</span><span>{{rodape_direita}}</span></div>
+</div>
+</body>
+</html>

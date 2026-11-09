@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cartão do presente · MP Marcenaria</title>
+<style>
+  @page { size: 90mm 50mm; margin: 0 }
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: Inter, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #0a0606 }
+  .card { width: 90mm; height: 50mm; overflow: hidden; page-break-after: always; break-after: page; position: relative }
+  .card:last-child { page-break-after: auto; break-after: auto }
+
+  .frente { background: #f4ede7; color: #1d0c0d; padding: 6mm 7mm; display: flex; flex-direction: column }
+  .frente .eyebrow { font-size: 6pt; font-weight: 700; letter-spacing: .14em; color: #a3201f; text-transform: uppercase }
+  .frente .msg { font-size: 11.5pt; line-height: 1.28; font-weight: 600; letter-spacing: -.01em; margin-top: 2.5mm }
+  .frente .ass { margin-top: auto; font-size: 7.5pt; color: #5b4a43 }
+  .frente .ass b { color: #1d0c0d; font-weight: 700 }
+
+  .verso { background: linear-gradient(180deg, #1d0c0d, #0a0606); color: #f4ede7; padding: 5mm 5.5mm 5mm 6mm;
+           display: grid; grid-template-columns: 1fr 19mm; gap: 4mm }
+  .verso .feita { font-size: 7pt; font-weight: 700; line-height: 1.3 }
+  .verso .cuidado { font-size: 5.6pt; line-height: 1.4; color: #d9cdc5; margin-top: 1.6mm }
+  .verso .cuidado b { color: #c99367; font-weight: 600 }
+  .verso .rodape { font-size: 5.6pt; color: #a8988f; margin-top: 2mm }
+  .verso .lado { display: flex; flex-direction: column; align-items: center; justify-content: center }
+  .verso .qr { width: 19mm; height: 19mm; background: #f4ede7; padding: 0; border-radius: 1mm; overflow: hidden }
+  .verso .qr svg { width: 100%; height: 100%; display: block }
+  .verso .legenda { font-size: 5pt; color: #c99367; text-align: center; margin-top: 1.2mm; line-height: 1.25; font-weight: 600 }
+  .filete { width: 8mm; height: .6mm; background: #a3201f; margin-bottom: 2mm }
+
+  @media screen {
+    body { padding: 0; display: flex; flex-direction: column; gap: 0 }
+  }
+</style>
+</head>
+<body>
+  <div class="card frente">
+    <div class="eyebrow">Boas festas</div>
+    <div class="msg">{{mensagem}}</div>
+    <div class="ass"><b>{{empresa}}</b> · fim de ano 2026</div>
+  </div>
+  <div class="card verso">
+    <div>
+      <div class="filete"></div>
+      <div class="feita">Feita à mão em madeira maciça pela MP Marcenaria, em Alto Paraná (PR).</div>
+      <div class="cuidado"><b>Cuidados:</b> lave à mão com sabão neutro, seque em pé e passe óleo mineral a cada 2 meses. Não coloque na lava-louças.</div>
+      <div class="rodape">@mp.marcenariaa · (44) 99884-6314</div>
+    </div>
+    <div class="lado">
+      <div class="qr">{{qr}}</div>
+      <div class="legenda">Portas e móveis<br>sob medida</div>
+    </div>
+  </div>
+</body>
+</html>
