@@ -784,7 +784,7 @@ Dedos enleiradores e desenleiradores de palha de cana, feitos em Jardinópolis-S
 | # | Fórmula (hooks.json) | Linha | Na tela | Nota |
 | --- | --- | --- | --- | --- |
 | 1 | #10 If This, Then Watch | "Sua mola não tem código? Mede essas 5 coisas." | MOLA SEM CÓDIGO? | **84,4** |
-| 2 | #11 Numbered With A Favourite | "5 medidas pra cotar sua mola. A terceira quase todo mundo erra." | 5 MEDIDAS. A 3ª TODO MUNDO ERRA | 80,0 |
+| 2 | #11 Numbered With A Favourite | "5 medidas pra cotar sua mola. A terceira quase todo mundo erra." | A 3ª TODO MUNDO ERRA | 80,0 |
 | 3 | #16 The Verbatim Question | "Que medida vocês precisam pra fazer a mola?" São só 5. | SÃO SÓ 5 MEDIDAS | 65,2 |
 
 **Escolhido: 1.** Separa quem tem o problema e promete uma lista curta. A opção 2 segura mais gente até o meio, mas só se o técnico confirmar qual medida o cliente mais erra [confirmar]; se confirmar, usar a 2 e trocar "a terceira" pela certa.
@@ -977,7 +977,7 @@ Eu te explico como agenda a visita na usina.
 0:04  DEZEMBRO A MARÇO
 0:07  CADA MOLA CRÍTICA
 0:10  VÁLVULA, ATUADOR, CARRETA
-0:11  VISITA GRATUITA
+0:12  VISITA GRATUITA
 0:15  ONDE, MEDIDA, QUANTIDADE
 0:18  O CADERNO DA SUA USINA
 0:21  MANDA O CÓDIGO
