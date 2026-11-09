@@ -115,7 +115,7 @@ Se a sua máquina quebra mola sempre no mesmo ponto, mande a peça quebrada. A p
 | Qual mola (dente do pick-up, dedo, regulagem) e foto dela montada | Evita confundir peças parecidas | Sim |
 | Foto da mola solta com trena | Formato, espiras e ângulo | Sim |
 | Bitola do arame em mm | Rigidez e vida útil | Sim |
-| Medidas de torção (diâmetro interno, voltas, pernas, ângulo) ou de compressão e tração (comprimento livre, diâmetro externo, espiras) | Fabricação igual à original | Sim, se não tiver o código |
+| Medidas de torção (diâmetro interno, voltas, pernas, ângulo) ou de compressão e tração (comprimento livre, diâmetro externo, espiras) | Fabricação igual à peça antiga | Sim, se não tiver o código |
 | Código da peça | Acelera a identificação | Não |
 | Quantidade (por máquina x máquinas + reserva) | Preço e prazo | Sim |
 | Cidade de entrega, CNPJ ou CPF, e data da colheita | Frete, nota e programação | Sim |

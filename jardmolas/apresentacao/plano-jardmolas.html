@@ -120,6 +120,13 @@ td.num{font-family:var(--font-data);font-variant-numeric:tabular-nums;white-spac
 .perg li::before{content:counter(q);font:600 15px/1 var(--font-data);color:var(--on-brand);background:var(--brand);border-radius:6px;width:28px;height:28px;display:grid;place-items:center}
 .nao{display:grid;gap:8px;margin-top:18px;padding:16px 18px;border-left:4px solid var(--accent);background:var(--surface)}
 .nao b{font-family:var(--font-display);font-size:18px}
+.consertos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.consertos{grid-template-columns:minmax(0,1fr)}}
+.conserto{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:8px;align-content:start}
+.conserto h3{font-size:20px;line-height:1.15}
+.conserto p{margin:0;font-size:14.5px;color:var(--muted)}
+.conserto code{font:500 12.5px/1.4 var(--font-data);background:var(--surface-2);padding:2px 5px;border-radius:4px;overflow-wrap:anywhere;color:var(--ink)}
+.conserto .esf{justify-self:start;font:600 11px/1 var(--font-data);letter-spacing:.05em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:5px 8px;border-radius:4px}
 footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
@@ -172,6 +179,15 @@ footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px 
       </div>
     </div>
     <p class="cal-nota" id="calNota">Épocas típicas da região de Ribeirão Preto; cada usina e cada produtor tem a sua data. Agrishow (Ribeirão Preto) de 26 a 30/04/2027, pelo site oficial; Fenasucro &amp; Agrocana (Sertãozinho) de 10 a 13/08/2027. Recomendação: expositor na Fenasucro, visitante com reuniões marcadas na Agrishow.</p>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">Antes de tudo</span><h2>Três consertos no site que já estão custando orçamento</h2><p>Encontrados lendo o código das páginas em 09/11/2026. Juntos levam poucas horas do responsável pelo site.</p></div>
+    <div class="consertos">
+      <article class="conserto"><span class="esf">Esforço baixo</span><h3>Um link de WhatsApp com número errado</h3><p>Em 56 páginas, um dos botões de WhatsApp aponta para <code>55016991760936</code>, com um 0 a mais. Quem toca nele não chega na Jardmolas. O certo é <code>5516991760936</code>.</p></article>
+      <article class="conserto"><span class="esf">Esforço baixo</span><h3>Botão de ligar que não liga</h3><p>O link de telefone junta os quatro números num só (<code>tel:(16)99176-0936 / (16) 99176-1463 / ...</code>). No celular, a ligação não completa. Cada número precisa do seu link.</p></article>
+      <article class="conserto"><span class="esf">Esforço baixo</span><h3>WhatsApp atrás de um formulário</h3><p>O botão flutuante pede nome, empresa, e-mail e telefone antes de abrir a conversa. Quem está com a máquina parada desiste. Abrir o WhatsApp direto, com a mensagem da página já escrita.</p></article>
+    </div>
   </div></section>
 
   <section class="bloco"><div class="in">

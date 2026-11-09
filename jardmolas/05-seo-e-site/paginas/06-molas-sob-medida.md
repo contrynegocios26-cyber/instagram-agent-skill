@@ -26,7 +26,7 @@
 
 # Molas sob medida: pela amostra, pelo desenho ou pela medida
 
-A mola que quebrou não tem código, a máquina é antiga ou importada, o fabricante não existe mais, ou o original demora semanas. Ou então é um projeto novo que precisa de protótipo para ontem. Nos dois casos, a Jardmolas fabrica a mola sob medida em Jardinópolis-SP, desde 2008. São mais de 2.000 modelos já produzidos, arame Belgo Arames e laudo por lote.
+A mola que quebrou não tem código, a máquina é antiga ou importada, o fabricante não existe mais, ou a peça do fabricante da máquina demora semanas. Ou então é um projeto novo que precisa de protótipo para ontem. Nos dois casos, a Jardmolas fabrica a mola sob medida em Jardinópolis-SP, desde 2008. São mais de 2.000 modelos já produzidos, arame Belgo Arames e laudo por lote.
 
 **[Tenho a mola: medir e orçar]** **[Enviar desenho ou especificação]** **[WhatsApp]**
 

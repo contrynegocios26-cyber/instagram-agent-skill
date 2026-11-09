@@ -16,6 +16,7 @@ Legenda de responsável: **JM** = equipe da Jardmolas · **AG** = agência ·
 | Separar documentos do técnico para integração de segurança nas usinas | JM | `01-caderno-de-molas/roteiro-visita-tecnica.md` |
 | Escolher as 20 primeiras usinas (clientes atuais primeiro, depois prioridade A) | AG + JM | `04-mercado-e-alvos/usinas-alvo.md` |
 | Instalar o app no celular do técnico e fazer um levantamento de teste na própria fábrica | JM | `01-caderno-de-molas/instalacao-do-app.md` |
+| Consertar o link de WhatsApp com 0 a mais, o link de ligar e o formulário na frente do WhatsApp | WEB | `05-seo-e-site/diagnostico-do-site.md` |
 | Confirmar WhatsApp, prazos e garantia; publicar o Identificador | WEB + JM | `02-identificador/instalacao-no-site.md` |
 | Arrumar bio, destaques e fixados do Instagram | AG | `03-conteudo/perfil-instagram.md` |
 | Configurar WhatsApp Business: etiquetas, respostas rápidas, mensagem de ausência | JM | `01-caderno-de-molas/atendimento-whatsapp.md` |

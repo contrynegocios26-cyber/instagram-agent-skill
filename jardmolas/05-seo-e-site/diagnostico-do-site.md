@@ -1,6 +1,6 @@
 # Diagnóstico do site jardmolas.com.br (SEO, conversão e confiança)
 
-Data da leitura: 09/11/2026. Foram baixadas e lidas 51 URLs: as 50 do sitemap (`/sitemap.xml`), mais `/robots.txt`, `/empresa` e `/sobre`, que dão 404. Títulos, descrições, H1, dados estruturados, formulários e links foram extraídos do HTML. A ordem dos resultados de busca citada aqui veio da ferramenta de busca usada nesta pesquisa, não do Google Brasil com localização em Ribeirão Preto. Ela serve como indicação. A posição real tem que ser conferida no Google Search Console (relatório "Desempenho") e numa busca anônima feita na região.
+Data da leitura: 09/11/2026. Foram baixadas e lidas as 54 URLs do sitemap (`/sitemap.xml`), incluindo a home, mais `/robots.txt` e as URLs `/empresa` e `/sobre`, que dão 404. Títulos, descrições, H1, dados estruturados, formulários e links foram extraídos do HTML. A ordem dos resultados de busca citada aqui veio da ferramenta de busca usada nesta pesquisa, não do Google Brasil com localização em Ribeirão Preto. Ela serve como indicação. A posição real tem que ser conferida no Google Search Console (relatório "Desempenho") e numa busca anônima feita na região.
 
 ---
 
@@ -19,7 +19,7 @@ Data da leitura: 09/11/2026. Foram baixadas e lidas 51 URLs: as 50 do sitemap (`
 | Ponto forte | Onde | Por que ajuda a vender |
 |---|---|---|
 | Menu separado por setor e por aplicação (Implementos, Industrial e Sucroenergético, Mineração, Transporte Canavieiro...) | Menu principal | O comprador acha a linha dele em dois cliques. Cada página tem a palavra que ele digita no Google. |
-| Matéria-prima com nome e norma: Belgo Arames, DIN 17223 classes A a D, SAE 1070, 5160, 6150, 9254 | `/materia-prima` | Para o engenheiro, norma e aço citados valem mais que adjetivo. Poucos concorrentes mostram isso. |
+| Matéria-prima com nome e norma: Belgo Arames, DIN 17223 classes A a D, SAE 1070, 5160, 6150, 9254 | `/materia-prima` | Para o engenheiro, norma e aço citados valem mais que adjetivo. Junto com o laudo por lote, é um argumento técnico que a loja de peças não tem. |
 | Laudo técnico por lote e certificado de matéria-prima junto com a mola | `/molas-de-tracao-para-implementos-agricolas`, `/mola-para-peneira-vibratoria`, posts de válvulas | É o documento que o comprador de usina e o fabricante de válvula pedem para cadastrar fornecedor. |
 | A página de feno lista modelos de máquina: New Holland ProTed 450 a 880T, ProRotor 290 a 450, Kuhn GA 300 GM, GA 1031, GA 1032+, VB 3100, VBP 3200, Haybob | `/molas-para-enleiradores-e-enfardadeiras-de-feno` | É a única página com compatibilidade. Esse é o formato que faz o produtor achar a peça. Falta escrever "compatível com". |
 | A página de válvula dupla portinhola diz o que mandar para orçar (detalhes técnicos, carga, pressão, temperatura, ambiente químico) e cita inox 302, 304 e Inconel | `/molas-para-valvulas-dupla-portinhola` | Começa a falar a língua do engenheiro. Precisa virar tabela e formulário. |
@@ -94,8 +94,8 @@ A página `/dedos-enleiradores-e-desenleiradores-de-palha-jardmolas` tem "Mais d
 | # | Falha | Evidência | Efeito |
 |---|---|---|---|
 | 5.1 | **Home sem H1** | A home só tem H2. O primeiro é "Fabricante de molas para os Setores Agrícolas e Industriais noBrasil" (sem espaço em "no Brasil"). | O Google perde o sinal principal do tema da página mais forte do site. |
-| 5.2 | **Nenhum dado estruturado** | 0 blocos JSON-LD em 50 páginas. Não há LocalBusiness, Product, Service, FAQPage nem BreadcrumbList. | Perde visibilidade em busca local e em respostas de IA, e o Google tem que adivinhar endereço e telefone. |
-| 5.3 | **Títulos genéricos ou longos demais** | Produto: "Molas industriais - Jardmolas" (29 caracteres), "Mola para choque - Jardmolas" (28). Blog: 10 dos 12 títulos têm entre 61 e 75 caracteres e são cortados na busca. | Títulos sem aplicação, máquina ou benefício perdem clique para as lojas. |
+| 5.2 | **Nenhum dado estruturado** | 0 blocos JSON-LD nas 54 páginas. Não há LocalBusiness, Product, Service, FAQPage nem BreadcrumbList. | Perde visibilidade em busca local e em respostas de IA, e o Google tem que adivinhar endereço e telefone. |
+| 5.3 | **Títulos genéricos ou longos demais** | Produto: "Molas industriais - Jardmolas" (29 caracteres), "Mola para choque - Jardmolas" (28). Blog: 11 dos 12 posts da listagem têm título entre 61 e 75 caracteres e são cortados na busca. | Títulos sem aplicação, máquina ou benefício perdem clique para as lojas. |
 | 5.4 | **Meta description padrão repetida** | "Há 16 anos, a JARDMOLAS vem se consolidando..." aparece em `/orcamento`, `/blog`, `/teste`, nas três `/nova-linha...`, em `/alta-procura...`, em `/dedos-enleiradores-e-desenleiradores...`, na home e na política de privacidade. | Descrição duplicada e com idade errada (ver 6.1). |
 | 5.5 | **Páginas vazias indexáveis e no sitemap** | `/teste` (só o título "Teste"), `/nova-linha-de-molas-oferece-maior-resistencia-no-campo` e as cópias `-Ogu17o` e `-996nme` (vazias), `/alta-procura-por-molas-duraveis-para-implementos-agricolas` (só o título). Todas têm canonical para si mesmas. | Conteúdo raso e duplicado puxa para baixo a avaliação do site inteiro. |
 | 5.6 | **Páginas de categoria quase sem texto** | Mineração: 12 palavras. Moto, Pneus, Transporte Rodoviário: 13 cada. Transporte Canavieiro: 22. Molas Industriais: 41. Implementos Agrícolas: 68. | Essas páginas deveriam ranquear para os termos amplos ("molas para mineração", "molas industriais") e não têm conteúdo para isso. |

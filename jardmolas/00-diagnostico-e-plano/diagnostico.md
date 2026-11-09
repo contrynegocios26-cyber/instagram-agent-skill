@@ -27,6 +27,12 @@ ele tem uma mola quebrada na mão, sem código e sem desenho.
 
 ## O que está travando venda
 
+0. **Defeitos no site que perdem contato hoje** (conferidos no HTML em
+   09/11/2026): em 56 páginas, um dos botões de WhatsApp usa o número
+   `55016991760936`, com um 0 a mais, e não abre a conversa; o link de ligar
+   junta os quatro telefones num só e não completa no celular; o botão flutuante
+   pede quatro campos antes de abrir o WhatsApp. Conserto de poucas horas.
+   Lista completa em `05-seo-e-site/diagnostico-do-site.md`.
 1. **Pedir é difícil.** O formulário é genérico ("em breve retornaremos o
    contato") e não pergunta as medidas. Cada orçamento vira um vai e volta no
    WhatsApp. Parte desiste no meio. Resolvido pelo **Identificador de Molas**.
