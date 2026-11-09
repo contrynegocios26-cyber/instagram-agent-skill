@@ -12,6 +12,6 @@ Roteiros-modelo em `.claude/skills/jard-sala-de-comando/references/marketing.md`
 | 5 | Manutenção | "Por que o dedo quebra no olhal" com um dedo quebrado na mão | Engenharia | a gravar | | |
 | 6 | Oferta | Revisão de entressafra: checklist de 3 sinais de troca + kit com entrega antes de abril | Comercial | a gravar | | |
 | 7 | Comparativo | Novo lado a lado no solo (JM 3838 x outro dedo) em cliente que autorizar | Pós-venda | a gravar | | |
-| 8 | Diversificação | Dentes de recolhedor de amendoim (antes da colheita de fev) | Comercial + cliente | a gravar | | |
+| 8 | Diversificação | Molas de arrancador e recolhedora de amendoim (antes da colheita de fev) | Comercial + cliente | a gravar | | |
 | 9 | Diversificação | Molas de enfardadeira e enleirador de feno | Fábrica | a gravar | | |
 | 10 | Fábrica por dentro | Chegada do arame Belgo + certificado do lote (rastreabilidade) | Compras | a gravar | | |

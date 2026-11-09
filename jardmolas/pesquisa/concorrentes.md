@@ -2,6 +2,8 @@
 
 Pesquisa feita em 09/11/2026, só com buscas na web (sem abrir as páginas). Por isso, o que está aqui vem dos títulos e trechos que a busca devolveu. O que não foi confirmado está marcado [confirmar]. Instagram e outras redes sociais não apareceram em nenhuma busca, então essa coluna ficou sem dado ("não observado").
 
+> **Correção de 09/11/2026 (pesquisa do Atlas):** a "Molas Piracicaba" existe (Molas Piracicaba Ind. e Com., Piracicaba/SP) e há outras fábricas de molas perto da Jardmolas: Intermolas (Ribeirão Preto), Só Molas, Molas Piracicaba e Piramol (Piracicaba) e Líder Molas (Americana). Fontes e detalhes em `research_notes/Atlas de molas agrícolas e industriais/08-mercado-molas-concorrencia.md`.
+
 ## Tabela
 
 | Concorrente | Cidade/UF | Linhas de produto (observadas) | Como se posiciona (o que promete) | Presença digital observada | Onde a Jardmolas pode ganhar | Fonte |

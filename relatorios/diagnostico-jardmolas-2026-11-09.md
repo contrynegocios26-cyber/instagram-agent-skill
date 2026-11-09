@@ -56,7 +56,7 @@ O que os números dizem:
 
 ## 5. Mercado e concorrência
 
-- **Ninguém mais comunica dedo de palha de cana.** Damol, Molas Eliane, Agnusmol, Raro, Silvana e Ciamol vendem "mola agrícola" genérica.
+- **Ninguém mais comunica dedo de palha de cana.** Damol, Molas Eliane, Agnusmol, Raro, Silvana e Ciamol vendem "mola agrícola" genérica. Há fábricas de molas vizinhas (Intermolas (Ribeirão Preto), Só Molas, Molas Piracicaba e Piramol (Piracicaba) e Líder Molas (Americana)), sem oferta de dedos de palha observada [confirmar a linha de cada uma].
 - **No feno a briga é no balcão**, com dentes vendidos pelo código original da máquina em lojas de peças.
 - **A vizinhança é o mercado**: usinas de Sertãozinho, Serrana, Pradópolis, Pitangueiras, Batatais e São Joaquim da Barra; Copercana, Coplana, Canaoeste e Orplana; OEMs como DMB (enleirador Giropalha, 160 dedos por máquina), Sergomel, Jumil, Marchesan, Baldan; polo de válvulas de Sertãozinho.
 - **Calendário que manda**: usinas fecham orçamento de manutenção em out–nov e reformam implementos em dez–mar. Amendoim colhe em fev–abr. Agrishow 26–30/04/2027; Fenasucro 10–13/08/2027.
@@ -66,7 +66,7 @@ O que os números dizem:
 1. **De "fábrica de molas" para "especialista em dedos de palha"**, vendendo **custo por hectare** e não preço por peça. Cada teste de campo termina com um número ("X hectares, Y quebras") que vira proposta, Reel e argumento do vendedor.
 2. **De pedido de emergência para reposição programada.** Contrato anual com usinas e mix de giro em revendas e cooperativas, fechado na entressafra. Isso tira a fábrica da montanha-russa da safra.
 3. **Prospecção ativa com método.** 130 contas já levantadas com fonte (53 prioridade A), cadências por segmento, roteiros, qualificação MÁQUINA, orçamento em 2 horas e follow-up até o fim.
-4. **Diversificar com o que já se sabe fazer.** Dentes de recolhedor de amendoim (a região planta amendoim na reforma do canavial), feno, sementes de capim, OEM de implementos e válvulas de Sertãozinho para equilibrar a fábrica fora da safra.
+4. **Diversificar com o que já se sabe fazer.** Molas de arrancador e recolhedora de amendoim (a região planta amendoim na reforma do canavial), feno, sementes de capim, OEM de implementos e válvulas de Sertãozinho para equilibrar a fábrica fora da safra.
 5. **Prova acima de adjetivo** no Instagram, no site e nas propostas: depoimento autorizado, comparativo no solo, fábrica por dentro, certificado do arame.
 
 ## 7. O time montado

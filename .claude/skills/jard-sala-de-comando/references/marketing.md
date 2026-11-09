@@ -95,7 +95,7 @@ A cada 10 posts, no máximo 1 de oferta. Os outros 9 fazem a oferta funcionar.
 
 - **Perfil da Empresa no Google** (Google Maps): categoria "Fabricante de molas", horário, fotos da fábrica e dos produtos, produtos cadastrados com foto, posts quinzenais, responder todas as avaliações, pedir avaliação a clientes satisfeitos.
 - **Palavras que o comprador digita** (usar em páginas, títulos, legendas e anúncios):
-  - Fundo de funil: dedo para enleirador de palha; dedo desenleirador de palha; dedo enleirador de cana; dedo para giropalha [confirmar compatibilidade]; dente de enleirador de feno; mola para enfardadeira; dente recolhedor de amendoim; mola ceifadeira de semente de capim; mola para plantadeira; mola sob medida; fábrica de molas Ribeirão Preto.
+  - Fundo de funil: dedo para enleirador de palha; dedo desenleirador de palha; dedo enleirador de cana; dedo para giropalha [confirmar compatibilidade]; dente de enleirador de feno; mola para enfardadeira; mola recolhedor de amendoim; mola arrancador de amendoim; mola ceifadeira de semente de capim; mola para plantadeira; mola sob medida; fábrica de molas Ribeirão Preto.
   - Indústria: mola para válvula de retenção; mola para válvula de segurança; mola para peneira vibratória; mola para cabeçalho de carreta.
 - **Google Ads de pesquisa** (começar pequeno, {{R$}}/dia): só termos de fundo de funil, correspondência de frase e exata, regiões canavieiras, conversão = clique no WhatsApp ou formulário. Negativar: colchão, carro, suspensão, porta, academia, brinquedo, "como fazer".
 

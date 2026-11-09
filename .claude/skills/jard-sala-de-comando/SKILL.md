@@ -71,7 +71,7 @@ A ficha completa de cada um está em `references/agentes.md`.
 | Quando | Momento do campo | Foco da sala |
 |---|---|---|
 | **Out–Nov** | Fim da safra de cana; usinas fecham orçamento de manutenção do ano seguinte | Grandes Contas apresenta proposta anual e teste de campo; Caçador e Pré-vendas no máximo; Financeiro trava preço do arame |
-| **Dez–Mar** | **Entressafra**: reforma de implementos; amendoim colhe fev–abr | Oferta "Revisão de entressafra"; reposição programada; dentes de recolhedor de amendoim; Pós-venda colhe depoimentos da safra passada |
+| **Dez–Mar** | **Entressafra**: reforma de implementos; amendoim colhe fev–abr | Oferta "Revisão de entressafra"; reposição programada; molas de arrancador e recolhedora de amendoim; Pós-venda colhe depoimentos da safra passada |
 | **Abr–Mai** | Início da safra; Agrishow (Ribeirão Preto) | Estoque de giro cheio (PCP + Compras); Feiras; pedidos urgentes com prazo garantido |
 | **Jun–Set** | Pico de colheita e de recolhimento de palha; colheita de sementes de capim; Fenasucro (Sertãozinho, ago) | Reposição rápida (prazo é o argumento); Fenasucro; OEM e indústria para equilibrar a fábrica |
 | **Todo mês** | — | Funil, orçamentos em 2 h, follow-up, conteúdo de prova, painel de segunda |
