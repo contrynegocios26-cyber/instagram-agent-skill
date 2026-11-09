@@ -1,0 +1,15 @@
+{
+  "name": "Caderno de Molas Jardmolas",
+  "short_name": "Caderno JM",
+  "description": "Levantamento técnico de molas em usinas, com código JM e caderno em PDF.",
+  "lang": "pt-BR",
+  "start_url": "./caderno-de-molas.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F2F5F0",
+  "theme_color": "#084D17",
+  "icons": [
+    { "src": "icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

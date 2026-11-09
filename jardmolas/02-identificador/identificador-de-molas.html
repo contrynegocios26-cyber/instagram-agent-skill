@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Identificador de Molas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Meça sua mola com paquímetro, veja a ficha técnica na hora e mande o pedido de orçamento pronto para o WhatsApp da Jardmolas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Layout: ficha de oficina. Formulário à esquerda em passos, painel técnico fixo à direita com o desenho cotado e a ficha calculada. No celular vira uma coluna, com o botão do WhatsApp preso embaixo. Cores da marca Jardmolas (verde 084D17 / 33A94C, amarelo FFD800). */
+:root{
+  --bg:#F2F5F0;
+  --surface:#FFFFFF;
+  --surface-2:#E8EEE6;
+  --ink:#18211B;
+  --muted:#56635A;
+  --line:#CFD8CC;
+  --brand:#084D17;
+  --brand-2:#2F9A47;
+  --accent:#FFD800;
+  --accent-ink:#1E1A00;
+  --on-brand:#FFFFFF;
+  --dim:#7A867D;
+  --dim-on:#0B6B22;
+  --wire:#2C3530;
+  --wire-back:#A9B4AC;
+  --warn-bg:#FFF5C7;
+  --warn-ink:#6B4E00;
+  --bad-bg:#FDE7E4;
+  --bad-ink:#9E2414;
+  --ok-ink:#126B2B;
+  --focus:#1E7BD6;
+  --font-display:'Encode Sans Semi Condensed','Arial Narrow',Arial,sans-serif;
+  --font-body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-data:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --radius:10px;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1511; --surface:#161E18; --surface-2:#1D2820; --ink:#E6ECE5; --muted:#9DAA9F; --line:#2B382F;
+    --brand:#3DB458; --brand-2:#5CCB72; --accent:#FFD800; --accent-ink:#1E1A00; --on-brand:#06210D;
+    --dim:#7F8C82; --dim-on:#7BE08F; --wire:#D7DED8; --wire-back:#56625A;
+    --warn-bg:#3A3110; --warn-ink:#FFE27A; --bad-bg:#3D1A15; --bad-ink:#FFB4A8; --ok-ink:#7BE08F; --focus:#6CB4FF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1511; --surface:#161E18; --surface-2:#1D2820; --ink:#E6ECE5; --muted:#9DAA9F; --line:#2B382F;
+  --brand:#3DB458; --brand-2:#5CCB72; --accent:#FFD800; --accent-ink:#1E1A00; --on-brand:#06210D;
+  --dim:#7F8C82; --dim-on:#7BE08F; --wire:#D7DED8; --wire-back:#56625A;
+  --warn-bg:#3A3110; --warn-ink:#FFE27A; --bad-bg:#3D1A15; --bad-ink:#FFB4A8; --ok-ink:#7BE08F; --focus:#6CB4FF;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--font-body)}
+img{max-width:100%}
+[hidden]{display:none!important}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+.proposta{background:var(--accent);color:var(--accent-ink);font-size:13px;padding-block:6px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));text-align:center}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:18px;border-bottom:2px solid var(--brand)}
+.marca{font:700 15px/1 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+h1{font:700 clamp(30px,5vw,46px)/1.02 var(--font-display);margin:6px 0 0;text-wrap:balance;letter-spacing:-.01em}
+.lead{max-width:62ch;margin:10px 0 0;color:var(--muted)}
+.contato-topo{font:500 13px/1.4 var(--font-data);color:var(--muted);text-align:right}
+.contato-topo b{color:var(--ink);font-weight:600}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px;margin-top:24px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+.passo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:grid;gap:14px}
+.passos{display:grid;gap:16px}
+.passo-tit{display:flex;align-items:baseline;gap:12px}
+.passo-num{font:600 13px/1 var(--font-data);color:var(--on-brand);background:var(--brand);border-radius:6px;padding:5px 7px;flex:none}
+.passo h2{font:700 22px/1.15 var(--font-display);margin:0;text-wrap:balance}
+.passo .sub{margin:-6px 0 0;color:var(--muted);font-size:14px}
+
+.tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tipo{position:relative;display:grid;gap:4px;align-content:start;text-align:left;background:var(--surface-2);border:2px solid transparent;border-radius:var(--radius);padding:12px;cursor:pointer;min-height:92px}
+.tipo:hover{border-color:var(--line)}
+.tipo[aria-pressed="true"]{border-color:var(--brand);background:var(--surface)}
+.tipo[aria-pressed="true"]::after{content:"";position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--brand)}
+.tipo b{font:700 17px/1.1 var(--font-display)}
+.tipo span{font-size:13px;color:var(--muted);line-height:1.35}
+.tipo svg{width:44px;height:30px;color:var(--wire)}
+
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 14px}
+.campo{display:grid;gap:5px;min-width:0}
+.campo.largo{grid-column:1/-1}
+.campo label,.campo .rot{font-weight:600;font-size:14px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.sig{font:600 12px/1 var(--font-data);color:var(--brand);background:var(--surface-2);border-radius:4px;padding:3px 5px}
+.campo .ajuda{font-size:12.5px;color:var(--muted);line-height:1.4}
+.entrada{display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
+.entrada:focus-within{border-color:var(--brand)}
+.entrada input{border:0;background:transparent;padding:10px 12px;min-width:0;flex:1;font:500 17px/1.2 var(--font-data);font-variant-numeric:tabular-nums}
+.entrada input:focus{outline:none}
+.entrada .un{font:500 13px/1 var(--font-data);color:var(--muted);padding:0 12px;display:flex;align-items:center;background:var(--surface-2)}
+select,textarea,input.txt{border:1.5px solid var(--line);border-radius:8px;background:var(--surface);padding:10px 12px;width:100%}
+select:focus,textarea:focus,input.txt:focus{border-color:var(--brand);outline:none}
+textarea{min-height:76px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;cursor:pointer;font-size:14px}
+.chip[aria-pressed="true"]{border-color:var(--brand);background:var(--brand);color:var(--on-brand)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--brand)}
+.dica{background:var(--surface-2);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--ink)}
+.dica b{font-weight:600}
+
+/* painel técnico */
+.painel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:grid;gap:14px}
+@media (max-width:900px){.painel{position:static}}
+.prancha{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.prancha-cab{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font:600 12px/1 var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.selo{font:600 11px/1 var(--font-data);padding:4px 7px;border-radius:4px;background:var(--accent);color:var(--accent-ink);letter-spacing:.04em}
+.selo.seu{background:var(--brand);color:var(--on-brand)}
+.desenho{padding:8px 10px 0}
+.desenho svg{display:block;width:100%;height:auto;max-height:230px}
+.dim{color:var(--dim);transition:color .15s}
+.dim.on{color:var(--dim-on)}
+.dim text{font:600 13px var(--font-data);fill:currentColor}
+.dim.on text{font-weight:700}
+.ficha{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.ficha div{padding:10px 14px;border-bottom:1px solid var(--line);min-width:0}
+.ficha div:nth-child(odd){border-right:1px solid var(--line)}
+.ficha dt{font-size:12px;color:var(--muted)}
+.ficha dd{margin:2px 0 0;font:600 17px/1.2 var(--font-data);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.ficha dd small{font-size:12px;font-weight:500;color:var(--muted)}
+.ficha .cheia{grid-column:1/-1;border-right:0!important}
+.avisos{display:grid;gap:8px;padding:12px 14px}
+.aviso{border-radius:8px;padding:9px 11px;font-size:13px;line-height:1.4}
+.aviso.atencao{background:var(--warn-bg);color:var(--warn-ink)}
+.aviso.erro{background:var(--bad-bg);color:var(--bad-ink)}
+.aviso.ok{background:var(--surface-2);color:var(--ok-ink)}
+.nota{font-size:12px;color:var(--muted);padding:0 14px 14px}
+
+.envio{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;gap:12px}
+.envio h3{font:700 19px/1.1 var(--font-display);margin:0}
+.msg{font:400 12.5px/1.5 var(--font-data);white-space:pre-wrap;background:var(--surface-2);border-radius:8px;padding:12px;max-height:240px;overflow:auto;overflow-wrap:anywhere}
+.botoes{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;padding:12px 16px;font-weight:600;border:1.5px solid var(--brand);background:var(--surface);color:var(--brand);cursor:pointer;text-decoration:none}
+.btn.prim{background:var(--brand);color:var(--on-brand)}
+.btn.prim[aria-disabled="true"]{opacity:.5}
+.btn svg{width:18px;height:18px}
+.falta{font-size:13px;color:var(--warn-ink);background:var(--warn-bg);border-radius:8px;padding:8px 10px}
+.num-wpp{font:500 13px var(--font-data);color:var(--muted)}
+
+.barra{display:none}
+@media (max-width:900px){
+  .barra{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;gap:10px;align-items:center;justify-content:space-between;background:var(--surface);border-top:1px solid var(--line);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .barra .resumo{font:500 12.5px/1.3 var(--font-data);color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .barra .btn{flex:none;padding:11px 14px}
+}
+.amostra{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.amostra h3{font:700 18px/1.15 var(--font-display);margin:0 0 6px}
+.amostra p{margin:0;color:var(--muted);font-size:14px}
+.amostra .end{font:500 14px/1.5 var(--font-data);color:var(--ink)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:8px;font-size:14px;z-index:30}
+</style>
+</head>
+<body>
+<div class="proposta" id="faixaProposta">Protótipo preparado para a Jardmolas · versão para aprovação, ainda não é o site oficial</div>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="marca">Jardmolas · Jardinópolis-SP</div>
+      <h1>Identificador de Molas</h1>
+      <p class="lead">Mediu, mandou. Preencha as medidas da sua mola, veja a ficha técnica na hora e mande o pedido de orçamento pronto para o nosso WhatsApp. Medida aproximada serve: a nossa engenharia confere antes de fabricar.</p>
+    </div>
+    <div class="contato-topo">WhatsApp<br><b id="wppTopo">(16) 99176-0936</b></div>
+  </header>
+
+  <div class="grid">
+    <form class="passos" id="form" novalidate>
+      <!-- 1 -->
+      <section class="passo" aria-labelledby="t1">
+        <div class="passo-tit"><span class="passo-num">1</span><h2 id="t1">Que mola é essa?</h2></div>
+        <p class="sub">Escolha pelo jeito que ela trabalha na máquina.</p>
+        <div class="tipos" id="tipos" role="group" aria-label="Tipo de mola"></div>
+      </section>
+
+      <!-- 2 -->
+      <section class="passo" aria-labelledby="t2">
+        <div class="passo-tit"><span class="passo-num">2</span><h2 id="t2">Onde ela trabalha?</h2></div>
+        <div class="campos">
+          <div class="campo largo">
+            <label for="setor">Máquina ou equipamento</label>
+            <select id="setor"></select>
+          </div>
+          <div class="campo">
+            <label for="maquina">Marca e modelo da máquina</label>
+            <input class="txt" id="maquina" type="text" autocomplete="off" placeholder="Ex.: enleirador 10 rodas, válvula 6&quot;">
+          </div>
+          <div class="campo">
+            <label for="codigo">Código da peça <span class="ajuda">(se tiver)</span></label>
+            <input class="txt" id="codigo" type="text" autocomplete="off" placeholder="Código do manual ou JM-...">
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="passo" aria-labelledby="t3">
+        <div class="passo-tit"><span class="passo-num">3</span><h2 id="t3">Medidas da mola</h2></div>
+        <p class="sub">Tudo em milímetros. Use paquímetro se tiver; régua também serve. Toque num campo e o desenho mostra onde medir.</p>
+        <div class="campos" id="medidas"></div>
+        <div class="campos">
+          <div class="campo">
+            <label for="material">Material ou acabamento</label>
+            <select id="material">
+              <option value="">Não sei</option>
+              <option value="aco">Aço sem pintura (preto ou oleado)</option>
+              <option value="pintada">Pintada</option>
+              <option value="zincada">Zincada (prateada ou dourada)</option>
+              <option value="inox">Inox</option>
+            </select>
+          </div>
+          <div class="campo" style="align-content:end">
+            <label class="check"><input type="checkbox" id="quebrada"> <span>A mola está quebrada ou deformada</span></label>
+          </div>
+          <div class="campo largo">
+            <label class="check"><input type="checkbox" id="semMedida"> <span>Não consigo medir agora. Vou mandar foto com uma régua ou moeda do lado.</span></label>
+          </div>
+        </div>
+        <div class="dica"><b>Sem paquímetro?</b> Fotografe a mola em cima de uma régua ou trena, bem de lado, e outra foto de frente. Para contar as voltas, passe um lápis ao longo da mola e conte as marcas.</div>
+      </section>
+
+      <!-- 4 -->
+      <section class="passo" aria-labelledby="t4">
+        <div class="passo-tit"><span class="passo-num">4</span><h2 id="t4">Quantidade e prazo</h2></div>
+        <div class="campos">
+          <div class="campo">
+            <label for="qtd">Quantas peças?</label>
+            <div class="entrada"><input id="qtd" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: 20"><span class="un">un</span></div>
+          </div>
+          <div class="campo largo">
+            <span class="rot" id="rotUrg">Para quando?</span>
+            <div class="chips" id="urgencia" role="group" aria-labelledby="rotUrg"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="passo" aria-labelledby="t5">
+        <div class="passo-tit"><span class="passo-num">5</span><h2 id="t5">Quem está pedindo</h2></div>
+        <div class="campos">
+          <div class="campo">
+            <label for="nome">Seu nome</label>
+            <input class="txt" id="nome" type="text" autocomplete="name">
+          </div>
+          <div class="campo">
+            <label for="empresa">Fazenda, usina ou empresa</label>
+            <input class="txt" id="empresa" type="text" autocomplete="organization">
+          </div>
+          <div class="campo">
+            <label for="cidade">Cidade e estado</label>
+            <input class="txt" id="cidade" type="text" autocomplete="address-level2" placeholder="Ex.: Sertãozinho-SP">
+          </div>
+          <div class="campo largo">
+            <label for="obs">Alguma observação?</label>
+            <textarea id="obs" placeholder="Ex.: quebra sempre no mesmo lugar, trabalha no calor, precisa ser mais dura"></textarea>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <aside class="painel" aria-label="Ficha técnica">
+      <div class="prancha">
+        <div class="prancha-cab"><span id="cabTipo">Mola de compressão</span><span class="selo" id="selo">Exemplo</span></div>
+        <div class="desenho" id="desenho" aria-hidden="true"></div>
+        <dl class="ficha" id="ficha"></dl>
+        <div class="avisos" id="avisos"></div>
+        <p class="nota" id="nota">Valores calculados pelas medidas informadas, para orientar o orçamento. A engenharia da Jardmolas confere antes de fabricar.</p>
+      </div>
+
+      <div class="envio" id="envio">
+        <h3>Seu pedido de orçamento</h3>
+        <div class="msg" id="msg" tabindex="0" aria-label="Mensagem que será enviada"></div>
+        <div class="falta" id="falta" hidden></div>
+        <div class="botoes">
+          <a class="btn prim" id="btnWpp" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+            Enviar pelo WhatsApp
+          </a>
+          <button class="btn" type="button" id="btnCopiar">Copiar texto</button>
+          <button class="btn" type="button" id="btnLimpar">Limpar</button>
+        </div>
+        <div class="num-wpp">Abre o WhatsApp com a mensagem pronta. Depois é só anexar a foto da mola na conversa. Número: <span id="wppTxt">(16) 99176-0936</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="amostra" aria-label="Outras formas de pedir">
+    <div>
+      <h3>Prefere mandar a mola?</h3>
+      <p>Traga ou mande a amostra para a fábrica com um bilhete com seu nome e telefone. A gente mede, desenha e responde.</p>
+    </div>
+    <div>
+      <h3>Endereço da fábrica</h3>
+      <p class="end">Rua Artur Costacurta, 340<br>Distrito Industrial I<br>Jardinópolis-SP</p>
+    </div>
+    <div>
+      <h3>Telefones</h3>
+      <p class="end">(16) 3663-5901<br>(16) 99176-1463<br>(16) 99188-1941<br>jardmolas@jardmolas.com.br</p>
+    </div>
+  </section>
+</div>
+
+<div class="barra" id="barra">
+  <div class="resumo" id="barraResumo">Escolha o tipo e preencha as medidas</div>
+  <a class="btn prim" id="btnWpp2" href="#" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO (o webmaster ajusta aqui)
+   ========================================================= */
+var CONFIG = {
+  whatsapp: '5516991760936',          // DDI + DDD + número, só dígitos
+  whatsappTexto: '(16) 99176-0936',
+  modoProposta: true,                 // false para tirar a faixa amarela de protótipo
+  origem: 'Identificador de Molas'    // aparece na mensagem, ajuda a medir de onde veio o orçamento
+};
+
+/* =========================================================
+   CÁLCULO DE MOLAS (aço para molas, unidades em mm, N)
+   G = módulo de cisalhamento, E = módulo de elasticidade
+   ========================================================= */
+var MAT = {
+  aco:     { G: 79300, E: 206000, nome: 'aço para molas' },
+  inox:    { G: 69000, E: 193000, nome: 'inox' }
+};
+var KGF = 9.80665;
+
+function num(v){
+  if (v === null || v === undefined) return NaN;
+  var s = String(v).trim().replace(/\s/g,'').replace(',', '.');
+  if (s === '') return NaN;
+  var n = Number(s);
+  return isFinite(n) ? n : NaN;
+}
+function ok(n){ return typeof n === 'number' && isFinite(n) && n > 0; }
+function fmt(n, casas){
+  if (!isFinite(n)) return '–';
+  var c = casas === undefined ? (Math.abs(n) >= 100 ? 0 : Math.abs(n) >= 10 ? 1 : 2) : casas;
+  return n.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: c });
+}
+/* Resistência à tração mínima aproximada do arame trefilado (classes DIN 17223 / EN 10270-1), MPa. Estimativa para alertas, não substitui o certificado do arame. */
+function rmEstimado(d){ return 2230 * Math.pow(d, -0.19); }
+function wahl(C){ return (4*C - 1)/(4*C - 4) + 0.615/C; }
+
+function calcular(tipo, m, materialKey){
+  var mat = materialKey === 'inox' ? MAT.inox : MAT.aco;
+  var r = { linhas: [], avisos: [], completo: false };
+  var d = m.d, De = m.De;
+  if (!ok(d) || !ok(De)) { return r; }
+  var Dm = De - d, Di = De - 2*d, C = Dm / d;
+  if (Di <= 0) {
+    r.avisos.push(['erro', 'O diâmetro externo precisa ser maior que duas vezes o arame. Confira se você mediu por fora da mola, e não o furo.']);
+    return r;
+  }
+  if (C < 3.5) r.avisos.push(['atencao', 'Mola muito fechada para a grossura do arame (índice ' + fmt(C,1) + '). Dá para fabricar, mas confira as medidas antes.']);
+  if (C > 16) r.avisos.push(['atencao', 'Mola muito aberta para a grossura do arame (índice ' + fmt(C,1) + '). Ela fica mole e pode embolar. Confira as medidas.']);
+  r.linhas.push(['Diâmetro médio', fmt(Dm), 'mm']);
+  r.linhas.push(['Diâmetro interno', fmt(Di), 'mm']);
+  r.linhas.push(['Índice da mola', fmt(C,1), 'D/d']);
+
+  if (tipo === 'compressao') {
+    var Nt = m.Nt, L0 = m.L0, p = m.pontas || 'fechadas_esmerilhadas';
+    if (!ok(Nt)) return r;
+    var Na = { fechadas_esmerilhadas: Nt-2, fechadas: Nt-2, abertas: Nt, abertas_esmerilhadas: Nt-1 }[p];
+    if (!(Na > 0.5)) { r.avisos.push(['erro','Poucas espiras para esse tipo de ponta. Confira a contagem.']); return r; }
+    var k = mat.G * Math.pow(d,4) / (8 * Math.pow(Dm,3) * Na);
+    var Ls = { fechadas_esmerilhadas: Nt*d, fechadas: (Nt+1)*d, abertas: (Nt+1)*d, abertas_esmerilhadas: Nt*d }[p];
+    r.linhas.push(['Espiras ativas', fmt(Na,1), 'esp.']);
+    r.linhas.push(['Constante (dureza)', fmt(k), 'N/mm', fmt(k/KGF,2) + ' kgf/mm']);
+    r.linhas.push(['Altura fechada', fmt(Ls), 'mm']);
+    if (ok(L0)) {
+      var curso = L0 - Ls;
+      if (curso <= 0) {
+        r.avisos.push(['erro','O comprimento livre ficou menor que a mola toda fechada. Confira o comprimento ou o número de espiras.']);
+      } else {
+        var Fs = k * curso;
+        r.linhas.push(['Curso até fechar', fmt(curso), 'mm']);
+        r.linhas.push(['Força com a mola fechada', fmt(Fs), 'N', fmt(Fs/KGF,1) + ' kgf']);
+        var tau = wahl(C) * 8 * Fs * Dm / (Math.PI * Math.pow(d,3));
+        var limite = 0.5 * rmEstimado(d);
+        if (materialKey !== 'inox' && tau > limite) r.avisos.push(['atencao','Se for apertada até encostar as espiras, a tensão passa do recomendado para esse arame. É comum em mola que trabalha com curso limitado; a engenharia confere.']);
+        var esbeltez = L0 / Dm;
+        if (esbeltez > 4) r.avisos.push(['atencao','Mola comprida e fina (comprimento ' + fmt(esbeltez,1) + 'x o diâmetro). Ela costuma trabalhar com guia, pino por dentro ou tubo por fora. Conte isso na observação.']);
+        var passo = (L0 - Ls) / Na + d;
+        var fio = Nt * Math.sqrt(Math.pow(Math.PI*Dm,2) + Math.pow(passo,2));
+        r.linhas.push(['Arame por peça', fmt(fio/1000,2), 'm']);
+        r.linhas.push(['Peso por peça', fmt(Math.PI*d*d/4*fio*7.85e-3), 'g']);
+        r.completo = true;
+      }
+    }
+  }
+
+  if (tipo === 'tracao') {
+    var Nb = m.Nb;
+    if (!ok(Nb)) return r;
+    var kt = mat.G * Math.pow(d,4) / (8 * Math.pow(Dm,3) * Nb);
+    var Lcorpo = (Nb + 1) * d;
+    r.linhas.push(['Constante (dureza)', fmt(kt), 'N/mm', fmt(kt/KGF,2) + ' kgf/mm']);
+    r.linhas.push(['Corpo fechado', fmt(Lcorpo), 'mm']);
+    r.linhas.push(['Força para esticar 10 mm', fmt(kt*10), 'N', '+ tensão inicial']);
+    if (ok(m.Li) && m.Li < Lcorpo) r.avisos.push(['erro','O comprimento por dentro dos ganchos ficou menor que o corpo da mola. Confira as medidas.']);
+    var fioT = (Nb * Math.PI * Dm) + 2 * Math.PI * Dm;
+    r.linhas.push(['Peso por peça', fmt(Math.PI*d*d/4*fioT*7.85e-3), 'g', 'aprox.']);
+    r.avisos.push(['ok','Mola de tração nasce com as espiras apertadas (tensão inicial). Esse valor a gente mede na amostra ou ajusta no projeto.']);
+    r.completo = ok(m.Li);
+  }
+
+  if (tipo === 'torcao' || tipo === 'dedo') {
+    var Nbt = m.Nb, L1 = m.L1 || m.Ldedo || 0, L2 = m.L2 || 0;
+    if (!ok(Nbt)) return r;
+    var Nat = Nbt + (L1 + L2) / (3 * Math.PI * Dm);
+    var kRad = mat.E * Math.pow(d,4) / (64 * Dm * Nat);
+    var kGrau = kRad * Math.PI / 180;
+    r.linhas.push(['Constante por grau', fmt(kGrau), 'N·mm/°', fmt(kGrau/98.0665,3) + ' kgf·cm/°']);
+    r.linhas.push(['Momento para girar 30°', fmt(kGrau*30/1000,2), 'N·m']);
+    var eixo = 0.9 * ((Dm * Nbt / (Nbt + 90/360)) - d);
+    r.linhas.push(['Eixo máximo (girando 90°)', fmt(Math.max(eixo,0),1), 'mm', 'diâmetro']);
+    if (tipo === 'dedo') {
+      r.avisos.push(['ok','Dedo de enleirador: a bitola do arame, o número de espiras, o comprimento do dedo e a forma de fixação definem a peça. Mande foto de lado e de frente, ou a amostra.']);
+      r.completo = ok(m.Ldedo);
+    } else {
+      r.completo = ok(L1);
+    }
+  }
+
+  if (tipo === 'outra') {
+    r.avisos.push(['ok','Mande a foto e a descrição. A gente identifica o tipo e retorna com as perguntas certas.']);
+    r.completo = true;
+  }
+  return r;
+}
+
+/* =========================================================
+   DADOS DO FORMULÁRIO
+   ========================================================= */
+var TIPOS = {
+  compressao: { nome:'Compressão', titulo:'Mola de compressão', desc:'Trabalha sendo apertada', campos:['d','De','L0','Nt','pontas','sentido'],
+                exemplo:{ d:6, De:45, L0:110, Nt:10, pontas:'fechadas_esmerilhadas' } },
+  tracao:     { nome:'Tração', titulo:'Mola de tração', desc:'Trabalha sendo esticada, tem gancho nas pontas', campos:['d','De','Li','Nb','gancho','posGanchos'],
+                exemplo:{ d:3, De:24, Li:150, Nb:35 } },
+  torcao:     { nome:'Torção', titulo:'Mola de torção', desc:'Trabalha girando, tem pernas', campos:['d','De','Nb','L1','L2','angulo','sentido'],
+                exemplo:{ d:4, De:32, Nb:6, L1:60, L2:40, angulo:90 } },
+  dedo:       { nome:'Dedo de enleirador', titulo:'Dedo de mola', desc:'Dedo de enleirador, ancinho ou recolhedor', campos:['d','De','Nb','Ldedo','fixacao'],
+                exemplo:{ d:9.5, De:60, Nb:2, Ldedo:550 } },
+  outra:      { nome:'Outra / não sei', titulo:'Mola a identificar', desc:'Mande a foto, a gente identifica', campos:['d','De','Ltot','descricao'],
+                exemplo:{} }
+};
+var CAMPOS = {
+  d:   { rot:'Diâmetro do arame', sig:'d', un:'mm', ajuda:'A grossura do arame. Meça no meio de uma espira, em dois pontos, e anote o maior.' },
+  De:  { rot:'Diâmetro externo', sig:'De', un:'mm', ajuda:'Por fora da espira, de um lado ao outro. Se estiver amassada, meça onde está mais redonda.' },
+  L0:  { rot:'Comprimento livre', sig:'L0', un:'mm', ajuda:'Com a mola solta, em pé na mesa, da ponta de cima até a de baixo.' },
+  Nt:  { rot:'Número total de espiras', sig:'Nt', un:'esp.', ajuda:'Conte as voltas de uma ponta à outra. Meia volta vale 0,5.' },
+  Nb:  { rot:'Espiras do corpo', sig:'N', un:'esp.', ajuda:'Conte as voltas completas, sem contar os ganchos ou as pernas.' },
+  Li:  { rot:'Comprimento por dentro dos ganchos', sig:'Li', un:'mm', ajuda:'Com a mola solta, da parte de dentro de um gancho até a de dentro do outro.' },
+  L1:  { rot:'Comprimento da perna 1', sig:'L1', un:'mm', ajuda:'Do centro da espira até a ponta da perna maior.' },
+  L2:  { rot:'Comprimento da perna 2', sig:'L2', un:'mm', ajuda:'Do centro da espira até a ponta da outra perna.' },
+  angulo:{ rot:'Ângulo entre as pernas, solta', sig:'θ', un:'graus', ajuda:'Com a mola solta. Pernas lado a lado = 0°, em L = 90°, uma oposta à outra = 180°.' },
+  Ldedo:{ rot:'Comprimento do dedo', sig:'L', un:'mm', ajuda:'Do centro da espira até a ponta do dedo.' },
+  Ltot:{ rot:'Comprimento total', sig:'L', un:'mm', ajuda:'A maior medida da peça, de ponta a ponta.' },
+  pontas:{ rot:'Como são as pontas', tipo:'select', ops:[
+    ['fechadas_esmerilhadas','Fechadas e lixadas (planas, a mola fica em pé)'],
+    ['fechadas','Fechadas, sem lixar'],
+    ['abertas','Abertas (a ponta do arame fica solta)'],
+    ['abertas_esmerilhadas','Abertas e lixadas']] },
+  sentido:{ rot:'Sentido do enrolamento', tipo:'select', ops:[
+    ['','Não sei'],['direita','À direita (igual rosca de parafuso)'],['esquerda','À esquerda']] },
+  gancho:{ rot:'Tipo de gancho', tipo:'select', ops:[
+    ['','Não sei'],['comum','Gancho comum, fechado, no centro'],['lateral','Gancho lateral'],['estendido','Gancho estendido (com haste)'],['rosca','Terminal com rosca ou peça presa'],['diferentes','Um gancho diferente do outro']] },
+  posGanchos:{ rot:'Posição de um gancho em relação ao outro', tipo:'select', ops:[
+    ['','Não sei'],['alinhados','Alinhados (mesmo lado)'],['90','Virados 90°'],['180','Opostos (180°)']] },
+  fixacao:{ rot:'Como o dedo é preso', tipo:'select', ops:[
+    ['','Não sei'],['olhal','Olhal (argola) com parafuso'],['dobra','Perna dobrada encaixada'],['duplo','Dedo duplo (duas espiras ligadas por uma alça)'],['outro','Outro, vou mandar foto']] },
+  descricao:{ rot:'Descreva a peça', tipo:'textarea', largo:true, ajuda:'Onde fica, o que ela faz, se tem gancho, perna ou formato diferente.' }
+};
+var SETORES = [
+  ['', 'Escolha'],
+  ['Enleirador de palha de cana', 'Enleirador de palha de cana'],
+  ['Enleirador ou enfardadeira de feno', 'Enleirador ou enfardadeira de feno'],
+  ['Enleirador de capim', 'Enleirador de capim'],
+  ['Recolhedor de amendoim', 'Recolhedor de amendoim'],
+  ['Outro implemento agrícola', 'Outro implemento agrícola'],
+  ['Usina: válvula de retenção dupla portinhola', 'Usina: válvula de retenção dupla portinhola'],
+  ['Usina: válvula de segurança', 'Usina: válvula de segurança'],
+  ['Usina: atuador', 'Usina: atuador'],
+  ['Usina: outro equipamento', 'Usina: outro equipamento'],
+  ['Peneira vibratória (mineração)', 'Peneira vibratória (mineração)'],
+  ['Carreta canavieira: tela de cobertura', 'Carreta canavieira: tela de cobertura'],
+  ['Carreta canavieira: cabeçalho', 'Carreta canavieira: cabeçalho'],
+  ['Moto: descanso', 'Moto: descanso'],
+  ['Montadora de pneu', 'Montadora de pneu'],
+  ['Sou fabricante (produção em série)', 'Sou fabricante e preciso de mola em série'],
+  ['Outro', 'Outro']
+];
+var URGENCIAS = [
+  ['parada', 'Máquina parada'],
+  ['semanas', 'Próximas semanas'],
+  ['estoque', 'Para estoque ou entressafra'],
+  ['cotacao', 'Só cotação']
+];
+
+/* =========================================================
+   DESENHOS COTADOS (gerados por código)
+   ========================================================= */
+function linhaCota(x1,y1,x2,y2){
+  var ang = Math.atan2(y2-y1, x2-x1), a = 7, w = 0.45;
+  function seta(x,y,dir){
+    var t = ang + (dir ? Math.PI : 0);
+    return 'M'+x+','+y+' L'+(x+a*Math.cos(t-w))+','+(y+a*Math.sin(t-w))+' M'+x+','+y+' L'+(x+a*Math.cos(t+w))+','+(y+a*Math.sin(t+w));
+  }
+  return '<path d="M'+x1+','+y1+' L'+x2+','+y2+' '+seta(x1,y1,false)+' '+seta(x2,y2,true)+'" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>';
+}
+function cota(dim, conteudo){ return '<g class="dim" data-dim="'+dim+'">'+conteudo+'</g>'; }
+function txt(x,y,s,anc){ return '<text x="'+x+'" y="'+y+'" text-anchor="'+(anc||'middle')+'">'+s+'</text>'; }
+
+function svgCompressao(){
+  var x0=46,x1=286,yT=42,yB=118,n=8,st=(x1-x0)/n, f='',b='';
+  for (var i=0;i<n;i++){ var xa=x0+i*st, xb=xa+st/2, xc=xa+st; f+='M'+xa+','+yT+' L'+xb+','+yB+' '; b+='M'+xb+','+yB+' L'+xc+','+yT+' '; }
+  var s='<svg viewBox="0 0 360 180" role="img">';
+  s+='<path d="'+b+'" stroke="var(--wire-back)" stroke-width="7" stroke-linecap="round" fill="none"/>';
+  s+='<path d="'+f+'" stroke="var(--wire)" stroke-width="7" stroke-linecap="round" fill="none"/>';
+  s+='<path d="M'+(x0-4)+','+yT+' L'+(x0-4)+','+yB+' M'+(x1+4)+','+yT+' L'+(x1+4)+','+yB+'" stroke="var(--wire)" stroke-width="5" stroke-linecap="round"/>';
+  s+=cota('L0', '<path d="M'+(x0-4)+','+(yB+8)+' V'+(yB+36)+' M'+(x1+4)+','+(yB+8)+' V'+(yB+36)+'" stroke="currentColor" stroke-width="1"/>'+linhaCota(x0-4,yB+28,x1+4,yB+28)+txt((x0+x1)/2,yB+50,'L0'));
+  s+=cota('De', '<path d="M'+(x1+10)+','+(yT-3.5)+' H'+(x1+40)+' M'+(x1+10)+','+(yB+3.5)+' H'+(x1+40)+'" stroke="currentColor" stroke-width="1"/>'+linhaCota(x1+32,yT-3.5,x1+32,yB+3.5)+txt(x1+50,(yT+yB)/2+5,'De','start'));
+  var sx=x0+st*2+st/4, sy=(yT+yB)/2;
+  s+=cota('d', linhaCota(sx-30,yT-26,sx-6,sy-2)+txt(sx-36,yT-30,'d','end'));
+  s+=cota('Nt', txt(x0+st*5.5,yT-14,'Nt = voltas'));
+  s+='</svg>';
+  return s;
+}
+function svgTracao(){
+  var x0=92,x1=268,yT=56,yB=112,n=16,st=(x1-x0)/n,f='',b='';
+  for (var i=0;i<n;i++){ var xa=x0+i*st, xb=xa+st/2, xc=xa+st; f+='M'+xa+','+yT+' L'+xb+','+yB+' '; b+='M'+xb+','+yB+' L'+xc+','+yT+' '; }
+  var r=(yB-yT)/2, cy=(yT+yB)/2;
+  var s='<svg viewBox="0 0 360 180" role="img">';
+  s+='<path d="'+b+'" stroke="var(--wire-back)" stroke-width="6" stroke-linecap="round" fill="none"/>';
+  s+='<path d="'+f+'" stroke="var(--wire)" stroke-width="6" stroke-linecap="round" fill="none"/>';
+  s+='<circle cx="'+(x0-r)+'" cy="'+cy+'" r="'+r+'" stroke="var(--wire)" stroke-width="6" fill="none"/>';
+  s+='<circle cx="'+(x1+r)+'" cy="'+cy+'" r="'+r+'" stroke="var(--wire)" stroke-width="6" fill="none"/>';
+  var li0=x0-2*r+3, li1=x1+2*r-3;
+  s+=cota('Li','<path d="M'+li0+','+(cy+6)+' V'+(yB+42)+' M'+li1+','+(cy+6)+' V'+(yB+42)+'" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>'+linhaCota(li0,yB+34,li1,yB+34)+txt((li0+li1)/2,yB+56,'Li  por dentro dos ganchos'));
+  s+=cota('De','<path d="M'+(x0+st*8)+','+(yT-3)+' V'+(yT-30)+' M'+(x0+st*8)+','+(yB+3)+' V'+(yB+10)+'" stroke="currentColor" stroke-width="1"/>'+linhaCota(x0+st*12,yT-3,x0+st*12,yB+3)+txt(x0+st*12+12,yT-10,'De','start'));
+  s+=cota('d', linhaCota(x0+20,yT-28,x0+st*1.3,yT+6)+txt(x0+14,yT-32,'d','end'));
+  s+=cota('Nb', txt((x0+x1)/2,yT-36,'N = voltas do corpo'));
+  s+='</svg>';
+  return s;
+}
+function svgTorcao(dedo){
+  var cx=120, cy=92, R=34;
+  var s='<svg viewBox="0 0 360 180" role="img">';
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" stroke="var(--wire-back)" stroke-width="12" fill="none"/>';
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" stroke="var(--wire)" stroke-width="6" fill="none"/>';
+  if (!dedo){
+    s+='<path d="M'+cx+','+(cy-R)+' L'+(cx+200)+','+(cy-R)+'" stroke="var(--wire)" stroke-width="6" stroke-linecap="round"/>';
+    s+='<path d="M'+(cx+R)+','+cy+' L'+(cx+R)+','+(cy+80)+'" stroke="var(--wire)" stroke-width="6" stroke-linecap="round"/>';
+    s+=cota('L1', linhaCota(cx,cy-R-16,cx+200,cy-R-16)+txt(cx+100,cy-R-24,'L1'));
+    s+=cota('L2', linhaCota(cx+R+16,cy,cx+R+16,cy+80)+txt(cx+R+24,cy+48,'L2','start'));
+    s+=cota('angulo','<path d="M'+(cx+R+22)+','+(cy-R)+' A 40 40 0 0 1 '+(cx+R)+','+(cy-R+40)+'" stroke="currentColor" stroke-width="1.4" fill="none"/>'+txt(cx+R+30,cy-R+26,'θ','start'));
+  } else {
+    s+='<path d="M'+(cx+R*0.7)+','+(cy+R*0.7)+' L'+(cx+215)+','+(cy+70)+'" stroke="var(--wire)" stroke-width="6" stroke-linecap="round"/>';
+    s+='<path d="M'+(cx-R)+','+cy+' L'+(cx-R-30)+','+(cy-40)+'" stroke="var(--wire)" stroke-width="6" stroke-linecap="round"/>';
+    s+='<circle cx="'+(cx-R-36)+'" cy="'+(cy-48)+'" r="9" stroke="var(--wire)" stroke-width="5" fill="none"/>';
+    s+=cota('Ldedo', linhaCota(cx,cy+R+26,cx+215,cy+70+16)+txt(cx+120,cy+R+56,'L  comprimento do dedo'));
+    s+=cota('fixacao', txt(cx-R-36,cy-66,'fixação'));
+  }
+  s+=cota('De','<path d="M'+(cx-R-3)+','+(cy+R+4)+' V'+(cy+R+22)+' M'+(cx+R+3)+','+(cy+R+4)+' V'+(cy+R+22)+'" stroke="currentColor" stroke-width="1"/>'+linhaCota(cx-R-3,cy+R+16,cx+R+3,cy+R+16)+txt(cx-R-10,cy+R+21,'De','end'));
+  s+=cota('d', linhaCota(cx-R-34,cy+14,cx-R-4,cy+4)+txt(cx-R-38,cy+20,'d','end'));
+  s+=cota('Nb', txt(cx,cy+5, dedo ? 'N esp.' : 'N'));
+  s+='</svg>';
+  return s;
+}
+function svgOutra(){
+  var s='<svg viewBox="0 0 360 180" role="img">';
+  s+='<rect x="40" y="118" width="280" height="26" rx="3" stroke="var(--wire)" stroke-width="2" fill="none"/>';
+  for (var i=0;i<=28;i++){ var x=48+i*9.4; s+='<path d="M'+x+',118 V'+(118+(i%5===0?12:7))+'" stroke="var(--wire)" stroke-width="1.4"/>'; }
+  s+='<path d="M86,96 C110,40 150,40 170,80 S230,120 262,56" stroke="var(--wire)" stroke-width="7" stroke-linecap="round" fill="none"/>';
+  s+=cota('Ltot', linhaCota(86,30,262,30)+txt(174,22,'L  maior medida'));
+  s+=cota('descricao', txt(180,170,'foto de lado, em cima da régua'));
+  s+='</svg>';
+  return s;
+}
+function desenhoDo(tipo){
+  if (tipo==='compressao') return svgCompressao();
+  if (tipo==='tracao') return svgTracao();
+  if (tipo==='torcao') return svgTorcao(false);
+  if (tipo==='dedo') return svgTorcao(true);
+  return svgOutra();
+}
+var ICONES = {
+  compressao:'<svg viewBox="0 0 44 30"><path d="M4 4 L9 26 M14 4 L19 26 M24 4 L29 26 M34 4 L39 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M9 26 L14 4 M19 26 L24 4 M29 26 L34 4" stroke="currentColor" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/></svg>',
+  tracao:'<svg viewBox="0 0 44 30"><circle cx="6" cy="15" r="5" stroke="currentColor" stroke-width="2.5" fill="none"/><circle cx="38" cy="15" r="5" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M12 8 L14 22 M16 8 L18 22 M20 8 L22 22 M24 8 L26 22 M28 8 L30 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>',
+  torcao:'<svg viewBox="0 0 44 30"><circle cx="13" cy="16" r="8" stroke="currentColor" stroke-width="3" fill="none"/><path d="M13 8 H42 M21 16 V29" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  dedo:'<svg viewBox="0 0 44 30"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="3" fill="none"/><path d="M16 16 L42 28" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  outra:'<svg viewBox="0 0 44 30"><rect x="4" y="6" width="36" height="20" rx="3" stroke="currentColor" stroke-width="2.5" fill="none"/><circle cx="22" cy="16" r="5" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>'
+};
+
+/* =========================================================
+   ESTADO E RENDERIZAÇÃO
+   ========================================================= */
+var estado = { tipo:'compressao', urgencia:'' };
+var $ = function(id){ return document.getElementById(id); };
+
+function montarTipos(){
+  var h='';
+  Object.keys(TIPOS).forEach(function(k){
+    var t=TIPOS[k];
+    h+='<button type="button" class="tipo" data-tipo="'+k+'" aria-pressed="'+(k===estado.tipo)+'">'+ICONES[k]+'<b>'+t.nome+'</b><span>'+t.desc+'</span></button>';
+  });
+  $('tipos').innerHTML=h;
+  $('tipos').addEventListener('click', function(e){
+    var b=e.target.closest('.tipo'); if(!b) return;
+    estado.tipo=b.dataset.tipo;
+    Array.prototype.forEach.call($('tipos').children, function(x){ x.setAttribute('aria-pressed', String(x.dataset.tipo===estado.tipo)); });
+    montarMedidas(); atualizar();
+  });
+}
+var valoresMedidas = {};
+function montarMedidas(){
+  var cont=$('medidas'), h='';
+  // guarda o que já foi digitado para não perder ao trocar de tipo
+  Array.prototype.forEach.call(cont.querySelectorAll('[data-campo]'), function(el){ valoresMedidas[el.dataset.campo]=el.value; });
+  TIPOS[estado.tipo].campos.forEach(function(c){
+    var f=CAMPOS[c], id='m_'+c, v=valoresMedidas[c]||'';
+    if (f.tipo==='select'){
+      h+='<div class="campo"><label for="'+id+'">'+f.rot+'</label><select id="'+id+'" data-campo="'+c+'">';
+      f.ops.forEach(function(o){ h+='<option value="'+o[0]+'"'+(o[0]===v?' selected':'')+'>'+o[1]+'</option>'; });
+      h+='</select></div>';
+    } else if (f.tipo==='textarea'){
+      h+='<div class="campo largo"><label for="'+id+'">'+f.rot+'</label><textarea id="'+id+'" data-campo="'+c+'">'+esc(v)+'</textarea><span class="ajuda">'+f.ajuda+'</span></div>';
+    } else {
+      h+='<div class="campo"><label for="'+id+'">'+f.rot+' <span class="sig">'+f.sig+'</span></label><div class="entrada"><input id="'+id+'" data-campo="'+c+'" type="text" inputmode="decimal" autocomplete="off" value="'+esc(v)+'" placeholder="'+(TIPOS[estado.tipo].exemplo[c]!==undefined?String(TIPOS[estado.tipo].exemplo[c]).replace('.',','):'')+'"><span class="un">'+f.un+'</span></div><span class="ajuda">'+f.ajuda+'</span></div>';
+    }
+  });
+  cont.innerHTML=h;
+  $('desenho').innerHTML=desenhoDo(estado.tipo);
+  $('cabTipo').textContent=TIPOS[estado.tipo].titulo;
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+function lerMedidas(){
+  var m={}, algum=false;
+  Array.prototype.forEach.call($('medidas').querySelectorAll('[data-campo]'), function(el){
+    var c=el.dataset.campo, f=CAMPOS[c];
+    if (f.tipo==='select' || f.tipo==='textarea') { m[c]=el.value; if (f.tipo==='textarea' && el.value.trim()) algum=true; }
+    else { m[c]=num(el.value); if (isFinite(m[c])) algum=true; }
+  });
+  return { m:m, algum:algum };
+}
+
+function textoOpcao(campo, valor){
+  var f=CAMPOS[campo]; if(!f||!f.ops) return valor;
+  for (var i=0;i<f.ops.length;i++) if (f.ops[i][0]===valor) return f.ops[i][1];
+  return valor;
+}
+
+function montarMensagem(m, r, exemplo){
+  var t=TIPOS[estado.tipo], L=[];
+  L.push('*Pedido de orçamento: ' + CONFIG.origem + '*');
+  L.push('Tipo: ' + t.nome);
+  var setor=$('setor').value; if (setor) L.push('Onde trabalha: ' + setor);
+  var maq=$('maquina').value.trim(); if (maq) L.push('Máquina: ' + maq);
+  var cod=$('codigo').value.trim(); if (cod) L.push('Código da peça: ' + cod);
+  if ($('semMedida').checked) {
+    L.push('Medidas: não consegui medir. Vou mandar foto com régua ou moeda do lado.');
+  } else if (!exemplo) {
+    var md=[];
+    t.campos.forEach(function(c){
+      var f=CAMPOS[c], v=m[c];
+      if (f.tipo==='select'){ if (v) md.push(f.rot + ': ' + textoOpcao(c,v)); }
+      else if (f.tipo==='textarea'){ if (v && v.trim()) md.push('Descrição: ' + v.trim()); }
+      else if (isFinite(v)) md.push(f.sig + ' ' + f.rot.toLowerCase() + ': ' + fmt(v,2) + ' ' + f.un);
+    });
+    if (md.length){ L.push(''); L.push('*Medidas*'); md.forEach(function(x){ L.push('• ' + x); }); }
+    var mat=$('material'); if (mat.value) L.push('• Material/acabamento: ' + mat.options[mat.selectedIndex].text);
+    if ($('quebrada').checked) L.push('• A mola está quebrada ou deformada');
+    var calc=r.linhas.filter(function(x){ return /Constante|Força com|Momento/.test(x[0]); });
+    if (calc.length){ L.push(''); L.push('*Calculado pelo identificador*'); calc.forEach(function(x){ L.push('• ' + x[0] + ': ' + x[1] + ' ' + x[2] + (x[3] ? ' (' + x[3] + ')' : '')); }); }
+  }
+  var q=num($('qtd').value);
+  L.push('');
+  if (isFinite(q)) L.push('Quantidade: ' + fmt(q,0) + ' un');
+  if (estado.urgencia) L.push('Prazo: ' + URGENCIAS.filter(function(u){return u[0]===estado.urgencia;})[0][1]);
+  var nome=$('nome').value.trim(), emp=$('empresa').value.trim(), cid=$('cidade').value.trim();
+  if (nome || emp || cid) L.push([nome, emp, cid].filter(Boolean).join(' · '));
+  var obs=$('obs').value.trim(); if (obs) L.push('Obs.: ' + obs);
+  L.push('');
+  L.push('Vou mandar a foto da mola aqui na conversa.');
+  return L.join('\n');
+}
+
+function atualizar(){
+  var lido=lerMedidas(), exemplo=!lido.algum && !$('semMedida').checked;
+  var tipo=estado.tipo, m=exemplo ? Object.assign({}, TIPOS[tipo].exemplo) : lido.m;
+  var mat=$('material').value;
+  var r=calcular(tipo, m, mat);
+  // selo
+  var selo=$('selo');
+  selo.textContent = exemplo ? 'Exemplo' : 'Sua mola';
+  selo.className = 'selo' + (exemplo ? '' : ' seu');
+  // ficha
+  var h='';
+  if (r.linhas.length){
+    r.linhas.forEach(function(x){ h+='<div><dt>'+x[0]+'</dt><dd>'+x[1]+' <small>'+x[2]+'</small>'+(x[3]?'<br><small>'+x[3]+'</small>':'')+'</dd></div>'; });
+    if (r.linhas.length % 2) h+='<div aria-hidden="true"></div>';
+  } else {
+    h='<div class="cheia"><dt>Ficha técnica</dt><dd><small>'+(tipo==='outra' ? 'Mande a foto e a descrição; as medidas que você tiver ajudam.' : 'Preencha o diâmetro do arame, o diâmetro externo e o número de espiras para ver o cálculo.')+'</small></dd></div>';
+  }
+  $('ficha').innerHTML=h;
+  // avisos
+  var av='';
+  if (exemplo) av+='<div class="aviso ok">Esses números são de uma mola de exemplo. Preencha as suas medidas e a ficha muda na hora.</div>';
+  r.avisos.forEach(function(a){ av+='<div class="aviso '+a[0]+'">'+a[1]+'</div>'; });
+  $('avisos').innerHTML=av;
+  $('nota').hidden = tipo==='outra';
+  // mensagem
+  var msg=montarMensagem(m, r, exemplo);
+  $('msg').textContent=msg;
+  var link='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg);
+  var falta=[];
+  if (exemplo) falta.push('preencha pelo menos uma medida (ou marque que vai mandar foto)');
+  if (!$('setor').value) falta.push('diga onde a mola trabalha');
+  ['btnWpp','btnWpp2'].forEach(function(id){
+    var a=$(id); a.href = falta.length ? '#' : link; a.setAttribute('aria-disabled', String(falta.length>0));
+  });
+  $('falta').hidden=!falta.length;
+  $('falta').textContent= falta.length ? 'Para enviar: ' + falta.join(' e ') + '.' : '';
+  // barra do celular
+  var k=r.linhas.filter(function(x){return /Constante/.test(x[0]);})[0];
+  $('barraResumo').textContent = exemplo ? 'Exemplo · preencha as medidas' : (TIPOS[tipo].nome + (isFinite(m.d)?' · d '+fmt(m.d,2):'') + (isFinite(m.De)?' · De '+fmt(m.De,1):'') + (k?' · k '+k[1]+' '+k[2]:''));
+  return { msg:msg, falta:falta };
+}
+
+function destacarCota(campo){
+  Array.prototype.forEach.call(document.querySelectorAll('.dim'), function(g){ g.classList.toggle('on', g.dataset.dim===campo); });
+}
+function toast(s){ var t=$('toast'); t.textContent=s; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(function(){ t.hidden=true; }, 2600); }
+function medir(evento, extra){
+  try { if (window.dataLayer) window.dataLayer.push(Object.assign({ event: evento, tipo_mola: estado.tipo }, extra||{})); } catch(e){}
+  try { if (typeof window.gtag==='function') window.gtag('event', evento, Object.assign({ tipo_mola: estado.tipo }, extra||{})); } catch(e){}
+}
+
+function origemDaVisita(){
+  // ?origem=balcao-coopercitrus ou ?utm_source=instagram entra na mensagem, para a Jardmolas saber de onde veio o orçamento
+  try{
+    var q=new URLSearchParams(location.search), o=q.get('origem')||q.get('utm_source');
+    if (o) CONFIG.origem += ' · ' + o.replace(/[^\w\-À-ú ]/g,'').slice(0,40);
+  }catch(e){}
+}
+function iniciar(){
+  origemDaVisita();
+  if (!CONFIG.modoProposta) $('faixaProposta').hidden=true;
+  $('wppTopo').textContent=CONFIG.whatsappTexto; $('wppTxt').textContent=CONFIG.whatsappTexto;
+  $('setor').innerHTML=SETORES.map(function(s){ return '<option value="'+s[0]+'">'+s[1]+'</option>'; }).join('');
+  $('urgencia').innerHTML=URGENCIAS.map(function(u){ return '<button type="button" class="chip" data-u="'+u[0]+'" aria-pressed="false">'+u[1]+'</button>'; }).join('');
+  $('urgencia').addEventListener('click', function(e){
+    var b=e.target.closest('.chip'); if(!b) return;
+    estado.urgencia = estado.urgencia===b.dataset.u ? '' : b.dataset.u;
+    Array.prototype.forEach.call($('urgencia').children, function(x){ x.setAttribute('aria-pressed', String(x.dataset.u===estado.urgencia)); });
+    atualizar();
+  });
+  montarTipos(); montarMedidas();
+  $('form').addEventListener('input', atualizar);
+  $('form').addEventListener('change', atualizar);
+  $('form').addEventListener('submit', function(e){ e.preventDefault(); });
+  $('form').addEventListener('focusin', function(e){ var c=e.target.dataset && e.target.dataset.campo; destacarCota(c||''); });
+  ['btnWpp','btnWpp2'].forEach(function(id){
+    $(id).addEventListener('click', function(e){
+      var st=atualizar();
+      if (st.falta.length){ e.preventDefault(); toast('Falta: ' + st.falta.join(' e ')); $('envio').scrollIntoView({behavior:'smooth', block:'center'}); return; }
+      medir('identificador_whatsapp', { setor: $('setor').value, urgencia: estado.urgencia });
+    });
+  });
+  $('btnCopiar').addEventListener('click', function(){
+    var st=atualizar();
+    var feito=function(){ toast('Texto copiado'); medir('identificador_copiar'); };
+    try {
+      navigator.clipboard.writeText(st.msg).then(feito, function(){ selecionar(); });
+    } catch(e){ selecionar(); }
+    function selecionar(){ var s=window.getSelection(), rg=document.createRange(); rg.selectNodeContents($('msg')); s.removeAllRanges(); s.addRange(rg); toast('Texto selecionado. Use Copiar do seu aparelho.'); }
+  });
+  $('btnLimpar').addEventListener('click', function(){
+    $('form').reset(); valoresMedidas={}; estado.urgencia='';
+    Array.prototype.forEach.call($('urgencia').children, function(x){ x.setAttribute('aria-pressed','false'); });
+    montarMedidas(); atualizar(); toast('Formulário limpo');
+  });
+  atualizar();
+}
+iniciar();
+</script>
+</body>
+</html>

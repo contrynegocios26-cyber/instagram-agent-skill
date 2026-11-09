@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caderno de Molas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#084D17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Layout: app de campo. Barra da marca no topo com a usina em levantamento, abas Molas | Caderno | Dados, lista de cartões com código JM em destaque e a ficha em tela cheia no celular. O Caderno é um documento A4 que imprime limpo. Marca Jardmolas: verde 084D17 / 33A94C, amarelo FFD800. */
+:root{
+  --bg:#F2F5F0; --surface:#FFFFFF; --surface-2:#E8EEE6; --ink:#18211B; --muted:#56635A; --line:#CFD8CC;
+  --brand:#084D17; --brand-2:#2F9A47; --accent:#FFD800; --accent-ink:#1E1A00; --on-brand:#FFFFFF;
+  --a:#B42318; --a-bg:#FDE7E4; --b:#8A5A00; --b-bg:#FFF2C2; --c:#56635A; --c-bg:#E8EEE6;
+  --focus:#1E7BD6; --wire:#2C3530; --wire-back:#A9B4AC;
+  --font-display:'Encode Sans Semi Condensed','Arial Narrow',Arial,sans-serif;
+  --font-body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-data:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --r:10px;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1511; --surface:#161E18; --surface-2:#1D2820; --ink:#E6ECE5; --muted:#9DAA9F; --line:#2B382F;
+    --brand:#3DB458; --brand-2:#5CCB72; --on-brand:#06210D;
+    --a:#FFB4A8; --a-bg:#3D1A15; --b:#FFE27A; --b-bg:#3A3110; --c:#9DAA9F; --c-bg:#1D2820;
+    --focus:#6CB4FF; --wire:#D7DED8; --wire-back:#56625A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1511; --surface:#161E18; --surface-2:#1D2820; --ink:#E6ECE5; --muted:#9DAA9F; --line:#2B382F;
+  --brand:#3DB458; --brand-2:#5CCB72; --on-brand:#06210D;
+  --a:#FFB4A8; --a-bg:#3D1A15; --b:#FFE27A; --b-bg:#3A3110; --c:#9DAA9F; --c-bg:#1D2820;
+  --focus:#6CB4FF; --wire:#D7DED8; --wire-back:#56625A; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 var(--font-body)}
+img{max-width:100%}
+[hidden]{display:none!important}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--brand)}
+.proposta{background:var(--accent);color:var(--accent-ink);font-size:12.5px;text-align:center;padding-block:5px}
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--brand);color:var(--on-brand)}
+.topo-in{max-width:1100px;margin:0 auto;padding-block:12px 0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.linha1{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.app-nome{font:700 22px/1 var(--font-display);letter-spacing:.01em}
+.app-nome small{display:block;font:600 11px/1.4 var(--font-data);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.lev-sel{display:flex;gap:8px;align-items:center;min-width:0;flex:1 1 260px;justify-content:flex-end}
+.lev-sel select{max-width:100%;min-width:0;width:0;flex:1 1 auto;border:0;border-radius:8px;padding:9px 10px;background:var(--surface);color:var(--ink);font-weight:500}
+.btn-topo{border:1.5px solid currentColor;background:transparent;color:inherit;border-radius:8px;padding:8px 12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.abas{display:flex;gap:4px;overflow-x:auto}
+.aba{border:0;background:transparent;color:inherit;opacity:.8;padding:10px 14px;font-weight:600;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.aba[aria-selected="true"]{opacity:1;border-bottom-color:var(--accent)}
+
+main{max-width:1100px;margin:0 auto;padding-block:18px 110px}
+.aviso-arm{background:var(--b-bg);color:var(--b);border-radius:8px;padding:10px 12px;font-size:13.5px;margin-bottom:14px}
+.exemplo-faixa{background:var(--accent);color:var(--accent-ink);border-radius:8px;padding:10px 12px;font-size:13.5px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.exemplo-faixa button{border:1.5px solid var(--accent-ink);background:transparent;color:var(--accent-ink);border-radius:8px;padding:6px 10px;font-weight:600;cursor:pointer}
+
+.resumo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.kpi b{display:block;font:600 26px/1.1 var(--font-data);font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.ferramentas{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.busca{flex:1 1 240px;min-width:0;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--surface)}
+.filtros{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 11px;cursor:pointer;font-size:13.5px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:8px;cursor:pointer;text-align:left;min-width:0}
+.card:hover{border-color:var(--brand)}
+.card-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.codigo{font:600 18px/1.1 var(--font-data);letter-spacing:.02em}
+.crit{font:600 12px/1 var(--font-data);border-radius:4px;padding:4px 7px;white-space:nowrap}
+.crit.A{background:var(--a-bg);color:var(--a)} .crit.B{background:var(--b-bg);color:var(--b)} .crit.C{background:var(--c-bg);color:var(--c)}
+.card h3{margin:0;font:700 17px/1.2 var(--font-display);overflow-wrap:anywhere}
+.card .onde{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.card .med{font:500 13px/1.4 var(--font-data);color:var(--ink);overflow-wrap:anywhere}
+.card-rod{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13px}
+.estado{font-weight:600}
+.estado.quebrada,.estado.faltando{color:var(--a)} .estado.desgaste{color:var(--b)} .estado.ok{color:var(--brand-2)}
+.fotos-mini{display:flex;gap:4px}
+.fotos-mini img{width:44px;height:44px;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.vazio{background:var(--surface);border:1px dashed var(--line);border-radius:var(--r);padding:28px;text-align:center;color:var(--muted)}
+
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:15px 20px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer}
+
+/* ficha (editor) */
+.sheet{position:fixed;inset:0;z-index:20;background:var(--bg);overflow:auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet-cab{position:sticky;top:0;z-index:2;background:var(--surface);border-bottom:1px solid var(--line)}
+.sheet-cab-in{max-width:860px;margin:0 auto;padding-block:10px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.sheet-cab h2{margin:0;font:700 20px/1.1 var(--font-display)}
+.sheet-cab .codigo{font-size:15px;color:var(--muted)}
+.sheet-corpo{max-width:860px;margin:0 auto;padding-block:16px 120px;display:grid;gap:16px}
+.bloco{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:12px}
+.bloco h3{margin:0;font:700 17px/1.2 var(--font-display)}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.campo{display:grid;gap:5px;min-width:0}
+.campo.largo{grid-column:1/-1}
+.campo label,.rot{font-weight:600;font-size:13.5px}
+.ajuda{font-size:12.5px;color:var(--muted)}
+.campo input,.campo select,.campo textarea{border:1.5px solid var(--line);border-radius:8px;background:var(--surface);padding:10px 12px;width:100%;min-width:0}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--brand);outline:none}
+.campo input.n{font:500 16px/1.2 var(--font-data);font-variant-numeric:tabular-nums}
+.campo textarea{min-height:70px;resize:vertical}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.seg.crit-seg button[data-v="A"][aria-pressed="true"]{background:var(--a);border-color:var(--a);color:var(--surface)}
+.seg.crit-seg button[data-v="B"][aria-pressed="true"]{background:var(--b);border-color:var(--b);color:var(--surface)}
+.seg.crit-seg button[data-v="C"][aria-pressed="true"]{background:var(--c);border-color:var(--c);color:var(--surface)}
+.calc{font:500 13.5px/1.5 var(--font-data);background:var(--surface-2);border-radius:8px;padding:10px 12px}
+.fotos{display:flex;flex-wrap:wrap;gap:10px}
+.foto{position:relative;width:112px;height:112px}
+.foto img{width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.foto button{position:absolute;top:4px;right:4px;border:0;border-radius:6px;background:rgba(0,0,0,.65);color:#fff;padding:3px 7px;cursor:pointer;font-size:12px}
+.add-foto{width:112px;height:112px;border:2px dashed var(--line);border-radius:8px;display:grid;place-items:center;text-align:center;font-size:13px;color:var(--muted);cursor:pointer;padding:8px}
+.add-foto input{position:absolute;width:1px;height:1px;opacity:0}
+.acoes{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;padding:11px 16px;font-weight:600;border:1.5px solid var(--brand);background:var(--surface);color:var(--brand);cursor:pointer;text-decoration:none}
+.btn.prim{background:var(--brand);color:var(--on-brand)}
+.btn.perigo{border-color:var(--a);color:var(--a)}
+.btn.perigo.confirmar{background:var(--a);color:var(--surface)}
+.btn:disabled{opacity:.5;cursor:default}
+
+/* dados */
+.dados{display:grid;gap:16px;max-width:860px}
+
+/* caderno (documento) */
+.doc-acoes{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center}
+.doc-acoes .ajuda{flex:1 1 220px}
+.doc{background:#FFFFFF;color:#18211B;border:1px solid var(--line);border-radius:4px;max-width:860px;margin:0 auto}
+.doc *{color:inherit}
+.pg{padding:36px 40px;border-bottom:1px dashed #CFD8CC}
+.pg:last-child{border-bottom:0}
+@media (max-width:600px){.pg{padding:22px 18px}}
+.capa{min-height:520px;display:grid;align-content:space-between;gap:30px;background:#084D17;color:#FFFFFF}
+.capa .marca{font:700 15px/1 var(--font-display);letter-spacing:.16em;text-transform:uppercase}
+.capa h1{font:700 clamp(40px,8vw,64px)/.95 var(--font-display);margin:0}
+.capa .faixa-am{display:inline-block;background:#FFD800;color:#1E1A00;font:600 12px/1 var(--font-data);padding:6px 9px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase}
+.capa dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0;font-size:15px}
+.capa dt{opacity:.75}
+.capa dd{margin:0;font-weight:600}
+.doc h2{font:700 24px/1.1 var(--font-display);margin:0 0 14px;color:#084D17}
+.doc p{margin:0 0 10px}
+.doc .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:0 0 18px}
+.doc .kpis div{border:1px solid #CFD8CC;border-radius:6px;padding:10px 12px}
+.doc .kpis b{display:block;font:600 24px/1.1 var(--font-data)}
+.doc .kpis span{font-size:12px;color:#56635A}
+.tab-wrap{overflow-x:auto}
+.doc table{width:100%;border-collapse:collapse;font-size:13px}
+.doc th{text-align:left;font-weight:600;font-size:12px;color:#56635A;border-bottom:2px solid #084D17;padding:7px 8px;white-space:nowrap}
+.doc td{border-bottom:1px solid #DDE4DA;padding:7px 8px;vertical-align:top}
+.doc td.num{font-family:var(--font-data);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.doc td.cod{font-family:var(--font-data);font-weight:600;white-space:nowrap}
+.doc .crit{font-size:11px}
+.doc .crit.A{background:#FDE7E4;color:#B42318} .doc .crit.B{background:#FFF2C2;color:#8A5A00} .doc .crit.C{background:#E8EEE6;color:#56635A}
+.fichas{display:grid;gap:22px}
+.ficha-doc{border:1.5px solid #18211B;border-radius:4px;break-inside:avoid;page-break-inside:avoid}
+.fd-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1.5px solid #18211B;background:#F2F5F0;flex-wrap:wrap}
+.fd-cab .codigo{font-size:22px}
+.fd-corpo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+@media (max-width:600px){.fd-corpo{grid-template-columns:minmax(0,1fr)}}
+.fd-col{padding:12px 14px;min-width:0}
+.fd-col+.fd-col{border-left:1px solid #CFD8CC}
+@media (max-width:600px){.fd-col+.fd-col{border-left:0;border-top:1px solid #CFD8CC}}
+.fd-col dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:13px}
+.fd-col dt{color:#56635A}
+.fd-col dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.fd-col dd.m{font-family:var(--font-data)}
+.fd-fotos{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-top:10px}
+.fd-fotos img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid #CFD8CC;border-radius:3px}
+.fd-sem-foto{margin-top:10px;border:1px dashed #CFD8CC;border-radius:3px;padding:6px;color:#56635A}
+.fd-sem-foto svg{display:block;width:100%;height:auto;max-height:120px}
+.como-pedir{display:grid;gap:10px;font-size:15px}
+.como-pedir .big{font:600 22px/1.2 var(--font-data);color:#084D17}
+.rodape-doc{font-size:11.5px;color:#56635A;margin-top:20px}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:8px;font-size:14px;z-index:40;max-width:calc(100% - 32px)}
+
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff}
+  body::before,.proposta,.topo,.fab,.doc-acoes,.aviso-arm,.exemplo-faixa,.toast,#vMolas,#vDados,.sheet{display:none!important}
+  main{padding:0;max-width:none}
+  .doc{border:0;max-width:none}
+  .pg{border:0;padding:0 0 8mm;break-after:page;page-break-after:always}
+  .pg:last-child{break-after:auto;page-break-after:auto}
+  .capa{min-height:250mm;padding:18mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .crit,.fd-cab,.faixa-am{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="proposta" id="faixaProposta">Protótipo preparado para a Jardmolas · versão para aprovação</div>
+<header class="topo">
+  <div class="topo-in gut">
+    <div class="linha1">
+      <div class="app-nome"><small>Jardmolas · levantamento técnico</small>Caderno de Molas</div>
+      <div class="lev-sel">
+        <label for="selLev" class="sr" hidden>Levantamento</label>
+        <select id="selLev" aria-label="Usina em levantamento"></select>
+        <button class="btn-topo" type="button" id="btnNovoLev">Nova usina</button>
+      </div>
+    </div>
+    <nav class="abas" role="tablist" aria-label="Seções">
+      <button class="aba" role="tab" data-v="molas" aria-selected="true">Molas</button>
+      <button class="aba" role="tab" data-v="caderno" aria-selected="false">Caderno</button>
+      <button class="aba" role="tab" data-v="dados" aria-selected="false">Dados e backup</button>
+    </nav>
+  </div>
+</header>
+
+<main class="gut">
+  <div class="aviso-arm" id="avisoArm" hidden>Este navegador não está guardando os dados (modo anônimo ou bloqueio). Tudo funciona, mas some ao fechar. Use <b>Dados e backup</b>, depois <b>Baixar backup</b>, antes de sair.</div>
+  <div class="exemplo-faixa" id="faixaExemplo" hidden><span><b>Exemplo.</b> Esta usina e estas molas são de demonstração, com medidas ilustrativas.</span><button type="button" id="btnApagarExemplo">Apagar o exemplo</button></div>
+
+  <section id="vMolas">
+    <div class="resumo" id="kpis"></div>
+    <div class="ferramentas">
+      <input class="busca" id="busca" type="search" placeholder="Buscar por código, equipamento, TAG..." aria-label="Buscar">
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar"></div>
+    </div>
+    <div class="lista" id="lista"></div>
+  </section>
+
+  <section id="vCaderno" hidden>
+    <div class="doc-acoes">
+      <button class="btn prim" type="button" id="btnImprimir">Imprimir ou salvar PDF</button>
+      <button class="btn" type="button" id="btnCsv">Baixar planilha (CSV)</button>
+      <button class="btn" type="button" id="btnCopiarCsv">Copiar planilha</button>
+      <span class="ajuda">No computador, “Imprimir” abre a opção Salvar como PDF. Se o botão não fizer nada nesta prévia, abra o arquivo instalado no aparelho.</span>
+    </div>
+    <article class="doc" id="doc"></article>
+  </section>
+
+  <section id="vDados" hidden>
+    <div class="dados">
+      <div class="bloco">
+        <h3>Dados da visita</h3>
+        <div class="campos">
+          <div class="campo"><label for="lCliente">Usina ou grupo</label><input id="lCliente" type="text"></div>
+          <div class="campo"><label for="lUnidade">Unidade</label><input id="lUnidade" type="text"></div>
+          <div class="campo"><label for="lSigla">Sigla para o código</label><input id="lSigla" type="text" maxlength="4" placeholder="Ex.: SMA"><span class="ajuda">3 ou 4 letras. Vira JM-SIGLA-001.</span></div>
+          <div class="campo"><label for="lCidade">Cidade</label><input id="lCidade" type="text"></div>
+          <div class="campo"><label for="lData">Data do levantamento</label><input id="lData" type="date"></div>
+          <div class="campo"><label for="lTecnico">Técnico Jardmolas</label><input id="lTecnico" type="text"></div>
+          <div class="campo"><label for="lContato">Contato na usina</label><input id="lContato" type="text" placeholder="Nome, cargo, telefone"></div>
+          <div class="campo largo"><label for="lObs">Observações da visita</label><textarea id="lObs"></textarea></div>
+        </div>
+      </div>
+      <div class="bloco">
+        <h3>Backup e transferência</h3>
+        <p class="ajuda" style="margin:0">Os dados ficam só neste aparelho. Baixe o backup ao fim de cada visita e mande para o escritório (WhatsApp ou e-mail). No escritório, use Importar para abrir o mesmo levantamento.</p>
+        <div class="acoes">
+          <button class="btn prim" type="button" id="btnBackup">Baixar backup desta usina</button>
+          <button class="btn" type="button" id="btnBackupTudo">Baixar backup de tudo</button>
+          <label class="btn" for="inImport">Importar backup</label>
+          <input id="inImport" type="file" accept="application/json,.json" hidden>
+        </div>
+        <div class="acoes">
+          <button class="btn perigo" type="button" id="btnExcluirLev">Excluir esta usina do aparelho</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button class="fab" type="button" id="fab">+ Mola</button>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTit">
+  <div class="sheet-cab"><div class="sheet-cab-in gut">
+    <div><h2 id="sheetTit">Nova mola</h2><span class="codigo" id="sheetCod"></span></div>
+    <div class="acoes"><button class="btn" type="button" id="btnFechar">Fechar</button><button class="btn prim" type="button" id="btnSalvar">Salvar</button></div>
+  </div></div>
+  <form class="sheet-corpo gut" id="fMola" novalidate>
+    <div class="bloco">
+      <h3>Onde ela está</h3>
+      <div class="campos">
+        <div class="campo"><label for="fArea">Área da usina</label><select id="fArea"></select></div>
+        <div class="campo"><label for="fEquip">Equipamento</label><input id="fEquip" type="text" placeholder="Ex.: Caldeira 2, Moenda 1"></div>
+        <div class="campo"><label for="fTag">TAG ou local</label><input id="fTag" type="text" placeholder="Ex.: PSV-201"></div>
+        <div class="campo"><label for="fFuncao">Função da mola</label><input id="fFuncao" type="text" list="dlFuncao" placeholder="Ex.: válvula de segurança"><datalist id="dlFuncao"></datalist></div>
+      </div>
+    </div>
+    <div class="bloco">
+      <h3>Medidas</h3>
+      <div class="rot">Tipo</div>
+      <div class="seg" id="fTipo" role="group" aria-label="Tipo de mola"></div>
+      <div class="campos" id="fMedidas"></div>
+      <div class="calc" id="fCalc"></div>
+      <div class="campos">
+        <div class="campo"><label for="fMaterial">Material</label><select id="fMaterial"><option value="">Não identificado</option><option>Aço carbono (DIN 17223)</option><option>SAE 1070</option><option>SAE 5160</option><option>SAE 6150</option><option>SAE 9254 (cromo-silício)</option><option>Inox</option></select></div>
+        <div class="campo"><label for="fAcab">Acabamento</label><select id="fAcab"><option value="">Não identificado</option><option>Sem acabamento / oleada</option><option>Pintada</option><option>Zincada</option><option>Fosfatizada</option></select></div>
+      </div>
+    </div>
+    <div class="bloco">
+      <h3>Uso e reposição</h3>
+      <div class="campos">
+        <div class="campo"><label for="fQtd">Peças instaladas</label><input class="n" id="fQtd" type="text" inputmode="numeric" placeholder="Ex.: 4"></div>
+        <div class="campo"><label for="fTrocas">Trocas por ano (aprox.)</label><input class="n" id="fTrocas" type="text" inputmode="numeric" placeholder="Ex.: 2"></div>
+        <div class="campo"><label for="fUltima">Última troca</label><input id="fUltima" type="text" placeholder="Ex.: entressafra 2025"></div>
+      </div>
+      <div class="rot">Estado agora</div>
+      <div class="seg" id="fEstado" role="group" aria-label="Estado"></div>
+      <div class="rot">Criticidade</div>
+      <div class="seg crit-seg" id="fCrit" role="group" aria-label="Criticidade"></div>
+      <div class="ajuda" id="fCritAjuda"></div>
+      <div class="campos">
+        <div class="campo"><label for="fEstoque">Estoque mínimo sugerido</label><input class="n" id="fEstoque" type="text" inputmode="numeric"><span class="ajuda" id="fEstoqueAjuda">Calculado pela criticidade. Pode mudar.</span></div>
+      </div>
+    </div>
+    <div class="bloco">
+      <h3>Fotos</h3>
+      <p class="ajuda" style="margin:0">Uma de lado com régua ou paquímetro, uma de frente e uma no lugar onde ela trabalha. Até 3.</p>
+      <div class="fotos" id="fFotos"></div>
+    </div>
+    <div class="bloco">
+      <h3>Observações</h3>
+      <div class="campo largo"><label for="fObs" class="ajuda">O que o mecânico contou: onde quebra, quanto dura, se já tentaram outra mola</label><textarea id="fObs"></textarea></div>
+      <div class="acoes" id="acoesFicha">
+        <button class="btn" type="button" id="btnDuplicar">Duplicar para outro local</button>
+        <button class="btn perigo" type="button" id="btnExcluir">Excluir mola</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+'use strict';
+/* ===== CONFIGURAÇÃO ===== */
+const CONFIG = {
+  empresa: 'Jardmolas',
+  endereco: 'Rua Artur Costacurta, 340, Distrito Industrial I, Jardinópolis-SP',
+  whatsapp: '(16) 99176-0936',
+  telefone: '(16) 3663-5901',
+  email: 'jardmolas@jardmolas.com.br',
+  modoProposta: true,          // false tira a faixa amarela de protótipo
+  carregarExemplo: true        // mostra uma usina de exemplo quando o aparelho está vazio
+};
+
+/* ===== LISTAS ===== */
+const AREAS = ['Recepção e preparo da cana','Extração (moenda ou difusor)','Caldeiras e vapor','Geração de energia','Tratamento de caldo','Fábrica de açúcar','Destilaria','Utilidades (água, ar, bombas)','Oficina e frota (carretas, transbordos)','Implementos agrícolas','Almoxarifado','Outra'];
+const FUNCOES = ['Válvula de retenção dupla portinhola','Válvula de segurança','Válvula de alívio','Atuador pneumático','Peneira vibratória','Mesa alimentadora','Esteira ou transportador','Embreagem ou freio','Bomba','Tela de cobertura de carreta','Cabeçalho de carreta','Dedo de enleirador','Enfardadeira','Outro'];
+const TIPOS = {
+  compressao:{nome:'Compressão', campos:['d','De','L0','Nt','pontas']},
+  tracao:{nome:'Tração', campos:['d','De','Li','Nb']},
+  torcao:{nome:'Torção', campos:['d','De','Nb','L1','L2']},
+  dedo:{nome:'Dedo', campos:['d','De','Nb','L1']},
+  prato:{nome:'Prato / Belleville', campos:['De','Di','t','h0']},
+  outra:{nome:'Outra', campos:['d','De','Ltot']}
+};
+const CAMPOS = {
+  d:{rot:'Arame d',sig:'d',un:'mm'}, De:{rot:'Externo De',sig:'De',un:'mm'}, Di:{rot:'Interno Di',sig:'Di',un:'mm'}, L0:{rot:'Livre L0',sig:'L0',un:'mm'},
+  Nt:{rot:'Espiras totais',sig:'Nt',un:'esp.'}, Nb:{rot:'Espiras do corpo',sig:'N',un:'esp.'}, Li:{rot:'Por dentro dos ganchos Li',sig:'Li',un:'mm'},
+  L1:{rot:'Perna 1 / dedo',sig:'L1',un:'mm'}, L2:{rot:'Perna 2',sig:'L2',un:'mm'}, t:{rot:'Espessura t',sig:'t',un:'mm'}, h0:{rot:'Altura livre h0',sig:'h0',un:'mm'},
+  Ltot:{rot:'Comprimento total',sig:'L',un:'mm'},
+  pontas:{rot:'Pontas',sel:[['fechadas_esmerilhadas','Fechadas e lixadas'],['fechadas','Fechadas sem lixar'],['abertas','Abertas'],['abertas_esmerilhadas','Abertas e lixadas']]}
+};
+const ESTADOS = [['ok','Boa'],['desgaste','Desgaste'],['quebrada','Quebrada'],['faltando','Faltando']];
+const CRITS = [['A','A · para a produção'],['B','B · tem reserva'],['C','C · não para']];
+const CRIT_AJUDA = {A:'Se quebrar, para moagem, caldeira, geração ou a frente de colheita. Não há reserva instalada.',B:'Para um equipamento que tem reserva, ou dá para contornar por algumas horas.',C:'Não para a produção. Troca na próxima parada.'};
+
+/* ===== UTILIDADES ===== */
+const $ = id => document.getElementById(id);
+const num = v => { if (v===null||v===undefined) return NaN; const s=String(v).trim().replace(/\s/g,'').replace(',','.'); if(!s) return NaN; const n=Number(s); return isFinite(n)?n:NaN; };
+const ok = n => typeof n==='number' && isFinite(n) && n>0;
+const fmt = (n,c) => isFinite(n) ? n.toLocaleString('pt-BR',{maximumFractionDigits: c===undefined ? (Math.abs(n)>=100?0:Math.abs(n)>=10?1:2) : c}) : '–';
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const hoje = () => new Date().toISOString().slice(0,10);
+const dataBR = s => s ? s.split('-').reverse().join('/') : '';
+function toast(s){ const t=$('toast'); t.textContent=s; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,2800); }
+
+function calcular(m){
+  const G = /inox/i.test(m.material||'') ? 69000 : 79300, E = /inox/i.test(m.material||'') ? 193000 : 206000;
+  const d=m.d, De=m.De;
+  if (m.tipo==='prato' || !ok(d) || !ok(De) || De<=2*d) return null;
+  const Dm=De-d, C=Dm/d; let r={Dm, C};
+  if (m.tipo==='compressao' && ok(m.Nt)){
+    const p=m.pontas||'fechadas_esmerilhadas', Nt=m.Nt;
+    const Na={fechadas_esmerilhadas:Nt-2,fechadas:Nt-2,abertas:Nt,abertas_esmerilhadas:Nt-1}[p];
+    if (Na>0.5){ r.k=G*d**4/(8*Dm**3*Na); r.un='N/mm'; r.Ls={fechadas_esmerilhadas:Nt*d,fechadas:(Nt+1)*d,abertas:(Nt+1)*d,abertas_esmerilhadas:Nt*d}[p]; if (ok(m.L0) && m.L0>r.Ls) r.Fs=r.k*(m.L0-r.Ls); }
+  }
+  if (m.tipo==='tracao' && ok(m.Nb)){ r.k=G*d**4/(8*Dm**3*m.Nb); r.un='N/mm'; }
+  if ((m.tipo==='torcao'||m.tipo==='dedo') && ok(m.Nb)){ const Na=m.Nb+((m.L1||0)+(m.L2||0))/(3*Math.PI*Dm); r.k=E*d**4/(64*Dm*Na)*Math.PI/180; r.un='N·mm/°'; }
+  return r;
+}
+function textoCalc(m){
+  const r=calcular(m); if(!r) return 'Preencha arame, diâmetro externo e espiras para calcular.';
+  let s=`Diâmetro médio ${fmt(r.Dm)} mm · índice ${fmt(r.C,1)}`;
+  if (r.k) s+=` · constante ${fmt(r.k)} ${r.un}` + (r.un==='N/mm' ? ` (${fmt(r.k/9.80665,2)} kgf/mm)` : '');
+  if (r.Ls) s+=` · fechada ${fmt(r.Ls)} mm`;
+  if (r.Fs) s+=` · força fechada ${fmt(r.Fs)} N (${fmt(r.Fs/9.80665,1)} kgf)`;
+  if (r.C<3.5||r.C>16) s+=' · confira as medidas: índice fora do comum';
+  return s;
+}
+function medidasTexto(m){
+  const t=TIPOS[m.tipo]||TIPOS.outra;
+  return t.campos.filter(c=>c!=='pontas' && isFinite(m[c])).map(c=>`${CAMPOS[c].sig} ${fmt(m[c],2)}`).join(' · ') || 'sem medidas';
+}
+function estoqueSugerido(crit, qtd){
+  const q = ok(qtd) ? qtd : 1;
+  if (crit==='A') return Math.max(2, Math.ceil(q*0.5));
+  if (crit==='B') return Math.max(1, Math.ceil(q*0.25));
+  return 0;
+}
+
+/* ===== ARMAZENAMENTO (IndexedDB, com plano B na memória) ===== */
+const ARM = {
+  db:null, mem:{}, persistente:false,
+  abrir(){ return new Promise(res=>{ try{ const rq=indexedDB.open('jardmolas-caderno',1); rq.onupgradeneeded=()=>rq.result.createObjectStore('lev',{keyPath:'id'}); rq.onsuccess=()=>{ARM.db=rq.result; ARM.persistente=true; res();}; rq.onerror=()=>res(); rq.onblocked=()=>res(); }catch(e){ res(); } }); },
+  todos(){ if(!ARM.db) return Promise.resolve(Object.values(ARM.mem)); return new Promise(res=>{ try{ const rq=ARM.db.transaction('lev').objectStore('lev').getAll(); rq.onsuccess=()=>res(rq.result||[]); rq.onerror=()=>res(Object.values(ARM.mem)); }catch(e){ res(Object.values(ARM.mem)); } }); },
+  salvar(l){ ARM.mem[l.id]=l; if(!ARM.db) return Promise.resolve(); return new Promise(res=>{ try{ const tx=ARM.db.transaction('lev','readwrite'); tx.objectStore('lev').put(l); tx.oncomplete=()=>res(); tx.onerror=()=>{ toast('Não consegui salvar no aparelho. Baixe o backup.'); res(); }; }catch(e){ res(); } }); },
+  apagar(id){ delete ARM.mem[id]; if(!ARM.db) return Promise.resolve(); return new Promise(res=>{ try{ const tx=ARM.db.transaction('lev','readwrite'); tx.objectStore('lev').delete(id); tx.oncomplete=()=>res(); tx.onerror=()=>res(); }catch(e){ res(); } }); }
+};
+function lembrar(k,v){ try{ localStorage.setItem('jm-caderno-'+k, v); }catch(e){} }
+function lembrado(k){ try{ return localStorage.getItem('jm-caderno-'+k); }catch(e){ return null; } }
+
+/* ===== EXEMPLO ===== */
+function exemplo(){
+  const l={id:'exemplo', exemplo:true, cliente:'Usina Exemplo', unidade:'Unidade Modelo', sigla:'EXE', cidade:'Região de Ribeirão Preto-SP', data:hoje(), tecnico:'Técnico Jardmolas', contato:'Gerente de manutenção industrial', obs:'Visita de demonstração. Medidas ilustrativas.', seq:6, molas:[]};
+  const base=(o)=>Object.assign({id:uid(), material:'', acab:'', fotos:[], obs:'', ultima:'', trocas:NaN}, o);
+  l.molas=[
+    base({seq:1, area:'Extração (moenda ou difusor)', equip:'Linha de caldo misto', tag:'VR-101', funcao:'Válvula de retenção dupla portinhola', tipo:'torcao', d:3.5, De:22, Nb:5, L1:45, L2:45, qtd:2, estado:'desgaste', crit:'A', estoque:2, trocas:1, ultima:'entressafra 2025', obs:'Mecânico relata batida da portinhola. Mola com perna marcada.'}),
+    base({seq:2, area:'Caldeiras e vapor', equip:'Caldeira 2', tag:'PSV-201', funcao:'Válvula de segurança', tipo:'compressao', d:12, De:80, L0:180, Nt:8, pontas:'fechadas_esmerilhadas', qtd:2, estado:'ok', crit:'A', estoque:2, material:'SAE 9254 (cromo-silício)', obs:'Troca só com a válvula calibrada. Pedir laudo do lote.'}),
+    base({seq:3, area:'Fábrica de açúcar', equip:'Centrífuga 3', tag:'AT-310', funcao:'Atuador pneumático', tipo:'compressao', d:5, De:60, L0:140, Nt:9, pontas:'fechadas_esmerilhadas', qtd:4, estado:'ok', crit:'B', estoque:1}),
+    base({seq:4, area:'Tratamento de caldo', equip:'Peneira de caldo 1', tag:'PV-02', funcao:'Peneira vibratória', tipo:'compressao', d:16, De:110, L0:200, Nt:7, pontas:'fechadas_esmerilhadas', qtd:8, estado:'quebrada', crit:'A', estoque:4, trocas:2, obs:'Duas molas quebradas no mesmo canto. Trocar o jogo todo para não desbalancear.'}),
+    base({seq:5, area:'Oficina e frota (carretas, transbordos)', equip:'Carretas canavieiras', tag:'Frota 400', funcao:'Cabeçalho de carreta', tipo:'compressao', d:14, De:95, L0:260, Nt:10, pontas:'fechadas', qtd:12, estado:'desgaste', crit:'B', estoque:3}),
+    base({seq:6, area:'Implementos agrícolas', equip:'Enleiradores de palha', tag:'Frente 2', funcao:'Dedo de enleirador', tipo:'dedo', d:9.5, De:60, Nb:2, L1:550, qtd:160, estado:'desgaste', crit:'B', estoque:40, trocas:1, obs:'Trocar antes do início da safra.'})
+  ];
+  return l;
+}
+
+/* ===== ESTADO ===== */
+let levs=[], atual=null, vista='molas', filtro='todas', editando=null, rascunho=null;
+const lev = () => levs.find(l=>l.id===atual);
+const codigo = (l,m) => `JM-${(l.sigla||'XXX').toUpperCase()}-${String(m.seq).padStart(3,'0')}`;
+
+async function iniciar(){
+  if (!CONFIG.modoProposta) $('faixaProposta').hidden=true;
+  await ARM.abrir();
+  if (!ARM.persistente) $('avisoArm').hidden=false;
+  levs = await ARM.todos();
+  if (!levs.length && CONFIG.carregarExemplo && lembrado('exemplo-apagado')!=='1'){ const e=exemplo(); levs=[e]; await ARM.salvar(e); }
+  atual = levs.some(l=>l.id===lembrado('atual')) ? lembrado('atual') : (levs[0]&&levs[0].id);
+  montarFixos(); render();
+}
+
+function montarFixos(){
+  $('fArea').innerHTML = AREAS.map(a=>`<option>${esc(a)}</option>`).join('');
+  $('dlFuncao').innerHTML = FUNCOES.map(f=>`<option value="${esc(f)}">`).join('');
+  $('fTipo').innerHTML = Object.keys(TIPOS).map(k=>`<button type="button" data-v="${k}" aria-pressed="false">${TIPOS[k].nome}</button>`).join('');
+  $('fEstado').innerHTML = ESTADOS.map(e=>`<button type="button" data-v="${e[0]}" aria-pressed="false">${e[1]}</button>`).join('');
+  $('fCrit').innerHTML = CRITS.map(c=>`<button type="button" data-v="${c[0]}" aria-pressed="false">${c[1]}</button>`).join('');
+  $('filtros').innerHTML = [['todas','Todas'],['A','Críticas A'],['B','B'],['C','C'],['trocar','Trocar agora']].map(f=>`<button type="button" class="chip" data-f="${f[0]}" aria-pressed="${f[0]===filtro}">${f[1]}</button>`).join('');
+}
+
+/* ===== RENDER ===== */
+function render(){
+  const l=lev();
+  $('selLev').innerHTML = levs.length ? levs.map(x=>`<option value="${x.id}" ${x.id===atual?'selected':''}>${esc(x.cliente||'Sem nome')}${x.unidade?' · '+esc(x.unidade):''}</option>`).join('') : '<option value="">Nenhuma usina</option>';
+  $('faixaExemplo').hidden = !(l && l.exemplo);
+  document.querySelectorAll('.aba').forEach(a=>a.setAttribute('aria-selected', String(a.dataset.v===vista)));
+  $('vMolas').hidden = vista!=='molas'; $('vCaderno').hidden = vista!=='caderno'; $('vDados').hidden = vista!=='dados';
+  $('fab').hidden = vista!=='molas' || !l;
+  if (vista==='molas') renderMolas(l);
+  if (vista==='caderno') renderCaderno(l);
+  if (vista==='dados') renderDados(l);
+}
+
+function totais(l){
+  const ms=l?l.molas:[];
+  return {
+    itens: ms.length,
+    pecas: ms.reduce((s,m)=>s+(ok(m.qtd)?m.qtd:0),0),
+    A: ms.filter(m=>m.crit==='A').length,
+    trocar: ms.filter(m=>['desgaste','quebrada','faltando'].includes(m.estado)).length,
+    estoque: ms.reduce((s,m)=>s+(ok(m.estoque)?m.estoque:0),0)
+  };
+}
+
+function renderMolas(l){
+  if (!l){ $('kpis').innerHTML=''; $('lista').innerHTML='<div class="vazio">Nenhuma usina no aparelho. Toque em <b>Nova usina</b> para começar um levantamento.</div>'; return; }
+  const t=totais(l);
+  $('kpis').innerHTML = `<div class="kpi"><b>${t.itens}</b><span>molas diferentes cadastradas</span></div><div class="kpi"><b>${fmt(t.pecas,0)}</b><span>peças instaladas</span></div><div class="kpi"><b>${t.A}</b><span>críticas A</span></div><div class="kpi"><b>${t.trocar}</b><span>para trocar agora</span></div>`;
+  const q=($('busca').value||'').toLowerCase().trim();
+  let ms=l.molas.slice().sort((a,b)=>a.seq-b.seq);
+  if (filtro==='A'||filtro==='B'||filtro==='C') ms=ms.filter(m=>m.crit===filtro);
+  if (filtro==='trocar') ms=ms.filter(m=>['desgaste','quebrada','faltando'].includes(m.estado));
+  if (q) ms=ms.filter(m=>[codigo(l,m),m.equip,m.tag,m.funcao,m.area,m.obs].join(' ').toLowerCase().includes(q));
+  if (!l.molas.length){ $('lista').innerHTML='<div class="vazio">Nenhuma mola cadastrada nesta usina. Toque em <b>+ Mola</b>. Comece pela área de maior risco: caldeira, moenda ou peneira.</div>'; return; }
+  if (!ms.length){ $('lista').innerHTML='<div class="vazio">Nada encontrado com esse filtro.</div>'; return; }
+  $('lista').innerHTML = ms.map(m=>{
+    const est=ESTADOS.find(e=>e[0]===m.estado);
+    return `<button type="button" class="card" data-id="${m.id}">
+      <div class="card-top"><span class="codigo">${codigo(l,m)}</span>${m.crit?`<span class="crit ${m.crit}">${m.crit}</span>`:''}</div>
+      <h3>${esc(m.funcao||TIPOS[m.tipo]?.nome||'Mola')}</h3>
+      <div class="onde">${esc([m.area,m.equip,m.tag].filter(Boolean).join(' · '))}</div>
+      <div class="med">${esc((TIPOS[m.tipo]||TIPOS.outra).nome)} · ${esc(medidasTexto(m))}</div>
+      <div class="card-rod"><span>${ok(m.qtd)?fmt(m.qtd,0)+' instaladas':''}${est?` · <span class="estado ${m.estado}">${est[1]}</span>`:''}</span><span class="fotos-mini">${(m.fotos||[]).slice(0,3).map(f=>`<img src="${f}" alt="">`).join('')}</span></div>
+    </button>`;
+  }).join('');
+}
+
+function renderDados(l){
+  const campos={lCliente:'cliente',lUnidade:'unidade',lSigla:'sigla',lCidade:'cidade',lData:'data',lTecnico:'tecnico',lContato:'contato',lObs:'obs'};
+  Object.keys(campos).forEach(id=>{ $(id).value = l ? (l[campos[id]]||'') : ''; $(id).disabled=!l; });
+  ['btnBackup','btnExcluirLev'].forEach(id=>$(id).disabled=!l);
+}
+
+function svgMola(m){
+  if (m.tipo==='torcao'||m.tipo==='dedo') return `<svg viewBox="0 0 200 110"><circle cx="70" cy="55" r="24" stroke="#18211B" stroke-width="5" fill="none"/><path d="M70 31 H190 M94 55 V${m.tipo==='dedo'?108:100}" stroke="#18211B" stroke-width="5" stroke-linecap="round"/></svg>`;
+  if (m.tipo==='tracao') return `<svg viewBox="0 0 200 110"><circle cx="30" cy="55" r="16" stroke="#18211B" stroke-width="4" fill="none"/><circle cx="170" cy="55" r="16" stroke="#18211B" stroke-width="4" fill="none"/>${Array.from({length:12},(_,i)=>`<path d="M${50+i*8.5} 39 L${54+i*8.5} 71" stroke="#18211B" stroke-width="4" stroke-linecap="round"/>`).join('')}</svg>`;
+  return `<svg viewBox="0 0 200 110">${Array.from({length:7},(_,i)=>`<path d="M${24+i*22} 22 L${35+i*22} 88" stroke="#18211B" stroke-width="5" stroke-linecap="round"/><path d="M${35+i*22} 88 L${46+i*22} 22" stroke="#A9B4AC" stroke-width="5" stroke-linecap="round"/>`).join('')}</svg>`;
+}
+
+function renderCaderno(l){
+  if (!l){ $('doc').innerHTML='<div class="pg"><p>Escolha ou crie uma usina para gerar o caderno.</p></div>'; return; }
+  const ms=l.molas.slice().sort((a,b)=>a.seq-b.seq), t=totais(l);
+  const porArea={}; ms.forEach(m=>{ const a=m.area||'Outra'; porArea[a]=porArea[a]||{itens:0,pecas:0,A:0}; porArea[a].itens++; porArea[a].pecas+=ok(m.qtd)?m.qtd:0; if(m.crit==='A') porArea[a].A++; });
+  const trocar=ms.filter(m=>['desgaste','quebrada','faltando'].includes(m.estado) || (m.crit==='A' && m.estado!=='ok'));
+  const linhaMed=m=>esc(medidasTexto(m));
+  let h='';
+  h+=`<section class="pg capa">
+    <div class="marca">${esc(CONFIG.empresa)}</div>
+    <div><span class="faixa-am">${l.exemplo?'Exemplo de demonstração':'Levantamento técnico'}</span><h1>Caderno de Molas</h1></div>
+    <dl><dt>Usina</dt><dd>${esc(l.cliente||'')}</dd><dt>Unidade</dt><dd>${esc(l.unidade||'')}</dd><dt>Cidade</dt><dd>${esc(l.cidade||'')}</dd><dt>Levantamento</dt><dd>${esc(dataBR(l.data))}</dd><dt>Técnico</dt><dd>${esc(l.tecnico||'')}</dd><dt>Contato na usina</dt><dd>${esc(l.contato||'')}</dd><dt>Molas cadastradas</dt><dd>${t.itens} modelos · ${fmt(t.pecas,0)} peças</dd></dl>
+  </section>`;
+  h+=`<section class="pg"><h2>Resumo</h2>
+    <p>Cada mola desta usina recebeu um código ${esc(CONFIG.empresa)}. Para repor, basta pedir pelo código: a ficha com as medidas, o material e o desenho fica guardada na fábrica.</p>
+    <div class="kpis"><div><b>${t.itens}</b><span>modelos de mola</span></div><div><b>${fmt(t.pecas,0)}</b><span>peças instaladas</span></div><div><b>${t.A}</b><span>críticas A</span></div><div><b>${t.trocar}</b><span>para trocar nesta parada</span></div><div><b>${fmt(t.estoque,0)}</b><span>peças de estoque mínimo sugerido</span></div></div>
+    <div class="tab-wrap"><table><thead><tr><th>Área</th><th>Modelos</th><th>Peças</th><th>Críticas A</th></tr></thead><tbody>${Object.keys(porArea).map(a=>`<tr><td>${esc(a)}</td><td class="num">${porArea[a].itens}</td><td class="num">${fmt(porArea[a].pecas,0)}</td><td class="num">${porArea[a].A}</td></tr>`).join('')}</tbody></table></div>
+  </section>`;
+  h+=`<section class="pg"><h2>Trocar nesta entressafra</h2>
+    ${trocar.length?`<p>Molas com desgaste, quebradas ou faltando. As críticas A vêm primeiro.</p><div class="tab-wrap"><table><thead><tr><th>Código</th><th>Onde</th><th>Função</th><th>Estado</th><th>Crit.</th><th>Qtd.</th></tr></thead><tbody>${trocar.sort((a,b)=>(a.crit||'Z').localeCompare(b.crit||'Z')).map(m=>`<tr><td class="cod">${codigo(l,m)}</td><td>${esc([m.equip,m.tag].filter(Boolean).join(' · '))}</td><td>${esc(m.funcao||'')}</td><td>${esc((ESTADOS.find(e=>e[0]===m.estado)||['',''])[1])}</td><td><span class="crit ${m.crit||''}">${m.crit||''}</span></td><td class="num">${ok(m.qtd)?fmt(m.qtd,0):''}</td></tr>`).join('')}</tbody></table></div>`:'<p>Nenhuma mola marcada para troca.</p>'}
+  </section>`;
+  h+=`<section class="pg"><h2>Fichas das molas</h2><div class="fichas">${ms.map(m=>{
+    const est=(ESTADOS.find(e=>e[0]===m.estado)||['',''])[1];
+    const tipo=TIPOS[m.tipo]||TIPOS.outra;
+    const meds=tipo.campos.map(c=>{ if(c==='pontas') return m.pontas?`<dt>Pontas</dt><dd>${esc((CAMPOS.pontas.sel.find(s=>s[0]===m.pontas)||['',m.pontas])[1])}</dd>`:''; return isFinite(m[c])?`<dt>${esc(CAMPOS[c].rot)}</dt><dd class="m">${fmt(m[c],2)} ${CAMPOS[c].un}</dd>`:''; }).join('');
+    return `<article class="ficha-doc">
+      <div class="fd-cab"><span class="codigo">${codigo(l,m)}</span><span>${m.crit?`<span class="crit ${m.crit}">Criticidade ${m.crit}</span>`:''}</span></div>
+      <div class="fd-corpo">
+        <div class="fd-col"><dl>
+          <dt>Função</dt><dd>${esc(m.funcao||'')}</dd><dt>Área</dt><dd>${esc(m.area||'')}</dd><dt>Equipamento</dt><dd>${esc(m.equip||'')}</dd><dt>TAG / local</dt><dd>${esc(m.tag||'')}</dd>
+          <dt>Instaladas</dt><dd class="m">${ok(m.qtd)?fmt(m.qtd,0):'–'}</dd><dt>Estoque mínimo</dt><dd class="m">${isFinite(m.estoque)?fmt(m.estoque,0):'–'}</dd><dt>Estado</dt><dd>${esc(est)}</dd>
+          ${m.ultima?`<dt>Última troca</dt><dd>${esc(m.ultima)}</dd>`:''}${ok(m.trocas)?`<dt>Trocas por ano</dt><dd class="m">${fmt(m.trocas,1)}</dd>`:''}
+        </dl>${(m.fotos&&m.fotos.length)?`<div class="fd-fotos">${m.fotos.map(f=>`<img src="${f}" alt="Foto da mola ${codigo(l,m)}">`).join('')}</div>`:`<div class="fd-sem-foto">${svgMola(m)}</div>`}</div>
+        <div class="fd-col"><dl><dt>Tipo</dt><dd>${esc(tipo.nome)}</dd>${meds}${m.material?`<dt>Material</dt><dd>${esc(m.material)}</dd>`:''}${m.acab?`<dt>Acabamento</dt><dd>${esc(m.acab)}</dd>`:''}</dl>
+          <p style="margin:10px 0 0;font:500 12px/1.5 var(--font-data)">${esc(textoCalc(m))}</p>
+          ${m.obs?`<p style="margin:10px 0 0;font-size:13px"><b>Obs.:</b> ${esc(m.obs)}</p>`:''}
+        </div>
+      </div>
+    </article>`; }).join('')}</div></section>`;
+  h+=`<section class="pg"><h2>Estoque mínimo sugerido</h2>
+    <p>Quantidade que a usina, ou a ${esc(CONFIG.empresa)} pelo contrato de Estoque Garantido, deve ter disponível para cada mola. Critério: A = metade das instaladas, no mínimo 2; B = um quarto, no mínimo 1; C = sem estoque. Ajustado pelo técnico onde foi preciso.</p>
+    <div class="tab-wrap"><table><thead><tr><th>Código</th><th>Função</th><th>Crit.</th><th>Instaladas</th><th>Estoque mín.</th></tr></thead><tbody>${ms.filter(m=>ok(m.estoque)).map(m=>`<tr><td class="cod">${codigo(l,m)}</td><td>${esc(m.funcao||'')}</td><td><span class="crit ${m.crit||''}">${m.crit||''}</span></td><td class="num">${ok(m.qtd)?fmt(m.qtd,0):''}</td><td class="num">${fmt(m.estoque,0)}</td></tr>`).join('')}</tbody></table></div>
+  </section>`;
+  h+=`<section class="pg"><h2>Como pedir</h2><div class="como-pedir">
+    <p>Mande o código e a quantidade. Não precisa de desenho nem de amostra.</p>
+    <div class="big">WhatsApp ${esc(CONFIG.whatsapp)}</div>
+    <p>Exemplo de pedido: <b>${ms[0]?codigo(l,ms[0]):'JM-XXX-001'} · 4 peças</b></p>
+    <p>Telefone ${esc(CONFIG.telefone)} · ${esc(CONFIG.email)}<br>${esc(CONFIG.endereco)}</p>
+    ${l.obs?`<p><b>Observações da visita:</b> ${esc(l.obs)}</p>`:''}
+    <p class="rodape-doc">Medidas levantadas em campo com o equipamento parado. As constantes são calculadas pelas medidas e servem de referência; a ${esc(CONFIG.empresa)} confirma o projeto antes de fabricar. Documento gerado em ${dataBR(hoje())}.</p>
+  </div></section>`;
+  $('doc').innerHTML=h;
+}
+
+/* ===== FICHA (editor) ===== */
+function abrirFicha(id){
+  const l=lev(); if(!l) return;
+  const m = id ? l.molas.find(x=>x.id===id) : null;
+  editando = m ? m.id : null;
+  rascunho = m ? JSON.parse(JSON.stringify(m)) : {id:uid(), seq:(l.seq||l.molas.length)+1, tipo:'compressao', pontas:'fechadas_esmerilhadas', area:AREAS[0], estado:'ok', crit:'B', fotos:[], estoqueManual:false};
+  $('sheetTit').textContent = m ? (m.funcao||'Mola') : 'Nova mola';
+  $('sheetCod').textContent = codigo(l, rascunho);
+  $('fArea').value = rascunho.area||AREAS[0]; $('fEquip').value=rascunho.equip||''; $('fTag').value=rascunho.tag||''; $('fFuncao').value=rascunho.funcao||'';
+  $('fMaterial').value=rascunho.material||''; $('fAcab').value=rascunho.acab||'';
+  $('fQtd').value=isFinite(rascunho.qtd)?String(rascunho.qtd).replace('.',','):''; $('fTrocas').value=isFinite(rascunho.trocas)?String(rascunho.trocas).replace('.',','):''; $('fUltima').value=rascunho.ultima||'';
+  $('fEstoque').value=isFinite(rascunho.estoque)?String(rascunho.estoque):''; $('fObs').value=rascunho.obs||'';
+  $('acoesFicha').hidden = !m;
+  $('btnExcluir').classList.remove('confirmar'); $('btnExcluir').textContent='Excluir mola';
+  marcarSeg('fTipo', rascunho.tipo); marcarSeg('fEstado', rascunho.estado); marcarSeg('fCrit', rascunho.crit);
+  $('fCritAjuda').textContent = CRIT_AJUDA[rascunho.crit]||'';
+  montarMedidasFicha(); montarFotos(); atualizarEstoque();
+  $('sheet').hidden=false; document.body.style.overflow='hidden';
+  setTimeout(()=>$('fEquip').focus(),50);
+}
+function fecharFicha(){ $('sheet').hidden=true; document.body.style.overflow=''; editando=null; rascunho=null; }
+function marcarSeg(id,v){ $(id).querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.v===v))); }
+function montarMedidasFicha(){
+  const t=TIPOS[rascunho.tipo]||TIPOS.outra;
+  $('fMedidas').innerHTML = t.campos.map(c=>{
+    const f=CAMPOS[c];
+    if (f.sel) return `<div class="campo"><label for="fm_${c}">${f.rot}</label><select id="fm_${c}" data-m="${c}">${f.sel.map(o=>`<option value="${o[0]}" ${rascunho[c]===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select></div>`;
+    return `<div class="campo"><label for="fm_${c}">${f.rot} (${f.un})</label><input class="n" id="fm_${c}" data-m="${c}" type="text" inputmode="decimal" value="${isFinite(rascunho[c])?String(rascunho[c]).replace('.',','):''}"></div>`;
+  }).join('');
+  $('fCalc').textContent = textoCalc(rascunho);
+}
+function lerFicha(){
+  rascunho.area=$('fArea').value; rascunho.equip=$('fEquip').value.trim(); rascunho.tag=$('fTag').value.trim(); rascunho.funcao=$('fFuncao').value.trim();
+  rascunho.material=$('fMaterial').value; rascunho.acab=$('fAcab').value;
+  rascunho.qtd=num($('fQtd').value); rascunho.trocas=num($('fTrocas').value); rascunho.ultima=$('fUltima').value.trim(); rascunho.obs=$('fObs').value.trim();
+  $('fMedidas').querySelectorAll('[data-m]').forEach(el=>{ const c=el.dataset.m; rascunho[c] = CAMPOS[c].sel ? el.value : num(el.value); });
+}
+function atualizarEstoque(){
+  const sug=estoqueSugerido(rascunho.crit, rascunho.qtd);
+  if (!rascunho.estoqueManual){ rascunho.estoque=sug; $('fEstoque').value=String(sug); }
+  $('fEstoqueAjuda').textContent = rascunho.estoqueManual ? `Ajustado à mão. Sugestão pela criticidade: ${sug}.` : 'Calculado pela criticidade e pelas peças instaladas. Pode mudar.';
+}
+function montarFotos(){
+  const fs=rascunho.fotos||[];
+  $('fFotos').innerHTML = fs.map((f,i)=>`<div class="foto"><img src="${f}" alt="Foto ${i+1}"><button type="button" data-rm="${i}">Tirar</button></div>`).join('') + (fs.length<3?`<label class="add-foto" for="inFoto">+ Foto<br>câmera ou galeria<input id="inFoto" type="file" accept="image/*" capture="environment"></label>`:'');
+  const inp=$('inFoto'); if (inp) inp.addEventListener('change', e=>{ const f=e.target.files&&e.target.files[0]; if(f) adicionarFoto(f); });
+}
+function adicionarFoto(file){
+  const leitor=new FileReader();
+  leitor.onload=()=>{ const img=new Image(); img.onload=()=>{ const max=1100, esc_=Math.min(1, max/Math.max(img.width,img.height)); const cv=document.createElement('canvas'); cv.width=Math.round(img.width*esc_); cv.height=Math.round(img.height*esc_); cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height); rascunho.fotos=(rascunho.fotos||[]).concat([cv.toDataURL('image/jpeg',0.72)]); montarFotos(); }; img.onerror=()=>toast('Não consegui abrir essa imagem.'); img.src=leitor.result; };
+  leitor.readAsDataURL(file);
+}
+async function salvarFicha(){
+  const l=lev(); if(!l||!rascunho) return;
+  lerFicha();
+  if (!rascunho.equip && !rascunho.funcao && !rascunho.tag){ toast('Preencha pelo menos o equipamento, a TAG ou a função.'); $('fEquip').focus(); return; }
+  if (editando){ l.molas = l.molas.map(m=>m.id===editando?rascunho:m); }
+  else { l.molas.push(rascunho); l.seq=Math.max(l.seq||0, rascunho.seq); }
+  await ARM.salvar(l); const cod=codigo(l,rascunho); fecharFicha(); render(); toast(`${cod} salva`);
+}
+
+/* ===== EXPORTAÇÃO ===== */
+function baixar(nome, conteudo, tipo){
+  try{ const b=new Blob([conteudo],{type:tipo}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=nome; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); toast('Arquivo gerado: '+nome); }
+  catch(e){ toast('Este navegador bloqueou o download. Use Copiar.'); }
+}
+function csv(l){
+  const cols=['codigo','area','equipamento','tag','funcao','tipo','d_mm','De_mm','L0_mm','Li_mm','espiras_totais','espiras_corpo','perna1_mm','perna2_mm','pontas','material','acabamento','instaladas','estado','criticidade','estoque_minimo','trocas_ano','ultima_troca','constante','unidade_constante','obs'];
+  const q=v=>{ const s=v==null||(typeof v==='number'&&!isFinite(v))?'':String(v); return /[;"\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+  const n=v=>isFinite(v)?String(v).replace('.',','):'';
+  const linhas=l.molas.slice().sort((a,b)=>a.seq-b.seq).map(m=>{ const r=calcular(m)||{}; return [codigo(l,m),m.area,m.equip,m.tag,m.funcao,(TIPOS[m.tipo]||TIPOS.outra).nome,n(m.d),n(m.De),n(m.L0),n(m.Li),n(m.Nt),n(m.Nb),n(m.L1),n(m.L2),m.pontas,m.material,m.acab,n(m.qtd),m.estado,m.crit,n(m.estoque),n(m.trocas),m.ultima,r.k?n(Math.round(r.k*100)/100):'',r.un||'',m.obs].map(q).join(';'); });
+  return '﻿'+cols.join(';')+'\n'+linhas.join('\n');
+}
+const nomeArq = l => `caderno-${(l.sigla||'usina').toLowerCase()}-${(l.data||hoje())}`;
+
+/* ===== EVENTOS ===== */
+document.querySelector('.abas').addEventListener('click', e=>{ const b=e.target.closest('.aba'); if(!b) return; vista=b.dataset.v; render(); window.scrollTo(0,0); });
+$('selLev').addEventListener('change', e=>{ atual=e.target.value; lembrar('atual', atual); render(); });
+$('btnNovoLev').addEventListener('click', async ()=>{
+  const l={id:uid(), cliente:'Nova usina', unidade:'', sigla:'', cidade:'', data:hoje(), tecnico:lembrado('tecnico')||'', contato:'', obs:'', seq:0, molas:[]};
+  levs.push(l); atual=l.id; lembrar('atual', atual); await ARM.salvar(l); vista='dados'; render(); setTimeout(()=>{ $('lCliente').select(); },60); toast('Preencha os dados da usina e a sigla');
+});
+$('vDados').addEventListener('input', async e=>{
+  const l=lev(); if(!l) return;
+  const mapa={lCliente:'cliente',lUnidade:'unidade',lSigla:'sigla',lCidade:'cidade',lData:'data',lTecnico:'tecnico',lContato:'contato',lObs:'obs'};
+  const k=mapa[e.target.id]; if(!k) return;
+  l[k] = k==='sigla' ? e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'') : e.target.value;
+  if (k==='sigla') e.target.value=l.sigla;
+  if (k==='tecnico') lembrar('tecnico', l.tecnico);
+  if (l.exemplo && k!=='obs') l.exemplo=false;
+  clearTimeout(salvarDados._t); salvarDados._t=setTimeout(()=>{ ARM.salvar(l); $('selLev').innerHTML = levs.map(x=>`<option value="${x.id}" ${x.id===atual?'selected':''}>${esc(x.cliente||'Sem nome')}${x.unidade?' · '+esc(x.unidade):''}</option>`).join(''); },300);
+});
+function salvarDados(){}
+$('busca').addEventListener('input', ()=>renderMolas(lev()));
+$('filtros').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; filtro=b.dataset.f; $('filtros').querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', String(c.dataset.f===filtro))); renderMolas(lev()); });
+$('lista').addEventListener('click', e=>{ const c=e.target.closest('.card'); if(c) abrirFicha(c.dataset.id); });
+$('fab').addEventListener('click', ()=>abrirFicha(null));
+$('btnFechar').addEventListener('click', fecharFicha);
+$('btnSalvar').addEventListener('click', salvarFicha);
+$('fMola').addEventListener('submit', e=>{ e.preventDefault(); salvarFicha(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !$('sheet').hidden) fecharFicha(); });
+$('fTipo').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; lerFicha(); rascunho.tipo=b.dataset.v; marcarSeg('fTipo', rascunho.tipo); montarMedidasFicha(); });
+$('fEstado').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; rascunho.estado=b.dataset.v; marcarSeg('fEstado', rascunho.estado); });
+$('fCrit').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; lerFicha(); rascunho.crit=b.dataset.v; marcarSeg('fCrit', rascunho.crit); $('fCritAjuda').textContent=CRIT_AJUDA[rascunho.crit]; atualizarEstoque(); });
+$('fMedidas').addEventListener('input', ()=>{ lerFicha(); $('fCalc').textContent=textoCalc(rascunho); });
+$('fMedidas').addEventListener('change', ()=>{ lerFicha(); $('fCalc').textContent=textoCalc(rascunho); });
+$('fMaterial').addEventListener('change', ()=>{ lerFicha(); $('fCalc').textContent=textoCalc(rascunho); });
+$('fQtd').addEventListener('input', ()=>{ rascunho.qtd=num($('fQtd').value); atualizarEstoque(); });
+$('fEstoque').addEventListener('input', ()=>{ const v=num($('fEstoque').value); rascunho.estoqueManual = isFinite(v); rascunho.estoque=v; if(!isFinite(v)){ rascunho.estoqueManual=false; } atualizarEstoque(); });
+$('fFotos').addEventListener('click', e=>{ const b=e.target.closest('[data-rm]'); if(!b) return; rascunho.fotos.splice(Number(b.dataset.rm),1); montarFotos(); });
+$('btnDuplicar').addEventListener('click', async ()=>{
+  const l=lev(); if(!l||!editando) return; lerFicha();
+  const novo=JSON.parse(JSON.stringify(rascunho)); novo.id=uid(); novo.seq=(l.seq||l.molas.length)+1; novo.tag=''; novo.fotos=[]; novo.estado='ok';
+  l.molas = l.molas.map(m=>m.id===editando?rascunho:m); l.molas.push(novo); l.seq=novo.seq; await ARM.salvar(l);
+  abrirFicha(novo.id); toast(`Cópia criada: ${codigo(l,novo)}. Ajuste o local.`);
+});
+$('btnExcluir').addEventListener('click', async e=>{
+  const b=e.currentTarget, l=lev();
+  if (!b.classList.contains('confirmar')){ b.classList.add('confirmar'); b.textContent='Toque de novo para excluir'; setTimeout(()=>{ b.classList.remove('confirmar'); b.textContent='Excluir mola'; },4000); return; }
+  l.molas=l.molas.filter(m=>m.id!==editando); await ARM.salvar(l); fecharFicha(); render(); toast('Mola excluída');
+});
+$('btnExcluirLev').addEventListener('click', async e=>{
+  const b=e.currentTarget, l=lev(); if(!l) return;
+  if (!b.classList.contains('confirmar')){ b.classList.add('confirmar'); b.textContent='Toque de novo: apaga esta usina do aparelho'; setTimeout(()=>{ b.classList.remove('confirmar'); b.textContent='Excluir esta usina do aparelho'; },4000); return; }
+  if (l.exemplo) lembrar('exemplo-apagado','1');
+  await ARM.apagar(l.id); levs=levs.filter(x=>x.id!==l.id); atual=levs[0]&&levs[0].id; b.classList.remove('confirmar'); b.textContent='Excluir esta usina do aparelho'; vista='molas'; render(); toast('Usina excluída do aparelho');
+});
+$('btnApagarExemplo').addEventListener('click', async ()=>{ lembrar('exemplo-apagado','1'); await ARM.apagar('exemplo'); levs=levs.filter(x=>x.id!=='exemplo'); atual=levs[0]&&levs[0].id; render(); toast('Exemplo apagado'); });
+$('btnImprimir').addEventListener('click', ()=>{ try{ window.print(); }catch(e){ toast('A impressão não está disponível aqui.'); } });
+$('btnCsv').addEventListener('click', ()=>{ const l=lev(); if(l) baixar(nomeArq(l)+'.csv', csv(l), 'text/csv;charset=utf-8'); });
+$('btnCopiarCsv').addEventListener('click', ()=>{ const l=lev(); if(!l) return; const t=csv(l).replace('﻿',''); try{ navigator.clipboard.writeText(t).then(()=>toast('Planilha copiada. Cole no Excel ou no Google Planilhas.'), ()=>toast('Não consegui copiar. Use Baixar planilha.')); }catch(e){ toast('Não consegui copiar. Use Baixar planilha.'); } });
+$('btnBackup').addEventListener('click', ()=>{ const l=lev(); if(l) baixar(nomeArq(l)+'.json', JSON.stringify({app:'caderno-de-molas',versao:1,levantamentos:[l]}), 'application/json'); });
+$('btnBackupTudo').addEventListener('click', ()=>baixar(`caderno-backup-${hoje()}.json`, JSON.stringify({app:'caderno-de-molas',versao:1,levantamentos:levs}), 'application/json'));
+$('inImport').addEventListener('change', e=>{
+  const f=e.target.files&&e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=async ()=>{ try{ const j=JSON.parse(r.result); const lista=(j&&j.levantamentos)||[]; if(!lista.length) throw new Error(); for (const l of lista){ if(!l.id||!Array.isArray(l.molas)) continue; const i=levs.findIndex(x=>x.id===l.id); if(i>=0) levs[i]=l; else levs.push(l); await ARM.salvar(l); } atual=lista[0].id; lembrar('atual',atual); vista='molas'; render(); toast(`${lista.length} usina(s) importada(s)`); }catch(err){ toast('Esse arquivo não é um backup do Caderno de Molas.'); } e.target.value=''; };
+  r.readAsText(f);
+});
+
+/* Funciona sem internet quando hospedado no site (https): registra o service worker e o manifesto se existirem ao lado deste arquivo. */
+function modoOffline(){
+  try{ if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(()=>{}); }catch(e){}
+  if (!window.isSecureContext || location.protocol==='file:' || !('serviceWorker' in navigator)) return;
+  fetch('manifest.webmanifest',{cache:'no-store'}).then(r=>{
+    if(!r.ok) return;
+    const l=document.createElement('link'); l.rel='manifest'; l.href='manifest.webmanifest'; document.head.appendChild(l);
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }).catch(()=>{});
+}
+iniciar();
+modoOffline();
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<title>Plano Jardmolas 2026/27</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Layout: proposta de uma página para o dono da Jardmolas. Abertura verde da marca com a tese, régua do calendário agrícola (o detalhe só deste assunto), três motores, o caminho do Caderno até o pedido, as ferramentas para testar, metas e o que precisamos deles. Marca: verde 084D17 / 33A94C, amarelo FFD800, Poppins. */
+:root{
+  --bg:#F2F5F0; --surface:#FFFFFF; --surface-2:#E8EEE6; --ink:#18211B; --muted:#56635A; --line:#CFD8CC;
+  --brand:#084D17; --brand-ink:#084D17; --brand-2:#2F9A47; --accent:#FFD800; --accent-ink:#1E1A00; --on-brand:#FFFFFF;
+  --hero-bg:#084D17; --hero-ink:#FFFFFF; --hero-muted:#BFD8C4;
+  --band-safra:#2F9A47; --band-entre:#FFD800; --band-feno:#8FB8D9; --band-amendoim:#C79A5B; --band-plano:#18211B;
+  --font-display:'Encode Sans Semi Condensed','Arial Narrow',Arial,sans-serif;
+  --font-body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-data:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1511; --surface:#161E18; --surface-2:#1D2820; --ink:#E6ECE5; --muted:#9DAA9F; --line:#2B382F;
+    --brand:#3DB458; --brand-ink:#7BE08F; --brand-2:#5CCB72; --on-brand:#06210D;
+    --hero-bg:#0A3A13; --hero-ink:#F1F6EF; --hero-muted:#A9C9B0;
+    --band-safra:#3DB458; --band-entre:#FFD800; --band-feno:#7AA8CF; --band-amendoim:#C9A26B; --band-plano:#E6ECE5;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1511; --surface:#161E18; --surface-2:#1D2820; --ink:#E6ECE5; --muted:#9DAA9F; --line:#2B382F;
+  --brand:#3DB458; --brand-ink:#7BE08F; --brand-2:#5CCB72; --on-brand:#06210D;
+  --hero-bg:#0A3A13; --hero-ink:#F1F6EF; --hero-muted:#A9C9B0;
+  --band-safra:#3DB458; --band-entre:#FFD800; --band-feno:#7AA8CF; --band-amendoim:#C9A26B; --band-plano:#E6ECE5;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font-body)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.in{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+.eyebrow{font:600 12px/1.2 var(--font-data);letter-spacing:.12em;text-transform:uppercase}
+
+.hero{background:var(--hero-bg);color:var(--hero-ink)}
+.hero .in{padding-block:40px 44px;display:grid;gap:22px}
+.hero .eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(36px,6.4vw,68px);line-height:.98;font-weight:700;max-width:16ch}
+.hero p{max-width:60ch;margin:0;color:var(--hero-muted);font-size:17px}
+.hero p b{color:var(--hero-ink);font-weight:600}
+.fatos{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:6px}
+.fato{display:grid}
+.fato b{font:600 30px/1.1 var(--font-data);color:var(--accent);font-variant-numeric:tabular-nums}
+.fato span{font-size:13px;color:var(--hero-muted)}
+
+section.bloco{padding-block:44px}
+section.bloco + section.bloco{border-top:1px solid var(--line)}
+.tit{display:grid;gap:6px;margin-bottom:22px}
+.tit .eyebrow{color:var(--brand-ink)}
+.tit h2{font-size:clamp(26px,3.6vw,36px);line-height:1.08}
+.tit p{margin:0;color:var(--muted);max-width:66ch}
+
+/* calendário */
+.cal-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.cal{min-width:760px;display:grid;grid-template-columns:150px repeat(12,1fr);row-gap:8px;font-size:13px}
+.cal .mes{font:600 12px/1 var(--font-data);color:var(--muted);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cal .rot{font-weight:600;align-self:center;padding-right:10px}
+.cal .faixa{height:26px;border-radius:5px;align-self:center;display:flex;align-items:center;padding:0 8px;font:600 11.5px/1 var(--font-data);white-space:nowrap;overflow:hidden}
+.f-entre{background:var(--band-entre);color:#1E1A00}
+.f-safra{background:var(--band-safra);color:#06210D}
+.f-feno{background:var(--band-feno);color:#0B2233}
+.f-amend{background:var(--band-amendoim);color:#2A1A05}
+.f-plano{background:var(--band-plano);color:var(--bg)}
+.f-feira{background:transparent;border:2px solid var(--ink);color:var(--ink);justify-content:center}
+.cal .hoje{grid-row:1/-1;border-left:2px dashed var(--brand-2);position:relative;pointer-events:none}
+.cal-nota{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+/* motores */
+.motores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.motores{grid-template-columns:minmax(0,1fr)}}
+.motor{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:10px;align-content:start}
+.motor .n{font:600 13px/1 var(--font-data);color:var(--brand-ink)}
+.motor h3{font-size:24px;line-height:1.1}
+.motor p{margin:0;color:var(--muted);font-size:15px}
+.motor ul{margin:0;padding-left:18px;font-size:14.5px;display:grid;gap:4px}
+.motor.principal{border:2px solid var(--brand)}
+.motor .selo{justify-self:start;background:var(--accent);color:var(--accent-ink);font:600 11px/1 var(--font-data);padding:5px 8px;border-radius:4px;letter-spacing:.05em;text-transform:uppercase}
+
+/* caminho */
+.caminho{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:p}
+@media (max-width:860px){.caminho{grid-template-columns:minmax(0,1fr)}}
+.etapa{position:relative;padding:16px 16px 16px 0;display:grid;gap:6px;align-content:start;border-top:3px solid var(--brand)}
+@media (max-width:860px){.etapa{border-top:0;border-left:3px solid var(--brand);padding:4px 0 18px 18px}}
+.etapa .q{font:600 12px/1 var(--font-data);color:var(--brand-ink)}
+.etapa h3{font-size:19px;line-height:1.15}
+.etapa p{margin:0;font-size:14px;color:var(--muted)}
+
+/* ferramentas */
+.ferr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.ferr{grid-template-columns:minmax(0,1fr)}}
+.ferr a.cartao{display:grid;gap:10px;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;transition:border-color .15s}
+.ferr a.cartao:hover{border-color:var(--brand)}
+.ferr h3{font-size:24px}
+.ferr p{margin:0;color:var(--muted);font-size:15px}
+.ferr .abrir{font-weight:600;color:var(--brand-ink)}
+.ferr svg{width:100%;height:auto;max-height:110px;color:var(--ink)}
+
+/* metas */
+.tab{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;font:600 12px/1.2 var(--font-data);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:12px 14px;border-bottom:2px solid var(--brand)}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--font-data);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* kit */
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.pasta{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:6px;align-content:start}
+.pasta code{font:600 13px/1.2 var(--font-data);color:var(--brand-ink)}
+.pasta p{margin:0;font-size:14px;color:var(--muted)}
+
+/* perguntas */
+.perg{counter-reset:q;display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.perg li{counter-increment:q;display:grid;grid-template-columns:34px 1fr;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.perg li::before{content:counter(q);font:600 15px/1 var(--font-data);color:var(--on-brand);background:var(--brand);border-radius:6px;width:28px;height:28px;display:grid;place-items:center}
+.nao{display:grid;gap:8px;margin-top:18px;padding:16px 18px;border-left:4px solid var(--accent);background:var(--surface)}
+.nao b{font-family:var(--font-display);font-size:18px}
+footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<header class="hero">
+  <div class="in">
+    <div class="eyebrow">Proposta para a Jardmolas · novembro de 2026</div>
+    <h1>Quem tem o desenho da mola recebe o pedido.</h1>
+    <p>A entressafra começa em dezembro. Este plano coloca a Jardmolas dentro das usinas da região com a lista de molas na mão, deixa simples pedir para quem tem uma mola quebrada e faz a fábrica aparecer para quem compra. <b>Tudo o que está aqui já foi feito e pode ser usado esta semana.</b></p>
+    <div class="fatos">
+      <div class="fato"><b>56</b><span>usinas ativas a até 200 km</span></div>
+      <div class="fato"><b>10</b><span>a até 60 km da fábrica</span></div>
+      <div class="fato"><b>dez–mar</b><span>janela da manutenção</span></div>
+      <div class="fato"><b>2</b><span>ferramentas prontas para testar</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">O calendário que manda</span><h2>Cada linha da Jardmolas vende numa época</h2><p>A usina compra mola na parada de manutenção. O enleirador de palha volta a trabalhar com a safra. Feno e amendoim têm a sua colheita. O plano de 90 dias pega a entressafra inteira.</p></div>
+    <div class="cal-wrap" role="img" aria-label="Calendário de novembro de 2026 a outubro de 2027: entressafra de dezembro a março, safra de cana de abril a novembro, colheita de feno concentrada de outubro a março, colheita do amendoim de fevereiro a abril, Agrishow no fim de abril, Fenasucro em agosto, plano de 90 dias de meados de novembro a meados de fevereiro.">
+      <div class="cal" id="cal">
+        <div></div>
+        <div class="mes">nov</div><div class="mes">dez</div><div class="mes">jan</div><div class="mes">fev</div><div class="mes">mar</div><div class="mes">abr</div><div class="mes">mai</div><div class="mes">jun</div><div class="mes">jul</div><div class="mes">ago</div><div class="mes">set</div><div class="mes">out</div>
+
+        <div class="rot">Plano 90 dias</div>
+        <div class="faixa f-plano" style="grid-column:2 / 6;margin-left:12.5%;margin-right:12.5%">16/11 a 14/02</div>
+
+        <div class="rot">Usinas</div>
+        <div class="faixa f-safra" style="grid-column:2 / 3">fim da safra</div>
+        <div class="faixa f-entre" style="grid-column:3 / 7">entressafra: manutenção e compra</div>
+        <div class="faixa f-safra" style="grid-column:7 / 14">safra 2027/28</div>
+
+        <div class="rot">Enleirador de palha</div>
+        <div class="faixa f-entre" style="grid-column:4 / 7">kit pré-safra</div>
+        <div class="faixa f-safra" style="grid-column:7 / 14">em campo com a colheita</div>
+
+        <div class="rot">Feno</div>
+        <div class="faixa f-feno" style="grid-column:2 / 6">colheita concentrada nas águas</div>
+        <div class="faixa f-feno" style="grid-column:13 / 14">volta</div>
+
+        <div class="rot">Amendoim</div>
+        <div class="faixa f-amend" style="grid-column:3 / 5">kit</div>
+        <div class="faixa f-amend" style="grid-column:5 / 8">colheita</div>
+
+        <div class="rot">Feiras</div>
+        <div class="faixa f-feira" style="grid-column:7 / 8" id="fAgrishow">Agrishow</div>
+        <div class="faixa f-feira" style="grid-column:11 / 12" id="fFenasucro">Fenasucro</div>
+      </div>
+    </div>
+    <p class="cal-nota" id="calNota">Épocas típicas da região de Ribeirão Preto; cada usina e cada produtor tem a sua data. Datas das feiras em <code>04-mercado-e-alvos/feiras-e-eventos-2027.md</code>.</p>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">O plano</span><h2>Três motores, um deles com prazo</h2></div>
+    <div class="motores">
+      <article class="motor principal">
+        <span class="selo">Começa já</span>
+        <span class="n">Motor 1</span>
+        <h3>Entrar na usina</h3>
+        <p>Visita técnica gratuita na entressafra. Cada mola crítica ganha um código JM e vai para o Caderno de Molas da usina. Depois, o comprador pede pelo código.</p>
+        <ul><li>App de levantamento que funciona sem sinal</li><li>Caderno em PDF com capa, fichas e lista de troca</li><li>Proposta de Estoque Garantido para as molas que param a produção</li><li>Lista das usinas, mensagens por cargo e respostas para objeções</li></ul>
+      </article>
+      <article class="motor">
+        <span class="n">Motor 2</span>
+        <h3>Facilitar o pedido</h3>
+        <p>Quem tem uma mola quebrada não sabe as medidas de cor. O Identificador ensina a medir, calcula e manda o pedido pronto no WhatsApp.</p>
+        <ul><li>Identificador de Molas para o site</li><li>Mensagens prontas e resposta em 5 minutos no WhatsApp</li><li>Expositor de balcão com QR code nas revendas</li><li>Kits pré-safra e troca de dedos usados</li></ul>
+      </article>
+      <article class="motor">
+        <span class="n">Motor 3</span>
+        <h3>Ser visto por quem compra</h3>
+        <p>A fábrica tem o vídeo mais difícil de parar de ver: arame virando mola. E o Google não sabe em que máquina cada mola trabalha.</p>
+        <ul><li>15 roteiros de Reels, carrosséis e calendário de 30 dias</li><li>Posts técnicos para o LinkedIn de usina e fabricante</li><li>Páginas por máquina e pautas de blog</li><li>Perfil no Google e campanha de pesquisa enxuta</li></ul>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">Motor 1 em detalhe</span><h2>Do primeiro contato ao contrato</h2><p>Uma visita bem feita vale mais que três corridas. O caderno é da usina e é entregue sem condição; o pedido vem porque ficou mais fácil pedir para a Jardmolas.</p></div>
+    <div class="caminho">
+      <div class="etapa"><span class="q">Semana 1</span><h3>Contato</h3><p>LinkedIn, ligação e WhatsApp para o gerente de manutenção ou o PCM, com o motivo: a parada que começa.</p></div>
+      <div class="etapa"><span class="q">1 dia</span><h3>Visita</h3><p>Técnico percorre as áreas com o mecânico, mede com o equipamento parado, fotografa, marca criticidade.</p></div>
+      <div class="etapa"><span class="q">Até 7 dias</span><h3>Caderno</h3><p>PDF com código JM, ficha de cada mola, lista do que trocar agora e estoque mínimo sugerido.</p></div>
+      <div class="etapa"><span class="q">Entressafra</span><h3>Pedido</h3><p>Orçamento da lista de troca já com os códigos. A usina compra sem mandar amostra.</p></div>
+      <div class="etapa"><span class="q">Antes de abril</span><h3>Estoque Garantido</h3><p>A Jardmolas guarda as molas críticas da usina e entrega no prazo combinado durante a safra.</p></div>
+    </div>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">Para testar agora</span><h2>As duas ferramentas</h2><p>Funcionam no celular. Os dados que aparecem são de exemplo.</p></div>
+    <div class="ferr">
+      <a class="cartao" href="identificador-de-molas.html">
+        <svg viewBox="0 0 320 90" aria-hidden="true"><path d="M30 20 L44 70 M66 20 L80 70 M102 20 L116 70 M138 20 L152 70 M174 20 L188 70" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><path d="M44 70 L66 20 M80 70 L102 20 M116 70 L138 20 M152 70 L174 20" stroke="currentColor" stroke-opacity=".35" stroke-width="7" stroke-linecap="round"/><path d="M28 84 H190" stroke="currentColor" stroke-width="1.4"/><text x="210" y="40" font-family="IBM Plex Mono, monospace" font-size="15" fill="currentColor">k = 27,1 N/mm</text><text x="210" y="64" font-family="IBM Plex Mono, monospace" font-size="15" fill="currentColor">→ WhatsApp</text></svg>
+        <h3>Identificador de Molas</h3>
+        <p>Para o site. O cliente escolhe o tipo, mede com paquímetro seguindo o desenho, vê a ficha calculada e manda o pedido pronto para o WhatsApp da Jardmolas.</p>
+        <span class="abrir">Abrir o Identificador</span>
+      </a>
+      <a class="cartao" href="caderno-de-molas.html">
+        <svg viewBox="0 0 320 90" aria-hidden="true"><rect x="20" y="10" width="120" height="74" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="38" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600" fill="currentColor">JM-SMA-014</text><path d="M32 52 H124 M32 64 H104" stroke="currentColor" stroke-width="2" stroke-opacity=".5"/><rect x="160" y="18" width="34" height="18" rx="3" fill="#FDE7E4" stroke="#B42318"/><text x="171" y="31" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#B42318">A</text><text x="204" y="31" font-family="IBM Plex Mono, monospace" font-size="13" fill="currentColor">válvula PSV</text><text x="160" y="62" font-family="IBM Plex Mono, monospace" font-size="13" fill="currentColor">estoque mín. 2</text></svg>
+        <h3>Caderno de Molas</h3>
+        <p>Para o técnico, dentro da usina e sem internet. Cadastra cada mola com fotos e medidas, gera o código JM e monta o caderno em PDF, a planilha e o backup.</p>
+        <span class="abrir">Abrir o Caderno de Molas</span>
+      </a>
+    </div>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">Como vamos medir</span><h2>Metas dos primeiros 90 dias</h2><p>Ponto de partida. Ajustamos quando tivermos os números de venda de 2026.</p></div>
+    <div class="tab"><table>
+      <thead><tr><th>Indicador</th><th>Meta</th><th>Onde se mede</th></tr></thead>
+      <tbody>
+        <tr><td>Usinas contatadas</td><td class="num">40</td><td>Funil da prospecção</td></tr>
+        <tr><td>Cadernos de Molas entregues</td><td class="num">8 a 12</td><td>App e e-mails de entrega</td></tr>
+        <tr><td>Molas com código JM</td><td class="num">300+</td><td>Soma dos levantamentos</td></tr>
+        <tr><td>Contratos de Estoque Garantido</td><td class="num">2 a 3</td><td>Propostas assinadas</td></tr>
+        <tr><td>Pedidos pelo Identificador</td><td class="num">contar desde a semana 1</td><td>Mensagens no WhatsApp</td></tr>
+        <tr><td>Primeira resposta no WhatsApp</td><td class="num">&lt; 5 min</td><td>WhatsApp Business</td></tr>
+        <tr><td>Revendas com expositor</td><td class="num">2 pilotos</td><td>Visitas</td></tr>
+      </tbody>
+    </table></div>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">O kit entregue</span><h2>O que já está pronto</h2></div>
+    <div class="kit">
+      <div class="pasta"><code>00 Diagnóstico e plano</code><p>Diagnóstico, plano de 90 dias semana a semana e a lista de perguntas.</p></div>
+      <div class="pasta"><code>01 Caderno de Molas</code><p>App, oferta, roteiro da visita com segurança, abordagem por cargo, objeções, Estoque Garantido, entrega e WhatsApp.</p></div>
+      <div class="pasta"><code>02 Identificador</code><p>A página pronta e o passo a passo para o site, com medição de origem dos pedidos.</p></div>
+      <div class="pasta"><code>03 Conteúdo</code><p>Estratégia, perfil, 15 Reels, 6 carrosséis, stories, LinkedIn, calendário e guia de gravação.</p></div>
+      <div class="pasta"><code>04 Mercado e alvos</code><p>56 usinas com grupo, distância e quem procurar; fabricantes, revendas, feiras e concorrentes.</p></div>
+      <div class="pasta"><code>05 SEO e site</code><p>Diagnóstico do site, máquinas e palavras-chave, 8 páginas prontas, 12 pautas, Google e Ads.</p></div>
+      <div class="pasta"><code>06 Revenda, kits e feiras</code><p>Programa de revenda com expositor, kits pré-safra com troca de dedos e roteiro de feira.</p></div>
+      <div class="pasta"><code>07 Skills</code><p>Quatro assistentes no Claude para a equipe: orçamento técnico, Caderno da usina, prospecção e conteúdo.</p></div>
+    </div>
+  </div></section>
+
+  <section class="bloco"><div class="in">
+    <div class="tit"><span class="eyebrow">Para começar</span><h2>O que precisamos de vocês esta semana</h2></div>
+    <ol class="perg">
+      <li><span>Quem vai às usinas, e se essa pessoa já tem os documentos que as usinas pedem de terceiros (ASO, ficha de EPI, treinamentos de NR).</span></li>
+      <li><span>Quantas visitas por semana a equipe aguenta de dezembro a março, e até que distância.</span></li>
+      <li><span>Quais usinas já compram da Jardmolas e quem é o contato em cada uma.</span></li>
+      <li><span>Se a Jardmolas topa guardar estoque reservado para um cliente, até que valor, e que prazo de entrega dá para prometer.</span></li>
+      <li><span>Qual WhatsApp recebe os orçamentos e quem responde.</span></li>
+      <li><span>Quem cuida do site e quem tem a senha do Instagram, do Google e do LinkedIn.</span></li>
+      <li><span>Para quais marcas e modelos de máquina a Jardmolas já fabrica mola de reposição.</span></li>
+    </ol>
+    <div class="nao"><b>O que fica de fora destes 90 dias</b><span>Loja virtual e marketplace, muitos posts por dia para compensar, e qualquer promessa de prazo ou garantia que a fábrica não confirmou por escrito.</span></div>
+  </div></section>
+</main>
+
+<footer><div class="in">Proposta preparada para a Jardmolas, Jardinópolis-SP. Números de usinas e distâncias são estimativas da pesquisa de 09/11/2026, com as fontes no kit. As ferramentas são protótipos para aprovação.</div></footer>
