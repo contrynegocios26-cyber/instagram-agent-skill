@@ -302,6 +302,7 @@ main{max-width:1100px;margin:0 auto;padding-block:18px 110px}
       <div class="campos">
         <div class="campo"><label for="fMaterial">Material</label><select id="fMaterial"><option value="">Não identificado</option><option>Aço carbono (DIN 17223)</option><option>SAE 1070</option><option>SAE 5160</option><option>SAE 6150</option><option>SAE 9254 (cromo-silício)</option><option>Inox</option></select></div>
         <div class="campo"><label for="fAcab">Acabamento</label><select id="fAcab"><option value="">Não identificado</option><option>Sem acabamento / oleada</option><option>Pintada</option><option>Zincada</option><option>Fosfatizada</option></select></div>
+        <div class="campo"><label for="fSentido">Sentido do enrolamento</label><select id="fSentido"><option value="">Não identificado</option><option value="direita">À direita</option><option value="esquerda">À esquerda</option></select></div>
       </div>
     </div>
     <div class="bloco">
@@ -310,12 +311,15 @@ main{max-width:1100px;margin:0 auto;padding-block:18px 110px}
         <div class="campo"><label for="fQtd">Peças instaladas</label><input class="n" id="fQtd" type="text" inputmode="numeric" placeholder="Ex.: 4"></div>
         <div class="campo"><label for="fTrocas">Trocas por ano (aprox.)</label><input class="n" id="fTrocas" type="text" inputmode="numeric" placeholder="Ex.: 2"></div>
         <div class="campo"><label for="fUltima">Última troca</label><input id="fUltima" type="text" placeholder="Ex.: entressafra 2025"></div>
+        <div class="campo"><label for="fReserva">Reserva no almoxarifado</label><input class="n" id="fReserva" type="text" inputmode="numeric" placeholder="Ex.: 0"></div>
       </div>
       <div class="rot">Estado agora</div>
       <div class="seg" id="fEstado" role="group" aria-label="Estado"></div>
       <div class="rot">Criticidade</div>
       <div class="seg crit-seg" id="fCrit" role="group" aria-label="Criticidade"></div>
       <div class="ajuda" id="fCritAjuda"></div>
+      <div class="rot">A usina aceita mola não original nesta aplicação?</div>
+      <div class="seg" id="fOriginal" role="group" aria-label="Aceita mola não original"></div>
       <div class="campos">
         <div class="campo"><label for="fEstoque">Estoque mínimo sugerido</label><input class="n" id="fEstoque" type="text" inputmode="numeric"><span class="ajuda" id="fEstoqueAjuda">Calculado pela criticidade. Pode mudar.</span></div>
       </div>
@@ -369,6 +373,7 @@ const CAMPOS = {
   pontas:{rot:'Pontas',sel:[['fechadas_esmerilhadas','Fechadas e lixadas'],['fechadas','Fechadas sem lixar'],['abertas','Abertas'],['abertas_esmerilhadas','Abertas e lixadas']]}
 };
 const ESTADOS = [['ok','Boa'],['desgaste','Desgaste'],['quebrada','Quebrada'],['faltando','Faltando']];
+const ORIGINAL = [['sim','Sim'],['nao','Não, só original'],['','Não sei']];
 const CRITS = [['A','A · para a produção'],['B','B · tem reserva'],['C','C · não para']];
 const CRIT_AJUDA = {A:'Se quebrar, para moagem, caldeira, geração ou a frente de colheita. Não há reserva instalada.',B:'Para um equipamento que tem reserva, ou dá para contornar por algumas horas.',C:'Não para a produção. Troca na próxima parada.'};
 
@@ -434,9 +439,9 @@ function exemplo(){
   const base=(o)=>Object.assign({id:uid(), material:'', acab:'', fotos:[], obs:'', ultima:'', trocas:NaN}, o);
   l.molas=[
     base({seq:1, area:'Extração (moenda ou difusor)', equip:'Linha de caldo misto', tag:'VR-101', funcao:'Válvula de retenção dupla portinhola', tipo:'torcao', d:3.5, De:22, Nb:5, L1:45, L2:45, qtd:2, estado:'desgaste', crit:'A', estoque:2, trocas:1, ultima:'entressafra 2025', obs:'Mecânico relata batida da portinhola. Mola com perna marcada.'}),
-    base({seq:2, area:'Caldeiras e vapor', equip:'Caldeira 2', tag:'PSV-201', funcao:'Válvula de segurança', tipo:'compressao', d:12, De:80, L0:180, Nt:8, pontas:'fechadas_esmerilhadas', qtd:2, estado:'ok', crit:'A', estoque:2, material:'SAE 9254 (cromo-silício)', obs:'Troca só com a válvula calibrada. Pedir laudo do lote.'}),
+    base({seq:2, area:'Caldeiras e vapor', equip:'Caldeira 2', tag:'PSV-201', funcao:'Válvula de segurança', tipo:'compressao', d:12, De:80, L0:180, Nt:8, pontas:'fechadas_esmerilhadas', sentido:'direita', qtd:2, reserva:0, original:'nao', estado:'ok', crit:'A', estoque:2, material:'SAE 9254 (cromo-silício)', obs:'Troca só com a válvula calibrada. Pedir laudo do lote.'}),
     base({seq:3, area:'Fábrica de açúcar', equip:'Centrífuga 3', tag:'AT-310', funcao:'Atuador pneumático', tipo:'compressao', d:5, De:60, L0:140, Nt:9, pontas:'fechadas_esmerilhadas', qtd:4, estado:'ok', crit:'B', estoque:1}),
-    base({seq:4, area:'Tratamento de caldo', equip:'Peneira de caldo 1', tag:'PV-02', funcao:'Peneira vibratória', tipo:'compressao', d:16, De:110, L0:200, Nt:7, pontas:'fechadas_esmerilhadas', qtd:8, estado:'quebrada', crit:'A', estoque:4, trocas:2, obs:'Duas molas quebradas no mesmo canto. Trocar o jogo todo para não desbalancear.'}),
+    base({seq:4, area:'Tratamento de caldo', equip:'Peneira de caldo 1', tag:'PV-02', funcao:'Peneira vibratória', tipo:'compressao', d:16, De:110, L0:200, Nt:7, pontas:'fechadas_esmerilhadas', qtd:8, reserva:2, original:'sim', estado:'quebrada', crit:'A', estoque:4, trocas:2, obs:'Duas molas quebradas no mesmo canto. Trocar o jogo todo para não desbalancear.'}),
     base({seq:5, area:'Oficina e frota (carretas, transbordos)', equip:'Carretas canavieiras', tag:'Frota 400', funcao:'Cabeçalho de carreta', tipo:'compressao', d:14, De:95, L0:260, Nt:10, pontas:'fechadas', qtd:12, estado:'desgaste', crit:'B', estoque:3}),
     base({seq:6, area:'Implementos agrícolas', equip:'Enleiradores de palha', tag:'Frente 2', funcao:'Dedo de enleirador', tipo:'dedo', d:9.5, De:60, Nb:2, L1:550, qtd:160, estado:'desgaste', crit:'B', estoque:40, trocas:1, obs:'Trocar antes do início da safra.'})
   ];
@@ -464,6 +469,7 @@ function montarFixos(){
   $('fTipo').innerHTML = Object.keys(TIPOS).map(k=>`<button type="button" data-v="${k}" aria-pressed="false">${TIPOS[k].nome}</button>`).join('');
   $('fEstado').innerHTML = ESTADOS.map(e=>`<button type="button" data-v="${e[0]}" aria-pressed="false">${e[1]}</button>`).join('');
   $('fCrit').innerHTML = CRITS.map(c=>`<button type="button" data-v="${c[0]}" aria-pressed="false">${c[1]}</button>`).join('');
+  $('fOriginal').innerHTML = ORIGINAL.map(o=>`<button type="button" data-v="${o[0]}" aria-pressed="false">${o[1]}</button>`).join('');
   $('filtros').innerHTML = [['todas','Todas'],['A','Críticas A'],['B','B'],['C','C'],['trocar','Trocar agora']].map(f=>`<button type="button" class="chip" data-f="${f[0]}" aria-pressed="${f[0]===filtro}">${f[1]}</button>`).join('');
 }
 
@@ -556,9 +562,9 @@ function renderCaderno(l){
         <div class="fd-col"><dl>
           <dt>Função</dt><dd>${esc(m.funcao||'')}</dd><dt>Área</dt><dd>${esc(m.area||'')}</dd><dt>Equipamento</dt><dd>${esc(m.equip||'')}</dd><dt>TAG / local</dt><dd>${esc(m.tag||'')}</dd>
           <dt>Instaladas</dt><dd class="m">${ok(m.qtd)?fmt(m.qtd,0):'–'}</dd><dt>Estoque mínimo</dt><dd class="m">${isFinite(m.estoque)?fmt(m.estoque,0):'–'}</dd><dt>Estado</dt><dd>${esc(est)}</dd>
-          ${m.ultima?`<dt>Última troca</dt><dd>${esc(m.ultima)}</dd>`:''}${ok(m.trocas)?`<dt>Trocas por ano</dt><dd class="m">${fmt(m.trocas,1)}</dd>`:''}
+          ${isFinite(m.reserva)?`<dt>No almoxarifado</dt><dd class="m">${fmt(m.reserva,0)}</dd>`:''}${m.original?`<dt>Aceita não original</dt><dd>${m.original==='sim'?'Sim':'Não, só original'}</dd>`:''}${m.ultima?`<dt>Última troca</dt><dd>${esc(m.ultima)}</dd>`:''}${ok(m.trocas)?`<dt>Trocas por ano</dt><dd class="m">${fmt(m.trocas,1)}</dd>`:''}
         </dl>${(m.fotos&&m.fotos.length)?`<div class="fd-fotos">${m.fotos.map(f=>`<img src="${f}" alt="Foto da mola ${codigo(l,m)}">`).join('')}</div>`:`<div class="fd-sem-foto">${svgMola(m)}</div>`}</div>
-        <div class="fd-col"><dl><dt>Tipo</dt><dd>${esc(tipo.nome)}</dd>${meds}${m.material?`<dt>Material</dt><dd>${esc(m.material)}</dd>`:''}${m.acab?`<dt>Acabamento</dt><dd>${esc(m.acab)}</dd>`:''}</dl>
+        <div class="fd-col"><dl><dt>Tipo</dt><dd>${esc(tipo.nome)}</dd>${meds}${m.material?`<dt>Material</dt><dd>${esc(m.material)}</dd>`:''}${m.acab?`<dt>Acabamento</dt><dd>${esc(m.acab)}</dd>`:''}${m.sentido?`<dt>Enrolamento</dt><dd>${m.sentido==='direita'?'À direita':'À esquerda'}</dd>`:''}</dl>
           <p style="margin:10px 0 0;font:500 12px/1.5 var(--font-data)">${esc(textoCalc(m))}</p>
           ${m.obs?`<p style="margin:10px 0 0;font-size:13px"><b>Obs.:</b> ${esc(m.obs)}</p>`:''}
         </div>
@@ -588,12 +594,13 @@ function abrirFicha(id){
   $('sheetTit').textContent = m ? (m.funcao||'Mola') : 'Nova mola';
   $('sheetCod').textContent = codigo(l, rascunho);
   $('fArea').value = rascunho.area||AREAS[0]; $('fEquip').value=rascunho.equip||''; $('fTag').value=rascunho.tag||''; $('fFuncao').value=rascunho.funcao||'';
-  $('fMaterial').value=rascunho.material||''; $('fAcab').value=rascunho.acab||'';
+  $('fMaterial').value=rascunho.material||''; $('fAcab').value=rascunho.acab||''; $('fSentido').value=rascunho.sentido||'';
+  $('fReserva').value=isFinite(rascunho.reserva)?String(rascunho.reserva):'';
   $('fQtd').value=isFinite(rascunho.qtd)?String(rascunho.qtd).replace('.',','):''; $('fTrocas').value=isFinite(rascunho.trocas)?String(rascunho.trocas).replace('.',','):''; $('fUltima').value=rascunho.ultima||'';
   $('fEstoque').value=isFinite(rascunho.estoque)?String(rascunho.estoque):''; $('fObs').value=rascunho.obs||'';
   $('acoesFicha').hidden = !m;
   $('btnExcluir').classList.remove('confirmar'); $('btnExcluir').textContent='Excluir mola';
-  marcarSeg('fTipo', rascunho.tipo); marcarSeg('fEstado', rascunho.estado); marcarSeg('fCrit', rascunho.crit);
+  marcarSeg('fTipo', rascunho.tipo); marcarSeg('fEstado', rascunho.estado); marcarSeg('fCrit', rascunho.crit); marcarSeg('fOriginal', rascunho.original||'');
   $('fCritAjuda').textContent = CRIT_AJUDA[rascunho.crit]||'';
   montarMedidasFicha(); montarFotos(); atualizarEstoque();
   $('sheet').hidden=false; document.body.style.overflow='hidden';
@@ -612,7 +619,7 @@ function montarMedidasFicha(){
 }
 function lerFicha(){
   rascunho.area=$('fArea').value; rascunho.equip=$('fEquip').value.trim(); rascunho.tag=$('fTag').value.trim(); rascunho.funcao=$('fFuncao').value.trim();
-  rascunho.material=$('fMaterial').value; rascunho.acab=$('fAcab').value;
+  rascunho.material=$('fMaterial').value; rascunho.acab=$('fAcab').value; rascunho.sentido=$('fSentido').value; rascunho.reserva=num($('fReserva').value);
   rascunho.qtd=num($('fQtd').value); rascunho.trocas=num($('fTrocas').value); rascunho.ultima=$('fUltima').value.trim(); rascunho.obs=$('fObs').value.trim();
   $('fMedidas').querySelectorAll('[data-m]').forEach(el=>{ const c=el.dataset.m; rascunho[c] = CAMPOS[c].sel ? el.value : num(el.value); });
 }
@@ -646,10 +653,10 @@ function baixar(nome, conteudo, tipo){
   catch(e){ toast('Este navegador bloqueou o download. Use Copiar.'); }
 }
 function csv(l){
-  const cols=['codigo','area','equipamento','tag','funcao','tipo','d_mm','De_mm','L0_mm','Li_mm','espiras_totais','espiras_corpo','perna1_mm','perna2_mm','pontas','material','acabamento','instaladas','estado','criticidade','estoque_minimo','trocas_ano','ultima_troca','constante','unidade_constante','obs'];
+  const cols=['codigo','area','equipamento','tag','funcao','tipo','d_mm','De_mm','L0_mm','Li_mm','espiras_totais','espiras_corpo','perna1_mm','perna2_mm','pontas','material','acabamento','sentido','instaladas','reserva_almoxarifado','aceita_nao_original','estado','criticidade','estoque_minimo','trocas_ano','ultima_troca','constante','unidade_constante','obs'];
   const q=v=>{ const s=v==null||(typeof v==='number'&&!isFinite(v))?'':String(v); return /[;"\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
   const n=v=>isFinite(v)?String(v).replace('.',','):'';
-  const linhas=l.molas.slice().sort((a,b)=>a.seq-b.seq).map(m=>{ const r=calcular(m)||{}; return [codigo(l,m),m.area,m.equip,m.tag,m.funcao,(TIPOS[m.tipo]||TIPOS.outra).nome,n(m.d),n(m.De),n(m.L0),n(m.Li),n(m.Nt),n(m.Nb),n(m.L1),n(m.L2),m.pontas,m.material,m.acab,n(m.qtd),m.estado,m.crit,n(m.estoque),n(m.trocas),m.ultima,r.k?n(Math.round(r.k*100)/100):'',r.un||'',m.obs].map(q).join(';'); });
+  const linhas=l.molas.slice().sort((a,b)=>a.seq-b.seq).map(m=>{ const r=calcular(m)||{}; return [codigo(l,m),m.area,m.equip,m.tag,m.funcao,(TIPOS[m.tipo]||TIPOS.outra).nome,n(m.d),n(m.De),n(m.L0),n(m.Li),n(m.Nt),n(m.Nb),n(m.L1),n(m.L2),m.pontas,m.material,m.acab,m.sentido,n(m.qtd),n(m.reserva),m.original,m.estado,m.crit,n(m.estoque),n(m.trocas),m.ultima,r.k?n(Math.round(r.k*100)/100):'',r.un||'',m.obs].map(q).join(';'); });
   return '﻿'+cols.join(';')+'\n'+linhas.join('\n');
 }
 const nomeArq = l => `caderno-${(l.sigla||'usina').toLowerCase()}-${(l.data||hoje())}`;
@@ -688,6 +695,7 @@ $('fMedidas').addEventListener('change', ()=>{ lerFicha(); $('fCalc').textConten
 $('fMaterial').addEventListener('change', ()=>{ lerFicha(); $('fCalc').textContent=textoCalc(rascunho); });
 $('fQtd').addEventListener('input', ()=>{ rascunho.qtd=num($('fQtd').value); atualizarEstoque(); });
 $('fEstoque').addEventListener('input', ()=>{ const v=num($('fEstoque').value); rascunho.estoqueManual = isFinite(v); rascunho.estoque=v; if(!isFinite(v)){ rascunho.estoqueManual=false; } atualizarEstoque(); });
+$('fOriginal').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; rascunho.original=b.dataset.v; marcarSeg('fOriginal', rascunho.original); });
 $('fFotos').addEventListener('click', e=>{ const b=e.target.closest('[data-rm]'); if(!b) return; rascunho.fotos.splice(Number(b.dataset.rm),1); montarFotos(); });
 $('btnDuplicar').addEventListener('click', async ()=>{
   const l=lev(); if(!l||!editando) return; lerFicha();

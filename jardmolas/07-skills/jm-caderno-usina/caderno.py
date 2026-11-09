@@ -120,8 +120,8 @@ def relatorio(lev, precos):
              "Prazo de entrega, reajuste e vigência: ver a proposta comercial (01-caderno-de-molas/estoque-garantido.md).")
     L.append("")
     tem_preco = bool(precos)
-    cab = "| Código | Função | Tipo | Crit. | Instaladas | Estoque mín. |"
-    sep = "| --- | --- | --- | --- | ---: | ---: |"
+    cab = "| Código | Função | Tipo | Crit. | Instaladas | Na usina | Estoque mín. |"
+    sep = "| --- | --- | --- | --- | ---: | ---: | ---: |"
     if tem_preco:
         cab += " Preço unit. (R$) | Valor do estoque (R$) |"
         sep += " ---: | ---: |"
@@ -134,9 +134,9 @@ def relatorio(lev, precos):
         if not est:
             continue
         cod = codigo(lev, m)
-        linha = "| {} | {} | {} | {} | {} | {} |".format(
+        linha = "| {} | {} | {} | {} | {} | {} | {} |".format(
             cod, m.get("funcao") or "", TIPOS.get(m.get("tipo"), ""), m.get("crit") or "",
-            br(num(m.get("qtd")), 0), br(est, 0))
+            br(num(m.get("qtd")), 0), br(num(m.get("reserva")), 0), br(est, 0))
         if tem_preco:
             pu = precos.get(cod)
             if pu is None:
@@ -152,6 +152,10 @@ def relatorio(lev, precos):
         if sem_preco:
             L.append("")
             L.append("Sem preço na tabela: " + ", ".join(sem_preco))
+    so_original = [codigo(lev, m) for m in ms if m.get("original") == "nao"]
+    if so_original:
+        L.append("")
+        L.append("A usina só aceita peça original em: " + ", ".join(so_original) + ". Para essas, oferecer laudo do lote e a ficha técnica para homologação antes de cotar.")
     L.append("")
     L.append("## Próximos passos")
     L.append("")

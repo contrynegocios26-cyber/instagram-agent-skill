@@ -31,6 +31,7 @@ Legenda de responsável: **JM** = equipe da Jardmolas · **AG** = agência ·
 | Começar o calendário: 1 post por dia no máximo, Reels primeiro | AG | `03-conteudo/calendario-30-dias.md` |
 | Perfil da Empresa no Google: categorias, produtos, pedido de avaliação aos clientes | AG + JM | `05-seo-e-site/google-perfil-e-ads.md` |
 | Corrigir as 3 falhas do site que mais travam orçamento | WEB | `05-seo-e-site/diagnostico-do-site.md` |
+| Lançar o kit do recolhedor de amendoim (a colheita começa em fevereiro; a venda é agora) | JM + AG | `06-revenda-kits-feiras/kit-pre-safra.md` |
 
 ## Semanas 4 a 8 · 07/12/2026 a 10/01/2027 · entressafra a pleno
 
@@ -41,7 +42,7 @@ Legenda de responsável: **JM** = equipe da Jardmolas · **AG** = agência ·
 | Proposta de Estoque Garantido para as molas A de cada usina visitada | JM + AG | `estoque-garantido.md`, `caderno.py` |
 | Publicar as 2 primeiras páginas por máquina e 2 posts do blog | WEB + AG | `05-seo-e-site/paginas/`, `blog-12-pautas.md` |
 | Campanha de Rede de Pesquisa do Google (se aprovada) | AG | `google-perfil-e-ads.md` |
-| Kit pré-safra de feno e de amendoim: montar, precificar, divulgar para revendas e clientes | JM + AG | `06-revenda-kits-feiras/kit-pre-safra.md` |
+| Kit de feno e reforço do kit de amendoim com revendas e cooperativas | JM + AG | `06-revenda-kits-feiras/kit-pre-safra.md` |
 
 Entre o Natal e o Ano-Novo muitas usinas e revendas param. Use a semana para
 consolidar os cadernos e preparar janeiro.
