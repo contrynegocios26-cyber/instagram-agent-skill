@@ -57,16 +57,16 @@ section.bloco + section.bloco{border-top:1px solid var(--line)}
 
 /* calendário */
 .cal-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
-.cal{min-width:760px;display:grid;grid-template-columns:150px repeat(12,1fr);row-gap:8px;font-size:13px}
+.cal{min-width:900px;display:grid;grid-template-columns:140px repeat(12,1fr);row-gap:8px;font-size:13px}
 .cal .mes{font:600 12px/1 var(--font-data);color:var(--muted);text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.cal .rot{font-weight:600;align-self:center;padding-right:10px}
+.cal .rot{grid-column:1;font-weight:600;align-self:center;padding-right:10px}
 .cal .faixa{height:26px;border-radius:5px;align-self:center;display:flex;align-items:center;padding:0 8px;font:600 11.5px/1 var(--font-data);white-space:nowrap;overflow:hidden}
 .f-entre{background:var(--band-entre);color:#1E1A00}
 .f-safra{background:var(--band-safra);color:#06210D}
 .f-feno{background:var(--band-feno);color:#0B2233}
 .f-amend{background:var(--band-amendoim);color:#2A1A05}
 .f-plano{background:var(--band-plano);color:var(--bg)}
-.f-feira{background:transparent;border:2px solid var(--ink);color:var(--ink);justify-content:center}
+.f-feira{background:transparent;border:2px solid var(--ink);color:var(--ink);justify-content:center;flex-direction:column;height:auto!important;padding:4px 2px!important;white-space:normal!important;text-align:center;line-height:1.25!important}
 .cal .hoje{grid-row:1/-1;border-left:2px dashed var(--brand-2);position:relative;pointer-events:none}
 .cal-nota{font-size:13px;color:var(--muted);margin:10px 0 0}
 
@@ -141,7 +141,7 @@ footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px 
 <main>
   <section class="bloco"><div class="in">
     <div class="tit"><span class="eyebrow">O calendário que manda</span><h2>Cada linha da Jardmolas vende numa época</h2><p>A usina compra mola na parada de manutenção. O enleirador de palha volta a trabalhar com a safra. Feno e amendoim têm a sua colheita. O plano de 90 dias pega a entressafra inteira.</p></div>
-    <div class="cal-wrap" role="img" aria-label="Calendário de novembro de 2026 a outubro de 2027: entressafra de dezembro a março, safra de cana de abril a novembro, colheita de feno concentrada de outubro a março, colheita do amendoim de fevereiro a abril, Agrishow no fim de abril, Fenasucro em agosto, plano de 90 dias de meados de novembro a meados de fevereiro.">
+    <div class="cal-wrap" role="img" aria-label="Calendário de novembro de 2026 a outubro de 2027: entressafra de dezembro a março, safra de cana de abril a novembro, colheita de feno concentrada de outubro a março, colheita do amendoim de fevereiro a abril, Agrishow de 26 a 30 de abril, Fenasucro de 10 a 13 de agosto, plano de 90 dias de meados de novembro a meados de fevereiro.">
       <div class="cal" id="cal">
         <div></div>
         <div class="mes">nov</div><div class="mes">dez</div><div class="mes">jan</div><div class="mes">fev</div><div class="mes">mar</div><div class="mes">abr</div><div class="mes">mai</div><div class="mes">jun</div><div class="mes">jul</div><div class="mes">ago</div><div class="mes">set</div><div class="mes">out</div>
@@ -150,7 +150,7 @@ footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px 
         <div class="faixa f-plano" style="grid-column:2 / 6;margin-left:12.5%;margin-right:12.5%">16/11 a 14/02</div>
 
         <div class="rot">Usinas</div>
-        <div class="faixa f-safra" style="grid-column:2 / 3">fim da safra</div>
+        <div class="faixa f-safra" style="grid-column:2 / 3">safra</div>
         <div class="faixa f-entre" style="grid-column:3 / 7">entressafra: manutenção e compra</div>
         <div class="faixa f-safra" style="grid-column:7 / 14">safra 2027/28</div>
 
@@ -167,11 +167,11 @@ footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px 
         <div class="faixa f-amend" style="grid-column:5 / 8">colheita</div>
 
         <div class="rot">Feiras</div>
-        <div class="faixa f-feira" style="grid-column:7 / 8" id="fAgrishow">Agrishow</div>
-        <div class="faixa f-feira" style="grid-column:11 / 12" id="fFenasucro">Fenasucro</div>
+        <div class="faixa f-feira" style="grid-column:7 / 8" id="fAgrishow">Agrishow<br>26–30/04</div>
+        <div class="faixa f-feira" style="grid-column:11 / 12" id="fFenasucro">Fenasucro<br>10–13/08</div>
       </div>
     </div>
-    <p class="cal-nota" id="calNota">Épocas típicas da região de Ribeirão Preto; cada usina e cada produtor tem a sua data. Datas das feiras em <code>04-mercado-e-alvos/feiras-e-eventos-2027.md</code>.</p>
+    <p class="cal-nota" id="calNota">Épocas típicas da região de Ribeirão Preto; cada usina e cada produtor tem a sua data. Agrishow (Ribeirão Preto) de 26 a 30/04/2027, pelo site oficial; Fenasucro &amp; Agrocana (Sertãozinho) de 10 a 13/08/2027. Recomendação: expositor na Fenasucro, visitante com reuniões marcadas na Agrishow.</p>
   </div></section>
 
   <section class="bloco"><div class="in">

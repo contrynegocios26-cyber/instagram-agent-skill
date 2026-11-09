@@ -68,8 +68,9 @@ Um balcão de oficina, não uma vitrine. O visitante tem que entender em 5 segun
 
 1. **Balcão de medição** (frente do estande)
    - Bancada com paquímetros, micrômetro, régua e boa luz.
-   - Tablet com o **Identificador de Molas** aberto, preso ao balcão.
-   - O técnico mede a mola do visitante junto com ele, preenche o Identificador e o orçamento vai para o WhatsApp do visitante [confirmar com `02-identificador/` se o Identificador já envia para o cliente ou só para a Jardmolas].
+   - Tablet com o **Identificador de Molas** aberto, preso ao balcão, para mostrar como funciona.
+   - O pedido, porém, sai **do celular do visitante**: o Identificador abre o WhatsApp da Jardmolas com o pedido pronto (ver `02-identificador/instalacao-no-site.md`). Então o visitante aponta o celular para o QR code do balcão, o técnico mede a mola junto com ele e preenche no celular dele, e o visitante envia. Assim o contato dele já chega no WhatsApp comercial, com as medidas, e o orçamento volta para o mesmo número.
+   - Para quem não quiser usar o próprio celular: preencher o formulário de contato (abaixo) e mandar o orçamento depois.
    - Para quem não trouxe mola: "Qual máquina você tem? Que mola mais quebra?" e registro no formulário.
 2. **Mesa do Caderno de Molas** (Fenasucro) ou **parede de kits** (Agrishow)
    - Fenasucro: caderno de exemplo impresso, planilha na tela, etiquetas de código. Agenda aberta para marcar a visita de entressafra.
@@ -97,6 +98,7 @@ Um balcão de oficina, não uma vitrine. O visitante tem que entender em 5 segun
 | Técnico de medição | [confirmar] | Mede, preenche o Identificador, explica material e laudo |
 | Vendedor | [confirmar] | Aborda, qualifica, agenda visita, registra o lead |
 | Responsável pelo estande | 1 | Agenda de reuniões marcadas, controle dos leads do dia, reposição de material |
+| Atendimento no escritório | 1 | Responde o WhatsApp comercial durante a feira: os pedidos feitos pelo Identificador no estande chegam lá e o orçamento tem que sair no mesmo dia |
 
 Turnos de no máximo [confirmar] horas. Ninguém almoça ou mexe no celular no balcão.
 

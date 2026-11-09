@@ -12,6 +12,7 @@
 5. **Nunca prometer prazo ou preço que não esteja confirmado** pela produção.
 6. **Etiquetar a conversa** a cada mudança de etapa (ver etiquetas no fim).
 7. **Registrar** cada orçamento na planilha ou CRM: cliente, código, valor, data, etapa.
+8. **Link do Identificador de Molas:** https://jardmolas.com.br/identificador-de-molas é o endereço sugerido em `02-identificador/instalacao-no-site.md`. [Confirmar o endereço final depois de publicado, antes de configurar as respostas rápidas.] O Identificador abre o WhatsApp da Jardmolas com o pedido pronto; o cliente anexa a foto na conversa.
 
 ---
 
@@ -21,7 +22,7 @@
 > Olá! Aqui é a Jardmolas, fábrica de molas em Jardinópolis-SP. Já vou te atender. Se for mola quebrada, já pode mandar uma foto da mola com uma régua ou trena do lado e, se souber, a máquina e o modelo.
 
 **Mensagem de ausência** (fora do horário)
-> Olá! A Jardmolas atende de [horário: confirmar]. Sua mensagem fica registrada e respondemos logo na abertura. Para adiantar, mande foto da mola com régua do lado, as medidas que conseguir e a máquina. Se preferir, meça pelo Identificador de Molas: [link do Identificador: confirmar].
+> Olá! A Jardmolas atende de [horário: confirmar]. Sua mensagem fica registrada e respondemos logo na abertura. Para adiantar, mande foto da mola com régua do lado, as medidas que conseguir e a máquina. Se preferir, meça pelo Identificador de Molas: https://jardmolas.com.br/identificador-de-molas.
 
 ---
 
@@ -66,7 +67,7 @@
 > 9. **Máquina, marca e modelo** onde ela trabalha
 >
 > E uma foto da mola com uma régua ou trena do lado.
-> Se ficar mais fácil, faça pelo Identificador de Molas: [link: confirmar]. O orçamento chega aqui pronto.
+> Se ficar mais fácil, faça pelo Identificador de Molas: https://jardmolas.com.br/identificador-de-molas. O orçamento chega aqui pronto.
 
 ### 3.2 Dicas de medição (mandar se o cliente travar)
 
@@ -190,7 +191,7 @@ No WhatsApp Business, as respostas rápidas são chamadas digitando "/" na conve
 | /medidas | Lista completa de medidas (3.1) |
 | /dicas | Dicas de medição (3.2) |
 | /dedo | Pedido de dados para dedo (3.4) |
-| /identificador | "Se ficar mais fácil, meça pelo Identificador de Molas: [link]. O orçamento chega aqui pronto." |
+| /identificador | "Se ficar mais fácil, meça pelo Identificador de Molas: https://jardmolas.com.br/identificador-de-molas. O orçamento chega aqui pronto." |
 | /orcamento | Modelo de orçamento (item 4) |
 | /fup2 | Follow-up de 2 dias |
 | /fup7 | Follow-up de 7 dias |

@@ -214,6 +214,10 @@ Antes de fechar a proposta, comparar item a item:
 - Se o preço EG ficar **acima** do avulso, o argumento é disponibilidade em [24 a 48 h] e preço travado por 12 meses.
 - Se ficar **abaixo**, conferir se o consumo previsto é realista. Consumo superestimado pela usina derruba o giro e a margem real.
 
+### Ferramenta já existente
+
+O script `07-skills/jm-caderno-usina/caderno.py` (feito por outra pessoa do projeto) lê o backup do app de levantamento e uma tabela de preços e monta a tabela de estoque reservado com valores. Ele não calcula custo de carregar estoque nem margem: use a conta abaixo para definir o preço que vai na tabela de preços dele.
+
 ### Montar a planilha (Excel ou Google Planilhas)
 
 Colunas sugeridas e fórmulas para a linha 2 (parâmetros i, m, dias úteis e prazo de fabricação nas células P1, P2, P3, P4):

@@ -52,7 +52,7 @@ Cada usina tem a sua lista. A tabela abaixo é o que aparece com mais frequênci
 
 - [ ] Ler o que a usina contou no agendamento: áreas, equipamentos com problema, molas que quebraram.
 - [ ] Separar no sistema as molas da Jardmolas que já vendemos para essa usina (se houver histórico) para conferir em campo.
-- [ ] Testar o app de levantamento offline no celular: criar a usina, as áreas, fazer um registro de teste e apagar.
+- [ ] Testar o app de levantamento no celular **em modo avião** (instalação e uso: `instalacao-do-app.md`): criar a usina com a sigla, fazer um registro de teste e apagar.
 - [ ] Imprimir uma folha de papel de reserva com os campos do levantamento (se o celular falhar, nada se perde).
 
 ### 1.4 O que levar
@@ -139,12 +139,12 @@ Os campos são os mesmos que o Identificador de Molas pede, para o código ficar
 | Sobressalente | Existe no almoxarifado? Quantos? | |
 | Criticidade A, B ou C | Combinar com o mecânico (definição em `oferta.md`) | |
 
-**Padrão de foto (mínimo quatro por mola):**
-1. Mola inteira com a régua ou o paquímetro ao lado.
-2. Ponta da mola de perto.
+**Padrão de foto:** o app guarda até 3 fotos por mola, nesta ordem:
+1. Mola de lado, com a régua ou o paquímetro ao lado.
+2. Mola de frente, mostrando a ponta.
 3. Local de montagem (equipamento), sem pessoas no quadro.
-4. Plaqueta do equipamento ou TAG.
-5. (Se houver) a mola quebrada, mostrando onde quebrou.
+
+Com a câmera normal do celular (o app reduz as fotos), tirar também: a plaqueta do equipamento ou TAG, e a mola quebrada mostrando onde quebrou, se houver. Anotar na observação da mola o número dessas fotos.
 
 **Mola quebrada:** juntar os pedaços na bancada, medir arame e diâmetro externo, contar as espiras somando os pedaços. Se a usina deixar, levar a amostra com etiqueta (número provisório + TAG) e um recibo simples de retirada de amostra.
 
@@ -197,14 +197,15 @@ A ordem segue o caminho da cana. Em cada área, o mecânico que acompanha é a p
 
 ### 3.1 No mesmo dia ou no dia seguinte
 
-- [ ] Sincronizar o app e conferir: toda mola tem foto, medidas, TAG e criticidade? O que faltou vai numa lista de pendências para pedir ao PCM.
+- [ ] **No fim do dia, ainda na usina ou no carro:** no app, "Dados e backup", "Baixar backup desta usina", e mandar o arquivo `.json` para o escritório. O app não sincroniza sozinho; sem backup, celular perdido é levantamento perdido.
+- [ ] No escritório, importar o backup e conferir: toda mola tem foto, medidas, TAG e criticidade? O que faltou vai numa lista de pendências para pedir ao PCM.
 - [ ] Amostras para a bancada: medição completa e, se preciso, ensaio [confirmar quais ensaios a Jardmolas faz].
-- [ ] Atribuir os códigos Jardmolas. Antes de criar código novo, procurar se a mesma mola já existe na base (mesma geometria e material = mesmo código).
+- [ ] Conferir os códigos gerados pelo app (`JM-SIGLA-001`...) e procurar se cada mola já existe em outra usina (mesma geometria e material). Se a Jardmolas adotar o código interno de produção (`oferta.md`, regra do código), ligar os dois aqui.
 - [ ] Orçamento das molas de troca imediata no prazo prometido no fechamento.
 
 ### 3.2 Prazo do caderno
 
-- Caderno PDF, planilha e etiquetas: **[confirmar] dias úteis após a visita** (sugestão em `oferta.md`: até 10 dias úteis).
+- Caderno PDF, planilha e etiquetas: **[confirmar] dias úteis após a visita** (sugestão em `oferta.md`: reunião de entrega em até 7 dias após a visita; até 10 dias úteis se houver muitas amostras para a bancada).
 - Se o prazo vai estourar, avisar o gerente antes, com nova data. Nunca deixar ele cobrar.
 
 ### 3.3 Reunião de entrega

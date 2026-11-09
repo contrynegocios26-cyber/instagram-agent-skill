@@ -67,11 +67,14 @@ Isso precisa ser dito assim, sem asterisco. O que a Jardmolas espera em troca é
 
 ## Regra do código Jardmolas
 
-O código identifica **a mola** (geometria e material), não o lugar. Se duas usinas usam a mesma mola, as duas recebem o mesmo código. O lugar fica no campo local/TAG.
+**Como o app de levantamento gera hoje:** um código por usina, com a sigla dela e um número sequencial (`JM-SIGLA-001`, por exemplo `JM-SMA-001`). A mesma mola em vários lugares da mesma usina fica com o mesmo código; muda só a TAG (ver `instalacao-do-app.md`). É esse código que vai para o caderno, para as etiquetas e para o cadastro da usina.
 
-Por quê: assim o estoque de uma mola atende várias usinas, e o Estoque Garantido fica mais barato para todo mundo.
+**O que falta decidir:** a mesma mola (mesma geometria e material) pode aparecer em várias usinas, cada uma com o seu código `JM-SIGLA-...`. Para o estoque estratégico e para o Estoque Garantido, a Jardmolas precisa saber que `JM-SMA-001` e, digamos, `JM-USB-014` são a mesma mola. Duas saídas:
 
-Sugestão de formato: `JM-` + letra do tipo + número sequencial. Exemplos: `JM-C-00142` (compressão), `JM-T-00031` (tração), `JM-R-00008` (torção), `JM-D-00215` (dedo), `JM-E-00004` (especial). [Alinhar o formato com quem está construindo o app de levantamento e o gerador do caderno antes da primeira visita.]
+- **Opção 1 (recomendada):** manter o código por usina para o cliente e ter, na Jardmolas, um código interno de produção por mola (ex.: `C-00142`), ligado a todos os códigos de usina que usam essa mola. O cliente não vê o interno.
+- **Opção 2:** um código único por mola para todas as usinas. Mais simples para a produção, mas o cliente perde a leitura "esta é a mola 001 da minha usina".
+
+Por que importa: mola que serve a várias usinas pode ficar pronta na prateleira com pouco risco; mola que só uma usina usa precisa da regra de saldo do Estoque Garantido (`estoque-garantido.md`, item 8). [Decidir com quem está construindo o app e o gerador do caderno antes da primeira visita.]
 
 ## Criticidade (usada no caderno, na visita e no Estoque Garantido)
 
@@ -129,8 +132,8 @@ Pontue cada item com 0 ou 1. Aceitar com 5 pontos ou mais; com 3 ou 4, aceitar s
 | Entregável | Formato | Prazo |
 |---|---|---|
 | Resumo do dia (quantas molas, quantas A, quantas sem sobressalente) | Mensagem para o gerente no fim da visita | No mesmo dia |
-| Caderno de Molas | PDF (gerado pelo sistema em construção) | **[confirmar com a Jardmolas]** dias úteis após a visita. Sugestão: até 10 dias úteis |
-| Planilha de cadastro | XLSX e CSV | Junto com o caderno |
+| Caderno de Molas | PDF gerado pelo app (aba Caderno) | **[confirmar com a Jardmolas]**. Sugestão: reunião de entrega em até 7 dias após a visita, como propõe o roteiro do script `07-skills/jm-caderno-usina/`. Se houver muitas amostras para a bancada, até 10 dias úteis |
+| Planilha de cadastro | CSV gerado pelo app (abre no Excel) | Junto com o caderno |
 | Orçamento das molas para troca imediata | PDF ou WhatsApp, por código Jardmolas | Junto com o caderno, ou antes se houver urgência |
 | Etiquetas de código | Impressas, entregues na reunião | Na reunião de entrega |
 | Proposta de Estoque Garantido | PDF (`estoque-garantido.md`) | Na reunião de entrega ou até [confirmar] dias depois |
