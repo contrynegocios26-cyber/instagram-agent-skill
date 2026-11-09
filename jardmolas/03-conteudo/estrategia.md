@@ -39,8 +39,8 @@ Cada post entra em um pilar. Na mesma semana, nunca dois posts seguidos do mesmo
 
 **Por cima dos pilares, duas campanhas que já estão em andamento:**
 
-- **Caderno de Molas da Usina** (visita técnica gratuita na entressafra, dezembro a março): R13, R14, C3, C5, LinkedIn 1, 2, 3 e 10, mensagens de WhatsApp. É a prioridade de novembro e dezembro, porque a usina planeja a manutenção agora.
-- **Identificador de Molas** (o cliente mede, o orçamento chega pronto no WhatsApp): R11, R12, C1, palavra-chave MEDIDA. [confirmar com a Jardmolas: o Identificador já está no ar? Qual o endereço? Que campos ele pede?] Enquanto não estiver no ar, a palavra-chave MEDIDA entrega o guia em imagem e o link do WhatsApp.
+- **Caderno de Molas da Usina** (visita técnica gratuita na entressafra, dezembro a março): R13, R14, C3, C5, LinkedIn 1, 2, 3 e 10, mensagens de WhatsApp. É a prioridade de novembro e dezembro, porque a usina planeja a manutenção agora. O que o Caderno entrega (ficha por mola, PDF, planilha, código Jardmolas) segue a proposta da equipe comercial em `01-caderno-de-molas/oferta.md`; nenhuma peça que promete o Caderno sai antes de a Jardmolas aprovar essa oferta (semana de 16 a 22/11 no `00-diagnostico-e-plano/plano-90-dias.md`).
+- **Identificador de Molas** (o cliente mede, o orçamento chega pronto no WhatsApp): R11, R12, C1, palavra-chave MEDIDA. O protótipo está em `02-identificador/` e o endereço previsto é jardmolas.com.br/identificador-de-molas [confirmar quando subir]. Enquanto não estiver no ar, a palavra-chave MEDIDA entrega o guia em texto e o link do WhatsApp.
 
 **Lição da MP Marcenaria que vale aqui:** o único Reel que deu certo lá mostrou a equipe real trabalhando, com o som do lugar, sem texto bonito. Os pilares 1, 2 e 4 são exatamente isso. Desenho técnico, render e foto de catálogo ficam para carrossel e LinkedIn, nunca para abrir Reel.
 
@@ -82,7 +82,7 @@ Olhar toda segunda, 15 minutos, numa planilha simples. Não precisa de ferrament
 | **Salvamentos** | Mostra conteúdo que a pessoa vai usar de novo (medir, checklist) | Insights do post | Idem |
 | **Taxa de pulo nos 3 primeiros segundos (Reels)** | Na MP, 92% dos Reels perderam mais de 70% das pessoas no começo. É problema de gancho. | Insights do Reel, "Taxa de pulo" | Abaixo de 60% (o melhor Reel da MP ficou em 58%) |
 | **Toques no link e no botão do WhatsApp** | É a ponte entre o Instagram e a venda | Insights da conta, "Atividade do perfil" | Contar toda semana; comparar com o número-base da auditoria |
-| **Conversas no WhatsApp com origem no Instagram** | É o que a fábrica sente no bolso | WhatsApp Business: mensagens que chegam com o texto pronto "vim pelo Instagram" ou "comentei MOLA". O atendente marca a etiqueta "Instagram". | Contar toda semana |
+| **Conversas no WhatsApp com origem no Instagram** | É o que a fábrica sente no bolso | WhatsApp Business: mensagens que chegam com o texto pronto "vim pelo Instagram" ou "comentei MOLA". O atendente põe a etiqueta de origem ("Instagram MOLA", "Story" e as outras), junto com as etiquetas de etapa de `01-caderno-de-molas/atendimento-whatsapp.md`. | Contar toda semana |
 | **Orçamentos com origem no Instagram e valor fechado** | É o resultado de verdade | Planilha: data, cliente, origem, mola, valor orçado, fechou ou não | Contar e somar no fim dos 30 dias |
 | **Comentários com palavra-chave** (MOLA, MEDIDA, DEDO, CADERNO) | Mostra qual oferta puxa conversa | Comentários do post | Responder 100% em até 1 hora |
 | **Visitas do Caderno agendadas, por origem** | É a campanha principal da entressafra | Planilha do Caderno: usina, cidade, contato, origem (LinkedIn, Instagram, WhatsApp, vendedor) | [definir com a Jardmolas quantas visitas a equipe dá conta de fazer de dezembro a março] |

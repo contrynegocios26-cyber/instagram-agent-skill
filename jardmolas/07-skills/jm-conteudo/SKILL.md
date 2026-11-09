@@ -16,6 +16,22 @@ Esta skill adapta para a Jardmolas as skills de Instagram deste repositório
 `/ig-human`). Use as ferramentas delas; esta aqui diz o que é verdade sobre a
 Jardmolas e o que não pode sair.
 
+## Ferramentas em português
+
+As ferramentas Python das skills `ig-*` foram feitas para inglês. O que vale:
+
+| Ferramenta | Em português |
+| --- | --- |
+| `hookscore_pt.py` (nesta pasta) | Use no lugar do `hookscore.py`. Mesmo cálculo, listas de palavras em português. Serve para comparar os 3 ganchos de um Reel e pegar saudação e preâmbulo. |
+| `skills/ig-reel/beats.py` | Funciona para cronometrar. Use `--wpm 160`. A checagem de loop confunde "de" e "a": confira o loop na mão. |
+| `skills/ig-caption/caption.py` | Funciona para a janela de 125 caracteres, o limite de 2.200 e as hashtags. Não reconhece CTA em português: confira na mão. Use hashtag sem acento. |
+| `skills/ig-human/humanize.py` | Só a tipografia (travessão, aspas curvas, caractere invisível). A troca de palavras estraga o português: não aceite as substituições. |
+
+```bash
+python3 hookscore_pt.py ganchos.txt
+python3 hookscore_pt.py --hook "Você só vê esse dedo quando ele quebra"
+```
+
 ## Antes de escrever
 
 1. Leia `../../03-conteudo/estrategia.md` (pilares, para quem fala cada rede)

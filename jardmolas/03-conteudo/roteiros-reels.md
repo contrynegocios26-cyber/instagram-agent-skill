@@ -37,14 +37,14 @@ As ferramentas Python do repositório foram feitas para inglês. Testei cada uma
 
 ## Ordem sugerida de gravação
 
-1. **Dia de fábrica 1 (até 13/11):** R01, R02, R03, R11, R12. Tudo na fábrica, sem cliente.
+1. **Dia de fábrica 1 (12 ou 13/11):** R01, R02, R11, R12 e R13. Tudo na fábrica, sem cliente.
 2. **Campo (17 a 19/11, antes de acabar a safra):** R07, R09, R10 e R08 se tiver enfardadeira perto. Precisa de fazenda de cliente que autorize [confirmar com a Jardmolas].
-3. **Dia de fábrica 2 (24 ou 25/11):** R04, R05, R06, R13, R15.
+3. **Dia de fábrica 2 (24/11):** R03, R04, R05, R06 e R15.
 4. **Primeira visita do Caderno (dezembro):** R14.
 
 ---
 
-## R01 · Do arame à mola em 15 segundos, ep. 1: mola de compressão
+## R01: Do arame à mola em 15 segundos, ep. 1: mola de compressão
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -99,7 +99,7 @@ Isso é a fábrica da Jardmolas em Jardinópolis-SP, região de Ribeirão Preto.
 
 São 17 anos fazendo molas agrícolas e industriais, mais de 2.000 modelos: dedo de enleirador de palha de cana, mola de enfardadeira de feno, recolhedor de amendoim, mola de compressão, tração e torção para implemento e mola de válvula de usina.
 
-#molas #fabricademolas #molasagricolas #jardinopolis #ribeiraopreto
+#fabricademolas #molasagricolas #jardinopolis #ribeiraopreto
 ```
 
 **CTA:** comentar MOLA.
@@ -108,7 +108,7 @@ São 17 anos fazendo molas agrícolas e industriais, mais de 2.000 modelos: dedo
 
 ---
 
-## R02 · Do arame à mola em 15 segundos, ep. 2: dedo de enleirador
+## R02: Do arame à mola em 15 segundos, ep. 2: dedo de enleirador
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -161,7 +161,7 @@ Dedo enleirador e desenleirador de palha de cana feito aqui em Jardinópolis-SP,
 
 Se você trabalha com recolhimento de palha na região de Ribeirão Preto, a Jardmolas tem estoque estratégico de dedos e faz sob medida pra máquina que não tem mais peça.
 
-#enleirador #palhadecana #dedoenleirador #molasagricolas #jardinopolis
+#enleirador #palhadecana #dedoenleirador #jardinopolis
 ```
 
 **CTA:** mandar para o operador (compartilhamento).
@@ -170,7 +170,7 @@ Se você trabalha com recolhimento de palha na região de Ribeirão Preto, a Jar
 
 ---
 
-## R03 · Quanto peso essa mola aguenta, ep. 1: compressão no teste de carga
+## R03: Quanto peso essa mola aguenta, ep. 1: compressão no teste de carga
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -236,7 +236,7 @@ O teste é feito aqui na fábrica em Jardinópolis-SP e o resultado vai pro laud
 
 Arame Belgo. Molas de compressão, tração e torção, de reposição ou sob medida.
 
-#molas #moladecompressao #fabricademolas #molasagricolas #ribeiraopreto
+#moladecompressao #fabricademolas #molasagricolas #ribeiraopreto
 ```
 
 **CTA:** comentar o chute.
@@ -245,7 +245,7 @@ Arame Belgo. Molas de compressão, tração e torção, de reposição ou sob me
 
 ---
 
-## R04 · Quanto peso essa mola aguenta, ep. 2: dedo novo contra dedo de uma safra
+## R04: Quanto peso essa mola aguenta, ep. 2: dedo novo contra dedo de uma safra
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -314,7 +314,7 @@ Dedo novo e dedo que trabalhou uma safra inteira na palha de cana, no mesmo test
 
 Na entressafra vale conferir o jogo inteiro do rotor, não só o dedo que quebrou. Dedos enleiradores e desenleiradores feitos em Jardinópolis-SP.
 
-#enleirador #palhadecana #dedoenleirador #entressafra #molasagricolas
+#enleirador #palhadecana #dedoenleirador #entressafra
 ```
 
 **CTA:** comentar DEDO.
@@ -323,7 +323,7 @@ Na entressafra vale conferir o jogo inteiro do rotor, não só o dedo que quebro
 
 ---
 
-## R05 · Chegou quebrada, saiu nova, ep. 1: a mola sem código
+## R05: Chegou quebrada, saiu nova, ep. 1: a mola sem código
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -390,7 +390,7 @@ Essa chegou em [N] pedaços, de uma [máquina, só se o cliente autorizar]. Sem 
 
 Molas agrícolas e industriais, originais e de reposição. 17 anos de fábrica.
 
-#molas #molasobmedida #fabricademolas #pecasagricolas #ribeiraopreto
+#molasobmedida #fabricademolas #pecasagricolas #ribeiraopreto
 ```
 
 **CTA:** comentar MOLA.
@@ -399,7 +399,7 @@ Molas agrícolas e industriais, originais e de reposição. 17 anos de fábrica.
 
 ---
 
-## R06 · Chegou quebrada, saiu nova, ep. 2: a mola da válvula de retenção
+## R06: Chegou quebrada, saiu nova, ep. 2: a mola da válvula de retenção
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -471,7 +471,7 @@ Na válvula de retenção dupla portinhola, quem fecha as portinholas antes do f
 
 Essa chegou rompida e saiu nova, sob medida, com laudo do lote. A Jardmolas faz mola pra válvula de retenção, válvula de segurança e atuador, em Jardinópolis-SP, região de Ribeirão Preto.
 
-#usinadeacucar #valvuladeretencao #manutencaoindustrial #entressafra #molas
+#usinadeacucar #valvuladeretencao #manutencaoindustrial #entressafra
 ```
 
 **CTA:** salvar.
@@ -480,7 +480,7 @@ Essa chegou rompida e saiu nova, sob medida, com laudo do lote. A Jardmolas faz 
 
 ---
 
-## R07 · Onde essa mola trabalha, ep. 1: o dedo na palha de cana
+## R07: Onde essa mola trabalha, ep. 1: o dedo na palha de cana
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -535,7 +535,7 @@ Filmado em [fazenda e cidade, com autorização do cliente]. O dedo saiu da noss
 
 Dedos enleiradores e desenleiradores de palha de cana, de reposição e sob medida, com arame Belgo.
 
-#palhadecana #enleirador #dedoenleirador #canadeacucar #ribeiraopreto
+#palhadecana #enleirador #dedoenleirador #ribeiraopreto
 ```
 
 **CTA:** mandar para o operador.
@@ -544,7 +544,7 @@ Dedos enleiradores e desenleiradores de palha de cana, de reposição e sob medi
 
 ---
 
-## R08 · Onde essa mola trabalha, ep. 2: o pick-up da enfardadeira de feno
+## R08: Onde essa mola trabalha, ep. 2: o pick-up da enfardadeira de feno
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -613,7 +613,7 @@ Feno ficando no chão atrás da enfardadeira tem mais de uma causa, e uma delas 
 
 A Jardmolas faz molas e dedos pra enleirador e enfardadeira de feno, enleirador de capim e recolhedor de amendoim. Fábrica em Jardinópolis-SP.
 
-#feno #enfardadeira #fenacao #molasagricolas #pecasagricolas
+#feno #enfardadeira #fenacao #pecasagricolas
 ```
 
 **CTA:** comentar MEDIDA.
@@ -622,7 +622,7 @@ A Jardmolas faz molas e dedos pra enleirador e enfardadeira de feno, enleirador 
 
 ---
 
-## R09 · Erro que quebra o dedo do enleirador, ep. 1: raspar o chão
+## R09: Erro que quebra o dedo do enleirador, ep. 1: raspar o chão
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -690,7 +690,7 @@ Regula a altura pelo manual da sua máquina e confere com ela parada, em chão p
 
 Dedos enleiradores e desenleiradores de palha de cana feitos em Jardinópolis-SP.
 
-#enleirador #palhadecana #dedoenleirador #manutencaoagricola #canadeacucar
+#enleirador #palhadecana #dedoenleirador #manutencaoagricola
 ```
 
 **CTA:** mandar para o operador.
@@ -699,7 +699,7 @@ Dedos enleiradores e desenleiradores de palha de cana feitos em Jardinópolis-SP
 
 ---
 
-## R10 · Erro que quebra o dedo do enleirador, ep. 2: o parafuso frouxo
+## R10: Erro que quebra o dedo do enleirador, ep. 2: o parafuso frouxo
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -764,7 +764,7 @@ Dedo frouxo no suporte balança a cada volta do rotor. O esforço vai pra espira
 
 Dedos enleiradores e desenleiradores de palha de cana, feitos em Jardinópolis-SP.
 
-#enleirador #palhadecana #entressafra #manutencaoagricola #dedoenleirador
+#enleirador #palhadecana #entressafra #dedoenleirador
 ```
 
 **CTA:** salvar.
@@ -773,7 +773,7 @@ Dedos enleiradores e desenleiradores de palha de cana, feitos em Jardinópolis-S
 
 ---
 
-## R11 · Como medir sua mola em 30 segundos, ep. 1: compressão (puxa para o Identificador)
+## R11: Como medir sua mola em 30 segundos, ep. 1: compressão (puxa para o Identificador)
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -851,16 +851,16 @@ Mola de compressão sem código? Mede a grossura do arame, o diâmetro de fora, 
 
 Serve pra mecânico, balconista de revenda e pra quem tá com a máquina parada. Fábrica de molas em Jardinópolis-SP, região de Ribeirão Preto.
 
-#moladecompressao #molas #mecanicoagricola #pecasagricolas #fabricademolas
+#moladecompressao #mecanicoagricola #pecasagricolas #fabricademolas
 ```
 
 **CTA:** comentar MEDIDA.
 
-**Confirmar com a Jardmolas:** se o Identificador está no ar, o endereço e quais campos ele pede (se pedir o tipo de ponta, incluir na fala); qual medida o cliente mais erra.
+**Confirmar com a Jardmolas:** se o Identificador já está no ar e o endereço final (o previsto em `02-identificador/instalacao-no-site.md` é jardmolas.com.br/identificador-de-molas). O protótipo pede também o tipo de ponta, escolhido na própria página; se quiserem, trocar a linha da foto por "Tira foto da ponta, com a trena do lado." Qual medida o cliente mais erra.
 
 ---
 
-## R12 · Como medir sua mola em 30 segundos, ep. 2: tração
+## R12: Como medir sua mola em 30 segundos, ep. 2: tração
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -874,7 +874,7 @@ Serve pra mecânico, balconista de revenda e pra quem tá com a máquina parada.
 | 2 | #7 Wrong Way, Right Way | "Você tá medindo a mola de tração errado, e a culpa não é sua." | VOCÊ MEDE ERRADO | 44,5 |
 | 3 | #10 If This, Then Watch | "Se a mola de tração da sua máquina quebrou, mede assim em 30 segundos." | MOLA DE TRAÇÃO QUEBROU? | 58,1 |
 
-**Escolhido: 1.** Corrige um hábito numa frase e já mostra o certo. **Só grava depois de confirmar com a Jardmolas como eles pedem o comprimento da mola de tração** (por dentro dos ganchos é o mais comum; se eles usarem o comprimento total, inverter a frase: "Não mede tração por dentro do gancho").
+**Escolhido: 1.** Corrige um hábito numa frase e já mostra o certo. O protótipo do Identificador de Molas (`02-identificador/`) também pede o comprimento por dentro dos ganchos, então o Reel e a página falam a mesma coisa. Mesmo assim, confirmar com a Jardmolas antes de gravar: se eles usarem o comprimento total, inverter a frase.
 
 **Fala** (técnico; 55 palavras, cerca de 20,6 s)
 
@@ -929,7 +929,7 @@ O comprimento se mede por dentro dos ganchos, com a mola solta. Depois a grossur
 
 Mola de tração pra implemento, enfardadeira e máquina agrícola, sob medida ou de reposição. Jardinópolis-SP.
 
-#moladetracao #molas #mecanicoagricola #pecasagricolas #implementosagricolas
+#moladetracao #mecanicoagricola #pecasagricolas #implementosagricolas
 ```
 
 **CTA:** comentar MEDIDA.
@@ -938,7 +938,7 @@ Mola de tração pra implemento, enfardadeira e máquina agrícola, sob medida o
 
 ---
 
-## R13 · Entressafra e Caderno de Molas, ep. 1: o lançamento
+## R13: Entressafra e Caderno de Molas, ep. 1: o lançamento
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -1010,16 +1010,16 @@ O Caderno de Molas da Usina é uma visita técnica gratuita na entressafra, de d
 
 Na safra, quebrou, o pedido sai pelo código do Caderno. Jardmolas, fábrica de molas em Jardinópolis-SP há 17 anos.
 
-#usinadeacucar #entressafra #manutencaoindustrial #canadeacucar #molas
+#usinadeacucar #entressafra #manutencaoindustrial #canadeacucar
 ```
 
 **CTA:** comentar CADERNO.
 
-**Confirmar com a Jardmolas:** o que entra em cada ficha do Caderno; em que formato a usina recebe (PDF, planilha, impresso); se cada mola ganha um código Jardmolas; até que distância eles vão; quantas visitas a equipe consegue fazer de dezembro a março.
+**Confirmar com a Jardmolas:** a aprovação da oferta do Caderno (proposta em `01-caderno-de-molas/oferta.md`: ficha por mola, PDF, planilha e código Jardmolas); até que distância eles vão; quantas visitas a equipe consegue fazer de dezembro a março. **Este Reel só sai depois da aprovação.**
 
 ---
 
-## R14 · Entressafra e Caderno de Molas, ep. 2: a primeira visita
+## R14: Entressafra e Caderno de Molas, ep. 2: a primeira visita
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -1065,7 +1065,7 @@ A gente cataloga as molas da sua usina.
 
 | # | Tempo | O que filmar | Ângulo | Seg. |
 | --- | --- | --- | --- | --- |
-| 1 | 0:00 | Técnico, com o EPI da usina, medindo uma mola | Close | 3 |
+| 1 | 0:00 | Técnico, com o EPI da usina, medindo uma mola de equipamento parado, bloqueado e liberado pela usina (ou um sobressalente do almoxarifado) | Close | 3 |
 | 2 | 0:03 | Prateleira do almoxarifado com mola sem etiqueta | Plano médio | 3 |
 | 3 | 0:06 | Foto sendo tirada e etiqueta sendo colocada | Close | 3 |
 | 4 | 0:09 | Ficha preenchida | De cima | 3 |
@@ -1085,7 +1085,7 @@ Primeira visita do Caderno de Molas da Usina nesta entressafra: [N] horas, [N] m
 
 A visita é gratuita, de dezembro a março. Ainda tem data: [datas livres].
 
-#usinadeacucar #entressafra #manutencaoindustrial #canadeacucar #molas
+#usinadeacucar #entressafra #manutencaoindustrial #canadeacucar
 ```
 
 **CTA:** comentar CADERNO.
@@ -1094,7 +1094,7 @@ A visita é gratuita, de dezembro a março. Ainda tem data: [datas livres].
 
 ---
 
-## R15 · O técnico que resolve: as 3 fotos do WhatsApp
+## R15: O técnico que resolve: as 3 fotos do WhatsApp
 
 | Série | Pilar | Para quem | Duração | Onde | Quem grava |
 | --- | --- | --- | --- | --- | --- |
@@ -1162,7 +1162,7 @@ Foto 1: a mola inteira, com a trena do lado. Foto 2: de perto, na ponta ou no ga
 
 WhatsApp (16) 99176-0936.
 
-#molas #pecasagricolas #mecanicoagricola #fabricademolas #ribeiraopreto
+#pecasagricolas #mecanicoagricola #fabricademolas #ribeiraopreto
 ```
 
 **CTA:** salvar.
@@ -1173,6 +1173,6 @@ WhatsApp (16) 99176-0936.
 
 ## Receita das legendas (saída do caption.py, conferida na mão)
 
-Todas as 15 legendas: primeira linha inteira dentro dos 125 caracteres que o feed mostra, uma CTA só (conferida na mão, porque o caption.py não lê CTA em português), 5 hashtags sem acento abaixo da dobra, nenhum link no corpo, nenhum emoji. A legenda do R15 tem o número do WhatsApp escrito, que não é link e serve para quem quer copiar.
+Todas as 15 legendas: primeira linha inteira dentro dos 125 caracteres que o feed mostra, uma CTA só (conferida na mão, porque o caption.py não lê CTA em português), 4 hashtags sem acento abaixo da dobra (o limite é 5; o humanize.py marca 5 ou mais como parede de hashtag, então fica uma de folga), nenhum link no corpo, nenhum emoji. A legenda do R15 tem o número do WhatsApp escrito, que não é link e serve para quem quer copiar.
 
 Antes de publicar, trocar todo [N] e todo [confirmar] pelo dado real. Se o dado não existir, a frase sai.

@@ -72,7 +72,7 @@ Também:
 
 - Ligar o **botão WhatsApp** do perfil profissional ao número (16) 99176-0936 (Editar perfil > Opções de contato).
 - Endereço visível: Jardinópolis-SP [confirmar endereço completo com a Jardmolas].
-- Quando o Identificador de Molas estiver no ar [confirmar endereço e data], testar por 30 dias trocar o link da bio pelo Identificador e comparar quantos orçamentos chegam. Fica o que trouxer mais orçamento, não o que tiver mais clique.
+- Quando o Identificador de Molas estiver no ar (endereço previsto: jardmolas.com.br/identificador-de-molas, em `02-identificador/instalacao-no-site.md`) [confirmar data], testar por 30 dias trocar o link da bio pelo Identificador e comparar quantos orçamentos chegam. Fica o que trouxer mais orçamento, não o que tiver mais clique.
 
 Os outros links com mensagem pronta (story, palavras-chave, LinkedIn, lista de transmissão) estão em `stories-e-whatsapp.md`.
 
