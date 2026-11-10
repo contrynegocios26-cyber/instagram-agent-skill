@@ -70,6 +70,22 @@ out loud.
 | `/ig-repurpose` | One video, podcast or newsletter into a week of reels and carousels that each stand alone. |
 | `/ig-audit` | Post-mortem on what you already posted. Ranks by outlier multiple and sends per reach, not views. |
 
+## MP Marcenaria: atendimento
+
+One more skill lives in this copy of the pack, written in Portuguese for the
+MP Marcenaria team:
+
+| command | what it does |
+| --- | --- |
+| `/mp-atendimento` | Customer service for the joinery: answers client questions on materials, hardware, measurements, doors, frames, decks, pricing, lead time, warranty and care, and walks a lead from "quanto custa?" to the site visit, the quote and after-sales. Never invents a price, a deadline or a warranty term: those come from the "Dados da MP" table in the skill, which you fill in once. |
+
+Reference files: [materiais e ferragens](skills/mp-atendimento/references/materiais-ferragens.md),
+[medidas e ambientes](skills/mp-atendimento/references/medidas-ambientes.md),
+[portas, esquadrias e madeira](skills/mp-atendimento/references/portas-esquadrias-madeira.md),
+[comercial](skills/mp-atendimento/references/comercial.md),
+[pós-venda](skills/mp-atendimento/references/pos-venda.md) and
+[perguntas e respostas](skills/mp-atendimento/references/perguntas-respostas.md).
+
 ## The five tools that actually run
 
 No dependencies, no network, nothing uploaded. They run on your machine, on
