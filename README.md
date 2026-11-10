@@ -1,6 +1,6 @@
 # The Instagram agent skill
 
-Thirteen Claude skills that run an Instagram account. Free, MIT, no signup, no
+Fourteen Claude skills that run an Instagram account. Free, MIT, no signup, no
 API key, nothing to connect.
 
 One of them writes your Reels off 26 hook formulas and scores the hook before
@@ -8,7 +8,8 @@ you waste a take on it. One goes and finds the reels that are actually working
 in your niche and ranks them by how far each beat its own account. One writes
 the caption and shows you exactly what the feed shows before the "... more".
 One scores your profile out of 100 and rewrites what lost points. One plans the
-week.
+week. One shows your options to a simulated audience of 300 before you spend
+real reach on them, and tells you how much to trust the answer.
 
 And one is the humanizer, which is the reason the rest are usable. It strips
 the em dashes, the slop vocabulary and the invisible watermark characters out
@@ -43,7 +44,7 @@ Or as a plugin:
 
 Project-local instead of global: copy the same folders into your repo's
 `.claude/skills/`. No Claude Code at all? Paste any single `SKILL.md` at the top
-of a chat and it runs as a mode. You lose the five Python tools, which is most
+of a chat and it runs as a mode. You lose the six Python tools, which is most
 of the point of `/ig-reel` and `/ig-human`, but the rest works.
 
 Then spend ten minutes on `templates/voice.md`. Copy it to
@@ -52,7 +53,7 @@ reels and say "write my voice.md from these". Every skill reads that file. It
 matters more here than on other platforms, because you have to say the words
 out loud.
 
-## The thirteen
+## The fourteen
 
 | command | what it does |
 | --- | --- |
@@ -68,9 +69,10 @@ out loud.
 | `/ig-reply` | The thread under your own post. Sorts into keyword / lead / substance / question / support / noise, then writes in that order. |
 | `/ig-dm` | The keyword delivery, the first message, the collab pitch, and the two follow-ups. Two. |
 | `/ig-repurpose` | One video, podcast or newsletter into a week of reels and carousels that each stand alone. |
+| `/ig-panel` | The pre-test. A quota sample of 100 to 1,000 simulated people built from your own audience numbers, reacting blind to two or more options. Ranks, ties, segment splits and the objection in their words. See below. |
 | `/ig-audit` | Post-mortem on what you already posted. Ranks by outlier multiple and sends per reach, not views. |
 
-## The five tools that actually run
+## The six tools that actually run
 
 No dependencies, no network, nothing uploaded. They run on your machine, on
 your text.
@@ -196,6 +198,93 @@ After `humanize.py`, with the flagged structures still unrewritten:
   HUMAN SCORE   ###################.....  79.7   PASS    (+47.2)
 ```
 
+### The panel
+
+```bash
+python3 panel.py build audience.json --n 300 --out run/panel.json   # the sample
+python3 panel.py sheets run/panel.json stimuli.json --out run/      # blind answer sheets
+python3 panel.py tally run/                                         # the count
+python3 panel.py backtest run/ --actual actual.tsv --save           # is it any good?
+```
+
+There is a wave of tools that have a model pretend to be a thousand customers
+and tell you what will work. The idea is sound and the usual execution is not:
+ask one model "would people like this?" a thousand times and you get one
+polite opinion with three zeros after it.
+
+So the model only plays the people, and `panel.py` does the rest:
+
+- **The sample is a quota, built from your Insights.** 56% women means 168 of
+  300, every time. Each person gets a situation ("renovating now, two quotes
+  in hand"), a habit, a moment and a mood. Over half are lurkers, because over
+  half of any real feed is.
+- **Every guess is labelled.** Whatever in the audience file did not come from
+  a real number goes in an `assumptions` list, and that list is printed on
+  every run.
+- **The sheets are blind.** 25 people per sheet, each sheet answered by a
+  fresh subagent that has never seen the conversation. Images are copied to
+  meaningless filenames. Nobody is told which option is yours.
+- **The order rotates** so every option sits in every position equally often.
+- **The thought is written before the action**, in the audience's language.
+  Then one word from a ladder that starts at `skip`, and `skip` is the stated
+  default.
+- **Anchors.** A real flop of yours goes in as the floor. If the panel cannot
+  rate it below everything else, the run is thrown away.
+
+What comes back, from a real run of 300 on six carousel covers:
+
+```
+                PULL  stopped   95% interval  took in  acted  1st pick
+  nunca-aqui    25.9      75%     67-82 %         20%     3%       16%
+  vendendo      21.0      49%     41-58 %         20%     2%       13%
+  pergunta      20.4      53%     47-58 %         18%     4%       22%
+  atual         11.8      32%     22-43 %         10%     2%        6%
+  atual-claro    7.2      21%     12-34 %          5%     1%        6%
+  piso-cliche    2.5       5%      3-9  %          2%     0%        2%  [floor]
+
+HEAD TO HEAD  (same person, both posts)
+  nunca-aqui  beat vendendo      133 to 60   (107 level)   CLEAR
+  vendendo    beat pergunta       81 to 86   (133 level)   too close to call
+  vendendo    beat atual         110 to 51   (139 level)   CLEAR
+
+BY SEGMENT  (PULL; * marks a segment whose favourite is not the overall one)
+                n  nunca-aqui    vendendo    pergunta       atual  atual-clar  piso-clich
+  em-obra      60        27.1        24.6        43.3        20.0         9.2         0.0 *
+  sonhando     96        24.0        12.5         8.1        15.6        12.0         1.0
+```
+
+`too close to call` is printed whenever the gap is inside the noise, and the
+interval is widened for the fact that 25 people written in one pass are not 25
+independent people. The run above had an effective sample of about 47, not
+300.
+
+That run is in the repo, votes included, in
+[`painel/2026-11-10-capa-mdf`](painel/2026-11-10-capa-mdf), with the write-up in
+[`relatorios/`](relatorios/painel-2026-11-10-capa-mdf.md). It also contains a
+mistake worth keeping: two near-identical covers went on the same sheet, the
+second one seen was dismissed as "same as the other", and the comparison
+between them was void. The skill now forbids it.
+
+**What it is for:** ranking options, killing the weakest, finding the segment
+that disagrees, and reading the objection in a sentence a customer would say.
+
+**What it is not for:** forecasting. Simulated people agree more than real
+ones and act more than real ones, so every rate it prints is too high and the
+tool says so in the output. The published work on this is consistent: a model
+conditioned on a real person's interview answers their survey questions about
+85% as consistently as that person does two weeks later (Park et al., 2024),
+and asking for the reaction in words before any rating gets close to human
+retest reliability on purchase intent (Maier et al., 2025). The same
+literature finds simulated samples have too little variance and shift with the
+prompt (Bisbee et al., 2024). Good at order, bad at magnitude.
+
+That is why the tally prints `UNCALIBRATED` until you run `backtest`: put 8 to
+12 posts you already published through the panel, results hidden, and it
+reports the rank correlation with what really happened and how many pairs it
+ordered correctly, where a coin gets half. **I have not run that backtest on a
+public corpus, so this README makes no accuracy claim for the panel.** The
+number that matters is the one on your own account, and the tool computes it.
+
 ### The swipe file
 
 ```bash
@@ -288,6 +377,11 @@ human speed, with you driving your own browser. It never asks for your password
 and never logs in as you. Automated collection at volume is the thing that gets
 accounts restricted, and a crawler is not what this is.
 
+**The panel is a rehearsal, not a result.** `/ig-panel` simulates an audience
+from the numbers you give it. It does not survey anyone, it will not forecast
+reach or sales, and until you backtest it on your own posts its output is a
+hypothesis for a Trial Reel. It never simulates a named real person.
+
 **The five detection checks are local heuristics, not detector APIs.** They are
 modelled on the signals public detectors key on and they run entirely on your
 machine. They are not GPTZero, Originality, Copyleaks, Winston or Turnitin,
@@ -322,8 +416,11 @@ skills/ig-human/slop.json          the lexicon: 154 terms, 18 invisible classes,
 skills/ig-human/humanize.py        the three cleaning passes
 skills/ig-human/detect.py          the five-check panel
 skills/ig-viral/swipe.py           outlier ranking and formula classification
+skills/ig-panel/panel.py           quota sample, blind sheets, tally, backtest
+skills/ig-panel/population.json    feed behaviour priors: habit, moment, mood, relation
 skills/ig-profile/rubric.json      the 100-point profile score
 templates/voice.md                 your voice profile. Fill this in first.
+templates/audience.json            who is on the other side of the feed. /ig-panel reads it.
 ```
 
 ## Credit

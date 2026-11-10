@@ -1,0 +1,175 @@
+P0100	1	glance	guia de MDF e maciça, bonito, mas é papo que já vi mil vezes
+P0100	2	skip	capricho e exclusividade, todo marceneiro fala isso, nada de novo
+P0100	3	consume	nunca use MDF? ué, exagero, mas quero ver o que ele diz
+P0100	4	glance	boa, indireta pra concorrência, mas cansada demais pra arrastar
+P0100	5	skip	de novo esse guia, passa
+P0100	6	consume	pergunta pra marceneiro enrolado, preciso disso pro meu cliente
+P0100	PICK	6	fala do que me queimou, prazo e enrolação
+P0184	1	skip	post de empresa, desliza
+P0184	2	skip	propaganda genérica, nem olhei
+P0184	3	glance	nunca use MDF? hum, chamativo
+P0184	4	like	verdade isso, tem muito vendedor de uma coisa só
+P0184	5	skip	mesmo guia de novo, passa
+P0184	6	glance	marceneiro enrolado, já ouvi cada uma
+P0184	PICK	4	frase honesta, sem cara de propaganda
+P0024	1	skip	ah, o pessoal da marcenaria, depois vejo
+P0024	2	skip	propaganda, passa
+P0024	3	glance	nunca use MDF, será?
+P0024	4	skip	deixa pra lá
+P0024	5	skip	já passei por esse
+P0024	6	glance	olha, o povo da marcenaria se mexendo
+P0024	PICK	0	nenhum, não to procurando móvel
+P0067	1	like	bonitinho esse guia, curti
+P0067	2	skip	só frase bonita, passa
+P0067	3	glance	MDF ruim? não sabia
+P0067	4	skip	não entendi direito
+P0067	5	skip	já vi esse
+P0067	6	glance	orçamento, nem to nessa
+P0067	PICK	1	mais limpo e fácil de ler
+P0101	1	skip	texto, passa
+P0101	2	skip	propaganda, nem li
+P0101	3	skip	sem paciência pra ler
+P0101	4	skip	passa
+P0101	5	skip	passa
+P0101	6	glance	enrolado? kkk
+P0101	PICK	0	nenhum, cansado
+P0168	1	glance	MDF ou maciça, tô curioso
+P0168	2	skip	frase solta de propaganda
+P0168	3	consume	nunca usar MDF? quero ver por quê
+P0168	4	consume	essa frase pegou, vou arrastar
+P0168	5	glance	esse eu já vi
+P0168	6	like	pergunta boa, curti
+P0168	PICK	3	o título mais ousado, deu curiosidade
+P0229	1	glance	qual é melhor, MDF ou maciça
+P0229	2	skip	nada a ver comigo agora
+P0229	3	glance	nunca MDF, será?
+P0229	4	skip	na fila, sem tempo
+P0229	5	glance	esse de novo
+P0229	6	skip	nem to fechando orçamento
+P0229	PICK	1	dúvida que eu mesma tenho
+P0291	1	skip	passa
+P0291	2	skip	propaganda
+P0291	3	glance	nunca use MDF, hm
+P0291	4	skip	passa
+P0291	5	skip	passa
+P0291	6	like	esse da pergunta ficou bom
+P0291	PICK	0	nenhum, to cansada
+P0059	1	glance	guia de material, básico pra mim
+P0059	2	skip	capricho, sei, todo mundo diz
+P0059	3	consume	nunca MDF? falou besteira, quero ver o argumento
+P0059	4	glance	concordo, cada um no seu lugar
+P0059	5	skip	igual ao outro
+P0059	6	skip	papo de cliente, não é comigo
+P0059	PICK	3	polêmica, quero ver onde ele erra
+P0131	1	skip	já sei isso, passa
+P0131	2	skip	propaganda mole
+P0131	3	glance	nunca use MDF? exagerado
+P0131	4	glance	isso é verdade
+P0131	5	skip	repetido
+P0131	6	skip	conversa de vendedor
+P0131	PICK	0	nenhum, não me serve
+P0206	1	skip	passa
+P0206	2	skip	passa
+P0206	3	skip	passa
+P0206	4	skip	passa
+P0206	5	skip	passa
+P0206	6	skip	passa
+P0206	PICK	0	nenhum, cansado
+P0282	1	skip	passa
+P0282	2	skip	passa
+P0282	3	glance	nunca MDF, será que é assim
+P0282	4	skip	passa
+P0282	5	skip	passa
+P0282	6	skip	passa
+P0282	PICK	0	nenhum
+P0089	1	glance	MDF ou maciça, tô nessa dúvida
+P0089	2	skip	propaganda, nada concreto
+P0089	3	consume	nunca use MDF? tô pra encomendar armário, preciso ver
+P0089	4	glance	vendedor só vende o que tem, faz sentido
+P0089	5	glance	o guia, depois eu vejo
+P0089	6	like	medo de pagar caro, isso me interessa
+P0089	PICK	6	quero saber o que perguntar antes de assinar
+P0140	1	glance	MDF ou maciça, serve pra mim
+P0140	2	skip	capricho é conversa
+P0140	3	glance	nunca MDF? pensei que era o normal
+P0140	4	skip	passa
+P0140	5	skip	passa
+P0140	6	glance	pergunta pro marceneiro, hm
+P0140	PICK	6	tô cotando e tenho medo de enrolação
+P0195	1	glance	ah, quero saber qual é melhor
+P0195	2	skip	bonito mas vazio
+P0195	3	consume	nunca use MDF?! preciso ver isso, mandei fazer cozinha
+P0195	4	glance	boa essa
+P0195	5	skip	esse eu já vi
+P0195	6	save	tem que fazer antes de assinar, guardo pra usar
+P0195	PICK	6	vou usar na hora do orçamento
+P0251	1	glance	MDF ou maciça, pergunta que tenho
+P0251	2	skip	nada a dizer
+P0251	3	consume	nunca MDF? mas todo móvel de loja é, quero entender
+P0251	4	glance	sim, cada coisa no seu lugar
+P0251	5	skip	passa
+P0251	6	glance	desmonta enrolado, interessante
+P0251	PICK	3	bate direto na minha dúvida da obra
+P0288	1	glance	guia, bom saber
+P0288	2	skip	conversa fiada
+P0288	3	consume	nunca usa MDF? quero ver o motivo
+P0288	4	glance	sacada boa
+P0288	5	glance	de novo guia
+P0288	6	send	vou mandar pro meu irmão que tá reformando
+P0288	PICK	6	pergunta prática pra antes de fechar
+P0021	1	glance	MDF ou maciça, nunca soube a diferença
+P0021	2	skip	frase bonita, nada de informação
+P0021	3	consume	nunca MDF? caramba, quero saber
+P0021	4	glance	vendedor só vende o que tem, ué
+P0021	5	skip	já vi
+P0021	6	glance	tem que perguntar antes de assinar
+P0021	PICK	3	me deixou curioso de verdade
+P0050	1	skip	passa
+P0050	2	skip	passa
+P0050	3	glance	nunca use MDF, ué
+P0050	4	skip	passa
+P0050	5	skip	passa
+P0050	6	skip	passa
+P0050	PICK	0	nenhum
+P0109	1	skip	passa
+P0109	2	skip	propaganda de móvel, passa
+P0109	3	skip	passa
+P0109	4	skip	passa
+P0109	5	skip	passa
+P0109	6	skip	passa
+P0109	PICK	0	nenhum, cansada
+P0139	1	glance	MDF ou maciça, nunca entendi isso
+P0139	2	skip	nada de novo
+P0139	3	glance	nunca MDF, hm
+P0139	4	skip	passa
+P0139	5	skip	passa
+P0139	6	skip	passa
+P0139	PICK	1	dúvida que sempre tive
+P0171	1	like	bonito e simples, curti
+P0171	2	skip	passa
+P0171	3	glance	nunca usar MDF, sério?
+P0171	4	like	essa frase é boa
+P0171	5	glance	igual ao primeiro
+P0171	6	skip	passa
+P0171	PICK	4	frase que faz pensar
+P0220	1	skip	passa
+P0220	2	skip	passa
+P0220	3	glance	nunca MDF, não entendo disso
+P0220	4	skip	passa
+P0220	5	skip	passa
+P0220	6	skip	passa
+P0220	PICK	0	nenhum
+P0255	1	glance	ah, o guia da marcenaria que sigo
+P0255	2	skip	bonito mas vazio
+P0255	3	glance	nunca use MDF, será?
+P0255	4	like	curti essa
+P0255	5	skip	igual ao outro
+P0255	6	glance	orçamento, depois
+P0255	PICK	4	a mais honesta de todas
+P0285	1	glance	MDF ou maciça, quero saber
+P0285	2	skip	passa
+P0285	3	consume	nunca MDF? meu guarda-roupa é de MDF, hein
+P0285	4	glance	boa frase
+P0285	5	skip	passa
+P0285	6	save	guardo pra quando eu for fazer o guarda-roupa
+P0285	PICK	3	mexeu com meu guarda-roupa, quero saber

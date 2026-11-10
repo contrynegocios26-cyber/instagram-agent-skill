@@ -1,0 +1,54 @@
+PANEL  ·  300 people  ·  12 sheets  ·  6 posts
+Q: Qual capa abre o carrossel 'MDF ou madeira maciça' de sexta, 14/11?
+==============================================================================
+                PULL  stopped   95% interval  took in  acted  1st pick
+  nunca-aqui    25.9      75%     67-82 %         20%     3%       16%
+  vendendo      21.0      49%     41-58 %         20%     2%       13%
+  pergunta      20.4      53%     47-58 %         18%     4%       22%
+  atual         11.8      32%     22-43 %         10%     2%        6%
+  atual-claro    7.2      21%     12-34 %          5%     1%        6%
+  piso-cliche    2.5       5%      3-9  %          2%     0%        2%  [floor]
+  (picked none)                                                      34%
+
+  PULL is the average rung reached on the skip-to-action ladder, 0 to 100.
+  Effective sample after sheet clustering: about 47 of 300. The interval is the
+  panel's own noise. It says nothing about how far the panel is from real people.
+
+WHAT THEY DID
+  nunca-aqui   ###############.....  74 skip · 165 glance · 47 consume · 4 like · 3 save, 1 send, 6 comment
+  vendendo     ##########..........  152 skip · 89 glance · 21 consume · 31 like · 4 save, 3 send
+  pergunta     ###########.........  142 skip · 104 glance · 33 consume · 9 like · 8 save, 4 send
+  atual        ######..............  205 skip · 65 glance · 18 consume · 7 like · 5 save
+  atual-claro  ####................  238 skip · 47 glance · 7 consume · 6 like · 2 save
+  piso-cliche  #...................  284 skip · 9 glance · 0 consume · 7 like
+
+HEAD TO HEAD  (same person, both posts)
+  nunca-aqui  beat vendendo      133 to 60   (107 level)   CLEAR
+  nunca-aqui  beat pergunta      122 to 61   (117 level)   CLEAR
+  nunca-aqui  beat atual         171 to 34   (95 level)   CLEAR
+  nunca-aqui  beat atual-claro   200 to 19   (81 level)   CLEAR
+  nunca-aqui  beat piso-cliche   219 to 13   (68 level)   CLEAR
+  vendendo    beat pergunta       81 to 86   (133 level)   too close to call
+  vendendo    beat atual         110 to 51   (139 level)   CLEAR
+  vendendo    beat atual-claro   122 to 29   (149 level)   CLEAR
+  vendendo    beat piso-cliche   145 to 12   (143 level)   CLEAR
+  pergunta    beat atual         124 to 46   (130 level)   CLEAR
+  pergunta    beat atual-claro   137 to 33   (130 level)   CLEAR
+  pergunta    beat piso-cliche   153 to 12   (135 level)   CLEAR
+  atual       beat atual-claro    75 to 40   (185 level)   too close to call
+  atual       beat piso-cliche    93 to 14   (193 level)   CLEAR
+  atual-claro beat piso-cliche    62 to 15   (223 level)   CLEAR
+
+BY SEGMENT  (PULL; * marks a segment whose favourite is not the overall one)
+                n  nunca-aqui    vendendo    pergunta       atual  atual-clar  piso-clich
+  em-obra      60        27.1        24.6        43.3        20.0         9.2         0.0 *
+  sonhando     96        24.0        12.5         8.1        15.6        12.0         1.0
+  conhecido    66        18.6        16.7        19.3         4.2         4.2         9.5 *
+  arquiteto    30        31.7        36.7        35.8         6.7         3.3         0.8 *
+  do-ramo      48        34.9        29.7         8.3         7.8         2.1         0.0
+
+HEALTH
+  - GENEROUS: 39% of all rows stopped the thumb. A real feed stops far fewer. The order still means something; the 'stopped' column does not.
+  - SHEETS DISAGREE: on 'atual-claro' the sheets differ from each other far more than chance would allow, so the effective sample is about 47, not 300. More sheets of fewer people would help more than more people.
+  - UNCALIBRATED. This panel has never been checked against posts you already published.
+  Run `panel.py backtest` once before you let it change a decision.

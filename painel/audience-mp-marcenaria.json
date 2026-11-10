@@ -1,0 +1,76 @@
+{
+  "account": "@mp.marcenariaa",
+  "language": "português do Brasil, do jeito que se fala no interior do Paraná",
+  "context": "Feed do Instagram no celular. A conta é uma marcenaria de móveis planejados, portas e esquadrias de madeira em Alto Paraná (PR). O post aparece no meio do feed, entre a foto de um conhecido e um anúncio.",
+  "assumptions": [
+    "O tamanho de cada segmento é estimativa, não medição. O Instagram não informa quem está em obra ou quem é arquiteto. Confirmar com o dono e ajustar.",
+    "Sexo (56% mulheres) e cidades vêm dos Insights de 05/11/2026, só seguidores do Brasil. Os ~860 seguidores de fora do Brasil ficaram fora do painel de propósito.",
+    "Idade: os Insights dão 65% entre 25 e 44 anos. A divisão dentro e fora dessa faixa é estimativa.",
+    "Hábito, momento e humor são os padrões do population.json, traduzidos. Não foram medidos nesta conta."
+  ],
+  "segments": [
+    {
+      "id": "em-obra",
+      "share": 20,
+      "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim"
+    },
+    {
+      "id": "sonhando",
+      "share": 32,
+      "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material"
+    },
+    {
+      "id": "conhecido",
+      "share": 22,
+      "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+      "dimensions": {
+        "relation": {
+          "segue a conta e conhece quem está por trás": 70,
+          "segue a conta mas mal lembra por quê": 30
+        }
+      }
+    },
+    {
+      "id": "arquiteto",
+      "share": 10,
+      "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala"
+    },
+    {
+      "id": "do-ramo",
+      "share": 16,
+      "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada"
+    }
+  ],
+  "dimensions": {
+    "gender": {"mulher": 56, "homem": 44},
+    "age": {"18 a 24 anos": 10, "25 a 34 anos": 33, "35 a 44 anos": 32, "45 a 54 anos": 15, "55 anos ou mais": 10},
+    "place": {
+      "Alto Paraná": 267, "Paranavaí": 157, "São Paulo": 108, "Maringá": 85,
+      "Loanda": 35, "Nova Esperança": 32, "outra cidade do Paraná": 500, "outro estado": 382
+    },
+    "relation": {
+      "nunca viu esta conta": 60,
+      "segue a conta mas mal lembra por quê": 30,
+      "segue a conta e conhece quem está por trás": 10
+    },
+    "habit": {
+      "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano": 55,
+      "curte fácil, mas quase nunca comenta, salva ou envia": 25,
+      "salva o que pretende usar e manda post para uma ou duas pessoas próximas": 14,
+      "comenta e envia com frequência": 6
+    },
+    "moment": {
+      "no sofá à noite com a TV ligada, celular sem som": 30,
+      "na fila, com 20 segundos, sem som": 20,
+      "no intervalo do trabalho, sem som": 20,
+      "na cama antes de dormir, som baixo": 15,
+      "entediado, rolando há muito tempo, com som": 15
+    },
+    "mood": {
+      "neutro": 50,
+      "cansado e sem paciência": 25,
+      "curioso, aberto a coisa nova": 15,
+      "desconfiado de tudo que tem cara de propaganda": 10
+    }
+  }
+}

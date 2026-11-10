@@ -1,0 +1,4216 @@
+{
+ "account": "@mp.marcenariaa",
+ "language": "português do Brasil, do jeito que se fala no interior do Paraná",
+ "context": "Feed do Instagram no celular. A conta é uma marcenaria de móveis planejados, portas e esquadrias de madeira em Alto Paraná (PR). O post aparece no meio do feed, entre a foto de um conhecido e um anúncio.",
+ "seed": 26,
+ "n": 300,
+ "segments": {
+  "em-obra": "em-obra",
+  "sonhando": "sonhando",
+  "conhecido": "conhecido",
+  "arquiteto": "arquiteto",
+  "do-ramo": "do-ramo"
+ },
+ "people": [
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0001"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0002"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0003"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0004"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0005"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0006"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0007"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0008"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0009"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0010"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0011"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0012"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0013"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0014"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0015"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outro estado"
+   },
+   "pid": "P0016"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0017"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0018"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0019"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0020"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0021"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0022"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0023"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0024"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0025"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0026"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0027"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0028"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0029"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Nova Esperança"
+   },
+   "pid": "P0030"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0031"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0032"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0033"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0034"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0035"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0036"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0037"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0038"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0039"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0040"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0041"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0042"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outro estado"
+   },
+   "pid": "P0043"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0044"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0045"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0046"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0047"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0048"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0049"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0050"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0051"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0052"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0053"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0054"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0055"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0056"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0057"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0058"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0059"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0060"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0061"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0062"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0063"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0064"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0065"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0066"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0067"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0068"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0069"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0070"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0071"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0072"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0073"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Nova Esperança"
+   },
+   "pid": "P0074"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0075"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0076"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0077"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0078"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0079"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0080"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0081"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Paranavaí"
+   },
+   "pid": "P0082"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0083"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0084"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0085"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0086"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outro estado"
+   },
+   "pid": "P0087"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0088"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0089"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0090"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0091"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "comenta e envia com frequência",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0092"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0093"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0094"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0095"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0096"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0097"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0098"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0099"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0100"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0101"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0102"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0103"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0104"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0105"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "São Paulo"
+   },
+   "pid": "P0106"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0107"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0108"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0109"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0110"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0111"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0112"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0113"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0114"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0115"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0116"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0117"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0118"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0119"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0120"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0121"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Nova Esperança"
+   },
+   "pid": "P0122"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0123"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "comenta e envia com frequência",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0124"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0125"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0126"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Maringá"
+   },
+   "pid": "P0127"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "São Paulo"
+   },
+   "pid": "P0128"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0129"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0130"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0131"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "comenta e envia com frequência",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0132"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0133"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0134"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0135"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0136"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0137"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0138"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0139"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0140"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0141"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0142"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0143"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0144"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0145"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0146"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0147"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0148"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "comenta e envia com frequência",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0149"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0150"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0151"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0152"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0153"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0154"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0155"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0156"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0157"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0158"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0159"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0160"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0161"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0162"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0163"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0164"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "São Paulo"
+   },
+   "pid": "P0165"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0166"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0167"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0168"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0169"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0170"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0171"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0172"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0173"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0174"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0175"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0176"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0177"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0178"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outro estado"
+   },
+   "pid": "P0179"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0180"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Nova Esperança"
+   },
+   "pid": "P0181"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0182"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0183"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0184"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0185"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "Nova Esperança"
+   },
+   "pid": "P0186"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0187"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0188"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0189"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0190"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0191"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "comenta e envia com frequência",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0192"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0193"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0194"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0195"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0196"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0197"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0198"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0199"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0200"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0201"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0202"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0203"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0204"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0205"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0206"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0207"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0208"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0209"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0210"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0211"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0212"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Loanda"
+   },
+   "pid": "P0213"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0214"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0215"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0216"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0217"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0218"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0219"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outro estado"
+   },
+   "pid": "P0220"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0221"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0222"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "comenta e envia com frequência",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0223"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "Paranavaí"
+   },
+   "pid": "P0224"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0225"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0226"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0227"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0228"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0229"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0230"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0231"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0232"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0233"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0234"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "comenta e envia com frequência",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0235"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0236"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0237"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0238"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0239"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0240"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0241"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0242"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "Nova Esperança"
+   },
+   "pid": "P0243"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0244"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0245"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0246"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0247"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0248"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0249"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0250"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0251"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0252"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0253"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0254"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0255"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0256"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0257"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0258"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0259"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0260"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0261"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0262"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0263"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0264"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0265"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0266"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0267"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0268"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0269"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0270"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0271"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0272"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "Paranavaí"
+   },
+   "pid": "P0273"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0274"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0275"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0276"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0277"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Maringá"
+   },
+   "pid": "P0278"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0279"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0280"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0281"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0282"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0283"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0284"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "cansado e sem paciência",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0285"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "45 a 54 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0286"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0287"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "entediado, rolando há muito tempo, com som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "São Paulo"
+   },
+   "pid": "P0288"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "salva o que pretende usar e manda post para uma ou duas pessoas próximas",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "55 anos ou mais",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0289"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0290"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0291"
+  },
+  {
+   "segment": "do-ramo",
+   "card": "marceneiro, montador ou curioso de marcenaria, gosta de ver ferramenta, técnica e obra dos outros, não vai comprar nada",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0292"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "35 a 44 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0293"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "cansado e sem paciência",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "Alto Paraná"
+   },
+   "pid": "P0294"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "Paranavaí"
+   },
+   "pid": "P0295"
+  },
+  {
+   "segment": "conhecido",
+   "card": "mora na região, conhece a marcenaria ou alguém que trabalha lá, segue por consideração e não está procurando móvel",
+   "traits": {
+    "relation": "segue a conta e conhece quem está por trás",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "na cama antes de dormir, som baixo",
+    "mood": "curioso, aberto a coisa nova",
+    "gender": "mulher",
+    "age": "35 a 44 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0296"
+  },
+  {
+   "segment": "arquiteto",
+   "card": "arquiteta ou designer de interiores da região, indica marceneiro para cliente, já se queimou com fornecedor que atrasou e repara em acabamento e em quem sabe do que fala",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "curte fácil, mas quase nunca comenta, salva ou envia",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "45 a 54 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0297"
+  },
+  {
+   "segment": "em-obra",
+   "card": "está construindo ou reformando agora, vai fechar marcenaria nos próximos meses, já pediu ou vai pedir orçamento em mais de um lugar e tem medo de pagar caro por coisa ruim",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no sofá à noite com a TV ligada, celular sem som",
+    "mood": "neutro",
+    "gender": "mulher",
+    "age": "18 a 24 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0298"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "segue a conta mas mal lembra por quê",
+    "habit": "só olha: quase nunca curte, não comenta em post de empresa há mais de um ano",
+    "moment": "no intervalo do trabalho, sem som",
+    "mood": "neutro",
+    "gender": "homem",
+    "age": "18 a 24 anos",
+    "place": "outro estado"
+   },
+   "pid": "P0299"
+  },
+  {
+   "segment": "sonhando",
+   "card": "não tem obra marcada, mas salva ideia de casa e decoração, pensa em trocar a cozinha ou o guarda-roupa um dia, não entende de material",
+   "traits": {
+    "relation": "nunca viu esta conta",
+    "habit": "comenta e envia com frequência",
+    "moment": "na fila, com 20 segundos, sem som",
+    "mood": "desconfiado de tudo que tem cara de propaganda",
+    "gender": "mulher",
+    "age": "25 a 34 anos",
+    "place": "outra cidade do Paraná"
+   },
+   "pid": "P0300"
+  }
+ ]
+}

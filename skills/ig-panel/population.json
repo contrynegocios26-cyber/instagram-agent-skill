@@ -1,0 +1,29 @@
+{
+  "_about": "How people behave on a feed, whatever they are into. These are priors, not measurements of your audience: edit them, and override any of them per account or per segment in audience.json. They exist because a simulated person with no stated habits behaves like an eager focus-group volunteer, and nobody on a real feed is one. Most people lurk, most people watch muted, and most people are in the middle of something else.",
+  "dimensions": {
+    "relation": {
+      "has never seen this account before": 70,
+      "follows the account but barely remembers why": 20,
+      "follows the account and knows who is behind it": 10
+    },
+    "habit": {
+      "lurker: watches, almost never likes, has not commented on a business post in a year": 55,
+      "liker: likes easily, almost never comments, saves or sends": 25,
+      "saver: saves what they plan to use and sends posts to one or two close people": 14,
+      "talker: comments and sends often": 6
+    },
+    "moment": {
+      "on the sofa at night with the TV on, sound off": 30,
+      "in a queue with 20 seconds to spare, sound off": 20,
+      "on a break at work, sound off": 20,
+      "in bed before sleeping, sound low": 15,
+      "bored and deep into a long scroll, sound on": 15
+    },
+    "mood": {
+      "neutral": 50,
+      "tired and impatient": 25,
+      "curious and open to something new": 15,
+      "suspicious of anything that smells like an ad": 10
+    }
+  }
+}

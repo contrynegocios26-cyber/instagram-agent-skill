@@ -1,0 +1,175 @@
+P0127	1	glance	Nunca use MDF? Forte isso, depende do uso, né.
+P0127	2	like	Verdade, quem vende um só sempre puxa pro seu lado.
+P0127	3	glance	Mais um guia de MDF e maciça.
+P0127	4	consume	Qual será a pergunta? Cliente meu já caiu em enrolação.
+P0127	5	skip	Esse eu já vi agorinha.
+P0127	6	skip	Todo marceneiro fala em capricho, não diz nada.
+P0127	PICK	4	fala de quem enrola, que é minha dor
+P0204	1	glance	Nunca MDF aqui? Onde, então? Fiquei curiosa.
+P0204	2	glance	Boa ideia, cada material no seu lugar.
+P0204	3	consume	Guia rápido, bom pra mostrar pra cliente.
+P0204	4	save	Quero a pergunta, vou guardar pra usar com fornecedor.
+P0204	5	skip	Repetido, o mesmo guia.
+P0204	6	skip	Frase genérica, passei.
+P0204	PICK	4	útil pra usar com cliente e fornecedor
+P0036	1	skip	Já passei, tô vendo a TV.
+P0036	2	skip	Texto grande, nem li.
+P0036	3	skip	Nem sei por que sigo essa conta.
+P0036	4	glance	Marceneiro enrolado, rs.
+P0036	5	skip	Mesma coisa.
+P0036	6	skip	Propaganda de marcenaria.
+P0036	PICK	0	nenhuma, não tô atrás de móvel
+P0073	1	skip	Fila andando, passei batido.
+P0073	2	skip	Muito texto pra 20 segundos.
+P0073	3	skip	Guia de quê? Passei.
+P0073	4	glance	Hm, pergunta pra desmontar? Curiosa.
+P0073	5	skip	Já vi esse.
+P0073	6	skip	Só frase, sem foto de móvel.
+P0073	PICK	4	a única que deu curiosidade
+P0110	1	glance	Nunca MDF? Ué, e o guarda-roupa lá de casa?
+P0110	2	like	Conheço o pessoal, falam sério mesmo.
+P0110	3	skip	Já vi esse guia.
+P0110	4	glance	Marceneiro enrolado, conheço uns.
+P0110	5	skip	Igual o outro.
+P0110	6	like	Eles são caprichosos mesmo, curti.
+P0110	PICK	6	conheço quem faz, é verdade
+P0178	1	skip	Passei, intervalo curto.
+P0178	2	skip	Só texto, nada.
+P0178	3	skip	Mais do mesmo.
+P0178	4	skip	Sem foto, rolei.
+P0178	5	skip	Já vi.
+P0178	6	skip	Nada de novo.
+P0178	PICK	0	sem foto de móvel, nenhuma
+P0235	1	glance	Nunca use MDF? Pera, vou ver isso.
+P0235	2	consume	Verdade, mandei pro primo que tá reformando.
+P0235	3	skip	Já vi esse guia.
+P0235	4	glance	Marceneiro enrolado, kkk.
+P0235	5	skip	Repetido.
+P0235	6	skip	Genérico demais.
+P0235	PICK	2	dá pra mandar pra quem tá reformando
+P0296	1	skip	Rolando já na cama, passei.
+P0296	2	skip	Muita letra, sono.
+P0296	3	skip	Nem li.
+P0296	4	skip	Passei.
+P0296	5	skip	Passei de novo.
+P0296	6	skip	Passei.
+P0296	PICK	0	só queria dormir
+P0061	1	glance	Nunca MDF? Papo de marceneiro que só trabalha com maciça.
+P0061	2	consume	Verdade, tem peça que MDF resolve melhor.
+P0061	3	skip	Sem foto de obra, passei.
+P0061	4	skip	Isso é pra cliente, não pra mim.
+P0061	5	skip	Igual ao outro.
+P0061	6	skip	Frase pronta.
+P0061	PICK	2	única com opinião de ofício
+P0138	1	skip	Cansada, nem parei.
+P0138	2	skip	Só texto.
+P0138	3	skip	Sem paciência.
+P0138	4	skip	Passei.
+P0138	5	skip	Passei.
+P0138	6	skip	Passei.
+P0138	PICK	0	nada me chamou
+P0213	1	glance	Nunca use MDF? Tá exagerado isso.
+P0213	2	skip	Muito texto, passei.
+P0213	3	skip	Sem foto de móvel bonito.
+P0213	4	skip	Passei.
+P0213	5	skip	Repetido.
+P0213	6	skip	Passei.
+P0213	PICK	0	nenhuma mostrava móvel
+P0292	1	glance	Nunca use MDF, será? Marceneiro gosta de polêmica.
+P0292	2	skip	Passei, intervalo curto.
+P0292	3	skip	Mesmo assunto.
+P0292	4	skip	Passei.
+P0292	5	skip	Igual.
+P0292	6	skip	Sem graça.
+P0292	PICK	1	pelo menos provocou
+P0095	1	consume	Nunca MDF aqui? Quero saber onde, vou fechar cozinha.
+P0095	2	like	Isso, desconfio de quem só vende um material.
+P0095	3	glance	Guia, preço é que importa.
+P0095	4	consume	Qual pergunta? Preciso antes de assinar.
+P0095	5	skip	Igual ao outro.
+P0095	6	skip	Qualidade todo mundo diz, quero prova.
+P0095	PICK	4	vou fechar marcenaria, preciso dessa pergunta
+P0157	1	skip	Rolando há horas, passei.
+P0157	2	glance	Vender só um deles, hum, faz sentido.
+P0157	3	skip	Já vi.
+P0157	4	save	Pergunta antes de assinar, guardo pro orçamento.
+P0157	5	skip	Repetido.
+P0157	6	skip	Sem paciência pra isso.
+P0157	PICK	4	vou pedir orçamento, ajuda
+P0202	1	glance	Nunca use MDF? Será que pagar caro compensa?
+P0202	2	skip	Nem lembro dessa conta.
+P0202	3	skip	Passei.
+P0202	4	glance	Pergunta pro marceneiro, hum.
+P0202	5	skip	Mesma coisa.
+P0202	6	skip	Genérico.
+P0202	PICK	4	sobre orçamento, que é minha fase
+P0256	1	glance	Nunca MDF? Vou gastar mais então?
+P0256	2	like	Faz sentido, curti.
+P0256	3	skip	Já vi esse.
+P0256	4	glance	Pergunta pro orçamento, rapidinho.
+P0256	5	skip	Mesmo.
+P0256	6	skip	Passei.
+P0256	PICK	4	orçamento é o que tô fazendo
+P0298	1	skip	Passei, TV mais interessante.
+P0298	2	skip	Passei.
+P0298	3	skip	Texto, não li.
+P0298	4	glance	Marceneiro enrolado, tenho medo disso.
+P0298	5	skip	Passei.
+P0298	6	skip	Passei.
+P0298	PICK	4	única que falou do meu medo
+P0023	1	skip	Nem parei.
+P0023	2	skip	Passei, só texto.
+P0023	3	skip	Passei.
+P0023	4	skip	Passei.
+P0023	5	skip	Passei.
+P0023	6	skip	Passei.
+P0023	PICK	0	nenhuma
+P0057	1	glance	Nunca use MDF? Mas o meu armário é MDF, ué.
+P0057	2	like	Curti, é sincero.
+P0057	3	glance	Guia rápido, talvez útil.
+P0057	4	like	Interessante, curti.
+P0057	5	skip	Já vi.
+P0057	6	skip	Genérico.
+P0057	PICK	3	quero entender a diferença
+P0114	1	skip	Sono, passei.
+P0114	2	skip	Passei.
+P0114	3	skip	Não conheço, passei.
+P0114	4	skip	Passei.
+P0114	5	skip	Passei.
+P0114	6	skip	Passei.
+P0114	PICK	0	nenhuma
+P0147	1	glance	Nunca use MDF aqui, aqui onde? Fiquei curiosa.
+P0147	2	glance	Boa, cada um no seu lugar.
+P0147	3	consume	Guia rápido, o que muda na conta, quero ver.
+P0147	4	glance	Hm, pergunta pra marceneiro.
+P0147	5	skip	Repetido.
+P0147	6	skip	Sem graça.
+P0147	PICK	3	explica a diferença de forma simples
+P0177	1	skip	Passei, TV ligada.
+P0177	2	like	Verdade isso, curti.
+P0177	3	skip	Passei.
+P0177	4	skip	Passei.
+P0177	5	skip	Passei.
+P0177	6	skip	Passei.
+P0177	PICK	2	a mais direta
+P0224	1	glance	Nunca MDF? Meu guarda-roupa é maciça, tô certo.
+P0224	2	consume	Concordo, vendedor sempre puxa pro que tem.
+P0224	3	glance	Guia, vou ver depois.
+P0224	4	glance	Pergunta pra marceneiro, interessante.
+P0224	5	save	Guia rápido, deixo guardado pra trocar o guarda-roupa.
+P0224	6	skip	Conversa mole.
+P0224	PICK	5	serve quando for trocar o guarda-roupa
+P0265	1	skip	Cansada, passei.
+P0265	2	skip	Passei.
+P0265	3	skip	Passei.
+P0265	4	skip	Passei.
+P0265	5	skip	Passei.
+P0265	6	skip	Passei.
+P0265	PICK	0	nada
+P0300	1	glance	Nunca use MDF? Isso é isca pra vender maciça.
+P0300	2	consume	Pelo menos admite que depende, menos mal.
+P0300	3	skip	Tem cara de propaganda.
+P0300	4	glance	Desmonta enrolado, hum, vendedor se achando.
+P0300	5	skip	Mesmo guia, de novo.
+P0300	6	skip	Propaganda pura.
+P0300	PICK	2	a menos cara de propaganda

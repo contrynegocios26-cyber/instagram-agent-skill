@@ -1,0 +1,23 @@
+{
+  "question": "Qual capa abre o carrossel 'MDF ou madeira maciça' de sexta, 14/11?",
+  "items": [
+    {"id": "atual", "role": "test", "path": "capas/atual.jpg",
+     "surface": "capa de carrossel no feed (primeira de 8 imagens), conta mp.marcenariaa",
+     "text": "mp.marcenariaa  MDF ou madeira maciça? Depende da peça. A gente explica onde cada um vai, aqui em Alto Paraná e região... mais"},
+    {"id": "atual-claro", "role": "test", "path": "capas/atual-claro.jpg",
+     "surface": "capa de carrossel no feed (primeira de 8 imagens), conta mp.marcenariaa",
+     "text": "mp.marcenariaa  MDF ou madeira maciça? Depende da peça. A gente explica onde cada um vai, aqui em Alto Paraná e região... mais"},
+    {"id": "pergunta", "role": "test", "path": "capas/pergunta.jpg",
+     "surface": "capa de carrossel no feed (primeira de 8 imagens), conta mp.marcenariaa",
+     "text": "mp.marcenariaa  MDF ou madeira maciça? Depende da peça. A gente explica onde cada um vai, aqui em Alto Paraná e região... mais"},
+    {"id": "vendendo", "role": "test", "path": "capas/vendendo.jpg",
+     "surface": "capa de carrossel no feed (primeira de 8 imagens), conta mp.marcenariaa",
+     "text": "mp.marcenariaa  MDF ou madeira maciça? Depende da peça. A gente explica onde cada um vai, aqui em Alto Paraná e região... mais"},
+    {"id": "nunca-aqui", "role": "test", "path": "capas/nunca-aqui.jpg",
+     "surface": "capa de carrossel no feed (primeira de 8 imagens), conta mp.marcenariaa",
+     "text": "mp.marcenariaa  MDF ou madeira maciça? Depende da peça. A gente explica onde cada um vai, aqui em Alto Paraná e região... mais"},
+    {"id": "piso-cliche", "role": "floor", "path": "capas/piso-cliche.jpg",
+     "surface": "capa de carrossel no feed (primeira de 8 imagens), conta mp.marcenariaa",
+     "text": "mp.marcenariaa  Qualidade e capricho em cada detalhe. Exclusividade para transformar o seu espaço... mais"}
+  ]
+}

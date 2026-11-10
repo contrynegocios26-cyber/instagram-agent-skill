@@ -1,0 +1,47 @@
+{
+  "_about": "Copy this to ~/.claude/instagram/audience.json and replace everything in it. /ig-panel builds its simulated audience from this file and from nothing else, so the panel is exactly as real as what you put here. Numbers from Insights go in as numbers. Everything you guessed goes in 'assumptions', and the tool prints that list on every run.",
+
+  "account": "@yourhandle",
+  "language": "English",
+  "context": "Instagram feed on a phone. One sentence on what the account is, so the panel knows what it is looking at.",
+
+  "assumptions": [
+    "Segment sizes are my estimate. Instagram does not report them.",
+    "Delete this line and write what you actually guessed."
+  ],
+
+  "segments": [
+    {
+      "id": "ready-to-buy",
+      "share": 15,
+      "card": "a situation, not a demographic: what they are in the middle of, what they have already tried, what they are afraid of getting wrong"
+    },
+    {
+      "id": "interested-not-yet",
+      "share": 35,
+      "card": "likes the subject, has no reason to act this month, does not know the vocabulary"
+    },
+    {
+      "id": "peers",
+      "share": 20,
+      "card": "does the same work you do, watches for technique, will never buy"
+    },
+    {
+      "id": "friends-and-locals",
+      "share": 30,
+      "card": "follows because they know you, not because they want the thing",
+      "dimensions": {
+        "relation": {
+          "follows the account and knows who is behind it": 80,
+          "follows the account but barely remembers why": 20
+        }
+      }
+    }
+  ],
+
+  "dimensions": {
+    "gender": {"woman": 50, "man": 50},
+    "age": {"18 to 24": 15, "25 to 34": 35, "35 to 44": 30, "45 to 54": 12, "55 or older": 8},
+    "place": {"your top city": 30, "second city": 15, "elsewhere in the country": 55}
+  }
+}
