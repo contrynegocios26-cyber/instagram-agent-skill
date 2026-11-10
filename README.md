@@ -69,6 +69,7 @@ out loud.
 | `/ig-dm` | The keyword delivery, the first message, the collab pitch, and the two follow-ups. Two. |
 | `/ig-repurpose` | One video, podcast or newsletter into a week of reels and carousels that each stand alone. |
 | `/ig-audit` | Post-mortem on what you already posted. Ranks by outlier multiple and sends per reach, not views. |
+| `/nicho-sensivel` | Tráfego pago para nichos sensíveis (nutra, emagrecimento, finanças, renda extra, apostas licenciadas) dentro das políticas e da lei brasileira: triagem da oferta, regras por plataforma, copy que passa, [conta de verba](skills/nicho-sensivel/orcamento.py) e entregáveis para o cliente. Em português. |
 
 ## The five tools that actually run
 
