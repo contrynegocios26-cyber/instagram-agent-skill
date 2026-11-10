@@ -133,3 +133,16 @@ A mensagem de 20 dias, a de "vou arquivar", é a que mais traz resposta.
 | 3 dias | "Oi, [nome], só para não se perder na sua caixa: deixei uma mensagem sobre parceria de marcenaria. Quando tiver um minuto, me fala?" |
 | 10 dias | [mande uma foto de trabalho novo] "Acabamos de instalar essa porta pivotante. Lembrei de você." |
 | Depois disso | Pare. Volte a tentar em 3 meses. |
+
+---
+
+## 10. Ligação para telefone fixo (a maioria das empresas da planilha)
+
+Ligue entre 9h e 11h30 ou entre 14h e 17h. Objetivo da ligação: **conseguir o WhatsApp de quem decide**, não vender por telefone.
+
+> Bom dia! Meu nome é [seu nome], sou da MP Marcenaria, de Alto Paraná. Tudo bem?
+> A gente faz móveis planejados, portas e esquadrias de madeira aqui na região, e eu queria apresentar nosso trabalho para [o arquiteto / o responsável por compras / o gerente]. Qual é o melhor WhatsApp para eu mandar umas fotos?
+
+- **Se pedirem e-mail:** passe o seu e peça o deles; mande no mesmo dia 2 fotos + 3 linhas de apresentação.
+- **Se disserem "não temos interesse":** "Sem problema! Posso só deixar meu contato para quando precisarem de algo sob medida?" Marque "Sem interesse" na planilha e não ligue de novo antes de 6 meses.
+- **Depois de conseguir o WhatsApp:** cole na coluna Telefone e mande a mensagem da coluna "1ª mensagem" no mesmo dia, começando com "Oi, [nome], falamos agora por telefone..."

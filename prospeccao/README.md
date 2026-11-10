@@ -11,4 +11,4 @@
 
 **Comece amanhã por aqui:** peça para a MP a lista de clientes antigos e de orçamentos não fechados (semana 1 da rotina) e, em paralelo, mande 15 mensagens da aba Leads.
 
-**Sobre a lista de leads (10/11/2026):** 64 contatos, tirados de buscas públicas, cada um com a fonte. A maioria tem só o nome e a cidade; telefone e Instagram precisam ser completados pelo Google Maps e pelo Instagram, porque os diretórios estavam bloqueados para mim. Alto Paraná, Nova Esperança, Cianorte, Terra Rica e Santa Isabel do Ivaí ainda não têm nenhum contato: são as cidades para você levantar no Maps.
+**Sobre a lista de leads (atualizada em 10/11/2026):** 320 empresas, 269 com telefone (46 celulares com botão "Abrir conversa", que já abre o WhatsApp com a 1ª mensagem; o resto é fixo, e para esses use o script 10 de ligação). As fontes são buscas públicas e o TeleListas, e cada linha tem o link de onde saiu. Cidades: Maringá, Paranavaí, Umuarama, Cianorte e Loanda. Alto Paraná, Nova Esperança, Terra Rica e Santa Isabel do Ivaí não aparecem nos diretórios: levante essas cidades no Google Maps ou pessoalmente. Antes de mandar, troque [seu nome] na mensagem.
