@@ -70,13 +70,21 @@ out loud.
 | `/ig-repurpose` | One video, podcast or newsletter into a week of reels and carousels that each stand alone. |
 | `/ig-audit` | Post-mortem on what you already posted. Ranks by outlier multiple and sends per reach, not views. |
 
-## MP Marcenaria: atendimento
+## MP Marcenaria: the company skills
 
-One more skill lives in this copy of the pack, written in Portuguese for the
-MP Marcenaria team:
+This copy of the pack also carries the skills that run MP Marcenaria, written
+in Portuguese. Agents do the office work; people approve, build, install and
+move the money. `/mp-empresa` holds the map of who owns what.
 
 | command | what it does |
 | --- | --- |
+| `/mp-empresa` | General manager. The company map: which agent runs each area, which person answers for each agent, approval limits, daily / weekly / monthly routines and the KPI panel. |
+| `/mp-vendas` | Sales funnel, quote follow-up, negotiation, closing checklist, contract items, architects and builders. |
+| `/mp-producao` | Production planning: production order, factory schedule, capacity, quality checks per stage, rework and delays. |
+| `/mp-compras-estoque` | Material needs per order, supplier quotes, purchase orders, receiving, stock, offcuts and reorder points. |
+| `/mp-entrega-instalacao` | Delivery and installation schedule, site-readiness check, load list, installation checklists, handover walkthrough and service calls. |
+| `/mp-financeiro` | Payables, receivables, 8-week cash projection, collections, real cost and margin per job, shop hourly rate, monthly result. |
+| `/mp-pessoas-seguranca` | Hiring, onboarding, rota, training, PPE control and the safety routine of a joinery shop. |
 | `/mp-atendimento` | Customer service for the joinery: answers client questions on materials, hardware, measurements, doors, frames, decks, pricing, lead time, warranty and care, and walks a lead from "quanto custa?" to the site visit, the quote and after-sales. Never invents a price, a deadline or a warranty term: those come from the "Dados da MP" table in the skill, which you fill in once. |
 
 Reference files: [materiais e ferragens](skills/mp-atendimento/references/materiais-ferragens.md),
