@@ -1,0 +1,482 @@
+{
+  "_leia": "Banco de materiais da calculadora mola.py. Unidades: MPa, kg/m3, C. Rm e o MINIMO estimado; o certificado do arame sempre vence (use --Rm). 'admissivel' sao fracoes de Rm para carga estatica (criterio SMI). 'confianca' diz de onde veio o dado.",
+  "materiais": {
+    "sae1070-sh": {
+      "nome": "Aco carbono patenteado trefilado (corda de piano)",
+      "condicao": "ASTM A228 / EN 10270-1 SH-DH",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 120,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.1,
+            "dmax": 6.5,
+            "A": 2211,
+            "m": 0.145
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.45,
+          "com_preset": 0.6
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.8,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "sae1070-sm": {
+      "nome": "Aco carbono trefilado duro",
+      "condicao": "ASTM A227 / EN 10270-1 SM",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 120,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.7,
+            "dmax": 12.7,
+            "A": 1783,
+            "m": 0.19
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.45,
+          "com_preset": 0.6
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.8,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "temperado-oleo": {
+      "nome": "Aco carbono temperado e revenido em oleo",
+      "condicao": "ASTM A229 / EN 10270-2 FDC",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 150,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.5,
+            "dmax": 12.7,
+            "A": 1855,
+            "m": 0.187
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.5,
+          "com_preset": 0.65
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.85,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "cromo-vanadio": {
+      "nome": "Aco cromo-vanadio (SAE 6150)",
+      "condicao": "ASTM A232 / EN 10270-2 FDCrV",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 220,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.8,
+            "dmax": 11.1,
+            "A": 2005,
+            "m": 0.168
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.5,
+          "com_preset": 0.65
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.85,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "cromo-silicio": {
+      "nome": "Aco cromo-silicio (SAE 9254)",
+      "condicao": "ASTM A401 / EN 10270-2 FDSiCr",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 245,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 1.6,
+            "dmax": 9.5,
+            "A": 1974,
+            "m": 0.108
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.5,
+          "com_preset": 0.65
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.85,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "inox302": {
+      "nome": "Aco inoxidavel AISI 302/304",
+      "condicao": "ASTM A313 / EN 10270-3 1.4310",
+      "G": 69000,
+      "E": 193000,
+      "rho": 7900,
+      "temp_max": 260,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.3,
+            "dmax": 2.5,
+            "A": 1867,
+            "m": 0.146
+          },
+          {
+            "dmin": 2.5,
+            "dmax": 5.0,
+            "A": 2065,
+            "m": 0.263
+          },
+          {
+            "dmin": 5.0,
+            "dmax": 10.0,
+            "A": 2911,
+            "m": 0.478
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "inox316": {
+      "nome": "Aco inoxidavel AISI 316",
+      "condicao": "ASTM A313 / EN 10270-3 1.4401",
+      "G": 69000,
+      "E": 193000,
+      "rho": 7950,
+      "temp_max": 260,
+      "rm": {
+        "tipo": "potencia",
+        "fator": 0.82,
+        "faixas": [
+          {
+            "dmin": 0.3,
+            "dmax": 2.5,
+            "A": 1867,
+            "m": 0.146
+          },
+          {
+            "dmin": 2.5,
+            "dmax": 5.0,
+            "A": 2065,
+            "m": 0.263
+          },
+          {
+            "dmin": 5.0,
+            "dmax": 10.0,
+            "A": 2911,
+            "m": 0.478
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "APROXIMACAO: Rm = 0,82 x 302. Usar --Rm do certificado"
+    },
+    "x750-mola": {
+      "nome": "Inconel X-750 (UNS N07750)",
+      "condicao": "tempera mola AMS 5699 + 650 C/4 h",
+      "G": 76000,
+      "E": 214000,
+      "rho": 8280,
+      "temp_max": 370,
+      "modulo_vs_temp": [
+        [
+          20,
+          1.0
+        ],
+        [
+          538,
+          0.86
+        ],
+        [
+          650,
+          0.83
+        ]
+      ],
+      "rm": {
+        "tipo": "tabela",
+        "faixas": [
+          [
+            6.35,
+            1517
+          ],
+          [
+            10.6,
+            1379
+          ],
+          [
+            12.7,
+            1241
+          ]
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Rm apos envelhecimento: tabela Special Metals (220/200/180 ksi) via reproducao; G medido em molas ~76 GPa (ha fonte com 82,7); curva de modulo = 2 pontos de E (214 GPa a 20 C, 184 GPa a 538 C) interpolados; ponto de 650 C extrapolado",
+      "preset_nao_recomendado": true
+    },
+    "x750-no1": {
+      "nome": "Inconel X-750 (UNS N07750)",
+      "condicao": "tempera No.1 AMS 5698 + 730 C/16 h",
+      "G": 76000,
+      "E": 214000,
+      "rho": 8280,
+      "temp_max": 540,
+      "modulo_vs_temp": [
+        [
+          20,
+          1.0
+        ],
+        [
+          538,
+          0.86
+        ],
+        [
+          650,
+          0.83
+        ]
+      ],
+      "rm": {
+        "tipo": "tabela",
+        "faixas": [
+          [
+            0.635,
+            1069
+          ],
+          [
+            12.7,
+            1138
+          ]
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Rm apos envelhecimento: tabela Special Metals (155/165 ksi) via reproducao; G e curva de modulo como em x750-mola; ponto de 650 C extrapolado",
+      "preset_nao_recomendado": true
+    },
+    "x750-triplo": {
+      "nome": "Inconel X-750 (UNS N07750)",
+      "condicao": "AMS 5699 + triplo 1150 C/2 h + 845 C/24 h + 705 C/20 h",
+      "G": 76000,
+      "E": 212000,
+      "rho": 8280,
+      "temp_max": 650,
+      "modulo_vs_temp": [
+        [
+          20,
+          1.0
+        ],
+        [
+          538,
+          0.86
+        ],
+        [
+          650,
+          0.83
+        ]
+      ],
+      "rm": {
+        "tipo": "tabela",
+        "faixas": [
+          [
+            6.35,
+            1034
+          ],
+          [
+            12.7,
+            1000
+          ]
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Rm apos tratamento triplo: tabela Special Metals (150/145 ksi) via reproducao; limite de proporcionalidade em cisalhamento ~465 MPa: projetar abaixo dele; ponto de 650 C extrapolado",
+      "preset_nao_recomendado": true
+    },
+    "17-7ph": {
+      "nome": "Aco inoxidavel 17-7 PH",
+      "condicao": "ASTM A313 tipo 631, condicao CH900",
+      "G": 75800,
+      "E": 203400,
+      "rho": 7800,
+      "temp_max": 315,
+      "rm": {
+        "tipo": "certificado"
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "modulos: Shigley tab. 10-5; Rm so pelo certificado (--Rm)"
+    },
+    "inconel718": {
+      "nome": "Inconel 718 (UNS N07718)",
+      "condicao": "trefilado + envelhecido",
+      "G": 77200,
+      "E": 200000,
+      "rho": 8190,
+      "temp_max": 550,
+      "rm": {
+        "tipo": "certificado"
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "modulos de tabela generica de molas (confirmar com o fabricante do arame); Rm so pelo certificado (--Rm); em servico acido a dureza maxima da NACE limita a resistencia"
+    }
+  }
+}

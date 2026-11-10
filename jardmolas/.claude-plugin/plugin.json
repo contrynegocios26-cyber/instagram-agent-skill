@@ -1,0 +1,10 @@
+{
+  "name": "jardmolas",
+  "description": "Dezesseis skills que operam uma fábrica de molas para implementos agrícolas e indústria: time de agentes de IA, estratégia de crescimento, engenharia com calculadora de molas (compressão, tração, torção, válvula de retenção dupla portinhola), especialista em Inconel X-750, molas para válvulas, linha agrícola, processos, PCP, qualidade, compras e importação, comercial com calculadora de preço, prospecção de compradores de ligas especiais, marketing industrial, financeiro, pessoas e segurança, manutenção.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jardmolas",
+    "url": "https://jardmolas.com.br"
+  },
+  "keywords": ["molas", "springs", "inconel-x750", "valvulas", "implementos-agricolas", "manufatura", "engenharia", "b2b"]
+}
