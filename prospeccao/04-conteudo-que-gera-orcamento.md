@@ -65,7 +65,7 @@ Quem pesquisa "marcenaria perto de mim" ou "móveis planejados Paranavaí" está
 
 ## 6. Ideias de Reels que puxam orçamento
 
-1. **"Quanto custa uma cozinha planejada em [cidade]?"** Fale a faixa de preço real ("de R$ X a R$ Y para uma cozinha de 3 metros") e o que muda o valor. É o tipo de vídeo que mais gera direct. [confirmar faixas com a MP]
+1. **"Por que ninguém te passa o preço de um planejado pelo WhatsApp?"** Explique, sem dar valor, os 4 fatores que mudam o preço: tamanho, material, ferragem e detalhes (ripado, LED, vidro). Feche com: "Por isso a gente mede e orça o seu, e a medição não é cobrada se você fechar." É o tipo de vídeo que mais gera direct.
 2. **"3 erros que encarecem seu planejado"** (ex.: medir antes do reboco, escolher ferragem barata, não prever tomadas).
 3. **"POV: você chamou a MP para fazer uma porta pivotante"**: resultado pronto no 1º segundo, depois o processo.
 4. **Medição na obra, episódio 2** (formato do Reel campeão).

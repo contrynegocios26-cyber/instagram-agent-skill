@@ -32,7 +32,7 @@ Um arquiteto fecha vários projetos por ano. Um parceiro bom vale mais que 20 cl
 **O que oferecer ao arquiteto (combinar com o dono da MP antes):**
 - Orçamento rápido (prazo: [X dias]) a partir do projeto dele.
 - Visita técnica junto com o arquiteto.
-- Comissão / RT de [X%] — **confirmar com a MP se paga e quanto.**
+- Comissão de **4%** sobre o valor do serviço fechado.
 - Fotos profissionais do projeto pronto, com crédito para o escritório (arquiteto adora portfólio).
 
 ---
@@ -54,7 +54,7 @@ Um arquiteto fecha vários projetos por ano. Um parceiro bom vale mais que 20 cl
 Quem acabou de comprar ou alugar imóvel precisa de móvel. O corretor sabe quem é.
 
 > Oi, [nome]! Sou [seu nome], da MP Marcenaria, de Alto Paraná. A gente faz móveis planejados e portas sob medida.
-> Penso numa parceria simples: quando um cliente seu comprar um imóvel e precisar de móveis, você indica a MP, e se fechar você ganha [R$ X / X%] de indicação. Faz sentido para você?
+> Penso numa parceria simples: quando um cliente seu comprar um imóvel e precisar de móveis, você indica a MP, e se fechar você ganha 4% do valor fechado. Faz sentido para você?
 
 ---
 
@@ -77,7 +77,7 @@ Peça para a MP a lista de quem já comprou nos últimos 3 anos.
 
 (Se responder bem:)
 
-> Que bom! Posso te pedir um favor? Se souber de alguém construindo ou reformando, me indica? Para quem indicar e o amigo fechar, a gente dá [brinde / desconto no próximo móvel / R$ X].
+> Que bom! Posso te pedir um favor? Se souber de alguém construindo ou reformando, me indica? Para quem indicar e o amigo fechar, você ganha 4% do valor do serviço.
 > E se puder, manda uma foto do ambiente hoje? Quero mostrar no nosso Instagram (sem aparecer você, se preferir).
 
 **Próximo ambiente:**

@@ -65,7 +65,7 @@ Troque sempre o que está entre [colchetes].
 
 ### Fechando a parceria
 
-> [nome], deu certo esse primeiro projeto. Quero te propor uma coisa: para os seus clientes, a MP garante [orçamento em X dias / visita técnica junto com você / RT de X%], e quando a obra fica pronta a gente faz fotos profissionais do ambiente para o seu portfólio, com crédito para o escritório. Faz sentido para você?
+> [nome], deu certo esse primeiro projeto. Quero te propor uma coisa: para os seus clientes, a MP garante comissão de 4% sobre cada serviço fechado, [orçamento em X dias] e visita técnica junto com você, e quando a obra fica pronta a gente faz fotos profissionais do ambiente para o seu portfólio, com crédito para o escritório. Faz sentido para você?
 
 **O presente que mais conquista arquiteto:** fotos bem feitas do projeto dele instalado. Combine com a MP fotografar toda obra que vier de arquiteto e mande as fotos para ele antes de postar.
 
@@ -112,7 +112,7 @@ Troque sempre o que está entre [colchetes].
 ### Quando disser "pode"
 
 (áudio, ~40 s)
-> "Oi, [nome]! É simples: todo cliente que compra imóvel com vocês vai precisar de móvel, de cozinha, de guarda-roupa. Quando vocês indicarem a MP e o cliente fechar, você ganha [R$ X / X%] de indicação, e o seu cliente ganha [desconto / brinde] por vir de você. Assim você entrega mais um serviço para ele e ainda ganha. Também posso te ajudar com imóvel parado: um orçamento de cozinha planejada para mostrar ao comprador quanto custa deixar o imóvel pronto."
+> "Oi, [nome]! É simples: todo cliente que compra imóvel com vocês vai precisar de móvel, de cozinha, de guarda-roupa. Quando vocês indicarem a MP e o cliente fechar, você ganha 4% do valor fechado, e o seu cliente ganha [desconto / brinde] por vir de você. Assim você entrega mais um serviço para ele e ainda ganha. Também posso te ajudar com imóvel parado: um orçamento de cozinha planejada para mostrar ao comprador quanto custa deixar o imóvel pronto."
 
 ### Dia 5 — Reforço
 
@@ -122,7 +122,7 @@ Troque sempre o que está entre [colchetes].
 
 ### Toda vez que fechar uma indicação dele
 
-> [nome], o [cliente] fechou a cozinha com a gente! Sua comissão de [valor] cai até [data]. Muito obrigado pela confiança. 🙏
+> [nome], o [cliente] fechou a cozinha com a gente! Sua comissão de 4% (R$ [valor]) cai até [data]. Muito obrigado pela confiança. 🙏
 
 **Pague rápido e avise.** É isso que faz o corretor indicar de novo.
 
@@ -140,7 +140,7 @@ Troque sempre o que está entre [colchetes].
 
 ### No balcão (o que falar pessoalmente)
 
-> "Oi, sou [seu nome], da MP Marcenaria. Não vim vender nada, vim propor uma parceria. Quando o cliente de vocês perguntar de marceneiro, vocês indicam a gente, e eu indico vocês. Trouxe esse display com QR code do nosso WhatsApp para o balcão. Quem fechar vindo daqui, a loja ganha [comissão / brinde / indicação de volta]."
+> "Oi, sou [seu nome], da MP Marcenaria. Não vim vender nada, vim propor uma parceria. Quando o cliente de vocês perguntar de marceneiro, vocês indicam a gente, e eu indico vocês. Trouxe esse display com QR code do nosso WhatsApp para o balcão. Quem fechar vindo daqui, a loja ganha 4% do valor fechado, e eu ainda indico vocês de volta."
 
 **Leve:** display de mesa com QR code e 2 fotos de trabalhos, e cartões. Volte a cada 30 dias para conversar e trocar o display. A presença constante é o que gera indicação.
 
@@ -162,9 +162,14 @@ Troque sempre o que está entre [colchetes].
 
 ### Se perguntar logo "quanto custa?"
 
-> Ótima pergunta! O valor muda bastante com o tamanho e o material, por isso não quero te passar um número chutado. Para eu te dar uma estimativa real ainda hoje, me diz: é [cozinha/quarto/...] de mais ou menos quantos metros de parede? Se tiver uma foto do espaço, melhor ainda.
+> Ótima pergunta! Aqui na MP não tem tabela, porque cada móvel é feito do zero para o seu espaço: o valor depende do tamanho, do material, das ferragens e dos detalhes. Não quero te passar um número chutado que depois muda.
+> O que eu faço é o seu orçamento de verdade: me manda uma foto do espaço e as medidas aproximadas (ou a planta), e a gente monta. A medição na obra é por nossa conta: se você fechar o serviço, ela não é cobrada.
 
-*(Se a MP tiver faixa de preço por metro linear, dê a faixa aqui. Cliente que recebe um número fica; cliente que recebe "depende" vai para o próximo.)*
+*(Nunca responda só "depende". Explique **do que** depende e mostre o próximo passo; o cliente que entende o motivo continua na conversa.)*
+
+**Se insistir ("só me dá uma ideia"):**
+
+> Entendo, você quer saber se cabe no seu bolso antes de perder tempo, né? Faz assim: me fala quanto você pensou em investir, e eu te digo com sinceridade se dá para fazer o que você quer com esse valor, ou o que dá para ajustar.
 
 ### Depois de entender o projeto (áudio, ~40 s)
 
@@ -226,7 +231,7 @@ A mensagem do dia 25 ("vou arquivar") costuma ser a que mais traz resposta.
 ### Pedindo indicação (uma semana depois)
 
 > [nome], obrigado pela avaliação, ficou linda! ❤️
-> Se você souber de alguém construindo ou reformando, pode me indicar? Para cada indicação que fechar, a gente te dá [desconto no próximo móvel / brinde / R$ X].
+> Se você souber de alguém construindo ou reformando, pode me indicar? Para cada indicação que fechar, você ganha 4% do valor do serviço. É um jeito de agradecer quem confia na gente.
 
 ### Próximo ambiente
 
@@ -286,7 +291,7 @@ Responda no comentário: "Obrigado, [nome]! Te chamei no direct 😊". No direct
 | **"Vou ver com meu marido / minha esposa."** | "Perfeito, decisão de casa se toma junto. Quer que eu mande um resumo com fotos para vocês verem juntos? Ou, se preferirem, faço uma chamada rápida com os dois." |
 | **"Agora não é o momento."** | "Tranquilo! Quando você acha que vai ser? Te chamo nessa época, sem pressão." *(Anote a data na planilha e chame mesmo.)* |
 | **"Já tenho marceneiro."** | "Que bom, marceneiro de confiança vale ouro. Posso ficar como segunda opção para quando ele estiver com a agenda cheia?" |
-| **"Vocês atendem na minha cidade?"** | "Atendemos sim! A gente já fez obra em [cidades próximas]. A medição em [cidade] é [gratuita / com taxa X]." [confirmar com a MP] |
+| **"Vocês atendem na minha cidade?"** | "Atendemos sim! A gente já fez obra em [cidades próximas]. A gente vai até [cidade] medir, e se você fechar o serviço a medição não é cobrada." |
 
 ---
 
@@ -321,15 +326,17 @@ Configurações → Ferramentas comerciais → Respostas rápidas. Digite `/` + 
 | `/follow` | Oi! Conseguiu olhar o orçamento com calma? O que achou? |
 | `/arquivo` | Vou arquivar seu orçamento para não ficar te incomodando. Se quiser retomar, é só me chamar aqui. Foi um prazer! |
 | `/google` | Se puder, deixa uma avaliação da MP no Google? Ajuda muito a gente: [link] |
-| `/indica` | Se souber de alguém construindo ou reformando, me indica? Para cada indicação que fechar, você ganha [benefício]. |
+| `/indica` | Se souber de alguém construindo ou reformando, me indica? Para cada indicação que fechar, você ganha 4% do valor fechado. |
 
 ---
 
 ## Pendências para confirmar com a MP antes de usar
 
-- [ ] Comissão para arquiteto (RT), corretor, loja parceira e cliente que indica
+- [x] Comissão de indicação: 4% do serviço fechado (arquiteto, corretor, loja, cliente)
 - [ ] Prazo médio de orçamento e de produção
-- [ ] Faixa de preço por metro linear (cozinha e guarda-roupa)
-- [ ] Se a medição é gratuita e até que distância
+- [x] Sem tabela de preço: cada serviço é orçado individualmente
+- [x] Medição: não é cobrada se fechar o serviço
+- [ ] Até que distância a MP vai medir
+- [ ] Quanto custa a medição para quem não fecha
 - [ ] Condições de pagamento
 - [ ] Link de avaliação do Google

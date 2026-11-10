@@ -54,6 +54,8 @@ Próximo passo: [medição dia X / enviar orçamento até dia X]
 
 - [ ] Prazo médio de produção e instalação
 - [ ] Condições de pagamento e parcelamento
-- [ ] Raio de atendimento (até onde vão medir sem custo)
-- [ ] Comissão para você por venda fechada, e para arquiteto ou indicação
-- [ ] Faixa de preço por metro linear (cozinha) para dar estimativa rápida
+- [x] Medição: não é cobrada se o cliente fechar o serviço
+- [ ] Raio de atendimento (até onde vão medir)
+- [x] Comissão de indicação (arquiteto, corretor, loja, cliente): 4% do serviço fechado
+- [ ] Comissão para você por venda fechada
+- [x] Não existe tabela de preço: cada serviço é orçado do zero, a partir da medida e do projeto
