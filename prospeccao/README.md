@@ -7,6 +7,7 @@
 | `01-scripts-de-abordagem.md` | Mensagens prontas por tipo de contato, mais follow-ups. |
 | `02-roteiro-de-orcamento.md` | As 8 perguntas para qualificar o cliente, o resumo para o projetista e as respostas para objeções. |
 | `03-rotina-e-metas.md` | Rotina diária, plano das 4 semanas e metas do mês. |
+| `05-mensagens-de-conexao.md` | **Sequências completas por tipo de pessoa** (arquiteto, construtora, corretor, loja, cliente, casal construindo, cliente antigo, orçamento parado, Instagram, comércio), objeções, fechamento e respostas rápidas do WhatsApp Business. |
 | `04-conteudo-que-gera-orcamento.md` | Carrossel fixado, stories, Status do WhatsApp, Perfil no Google e Reels que puxam orçamento. |
 
 **Comece amanhã por aqui:** peça para a MP a lista de clientes antigos e de orçamentos não fechados (semana 1 da rotina) e, em paralelo, mande 15 mensagens da aba Leads.
