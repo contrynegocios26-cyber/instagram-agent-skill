@@ -1,0 +1,121 @@
+{
+  "marca": {
+    "nome": "MP Marcenaria",
+    "cidade": "Alto Paraná · PR",
+    "whatsapp": "[preencher: 55 + DDD + número]",
+    "whatsapp_exibir": "[preencher: (44) 9 0000-0000]",
+    "instagram": "@mp.marcenariaa",
+    "site": "",
+    "email": "",
+    "endereco": "",
+    "logo": "",
+    "cor_texto": "#2B2B2B",
+    "cor_destaque": "#A47148",
+    "cor_fundo": "#FFFFFF"
+  },
+  "catalogo": {
+    "titulo": "Portfólio",
+    "subtitulo": "Móveis planejados, portas e esquadrias de madeira sob medida",
+    "edicao": "Edição 2026",
+    "formato": "paisagem",
+    "mostrar_precos": false
+  },
+  "paginas": [
+    { "tipo": "capa", "imagem": "fotos/capa.jpg" },
+    {
+      "tipo": "texto",
+      "rotulo": "Quem faz",
+      "titulo": "Do projeto à instalação, feito na nossa fábrica",
+      "paragrafos": [
+        "[preencher: 2 a 3 frases com fatos. Onde fica, há quanto tempo, o que fabrica, quem atende. Ex.: A MP Marcenaria fabrica em Alto Paraná, no noroeste do Paraná, há 5 anos.]",
+        "[preencher: o que diferencia, em fatos verificáveis: materiais e ferragens usados, equipe própria de instalação, pranchas técnicas para o arquiteto.]"
+      ],
+      "imagem": "fotos/fabrica.jpg"
+    },
+    { "tipo": "indice", "titulo": "Nesta edição" },
+    {
+      "tipo": "abertura",
+      "rotulo": "01",
+      "titulo": "Projetos entregues",
+      "texto": "Ambientes que saíram da nossa fábrica e estão em uso.",
+      "imagem": "fotos/abertura-projetos.jpg"
+    },
+    {
+      "tipo": "projeto",
+      "titulo": "[preencher: nome do projeto, ex.: Cozinha integrada em freijó]",
+      "ambiente": "Cozinha",
+      "local": "[preencher: cidade · UF]",
+      "ano": 2026,
+      "descricao": "[preencher: o que o cliente precisava, o que foi feito e o detalhe que resolve o dia a dia. 3 a 5 frases.]",
+      "materiais": ["[preencher: chapa e acabamento]", "[preencher: ferragens]"],
+      "destaques": ["[preencher: ex.: gavetões com fechamento suave]", "[preencher: ex.: iluminação embutida sob os aéreos]"],
+      "arquiteto": "",
+      "arquiteto_autorizou": false,
+      "foto_credito": "",
+      "autorizado": false,
+      "fotos": ["fotos/proj1-geral.jpg", "fotos/proj1-angulo.jpg", "fotos/proj1-detalhe1.jpg", "fotos/proj1-detalhe2.jpg"]
+    },
+    {
+      "tipo": "abertura",
+      "rotulo": "02",
+      "titulo": "Portas e esquadrias",
+      "texto": "Kit porta pronta, portas pivotantes e esquadrias de madeira sob medida.",
+      "imagem": "fotos/abertura-portas.jpg"
+    },
+    {
+      "tipo": "produtos",
+      "rotulo": "Linha de portas",
+      "titulo": "Kit porta pronta",
+      "itens": [
+        {
+          "codigo": "KP-01",
+          "nome": "[preencher: modelo]",
+          "descricao": "[preencher: folha, batente, guarnições, dobradiças e fechadura. Para que ambiente serve.]",
+          "medidas": "[preencher: larguras e altura disponíveis]",
+          "material": "[preencher]",
+          "acabamento": "[preencher]",
+          "prazo": "",
+          "preco": "",
+          "imagem": "fotos/kp-01.jpg"
+        }
+      ]
+    },
+    {
+      "tipo": "materiais",
+      "rotulo": "Acabamentos",
+      "titulo": "Materiais com que trabalhamos",
+      "texto": "Amostras para referência. A cor exata é confirmada com a amostra física.",
+      "nota": "As cores impressas e de tela variam. Peça para ver a amostra.",
+      "itens": [
+        { "nome": "[preencher: nome do padrão]", "tipo": "[preencher: MDF madeirado · marca]", "imagem": "fotos/amostra-1.jpg" },
+        { "nome": "[preencher: nome da cor]", "tipo": "Laca fosca", "cor": "#D9D4CB" }
+      ]
+    },
+    {
+      "tipo": "processo",
+      "rotulo": "Como trabalhamos",
+      "titulo": "Do primeiro contato à entrega",
+      "etapas": [
+        { "titulo": "Conversa e medição", "texto": "Entendemos o que você precisa e medimos o ambiente." },
+        { "titulo": "Projeto 3D e orçamento", "texto": "Você vê o ambiente antes de existir, com o valor por ambiente." },
+        { "titulo": "Projeto final", "texto": "Medição definitiva com a obra pronta e aprovação de cada detalhe." },
+        { "titulo": "Fabricação", "texto": "Produção na nossa fábrica, com conferência em cada etapa." },
+        { "titulo": "Instalação", "texto": "Equipe própria, ambiente entregue limpo e regulado." },
+        { "titulo": "Pós-venda", "texto": "Vistoria com você, orientações de uso e garantia por escrito." }
+      ]
+    },
+    {
+      "tipo": "depoimento",
+      "texto": "[preencher: depoimento real, com autorização. Nunca inventar.]",
+      "autor": "[preencher: nome]",
+      "local": "[preencher: cidade ou projeto]"
+    },
+    {
+      "tipo": "contato",
+      "titulo": "Vamos conversar sobre o seu projeto",
+      "texto": "Envie a planta ou um vídeo do ambiente pelo WhatsApp. Respondemos com os próximos passos.",
+      "mensagem_whatsapp": "Olá! Vi o catálogo da MP e quero um orçamento.",
+      "imagem": "fotos/contato.jpg"
+    }
+  ]
+}

@@ -40,7 +40,7 @@ físico e responde pelo resultado.**
 | # | Área | Agente (skill) | O que o agente faz | Responsável humano | O que só a pessoa faz |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Direção | **Gerente Geral** (`mp-empresa`) | Pauta, prioridades, painel, cobrança entre áreas | Dono | Decidir, definir metas, aprovar exceções |
-| 2 | Marketing | **Conteúdo** (`mp-redes-sociais`, `mp-sites-tours`, skills `ig-*`) | Calendário, roteiros, legendas, edição, site, anúncios | Dono ou comercial | Gravar na fábrica e na obra, publicar, aparecer |
+| 2 | Marketing | **Conteúdo** (`mp-redes-sociais`, `mp-catalogo`, `mp-sites-tours`, skills `ig-*`) | Calendário, roteiros, legendas, edição, catálogo e portfólio, site, anúncios | Dono ou comercial | Gravar na fábrica e na obra, publicar, aparecer |
 | 3 | Atendimento | **Atendente** (`mp-atendimento`) | Responde cliente, qualifica, agenda visita | Comercial | Enviar as mensagens, atender ligação e balcão |
 | 4 | Vendas | **Vendedor interno** (`mp-vendas`) | Funil, retorno de orçamento, negociação, contrato, arquitetos | Comercial | Visitar, apresentar, negociar exceção, colher assinatura |
 | 5 | Projeto e orçamento | **Projetista** (`mp-projetos-orcamentos`) | 3D, pranchas, lista de peças, plano de corte, preço | Comercial ou projetista | Medir na obra, aprovar o executivo com o cliente |

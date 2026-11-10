@@ -84,6 +84,7 @@ move the money. `/mp-empresa` holds the map of who owns what.
 | `/mp-compras-estoque` | Material needs per order, supplier quotes, purchase orders, receiving, stock, offcuts and reorder points. |
 | `/mp-entrega-instalacao` | Delivery and installation schedule, site-readiness check, load list, installation checklists, handover walkthrough and service calls. |
 | `/mp-financeiro` | Payables, receivables, 8-week cash projection, collections, real cost and margin per job, shop hourly rate, monthly result. |
+| `/mp-catalogo` | Builds the catalogue: portfolio of delivered projects, product lines, finishes sampler, architect deck. Curates photos, writes the copy and generates the PDF with [`catalogo.py`](skills/mp-catalogo/catalogo.py) (screen or print with 3 mm bleed), flagging every missing photo, field and client authorisation. |
 | `/mp-pessoas-seguranca` | Hiring, onboarding, rota, training, PPE control and the safety routine of a joinery shop. |
 | `/mp-atendimento` | Customer service for the joinery: answers client questions on materials, hardware, measurements, doors, frames, decks, pricing, lead time, warranty and care, and walks a lead from "quanto custa?" to the site visit, the quote and after-sales. Never invents a price, a deadline or a warranty term: those come from the "Dados da MP" table in the skill, which you fill in once. |
 
