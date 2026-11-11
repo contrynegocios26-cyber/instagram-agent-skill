@@ -21,8 +21,14 @@ consiste em levar essa referência (1) a mais fabricantes do mesmo produto,
 (2) a produtos vizinhos que usam a mesma liga, e (3) ao mesmo cliente com
 mais itens. Nessa ordem de facilidade.
 
+**Quem compra é a fábrica.** O cliente deste mercado é o fabricante de
+válvulas e de equipamentos — é ele que especifica e monta a mola. Revendas,
+distribuidores e importadores de válvulas também entram como alvo (reposição
+e indicação), junto com as oficinas; a abordagem muda, a porta não se fecha.
+
 A lista de empresas pesquisada, com a evidência de cada uma, está em
-`references/compradores-x750.md`. Leia antes de montar qualquer lista: ela
+`references/compradores-x750.md` (inclui a seção "fábricas vizinhas de
+Jardinópolis", por onde começar). Leia antes de montar qualquer lista: ela
 separa o que tem documento mostrando mola de X-750 do que é só "fabrica o
 tipo de produto". Trate todo nome como **lead a qualificar**, nunca como
 cliente certo; antes de abordar, abra o catálogo do lead e confirme o que
@@ -32,19 +38,21 @@ ele fabrica hoje.
 
 | Prioridade | Segmento | Por que agora | Mola | Prova que você leva |
 |---|---|---|---|---|
-| 1 | **Outros fabricantes de retenção dupla portinhola** | Mesmo produto que você já fornece; X-750 é mola de catálogo | Torção | Cliente atual (sem citar nome sem autorização), ficha técnica, data book modelo |
+| 1 | **Outras fábricas de retenção dupla portinhola** — primeiro as vizinhas (Ribeirão Preto, Sertãozinho, Cravinhos), depois as demais | Mesmo produto que você já fornece; X-750 é mola de catálogo | Torção | Cliente atual (sem citar nome sem autorização), ficha técnica, data book modelo |
 | 2 | **Válvula esfera trunnion (API 6D)** | X-750 é padrão nos catálogos; dezenas de molas por válvula; mesmos compradores | Compressão pequena, sede e antiestática | Capacidade de fio fino, ensaio de carga, lote homogêneo |
 | 3 | **Válvulas de segurança e alívio** e caldeiraria/vapor | X-750 é a opção de alta temperatura e NACE; polo sucroenergético ao lado | Compressão de fio grosso | Tolerância de constante, esquadro, engenharia reversa |
-| 4 | **Oficinas de calibração e manutenção de válvulas** | Trocam mola em toda parada; compram pouco, com urgência, e pagam prazo curto | Todas, por amostra | Prazo, PMI, engenharia reversa |
+| 4 | **Revendas, distribuidores e oficinas de válvulas** | Repõem mola em toda parada e montam kits; compram pouco, com urgência; indicam a fábrica | Todas, por amostra | Prazo, PMI, engenharia reversa |
 | 5 | **Retenção axial/silenciosa e de pistão; instrumentação** | X-750 padrão em linhas globais; poucos fabricantes locais | Compressão | Idem 2 |
 | 6 | **Válvulas de compressor alternativo** | Reposição contínua por fadiga | Compressão pequena, alto ciclo | Shot peening, ensaio de ciclagem |
 | 7 | **Selos mecânicos** | Padrão é Hastelloy C-276 — outra liga, mesmo processo | Multimolas minúsculas | Só se a fábrica enrola fio fino `[confirmar]` |
 | 8 | **Subsea, cabeça de poço, downhole** | Margem alta, mas exige sistema de qualidade tipo API Q1 e qualificação longa | Compressão, 718/MP35N/Elgiloy | Projeto de 12–24 meses; não é a próxima venda |
 | 9 | **Exportação para fabricantes de válvulas** (México, EUA, Europa) | X-750 é padrão; câmbio favorece; o drawback suspende ou isenta tributos do arame vinculado à exportação | Torção e compressão | Certificação e inglês técnico |
 
-Nuclear, turbinas, aeroespacial e fornos industriais usam a liga, mas não
-foram pesquisados com profundidade e exigem certificações específicas —
-entram no mapa de longo prazo da `jm-estrategia-100m`.
+Turbinas a vapor (há fábrica em Sertãozinho), fornos a vácuo, nuclear e
+aeroespacial usam a liga segundo os fornecedores do material, mas nenhum
+documento de fabricante foi localizado: são hipóteses a testar com uma
+conversa técnica, e os dois últimos exigem certificações específicas (mapa
+de longo prazo da `jm-estrategia-100m`).
 
 Paralelamente, a carteira agro tem sua própria prospecção (montadoras,
 distribuidores, cooperativas): ver `jm-molas-agro`.

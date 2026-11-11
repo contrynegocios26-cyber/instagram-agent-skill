@@ -1,4 +1,11 @@
-# Quem compra molas de Inconel X-750 — levantamento de 10/11/2026
+# Quem compra molas de Inconel X-750 — levantamento de 10 e 11/11/2026
+
+**Quem é o comprador.** O cliente da Jardmolas neste mercado é a **fábrica**
+de válvulas e de equipamentos — é ela que monta a mola no produto e a
+especifica. Revendas, distribuidores e importadores de válvulas também são
+alvo (repõem mola, montam kits e atendem manutenção), assim como as
+oficinas. Nenhum desses fica fora da lista; o que muda é a abordagem e o
+volume.
 
 **Como ler.** Nenhum site ou PDF pôde ser aberto diretamente na pesquisa (rede
 bloqueada); cada linha vem do trecho que o buscador devolveu para a fonte
@@ -7,7 +14,11 @@ citada. Antes de abordar um lead ou citar um catálogo, abra a fonte.
 - **X750** = o documento citado lista Inconel X-750 como material da mola.
 - **PRODUTO** = a empresa fabrica o tipo de produto que usa mola de liga de
   níquel; a liga da mola não foi confirmada para ela.
-- **FRACO** = revenda, importador, afirmação genérica ou mola de outra liga.
+- **REVENDA** = revenda, distribuidor ou importador de válvulas: não fabrica,
+  mas compra mola de reposição e indica a fábrica — alvo de segunda linha.
+- **FRACO** = afirmação genérica ou mola de outra liga no documento achado.
+- **HIPÓTESE** = segmento que usa a liga, sem documento do fabricante: testar
+  com uma conversa técnica antes de investir tempo.
 
 Só dados de empresa (nome, cidade, site, linha). Nada de dado pessoal.
 
@@ -27,11 +38,21 @@ Só dados de empresa (nome, cidade, site, linha). Nada de dado pessoal.
 | CSR Válvulas | não confirmada | Declara fabricar válvulas de retenção | não informado | PRODUTO | csrvalvulas.com.br |
 | Alcval | São Paulo-SP | Dupla portinhola wafer e flangeada | não informado | PRODUTO | alcval.com |
 | AVK Válvulas do Brasil | Sorocaba-SP | Dupla portinhola para saneamento | Inox 302 | FRACO | avkbr.com.br |
-| Revendas e importadores (Tauana, Vaportec, Genebre, MP Válvulas, Zeus, Positano, Formelt) | — | Vendem dupla portinhola | sem X-750 | FRACO | — |
+| **Interválvulas** | **Ribeirão Preto-SP** (vizinha) | Produção própria; retenção dupla portinhola classes 150/300/600, 2"–48"; borboleta tri-excêntrica; foco em usinas de açúcar e etanol; expõe na Fenasucro | não informado | PRODUTO | intervalvulas.com.br |
+| **InterAtiva** (grupo IMI) | Sorocaba-SP | Projeta e fabrica válvulas desde 1992 (borboleta bi e tri-excêntrica; retenção série NR) | Página da série NR cita Inconel X-750 entre os materiais; mola em destaque AISI 302 | X750 (conferir se é a mola) | interativa.ind.br |
+| CSR Válvulas | não confirmada | Fabricante nacional de borboleta e retenção; atende usinas | não informado | PRODUTO | csrvalvulas.com.br |
+| Hydraco | unidade em Sertãozinho-SP (vizinha) | Retenção tipo portinhola; atende usinas | não informado | PRODUTO | hydraco.com.br |
+| Zanardo | Araçatuba-SP | Fabricante de válvulas industriais desde 1985, ISO 9001; dupla portinhola não confirmada | não informado | PRODUTO | — |
+| FKB Válvulas e Comportas | Guararema-SP | Fábrica de válvulas e comportas (saneamento); dupla portinhola não confirmada | não informado | PRODUTO | — |
+| MDV Válvulas; Sipec; PAM (Saint-Gobain) | — | Retenção para saneamento, predial e incêndio | inox | FRACO para X-750; alvo de mola em inox | — |
+| Revendas, distribuidores e importadores (Tauana, Vaportec, Genebre, MP Válvulas, Zeus, Positano, Formelt, Oag Hidráulica, Jefer, Unival, Bermo) | — | Vendem dupla portinhola e outras válvulas; fazem reposição | sem X-750 no anúncio | REVENDA | — |
 
 Multinacionais com literatura em português: **Valmet (Neles Easyflow)** —
-boletim PT-BR com "Mola Inconel x750" (X750); Emerson Keystone e Bray —
-produto confirmado, mola não informada (PRODUTO).
+boletim PT-BR com "Mola Inconel x750" (X750); **Bray** — dupla portinhola
+(mola não informada) e esfera trunnion Flow-Tek com "mola do porta-sede em
+Inconel X750" na lista de componentes (X750); Emerson Keystone — produto
+confirmado, mola não informada (PRODUTO). Confirmar o que cada uma fabrica
+ou monta no Brasil e quem compra os componentes.
 
 Não confirmados como fabricantes de dupla portinhola: FKB, Valloy,
 Durcon-Vice, Asvotec, RTS, Zanardo.
@@ -67,10 +88,10 @@ dupla portinhola.
 
 | Segmento | Mola | Brasil (liga não confirmada, salvo indicação) | Mundo com X-750 documentado |
 |---|---|---|---|
-| **Esfera trunnion API 6D** | Compressão pequenas de sede; antiestática | Micromazza / Wenmazza (Vila Flores-RS); Lupatech MNA (Nova Odessa-SP) e Lupatech Valmicro (Veranópolis-RS); MTi Brasil; SVR Industrial — PRODUTO | Valmet Neles 6D ("molas helicoidais de Inconel X-750 atrás da sede", com boletim PT-BR), SCV Valve, Ranger, Walworth, QTR/Delta — X750 |
-| **Segurança e alívio (API 526, caldeiras)** | Compressão fio grosso | LESER (Rio de Janeiro-RJ); W.Burger (São Paulo-SP, caldeiras); FlowVal (molas incluindo "Inconel"); Fluid Controls do Brasil (Serra-ES); Spirax Sarco; MRI Válvulas; PSV Brasil — PRODUTO | LESER (catálogo API cita X-750), Crosby série J / Emerson — X750 |
+| **Esfera trunnion API 6D** | Compressão pequenas de sede; antiestática | Micromazza / Wenmazza (Vila Flores-RS); Lupatech MNA (Nova Odessa-SP) e Lupatech Valmicro (Veranópolis-RS); MTi Brasil; SVR Industrial; Alutal (série 8200) — PRODUTO. Bray Flow-Tek TMB (catálogo em português cita mola X750) — X750 | Valmet Neles 6D ("molas helicoidais de Inconel X-750 atrás da sede", com boletim PT-BR), SCV Valve, Ranger, Walworth, QTR/Delta — X750 |
+| **Segurança e alívio (API 526, caldeiras)** | Compressão fio grosso | LESER (Rio de Janeiro-RJ); W.Burger (São Paulo-SP, caldeiras); FlowVal (molas incluindo "Inconel"); Fluid Controls do Brasil (Serra-ES, fabricante de válvulas de segurança, alívio e quebra-vácuo); Thermoval (Cravinhos-SP, vizinha: solenoide, retenção, segurança, alta pressão); Spirax Sarco; MRI Válvulas; PSV Brasil — PRODUTO. Emerson Sapag (linha API 526 com catálogo em português) — PRODUTO | LESER (catálogo API cita X-750), Crosby série J / Emerson, BS&B/Nacional (válvula de alívio com molas X-750 na tabela de materiais), TOSACA (Espanha) — X750 |
 | **Retenção axial / silenciosa** | Compressão central | nenhum confirmado | DFT ("X-750 é padrão"), Crane NOZ-CHEK — X750 |
-| **Retenção de pistão e instrumentação** | Compressão | WIKA modelo CV (ficha em português: versões fora do 316L levam mola X-750; unidade no Brasil não verificada) — X750 | Cameron Tom Wheatley — X750 |
+| **Retenção de pistão e instrumentação** | Compressão | WIKA do Brasil (Iperó-SP), modelo CV: ficha em português diz que as versões fora do 316L levam mola X-750 (confirmar se a válvula é montada no Brasil) — X750 | Cameron Tom Wheatley — X750 |
 | **Retenção de disco para vapor** | Compressão cônica | — | Spirax Sarco usa Nimonic 90 na opção de alta temperatura — liga irmã |
 | **Válvulas de compressor alternativo** | Compressão, alto ciclo | Hoerbiger Brasil (Cajamar-SP) — PRODUTO | KB Delta (reposição: Nimonic 90, X-750, Hastelloy, 17-7) — X750 |
 | **Selos mecânicos** | Multimolas | John Crane (Rio Claro-SP); EagleBurgmann (Campinas/Valinhos-SP) — PRODUTO | Padrão dos catálogos é **Hastelloy C-276** — vender C-276 |
@@ -78,9 +99,34 @@ dupla portinhola.
 | **Downhole** | Compressão longas | nenhum confirmado | sem documento de fabricante — FRACO |
 | **Nuclear** | Lâminas e helicoidais | INB, Eletronuclear, NUCLEP, Amazul — não pesquisado | Patentes indicam Alloy 718 nas molas de fixação — FRACO para X-750 |
 | **Turbo/escapamento, reguladores, purgadores, criogenia, atuadores, fornos, turbinas, aeroespacial** | — | não pesquisado | sem fonte nomeando X-750 — FRACO |
-| **Usinas de açúcar e etanol, papel e celulose, refinarias (manutenção)** | Segurança e retenção | W.Burger, Varb e as oficinas abaixo — PRODUTO | — |
+| **Usinas de açúcar e etanol, papel e celulose, refinarias (manutenção)** | Segurança e retenção | W.Burger, Varb, Interválvulas, CSR, Hydraco e as oficinas abaixo — PRODUTO | — |
+| **Turbinas a vapor** (válvulas de fecho rápido e de regulagem) | Compressão | WEG/TGM (Sertãozinho-SP, vizinha: turbinas a vapor e redutores); Siemens Energy; oficinas de turbinas de Sertãozinho (Turbimaq, Texas, CS, Turbicon) — HIPÓTESE: nenhum documento localizado sobre a liga das molas | Fornecedores da liga citam turbinas a gás e a vapor entre as aplicações |
+| **Fornos a vácuo e de tratamento térmico** | Compressão | não pesquisado por nome — HIPÓTESE | Fabricante de molas dos EUA cita molas de X-750 em fornos a vácuo da indústria de semicondutores |
+| **Naval e nuclear** (válvulas de vapor e fluido quente) | Compressão | Amazul, NUCLEP, INB, Eletronuclear — HIPÓTESE, exige qualificação própria | Fornecedores citam válvulas de reatores navais e molas de reatores |
 
 Bitola típica por segmento: nenhum fabricante publica. Perguntar ao lead.
+
+## 2b. Fábricas e associadas da Câmara Setorial de Válvulas Industriais (ABIMAQ)
+
+A página da câmara mostrava, entre mais de 65 fabricantes: AVK, Bermad, Bray
+Controls, Fluid Controls, IBV, Inter-Válvulas, Leser, Micromazza, RTS, RVC,
+Smart Control, Thermoval, Unival e Válvulas e Microfusão G4. A lista
+completa se obtém na secretaria da câmara — é a melhor fonte para completar
+o mapa de fábricas. Para cada uma, conferir a linha de produtos e a liga da
+mola antes de abordar.
+
+## 2c. Por onde começar: fábricas vizinhas de Jardinópolis
+
+Proximidade é argumento de venda (visita técnica, amostra em dias, frete
+mínimo). Fábricas e equipamentos na região de Ribeirão Preto e Sertãozinho:
+
+| Empresa | Cidade | O que faz | Próximo passo |
+|---|---|---|---|
+| Interválvulas | Ribeirão Preto-SP | Dupla portinhola 2"–48", tri-excêntrica | Perguntar ao usuário se já é cliente; se não, visita técnica |
+| Thermoval | Cravinhos-SP | Solenoide, retenção, segurança, alta pressão | Levantar molas de liga usadas |
+| Hydraco | Sertãozinho-SP (unidade) | Retenção portinhola, hidráulica para usinas | Qualificar |
+| WEG/TGM | Sertãozinho-SP | Turbinas a vapor | Conversa técnica: molas das válvulas de turbina |
+| Oficinas de turbinas e de válvulas de Sertãozinho | Sertãozinho-SP | Manutenção para usinas | Reposição por amostra |
 
 ## 3. Oficinas de calibração e manutenção de válvulas (reposição)
 
@@ -123,7 +169,7 @@ de baixo para cima, somando o consumo declarado pelos leads qualificados.
 
 ## 6. O que não foi confirmado
 
-Cidade de MTi, Varb, Coneval, NEG, BGT, CSR e FlowVal; liga da mola em
+Cidade de MTi, Varb, Coneval, NEG, BGT, CSR e FlowVal; se Interválvulas, InterAtiva, Thermoval e Hydraco usam mola de liga de níquel; país e fábrica da Nacional (BS&B); o que Bray, Valmet e WIKA fabricam ou montam no Brasil; fabricantes locais de dupla portinhola na Argentina, Colômbia e Chile (nenhum apareceu); liga da mola em
 Niagara, Micromazza, Lupatech, Hoerbiger e fabricantes subsea; família de
 material da Petrobras para molas; datas de Brasil Offshore 2027 e Mecânica;
 segmentos nuclear, turbinas, aeroespacial, fornos, criogenia, reguladores e

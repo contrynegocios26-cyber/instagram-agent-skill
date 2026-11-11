@@ -113,7 +113,8 @@ nas entregas.
 - **Impostos e leis**: alíquotas, classificação fiscal, reforma tributária e
   normas de segurança mudam; as skills dão o roteiro e as perguntas, quem
   confirma é o contador e o profissional de segurança.
-- **Leads**: a lista de compradores é de empresas a qualificar, não de
-  clientes garantidos.
+- **Leads**: a lista de compradores (fábricas de válvulas em primeiro lugar,
+  depois revendas e oficinas) é de empresas a qualificar, não de clientes
+  garantidos.
 - **Meta de US$ 100 milhões**: as skills dão o método e a conta; o
   faturamento vem de execução, capital e tempo.
