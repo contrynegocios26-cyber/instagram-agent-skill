@@ -40,7 +40,7 @@ ele fabrica hoje.
 | 6 | **Válvulas de compressor alternativo** | Reposição contínua por fadiga | Compressão pequena, alto ciclo | Shot peening, ensaio de ciclagem |
 | 7 | **Selos mecânicos** | Padrão é Hastelloy C-276 — outra liga, mesmo processo | Multimolas minúsculas | Só se a fábrica enrola fio fino `[confirmar]` |
 | 8 | **Subsea, cabeça de poço, downhole** | Margem alta, mas exige sistema de qualidade tipo API Q1 e qualificação longa | Compressão, 718/MP35N/Elgiloy | Projeto de 12–24 meses; não é a próxima venda |
-| 9 | **Exportação para fabricantes de válvulas** (México, EUA, Europa) | X-750 é padrão; câmbio favorece; drawback zera imposto do arame | Torção e compressão | Certificação e inglês técnico |
+| 9 | **Exportação para fabricantes de válvulas** (México, EUA, Europa) | X-750 é padrão; câmbio favorece; o drawback suspende ou isenta tributos do arame vinculado à exportação | Torção e compressão | Certificação e inglês técnico |
 
 Nuclear, turbinas, aeroespacial e fornos industriais usam a liga, mas não
 foram pesquisados com profundidade e exigem certificações específicas —
@@ -48,6 +48,15 @@ entram no mapa de longo prazo da `jm-estrategia-100m`.
 
 Paralelamente, a carteira agro tem sua própria prospecção (montadoras,
 distribuidores, cooperativas): ver `jm-molas-agro`.
+
+**Antes de qualquer lista**, pergunte ao usuário quais empresas do segmento
+já são clientes (elas saem da prospecção e viram venda adicional) e quais
+ele já abordou. Para ordenar leads **antes do primeiro contato** use:
+segmento (ordem da tabela acima) → evidência (documento que cita X-750 vale
+mais que "fabrica o tipo de produto") → proximidade e porte. A nota A/B/C
+abaixo só existe depois da primeira conversa. Sem acesso à internet na
+sessão, entregue a lista com a fonte de cada lead e peça ao usuário para
+abrir o catálogo antes de enviar.
 
 ## Perfil do cliente ideal (ligas especiais)
 
@@ -78,6 +87,9 @@ nutrir com conteúdo.
 
 Regra de ouro: a primeira mensagem entrega algo útil ao engenheiro e pede
 pouco. Nada de "somos líderes"; nada de anexo pesado; uma pergunta só.
+**Nenhuma mensagem sai sem o usuário aprovar o texto**, e só se afirma o que
+a fábrica comprovadamente entrega hoje: troque os itens entre colchetes
+pelos que o perfil da empresa confirma.
 
 **E-mail ou LinkedIn para engenharia (modelo):**
 ```
@@ -86,8 +98,9 @@ Assunto: Mola de torção X-750 para retenção dupla portinhola — condição 
 [Nome], bom dia.
 
 Fabricamos em Jardinópolis-SP molas de torção em Inconel X-750 para válvulas
-de retenção dupla portinhola, com certificado 3.1 do arame, gráfico de
-tratamento térmico e relatório de torque por lote.
+de retenção dupla portinhola, com [documentos que a Jardmolas entrega hoje —
+confirmar antes de enviar: certificado 3.1 do arame, registro do tratamento
+térmico, relatório de torque por lote].
 
 Uma dúvida técnica que costuma separar mola boa de mola que relaxa: o
 desenho de vocês define a têmpera do arame e o envelhecimento (AMS 5699 +
@@ -155,7 +168,7 @@ nome, cargo e contato profissional, com a origem; atenda pedido de exclusão
 | OTC | início de maio 2027 | Houston | Óleo e gás |
 | Valve World Americas | junho 2027 (há listagem divergente) | Houston | Válvulas, Américas |
 | Fenasucro & Agrocana | 10–13 ago 2027 | Sertãozinho-SP | Usinas, caldeiras, válvulas — vizinha |
-| ROG.e (ex-Rio Oil & Gas) | bienal; próxima em 2028 | Rio de Janeiro | Óleo e gás Brasil |
+| ROG.e (ex-Rio Oil & Gas) | bienal; próxima prevista para 2028 (data não publicada) | Rio de Janeiro | Óleo e gás Brasil |
 | Brasil Offshore | data de 2027 não confirmada | Macaé-RJ | Cadeia offshore |
 
 Visitar como comprador de informação custa pouco: percorra os estandes de

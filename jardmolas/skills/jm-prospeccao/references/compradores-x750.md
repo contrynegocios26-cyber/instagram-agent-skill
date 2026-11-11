@@ -70,7 +70,7 @@ dupla portinhola.
 | **Esfera trunnion API 6D** | Compressão pequenas de sede; antiestática | Micromazza / Wenmazza (Vila Flores-RS); Lupatech MNA (Nova Odessa-SP) e Lupatech Valmicro (Veranópolis-RS); MTi Brasil; SVR Industrial — PRODUTO | Valmet Neles 6D ("molas helicoidais de Inconel X-750 atrás da sede", com boletim PT-BR), SCV Valve, Ranger, Walworth, QTR/Delta — X750 |
 | **Segurança e alívio (API 526, caldeiras)** | Compressão fio grosso | LESER (Rio de Janeiro-RJ); W.Burger (São Paulo-SP, caldeiras); FlowVal (molas incluindo "Inconel"); Fluid Controls do Brasil (Serra-ES); Spirax Sarco; MRI Válvulas; PSV Brasil — PRODUTO | LESER (catálogo API cita X-750), Crosby série J / Emerson — X750 |
 | **Retenção axial / silenciosa** | Compressão central | nenhum confirmado | DFT ("X-750 é padrão"), Crane NOZ-CHEK — X750 |
-| **Retenção de pistão e instrumentação** | Compressão | WIKA modelo CV (ficha PT-BR: versões fora do 316L levam mola X-750) — X750 | Cameron Tom Wheatley — X750 |
+| **Retenção de pistão e instrumentação** | Compressão | WIKA modelo CV (ficha em português: versões fora do 316L levam mola X-750; unidade no Brasil não verificada) — X750 | Cameron Tom Wheatley — X750 |
 | **Retenção de disco para vapor** | Compressão cônica | — | Spirax Sarco usa Nimonic 90 na opção de alta temperatura — liga irmã |
 | **Válvulas de compressor alternativo** | Compressão, alto ciclo | Hoerbiger Brasil (Cajamar-SP) — PRODUTO | KB Delta (reposição: Nimonic 90, X-750, Hastelloy, 17-7) — X750 |
 | **Selos mecânicos** | Multimolas | John Crane (Rio Claro-SP); EagleBurgmann (Campinas/Valinhos-SP) — PRODUTO | Padrão dos catálogos é **Hastelloy C-276** — vender C-276 |
@@ -102,7 +102,9 @@ oficinas de PSV credenciadas, Fenasucro).
 | Lee Spring | EUA/global | 600, 718, X-750, Elgiloy, Hastelloy; fio 0,10–15,88 mm | ISO 9001 |
 | MW Components | EUA | Inconel, MP35N, Elgiloy, A-286 | ISO 9001 |
 | Suhm Spring Works; Custom Spring | Houston, EUA | X-750, Elgiloy, MP35N | ISO 9001 |
-| Springtech; Microspring; G&O Springs; Springcoil; Active Spring; Ashfield | Reino Unido | X-750, Nimonic 90 | AS9100 e, em alguns, NADCAP |
+| Springtech; Microspring; G&O Springs | Reino Unido | X-750, Nimonic 90 | AS9100; Microspring e G&O também NADCAP |
+| Springcoil | Reino Unido (Sheffield) | X-750, Nimonic 90 | ISO 9001 |
+| Active Spring; Ashfield Springs | Reino Unido | Nimonic 90, Inconel | não informada |
 
 Ninguém anuncia API Q1, PED ou NORSOK para molas; ninguém publica prazo.
 

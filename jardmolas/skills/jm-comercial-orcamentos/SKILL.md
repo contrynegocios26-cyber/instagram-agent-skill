@@ -21,9 +21,13 @@ perde o pedido se sair alta, perde dinheiro se sair baixa. Por isso o preço
 sempre sai da calculadora `scripts/custo.py`, alimentada por números reais da
 fábrica.
 
-Números que só o usuário tem: taxa-hora das máquinas, preço atual do arame,
-alíquota de impostos do regime da empresa, comissão, margem-alvo por
-mercado. Pergunte uma vez, anote na proposta de onde veio cada um e, na
+Números que só o usuário tem — confira a lista inteira antes de calcular,
+porque o que ficar de fora entra como zero: taxa-hora da máquina; peças por
+hora; **horas de setup**; **perda de arame** (maior em lote pequeno); preço
+do arame **e se é posto fábrica** (se não for, o percentual de internação);
+custo do forno por carga **e quantas peças cabem na carga**; ensaios e
+documentação por lote; **custos indiretos**; impostos do regime da empresa;
+comissão; frete; margem-alvo por mercado. Pergunte uma vez, anote na proposta de onde veio cada um e, na
 falta, calcule cenários marcados `[confirmar]`. Nunca envie a cliente um
 preço montado em cima de estimativa sem o usuário aprovar.
 
@@ -53,8 +57,9 @@ python scripts/custo.py --massa-g 18.7 --arame 14.50 --perda 0.05 --qtds 500 200
 
 # liga importada, arame em US$/kg
 python scripts/custo.py --massa-g 62 --arame-usd 95 --cambio 5.40 --internacao 0.35 --perda 0.10 \
-   --qtds 50 200 1000 --setup-h 3 --taxa-maq 150 --pecas-h 400 --forno-lote 900 \
-   --extra "decapagem:1.20" --extra "ensaio 100%:0.80" --databook-lote 350 \
+   --qtds 50 200 1000 --setup-h 3 --taxa-maq 150 --pecas-h 400 \
+   --forno-lote 900 --pecas-carga 500 \
+   --extra "limpeza antes do forno:1.20" --extra "ensaio 100%:0.80" --databook-lote 350 \
    --indiretos 0.25 --impostos 0.18 --margem 0.30
 ```
 
@@ -62,7 +67,9 @@ Os valores dos exemplos são ilustrativos — não são preços de mercado nem
 custos da Jardmolas. A saída mostra, por faixa: material, máquina (setup
 diluído + regime), forno, acabamento, outros, indiretos, custo unitário,
 preço, total do lote, quanto o material pesa no custo, o **piso de
-negociação** (margem zero) e o preço se o arame subir 10%.
+negociação** (margem zero), a **margem em reais por hora de máquina** e o
+preço se o arame subir 10%. O script avisa quando setup, indiretos ou
+internação ficaram em zero.
 
 Preço = custo ÷ (1 − impostos − comissão − frete − margem). Os percentuais
 são "por dentro" do preço. A alíquota de impostos depende do regime

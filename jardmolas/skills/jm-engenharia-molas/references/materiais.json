@@ -34,7 +34,7 @@
           "residual_favoravel": 1.0
         }
       },
-      "confianca": "Shigley tab. 10-4/10-6; SMI"
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "sae1070-sm": {
       "nome": "Aco carbono trefilado duro",
@@ -69,7 +69,7 @@
           "residual_favoravel": 1.0
         }
       },
-      "confianca": "Shigley tab. 10-4/10-6; SMI"
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "temperado-oleo": {
       "nome": "Aco carbono temperado e revenido em oleo",
@@ -104,7 +104,7 @@
           "residual_favoravel": 1.0
         }
       },
-      "confianca": "Shigley tab. 10-4/10-6; SMI"
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "cromo-vanadio": {
       "nome": "Aco cromo-vanadio (SAE 6150)",
@@ -139,7 +139,7 @@
           "residual_favoravel": 1.0
         }
       },
-      "confianca": "Shigley tab. 10-4/10-6; SMI"
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "cromo-silicio": {
       "nome": "Aco cromo-silicio (SAE 9254)",
@@ -174,7 +174,7 @@
           "residual_favoravel": 1.0
         }
       },
-      "confianca": "Shigley tab. 10-4/10-6; SMI"
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "inox302": {
       "nome": "Aco inoxidavel AISI 302/304",
@@ -272,22 +272,26 @@
     "x750-mola": {
       "nome": "Inconel X-750 (UNS N07750)",
       "condicao": "tempera mola AMS 5699 + 650 C/4 h",
-      "G": 76000,
-      "E": 214000,
+      "G": 75800,
+      "E": 213700,
       "rho": 8280,
-      "temp_max": 370,
+      "temp_max": 371,
       "modulo_vs_temp": [
         [
           20,
           1.0
         ],
         [
-          538,
-          0.86
+          260,
+          0.927
         ],
         [
-          650,
-          0.83
+          538,
+          0.818
+        ],
+        [
+          649,
+          0.736
         ]
       ],
       "rm": {
@@ -305,7 +309,8 @@
             12.7,
             1241
           ]
-        ]
+        ],
+        "dmin": 0.3
       },
       "admissivel": {
         "compressao": {
@@ -321,28 +326,72 @@
           "residual_favoravel": 0.8
         }
       },
-      "confianca": "Rm apos envelhecimento: tabela Special Metals (220/200/180 ksi) via reproducao; G medido em molas ~76 GPa (ha fonte com 82,7); curva de modulo = 2 pontos de E (214 GPa a 20 C, 184 GPa a 538 C) interpolados; ponto de 650 C extrapolado",
-      "preset_nao_recomendado": true
+      "confianca": "Special Metals, boletim INCONEL alloy X-750 (lido no original em 10/11/2026): Rm min. Tabela 31; G e curva de modulo Tabela 5 (torcao estatica 11,0/10,2/9,0/8,1 x10^3 ksi a 27/260/538/649 C); tensoes de projeto a quente Tabela 30 (5% de relaxacao em 7 dias)",
+      "preset_nao_recomendado": true,
+      "tau_relax": [
+        [
+          260,
+          690,
+          690
+        ],
+        [
+          316,
+          621,
+          621
+        ],
+        [
+          371,
+          586,
+          586
+        ]
+      ],
+      "sigma_relax": [
+        [
+          260,
+          827,
+          827
+        ],
+        [
+          316,
+          758,
+          758
+        ],
+        [
+          343,
+          724,
+          724
+        ],
+        [
+          371,
+          690,
+          690
+        ]
+      ],
+      "nota": "tensoes de flexao a quente da Tabela 30 para tempera mola referem-se a envelhecimento 704 C/16 h (molas planas); para 650 C/4 h validar por ensaio"
     },
     "x750-no1": {
       "nome": "Inconel X-750 (UNS N07750)",
-      "condicao": "tempera No.1 AMS 5698 + 730 C/16 h",
-      "G": 76000,
-      "E": 214000,
+      "condicao": "tempera No.1 AMS 5698 + 732 C/16 h",
+      "G": 75800,
+      "E": 213700,
       "rho": 8280,
-      "temp_max": 540,
+      "temp_max": 538,
       "modulo_vs_temp": [
         [
           20,
           1.0
         ],
         [
-          538,
-          0.86
+          260,
+          0.927
         ],
         [
-          650,
-          0.83
+          538,
+          0.818
+        ],
+        [
+          649,
+          0.736
         ]
       ],
       "rm": {
@@ -372,28 +421,92 @@
           "residual_favoravel": 0.8
         }
       },
-      "confianca": "Rm apos envelhecimento: tabela Special Metals (155/165 ksi) via reproducao; G e curva de modulo como em x750-mola; ponto de 650 C extrapolado",
-      "preset_nao_recomendado": true
+      "confianca": "Special Metals, boletim INCONEL alloy X-750 (lido no original em 10/11/2026): Rm min. Tabela 31; G e curva de modulo Tabela 5 (torcao estatica 11,0/10,2/9,0/8,1 x10^3 ksi a 27/260/538/649 C); tensoes de projeto a quente Tabela 30 (5% de relaxacao em 7 dias)",
+      "preset_nao_recomendado": true,
+      "tau_relax": [
+        [
+          427,
+          483,
+          483
+        ],
+        [
+          454,
+          414,
+          483
+        ],
+        [
+          482,
+          345,
+          379
+        ],
+        [
+          510,
+          310,
+          345
+        ],
+        [
+          538,
+          276,
+          310
+        ],
+        [
+          566,
+          172,
+          207
+        ]
+      ],
+      "sigma_relax": [
+        [
+          427,
+          690,
+          690
+        ],
+        [
+          454,
+          621,
+          621
+        ],
+        [
+          482,
+          552,
+          552
+        ],
+        [
+          510,
+          483,
+          483
+        ],
+        [
+          538,
+          414,
+          414
+        ]
+      ],
+      "nota": "modulo de cisalhamento medido em molas de tempera No.1 no boletim: 68 GPa (Tabela 33), contra 75,8 GPa do material - a constante real pode sair ate ~10% menor; calibrar no lote-piloto"
     },
     "x750-triplo": {
       "nome": "Inconel X-750 (UNS N07750)",
-      "condicao": "AMS 5699 + triplo 1150 C/2 h + 845 C/24 h + 705 C/20 h",
-      "G": 76000,
-      "E": 212000,
+      "condicao": "AMS 5699 + triplo 1149 C/2 h + 843 C/24 h + 704 C/20 h",
+      "G": 75800,
+      "E": 213700,
       "rho": 8280,
-      "temp_max": 650,
+      "temp_max": 649,
       "modulo_vs_temp": [
         [
           20,
           1.0
         ],
         [
-          538,
-          0.86
+          260,
+          0.927
         ],
         [
-          650,
-          0.83
+          538,
+          0.818
+        ],
+        [
+          649,
+          0.736
         ]
       ],
       "rm": {
@@ -407,7 +520,8 @@
             12.7,
             1000
           ]
-        ]
+        ],
+        "dmin": 0.3
       },
       "admissivel": {
         "compressao": {
@@ -423,8 +537,53 @@
           "residual_favoravel": 0.8
         }
       },
-      "confianca": "Rm apos tratamento triplo: tabela Special Metals (150/145 ksi) via reproducao; limite de proporcionalidade em cisalhamento ~465 MPa: projetar abaixo dele; ponto de 650 C extrapolado",
-      "preset_nao_recomendado": true
+      "confianca": "Special Metals, boletim INCONEL alloy X-750 (lido no original em 10/11/2026): Rm min. Tabela 31; G e curva de modulo Tabela 5 (torcao estatica 11,0/10,2/9,0/8,1 x10^3 ksi a 27/260/538/649 C); tensoes de projeto a quente Tabela 30 (5% de relaxacao em 7 dias)",
+      "preset_nao_recomendado": true,
+      "tau_relax": [
+        [
+          538,
+          379,
+          379
+        ],
+        [
+          593,
+          345,
+          345
+        ],
+        [
+          621,
+          276,
+          276
+        ],
+        [
+          649,
+          207,
+          207
+        ]
+      ],
+      "sigma_relax": [
+        [
+          566,
+          483,
+          483
+        ],
+        [
+          593,
+          345,
+          345
+        ],
+        [
+          621,
+          276,
+          276
+        ],
+        [
+          649,
+          207,
+          207
+        ]
+      ],
+      "nota": "limite de proporcionalidade em cisalhamento ~465 MPa (Tabela 33): manter a tensao de trabalho abaixo dele; apoiar a mola em mandril justo durante o tratamento triplo para nao deformar"
     },
     "17-7ph": {
       "nome": "Aco inoxidavel 17-7 PH",

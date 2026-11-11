@@ -30,7 +30,7 @@ clientes que autorizam citação): pergunte; não invente e não publique
 ## Posicionamento (uma frase por mercado)
 
 - **Agro**: "Dedos, garfos e molas que aguentam a safra — fabricados ao lado
-  do maior polo canavieiro do país, com mais de 2.000 itens de reposição."
+  do polo canavieiro de Ribeirão Preto, com mais de 2.000 itens de reposição."
 - **Válvulas e indústria**: "Molas em inox e Inconel X-750 com a condição de
   tratamento certa para a sua temperatura — e o data book completo no
   embarque."
@@ -56,8 +56,29 @@ que a Jardmolas quer. Toda peça passa por esta lista:
 | NACE, API, normas de cliente | Declarar exatamente o que se atende e como se comprova |
 
 Na dúvida técnica, consulte `jm-inconel-x750` e `jm-engenharia-molas`.
-**Pendência conhecida**: se alguma página do site ou catálogo indicar inox
-até 550 °C ou Inconel até 980 °C para molas, corrija com prioridade.
+
+**Pendências conhecidas do site (leitura de 10/11/2026)** — corrigir antes
+de produzir material novo, porque texto novo costuma copiar o antigo:
+
+1. Tabela de molas de válvula com inox até 550 °C e Inconel até 980 °C (o
+   segundo é o limite de oxidação do material, não de trabalho da mola).
+2. "Inconel" sem grau; "não magnético" para o 304; "fechamento hermético"
+   atribuído à mola.
+3. Matéria-prima: SAE 9254 descrito como aço "com camada" de cromo-silício;
+   5160 e 6150 com a classificação de carbono trocada; DIN 17223 em vez de
+   EN 10270-1; certificado do fornecedor de arame apresentado como selo da
+   empresa.
+4. "Fabricação conforme ISO 9001" nas páginas de atuadores — manter só com
+   certificado vigente em nome da Jardmolas `[confirmar]`.
+5. "Nanotecnologia", "novos metais e compósitos" e listas genéricas de
+   aplicações.
+6. Superlativos sem prova: "líder no Brasil", "melhor fabricante", "entrega
+   mais rápida do mercado", "garantia superior ao mercado".
+7. Endereço com dois números; "17 anos" desatualizado (use "desde 2008").
+
+O relatório completo, com o texto corrigido de cada trecho, acompanha o
+plugin (`relatorios/revisao-site-jardmolas-2026-11-10.md`); se não estiver
+disponível, refaça a conferência com a tabela acima.
 
 ## Site e SEO
 
@@ -107,10 +128,11 @@ um exemplo real, chamada para enviar desenho ou amostra. Autor identificado
 uma técnica curta com imagem da fábrica, uma de bastidor ou feira; o dono e
 o vendedor técnico comentam e conectam com engenheiros dos leads da
 `jm-prospeccao`. **Instagram/WhatsApp** (revenda e produtor): vídeo curto de
-peça em teste, compatibilidade por máquina, aviso de estoque pré-safra. Se as
-skills de Instagram deste repositório (`ig-*`) estiverem disponíveis, use-as
-para roteiro, legenda e planejamento; a voz da marca fica registrada no
-arquivo de voz que elas pedem.
+peça em teste, compatibilidade por máquina, aviso de estoque pré-safra. Se
+houver skills de redes sociais disponíveis, podem ser usadas para roteiro e
+legenda, mas com um arquivo de voz **próprio da Jardmolas**: a Jardmolas é
+uma empresa independente, e voz, relatórios, mídia e dados de qualquer outra
+empresa nunca entram no material dela.
 
 ## Materiais de venda
 
@@ -118,7 +140,7 @@ arquivo de voz que elas pedem.
 |---|---|---|
 | Apresentação técnica (10 slides) | Engenharia e qualidade do cliente | Quem somos, equipamentos, processo, ensaios, modelo de data book, ligas e faixas, prazos |
 | Ficha de liga X-750 | Engenharia de válvulas | Condições × temperatura, NACE, documentos |
-| Catálogo de reposição agro | Revendas, cooperativas | Item por máquina/modelo, foto, código, embalagem |
+| Catálogo de reposição agro | Revendas, cooperativas | Item por máquina/modelo, foto, código, embalagem — base e página geradas pela `jm-catalogo` |
 | Estudo de caso | Todos | Problema, o que foi feito, resultado medido, citação autorizada |
 | Guia "como medir sua mola" | Reposição | Desenho cotado, o que fotografar, para onde mandar |
 

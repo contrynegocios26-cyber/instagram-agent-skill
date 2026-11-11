@@ -79,3 +79,25 @@ Fonte: SMI Handbook of Spring Design e Shigley, tabelas de tensões admissíveis
 para aplicações estáticas. Usou-se o limite inferior das faixas publicadas.
 Para temperatura elevada, a tensão admissível real é ditada pela relaxação
 (ver `jm-inconel-x750`).
+
+## Tensão de projeto a quente (relaxação)
+
+Para Inconel X-750 o banco de materiais traz a tabela de tensões de projeto
+do boletim do fabricante da liga (Special Metals, Tabela 30): tensão máxima
+que produz 5% de relaxação em 7 dias, por faixa de temperatura. Com `--temp`,
+a calculadora compara:
+
+- molas helicoidais de compressão: tensão de cisalhamento corrigida (Wahl) na
+  carga máxima contra `tau_relax`;
+- molas de torção e de portinhola: tensão de flexão no ângulo máximo contra
+  `sigma_relax` (valores de molas planas da mesma tabela, que trabalham em
+  flexão como a mola de torção de fio redondo).
+
+Onde a tabela dá faixa (por exemplo 414–483 MPa), o valor menor é para
+relaxação mínima e o maior para quando alguma relaxação inicial é tolerável.
+Fora da faixa de temperatura tabelada para a condição, a calculadora avisa
+que não há tensão de projeto publicada (há folga de 2 °C para o
+arredondamento de °F para °C: 371, 538 e 649 °C são 700, 1000 e 1200 °F). O
+veredito estático usa o módulo a 20 °C; cargas e relaxação usam o módulo na
+temperatura informada. Na mola de tração confere-se o corpo. Para os demais materiais vale apenas
+o limite de temperatura (`temp_max`).

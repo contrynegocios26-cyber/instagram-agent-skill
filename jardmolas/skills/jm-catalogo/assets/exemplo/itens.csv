@@ -1,0 +1,7 @@
+﻿codigo;nivel;familia;tipo;descricao;setor;material;norma_material;acabamento;d_fio_mm;de_mm;di_mm;l0_mm;comprimento_total_mm;espiras;sentido;extremidades;perna1_mm;perna2_mm;angulo_livre_graus;constante;unidade_constante;carga1_N;em1_mm;carga2_N;em2_mm;massa_g;embalagem_un;foto;situacao;giro;observacoes
+EX-0001;item;Exemplo;compressao;EXEMPLO — mola de compressão 3,0 × 25 × 60;agricola;Aço Cr-Si (SAE 9254);EN 10270-2 FDSiCr;Pintura a pó;3,0;25;19;60;;10;D;fechada e retificada;;;;21,5;N/mm;215;50;;;38;50;;linha;A;
+EX-0002;item;Exemplo;compressao;EXEMPLO — mola de compressão 3,2 × 26 × 62;agricola;Aço Cr-Si (SAE 9254);;;3,2;26;;62;;10;D;;;;;;;;;;;;;;linha;B;
+EX-0003;item;Exemplo;torcao;EXEMPLO — mola de torção 4,0 × 34, 14 espiras;industrial;Inconel X-750, têmpera No. 1 (AMS 5698) + 732 °C/16 h;;;4,0;34;26;60;;14;E;;40;40;90;28,4;N.mm/grau;;;;;;;;sob-encomenda;;
+EX-0004;item;Exemplo;garfo;EXEMPLO — garfo duplo 9,5 mm × 450 mm;agricola;Arame patenteado EN 10270-1 SH;;Pintado;9,5;58;;;450;4;;;;;;;;;;;;;20;;linha;A;
+EX-0005;item;Exemplo;tracao;EXEMPLO — mola de tração 2,0 × 16 × 66;agricola;Arame patenteado EN 10270-1 SH;;Zinco lamelar;2,0;16;;66;;20;D;;;;;;;;;;;;;;linha;;
+EX-FAM-01;familia;Exemplo;dedo;EXEMPLO — família de dedos (sem medidas);agricola;;;;;;;;;;;;;;;;;;;;;;;;linha;;

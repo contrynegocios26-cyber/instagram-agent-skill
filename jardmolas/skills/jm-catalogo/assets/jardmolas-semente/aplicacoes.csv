@@ -1,0 +1,39 @@
+﻿codigo;equipamento;marca;modelo;posicao;codigo_original;qtd_por_maquina;observacao
+JM-FAM-DEDO-ENLEIRADOR;Enleirador de palha de cana;;;;;;
+JM-FAM-DEDO-DESENLEIRADOR;Desenleirador de palha de cana;;;;;;
+JM-FAM-PRATA-MIL;Colheita de sementes de capim;;;;;;
+JM-FAM-AMENDOIM;Recolhedor de amendoim;;;;;;
+JM-FAM-COMP-AGRO;Implementos agrícolas;;;;;;
+JM-FAM-TORC-AGRO;Implementos agrícolas;;;;;;
+JM-FAM-TRAC-AGRO;Implementos agrícolas;;;;;;
+JM-FAM-ATUADOR-AGRO;Atuadores de implementos;;;;;;
+JM-FAM-VRDP;Válvula de retenção dupla portinhola;;;;;;
+JM-FAM-PSV;Válvula de segurança e alívio;;;;;;
+JM-FAM-ATUADOR-IND;Atuadores industriais;;;;;;
+JM-FAM-COMP-IND;Equipamentos de indústria e usina;;;;;;
+JM-FAM-PENEIRA;Peneira vibratória;;;;;;
+JM-FAM-TELA;Carreta canavieira — tela de cobertura;;;;;;
+JM-FAM-CABECALHO;Carreta — cabeçalho;;;;;;
+JM-FAM-CHOQUE;Transporte rodoviário;;;;;;
+JM-FAM-DESCANSO-MOTO;Motocicleta — descanso;;;;;;
+JM-FAM-PNEU;Montadora de pneu;;;;;;
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 450;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 540;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 660;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 690;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 760;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 880;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Ted 880T;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Rotor 290;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Rotor 320;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Rotor 360;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Rotor 420;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;New Holland;Pro Rotor 450;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;GA 300 GM;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;GA 1031;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;GA 1032+;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;GA 1001;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;GA 1002;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;VBP 3200;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;VB 3100;;;;compatibilidade declarada no site
+JM-FAM-GARFO-FENO;Fenação — enleiradores, espalhadores e enfardadeiras;Kuhn;Haybob;;;;compatibilidade declarada no site

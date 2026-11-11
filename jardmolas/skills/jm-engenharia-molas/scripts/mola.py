@@ -11,7 +11,7 @@ do lote-piloto. Rm do certificado do arame sempre vence o Rm estimado.
 Uso:
   python mola.py materiais
   python mola.py compressao --material sae1070-sh --d 3 --De 25 --Na 8 --L0 60 --L1 50 --L2 40
-  python mola.py tracao     --material inox302 --d 2 --De 16 --Nb 20 --Fi 15 --L1 80 --L2 110
+  python mola.py tracao     --material inox302 --d 2 --De 16 --Nb 20 --Fi 18 --L1 80 --L2 95
   python mola.py torcao     --material x750-no1 --d 4 --De 34 --Nb 14 --perna1 40 --perna2 40 --ang1 20 --ang2 105
   python mola.py portinhola --material x750-no1 --d 4 --De 34 --Nb 14 --perna1 40 --perna2 40 \
         --raio 95 --pre-ang 20 --abertura 85 --montagem independente
@@ -27,6 +27,8 @@ import sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 BANCO = os.path.join(AQUI, "..", "references", "materiais.json")
+
+TOL_T = 2.0  # folga em C para arredondamento de F -> C (371/538/649 C sao 700/1000/1200 F)
 
 BITOLAS = [0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70,
            0.80, 0.90, 1.00, 1.10, 1.20, 1.25, 1.40, 1.50, 1.60, 1.80, 2.00,
@@ -67,6 +69,8 @@ def rm_estimado(mat, d):
                 return f["A"] / d ** f["m"] * modelo.get("fator", 1.0), None
         return None, "bitola %.2f mm fora da faixa do modelo de Rm" % d
     if modelo["tipo"] == "tabela":  # [[dmax, Rm], ...]
+        if d < modelo.get("dmin", 0):
+            return None, "bitola %.2f mm abaixo da faixa tabelada de Rm (%.2f mm)" % (d, modelo["dmin"])
         for dmax, rm in modelo["faixas"]:
             if d <= dmax:
                 return rm, None
@@ -83,17 +87,58 @@ def modulos(mat, temp):
     if temp is not None and temp > 40:
         fator = None
         if "modulo_vs_temp" in mat:
-            fator = interp(mat["modulo_vs_temp"], temp)
-        if fator is None:
+            ultimo = max(p[0] for p in mat["modulo_vs_temp"])
+            fator = interp(mat["modulo_vs_temp"], min(temp, ultimo) if temp <= ultimo + TOL_T else temp)
+            if fator is None:
+                avisos.append("temperatura %.0f C fora da curva de modulo deste material (ate %.0f C): "
+                              "G e E mantidos a 20 C" % (temp, ultimo))
+        else:
             avisos.append("sem curva de modulo x temperatura para este material: "
                           "G e E mantidos a 20 C - a mola real fica mais mole a quente")
-        else:
+        if fator is not None:
             G, E = G * fator, E * fator
-    if temp is not None and temp > mat.get("temp_max", 1e9):
+    if temp is not None and temp > mat.get("temp_max", 1e9) + TOL_T:
         avisos.append("temperatura %.0f C acima do limite recomendado para molas deste "
                       "material/condicao (%.0f C): relaxacao acelerada, trocar material ou tratamento"
                       % (temp, mat["temp_max"]))
     return G, E, avisos
+
+
+def limite_relaxacao(mat, chave, temp):
+    """Tensao de projeto a quente (5% de relaxacao em 7 dias) para a temperatura; None se nao ha dado."""
+    tab = mat.get(chave)
+    if not tab or temp is None:
+        return None
+    for tmax, lo, hi in tab:
+        if temp <= tmax + TOL_T:
+            return {"temp_ate": tmax, "min": lo, "max": hi}
+    return {"temp_ate": None, "min": None, "max": None}
+
+
+def checa_relaxacao(mat, chave, temp, tensao, onde, avisos):
+    lim = limite_relaxacao(mat, chave, temp)
+    if lim is None:
+        return None
+    if lim["min"] is None:
+        avisos.append("RELAXACAO: nao ha tensao de projeto publicada para esta condicao a %.0f C - trocar a condicao "
+                      "da liga ou validar por ensaio de relaxacao" % temp)
+        return lim
+    lim["tensao"] = tensao
+    lim["uso"] = tensao / lim["min"]
+    tab = mat[chave]
+    for i, (tmax, lo, hi) in enumerate(tab[:-1]):
+        if lim["temp_ate"] == tmax and tmax - temp <= 15 and tab[i + 1][1] < lo:
+            avisos.append("RELAXACAO: a temperatura esta a %.0f C do degrau da tabela - acima de %d C a tensao de "
+                          "projeto cai para %.0f MPa; confira com a temperatura de pico, nao so a nominal" % (
+                              tmax - temp, tmax, tab[i + 1][1]))
+    if tensao > lim["max"]:
+        avisos.append("RELAXACAO: tensao %s %.0f MPa acima da tensao de projeto a %.0f C (%.0f%s MPa para 5%% de "
+                      "relaxacao em 7 dias): a mola perde carga em servico - reduzir tensao ou mudar a condicao" % (
+                          onde, tensao, temp, lim["min"], "" if lim["min"] == lim["max"] else "-%.0f" % lim["max"]))
+    elif tensao > lim["min"]:
+        avisos.append("RELAXACAO: tensao %s %.0f MPa dentro da faixa %.0f-%.0f MPa a %.0f C: aceitavel so se alguma "
+                      "relaxacao inicial for toleravel" % (onde, tensao, lim["min"], lim["max"], temp))
+    return lim
 
 
 def wahl(C):
@@ -125,6 +170,8 @@ def base(args):
             avisos.append(erro + " - informe --Rm do certificado")
     C = D / d
     checa_indice(C, avisos)
+    if mat.get("nota"):
+        avisos.append(mat["nota"])
     return mat, d, De, D, C, G, E, Rm, origem, avisos
 
 
@@ -140,6 +187,9 @@ EXTREMIDADES = {
 def compressao(args):
     mat, d, De, D, C, G, E, Rm, origem, avisos = base(args)
     Na = args.Na
+    if Na <= 0:
+        sys.exit("Numero de espiras ativas deve ser maior que zero.")
+    frio = mat["G"] / G  # tensoes do veredito estatico usam o modulo a 20 C (montagem, bancada, partida a frio)
     inativas, extra = EXTREMIDADES[args.extremidades]
     Nt = Na + inativas
     Ls = (Nt + extra) * d
@@ -177,9 +227,10 @@ def compressao(args):
     # Folga minima entre espiras na carga maxima (EN 13906-1: Sa ~ (0,0015 D^2/d + 0,1 d) Na)
     Sa = (0.0015 * D ** 2 / d + 0.1 * d) * Na
     Lmin = Ls + Sa
-    if "L2" in pontos and pontos["L2"]["L"] < Lmin:
-        avisos.append("L2=%.2f mm deixa menos folga que o minimo recomendado (Ls+Sa=%.2f mm): "
-                      "risco de espiras batendo e carga fora da reta" % (pontos["L2"]["L"], Lmin))
+    for nome, p_ in pontos.items():
+        if Ls <= p_["L"] < Lmin:
+            avisos.append("%s=%.2f mm deixa menos folga que o minimo recomendado (Ls+Sa=%.2f mm): "
+                          "risco de espiras batendo e carga fora da reta" % (nome, p_["L"], Lmin))
 
     # Tensao admissivel estatica (criterio SMI)
     adm = mat["admissivel"]["compressao"]
@@ -187,8 +238,8 @@ def compressao(args):
     if Rm:
         lim_sem = adm["sem_preset"] * Rm
         lim_com = adm["com_preset"] * Rm
-        t1 = solido["tau"] * Kw1
-        t2 = solido["tau"] * Kw2
+        t1 = solido["tau"] * Kw1 * frio
+        t2 = solido["tau"] * Kw2 * frio
         if t1 <= lim_sem:
             veredito = "OK ate o solido sem pre-assentamento (%.0f <= %.0f MPa)" % (t1, lim_sem)
         elif mat.get("preset_nao_recomendado"):
@@ -202,9 +253,8 @@ def compressao(args):
             veredito = ("SOBRETENSIONADA no solido (%.0f MPa com Kw2 > %.0f MPa): a mola toma assentamento "
                         "permanente. Limite o curso ou reprojete" % (t2, lim_com))
             avisos.append("tensao no solido acima do admissivel mesmo com presetting")
-        if "L2" in pontos:
-            uso = pontos["L2"]["tau_wahl"] / lim_sem
-            pontos["L2"]["uso_admissivel_sem_preset"] = uso
+        for p_ in pontos.values():
+            p_["uso_admissivel_sem_preset"] = p_["tau_wahl"] * frio / lim_sem
 
     # Flambagem (EN 13906-1), nu = coeficiente de apoio
     nu = args.apoio
@@ -226,7 +276,9 @@ def compressao(args):
         a, b = sorted([pontos["L1"]["tau_wahl"], pontos["L2"]["tau_wahl"]])
         ta, tm = (b - a) / 2, (b + a) / 2
         fadiga = {"tau_alternada": ta, "tau_media": tm}
-        if mat.get("zimmerli"):
+        if mat.get("zimmerli") and d >= 10:
+            fadiga["nota"] = "dados de Zimmerli valem para fio abaixo de 10 mm: validar a vida por ensaio"
+        elif mat.get("zimmerli"):
             Ssu = 0.67 * Rm
             for nome, (Ssa, Ssm) in (("sem_shot_peening", (241.0, 379.0)), ("com_shot_peening", (398.0, 534.0))):
                 Sse = Ssa / (1 - Ssm / Ssu)  # Goodman
@@ -238,6 +290,12 @@ def compressao(args):
         else:
             fadiga["nota"] = ("sem dados de fadiga tabelados para este material: validar por ensaio "
                               "de ciclagem ou dados do fabricante do arame")
+
+    relax = None
+    if args.temp is not None:
+        pior = max([p["tau_wahl"] for p in pontos.values()] or [solido["tau_wahl"]])
+        relax = checa_relaxacao(mat, "tau_relax", args.temp, pior,
+                                "na carga maxima" if pontos else "no solido", avisos)
 
     rho = mat["rho"]
     comp_fio = math.pi * D * Nt / math.cos(math.radians(ang_helice))
@@ -251,7 +309,7 @@ def compressao(args):
         "L0": L0, "Ls": Ls, "passo": passo, "angulo_helice": ang_helice,
         "G": G, "E": E, "Rm": Rm, "Rm_origem": origem,
         "k": k, "Kw": Kw1, "pontos": pontos, "solido": solido, "veredito_estatico": veredito,
-        "L_min_trabalho": Lmin, "flambagem": flamb, "fadiga": fadiga,
+        "L_min_trabalho": Lmin, "flambagem": flamb, "fadiga": fadiga, "relaxacao_a_quente": relax,
         "De_no_solido": De + dDe, "comprimento_fio": comp_fio, "massa_g": massa * 1000,
         "frequencia_natural_Hz": freq, "avisos": avisos,
     }
@@ -261,6 +319,8 @@ def compressao(args):
 def tracao(args):
     mat, d, De, D, C, G, E, Rm, origem, avisos = base(args)
     Nb = args.Nb
+    if Nb <= 0:
+        sys.exit("Numero de espiras do corpo deve ser maior que zero.")
     Na = Nb + G / E  # os dois ganchos somam G/E espiras ativas
     k = G * d ** 4 / (8 * D ** 3 * Na)
     Kw = wahl(C)
@@ -306,11 +366,16 @@ def tracao(args):
         else:
             veredito = "SOBRETENSIONADA (corpo %.0f%%, gancho %.0f%% do admissivel)" % (
                 pior["uso_corpo"] * 100, pior["uso_gancho_flexao"] * 100)
-            avisos.append("gancho costuma quebrar antes do corpo: aumente o raio do gancho, "
-                          "use gancho reduzido/olhal girante ou reduza a carga")
+            avisos.append("gancho costuma quebrar antes do corpo (o calculo assume gancho inteiro, raio = D/2): "
+                          "use olhal girante/gancho de extremidade conica ou reduza a carga")
+    relax = None
+    if args.temp is not None and pontos:
+        relax = checa_relaxacao(mat, "tau_relax", args.temp, max(p["tau_wahl"] for p in pontos.values()),
+                                "no corpo, na carga maxima", avisos)
     comp_fio = math.pi * D * (Nb + 2)
     massa = comp_fio * math.pi * d ** 2 / 4 * mat["rho"] * 1e-9
     return {
+        "relaxacao_a_quente": relax,
         "tipo": "tracao", "material": mat["nome"], "condicao": mat.get("condicao", ""),
         "d": d, "De": De, "D": D, "Di": D - d, "C": C, "Nb": Nb, "Na": Na, "L0": L0, "comprimento_corpo": corpo,
         "G": G, "E": E, "Rm": Rm, "Rm_origem": origem, "k": k, "Kw": Kw,
@@ -322,13 +387,16 @@ def tracao(args):
 
 # -------------------------------------------------------------------- torcao
 def torcao_core(mat, d, De, D, C, E, Rm, Nb, perna1, perna2, avisos, sentido_fecha=True):
+    if Nb <= 0:
+        sys.exit("Numero de espiras do corpo deve ser maior que zero.")
     Na = Nb + (perna1 + perna2) / (3 * math.pi * D)
     k_volta = E * d ** 4 / (10.8 * D * Na)      # N.mm por volta (SMI, inclui atrito)
     k_grau = k_volta / 360.0
     Ki = (4 * C ** 2 - C - 1) / (4 * C * (C - 1))  # fibra interna
     Ko = (4 * C ** 2 + C - 1) / (4 * C * (C + 1))
     adm = mat["admissivel"]["torcao"]
-    return {"Na": Na, "k_volta": k_volta, "k_grau": k_grau, "Ki": Ki, "Ko": Ko, "adm": adm}
+    return {"Na": Na, "k_volta": k_volta, "k_grau": k_grau, "Ki": Ki, "Ko": Ko, "adm": adm,
+            "frio": mat["E"] / E, "sem_residual": bool(mat.get("preset_nao_recomendado"))}
 
 
 def torcao_ponto(core, d, D, Nb, ang, Rm):
@@ -338,9 +406,9 @@ def torcao_ponto(core, d, D, Nb, ang, Rm):
     D_fech = D * Nb / (Nb + voltas)
     p = {"angulo": ang, "M": M, "sigma": sig, "Di_fechado": D_fech - d,
          "comprimento_corpo": (Nb + 1 + voltas) * d}
-    if Rm:
-        p["uso_sem_alivio_favoravel"] = sig / (core["adm"]["aliviada"] * Rm)
-        p["uso_com_tensao_residual_favoravel"] = sig / (core["adm"]["residual_favoravel"] * Rm)
+    if Rm:  # veredito estatico com o modulo a 20 C
+        p["uso_sem_alivio_favoravel"] = sig * core["frio"] / (core["adm"]["aliviada"] * Rm)
+        p["uso_com_tensao_residual_favoravel"] = sig * core["frio"] / (core["adm"]["residual_favoravel"] * Rm)
     return p
 
 
@@ -360,6 +428,11 @@ def torcao(args):
         pior = max(pontos.values(), key=lambda p: p["M"])
         if pior["uso_sem_alivio_favoravel"] <= 1:
             veredito = "OK estatico (%.0f%% do admissivel de mola aliviada)" % (pior["uso_sem_alivio_favoravel"] * 100)
+        elif core["sem_residual"]:
+            veredito = ("SOBRETENSIONADA em flexao (%.0f%% do admissivel): nesta liga o envelhecimento elimina a "
+                        "tensao residual favoravel, vale so o limite de mola aliviada" % (
+                            pior["uso_sem_alivio_favoravel"] * 100))
+            avisos.append("tensao de flexao acima do admissivel: aumentar fio, espiras ou diametro")
         elif pior["uso_com_tensao_residual_favoravel"] <= 1:
             veredito = ("So passa se trabalhar FECHANDO as espiras e sem alivio que remova a tensao residual "
                         "favoravel (%.0f%% do limite superior)" % (pior["uso_com_tensao_residual_favoravel"] * 100))
@@ -367,9 +440,14 @@ def torcao(args):
             veredito = "SOBRETENSIONADA em flexao (%.0f%% do limite superior)" % (
                 pior["uso_com_tensao_residual_favoravel"] * 100)
             avisos.append("tensao de flexao acima do admissivel: aumentar fio, espiras ou diametro")
+    relax = None
+    if args.temp is not None and pontos:
+        relax = checa_relaxacao(mat, "sigma_relax", args.temp, max(p["sigma"] for p in pontos.values()),
+                                "de flexao no angulo maximo", avisos)
     comp_fio = math.pi * D * args.Nb + args.perna1 + args.perna2
     massa = comp_fio * math.pi * d ** 2 / 4 * mat["rho"] * 1e-9
     return {
+        "relaxacao_a_quente": relax,
         "tipo": "torcao", "material": mat["nome"], "condicao": mat.get("condicao", ""),
         "d": d, "De": De, "D": D, "Di": D - d, "C": C, "Nb": args.Nb, "Na_equivalente": core["Na"],
         "perna1": args.perna1, "perna2": args.perna2, "E": E, "Rm": Rm, "Rm_origem": origem,
@@ -412,9 +490,20 @@ def portinhola(args):
         veredito = ("OK estatico na abertura total (%.0f%% do admissivel)" % (uso * 100) if uso <= 1 else
                     "ACIMA do admissivel na abertura total (%.0f%%): a mola relaxa e a valvula perde "
                     "o fechamento rapido" % (uso * 100))
+    relax = None
+    if args.temp is not None:
+        relax = checa_relaxacao(mat, "sigma_relax", args.temp, aberta["sigma"],
+                                "de flexao na abertura total", avisos)
     avisos.append("pressao de abertura calculada so com a mola: peso da portinhola, atrito do pino e "
                   "posicao de montagem (fluxo ascendente/horizontal) entram por fora")
+    comp_fio = math.pi * D * args.Nb + args.perna1 + args.perna2
+    massa = comp_fio * math.pi * d ** 2 / 4 * mat["rho"] * 1e-9
+    ff = core["frio"]
     out = {
+        "comprimento_fio": comp_fio, "massa_g": massa * 1000,
+        "a_20C": {"k_Nmm_por_grau": core["k_grau"] * ff, "dp_inicio_abertura_kPa": dp_abre * 1000 * ff,
+                  "sigma_abertura_total": aberta["sigma"] * ff},
+        "relaxacao_a_quente": relax,
         "tipo": "portinhola", "material": mat["nome"], "condicao": mat.get("condicao", ""),
         "d": d, "De": De, "D": D, "C": C, "Nb": args.Nb, "E": E, "Rm": Rm, "Rm_origem": origem,
         "k_Nmm_por_grau": core["k_grau"], "molas_por_portinhola": n, "montagem": args.montagem,
@@ -434,43 +523,62 @@ def portinhola(args):
 
 # --------------------------------------------------------------- dimensionar
 def dimensionar(args):
-    """Varre bitolas e devolve molas de compressao que atendem k, Fmax e espaco."""
+    """Varre bitolas e devolve molas de compressao que atendem k, Fmax, espaco e o solido."""
     mat = material(args.material)
     G, E, avisos = modulos(mat, args.temp)
+    frio = mat["G"] / G
     adm = mat["admissivel"]["compressao"]
-    achados = []
+    lim_q = limite_relaxacao(mat, "tau_relax", args.temp)
+    if lim_q is not None and lim_q["min"] is None:
+        avisos.append("nao ha tensao de projeto publicada para esta condicao a %.0f C" % args.temp)
+        return {"tipo": "dimensionar", "material": mat["nome"], "condicao": mat.get("condicao", ""),
+                "k_alvo": args.k, "Fmax": args.Fmax, "L0": args.L0, "candidatas": [], "avisos": avisos}
+    achados, com_rm = [], 0
     for d in BITOLAS:
         Rm, erro = (args.Rm, None) if args.Rm else rm_estimado(mat, d)
         if not Rm:
             continue
+        com_rm += 1
         De = args.De_max
         while De >= max(args.De_min or 0, 5 * d):
             D = De - d
             C = D / d
             if 4 <= C <= 12:
                 Na = G * d ** 4 / (8 * D ** 3 * args.k)
-                if 2.5 <= Na <= 40:
+                if 3 <= Na <= 40:
                     Na_r = round(Na * 4) / 4.0
                     k = G * d ** 4 / (8 * D ** 3 * Na_r)
                     Ls = (Na_r + 2) * d
+                    passo = (args.L0 - 2 * d) / Na_r
+                    helice = math.degrees(math.atan(passo / (math.pi * D)))
                     tau = 8 * args.Fmax * D / (math.pi * d ** 3) * wahl(C)
                     L_Fmax = args.L0 - args.Fmax / k
                     Sa = (0.0015 * D ** 2 / d + 0.1 * d) * Na_r
-                    if tau <= adm["sem_preset"] * Rm and L_Fmax >= Ls + Sa:
+                    tau_s = 8 * k * (args.L0 - Ls) * D / (math.pi * d ** 3) * frio
+                    solido_ok = tau_s * wahl(C) <= adm["sem_preset"] * Rm
+                    preset = (not solido_ok and not mat.get("preset_nao_recomendado")
+                              and tau_s * (1 + 0.5 / C) <= adm["com_preset"] * Rm)
+                    quente_ok = lim_q is None or tau <= lim_q["min"]
+                    if (tau * frio <= adm["sem_preset"] * Rm and L_Fmax >= Ls + Sa and helice <= 12
+                            and (solido_ok or preset) and quente_ok):
                         massa = math.pi * D * (Na_r + 2) * math.pi * d ** 2 / 4 * mat["rho"] * 1e-6
                         achados.append({"d": d, "De": round(De, 2), "C": round(C, 2), "Na": Na_r,
                                         "k": round(k, 3), "Ls": round(Ls, 2), "L_em_Fmax": round(L_Fmax, 2),
-                                        "tau_wahl_Fmax": round(tau), "uso": round(tau / (adm["sem_preset"] * Rm), 2),
-                                        "massa_g": round(massa, 1)})
+                                        "tau_wahl_Fmax": round(tau),
+                                        "uso": round(tau * frio / (adm["sem_preset"] * Rm), 2),
+                                        "solido": "ok" if solido_ok else "preset", "massa_g": round(massa, 1)})
             De -= max(0.5, 0.02 * args.De_max)
-    achados.sort(key=lambda a: (a["massa_g"], -a["uso"]))
+    achados.sort(key=lambda a: (a["solido"] != "ok", a["massa_g"], -a["uso"]))
     vistos, saida = set(), []
     for a in achados:
         if a["d"] not in vistos:
             vistos.add(a["d"])
             saida.append(a)
-    if not saida:
-        avisos.append("nenhuma combinacao atende: afrouxe De-max, L0, k ou troque o material")
+    if not com_rm:
+        avisos.append("material sem Rm no banco: informe --Rm do certificado do arame")
+    elif not saida:
+        avisos.append("nenhuma combinacao atende carga, espaco, solido%s: afrouxe De-max, L0, k ou troque o material"
+                      % (" e tensao a quente" if lim_q else ""))
     return {"tipo": "dimensionar", "material": mat["nome"], "condicao": mat.get("condicao", ""),
             "k_alvo": args.k, "Fmax": args.Fmax, "L0": args.L0, "candidatas": saida[:8], "avisos": avisos}
 
@@ -486,12 +594,14 @@ def imprimir(r):
     if t == "dimensionar":
         L.append("DIMENSIONAMENTO - %s %s" % (r["material"], r["condicao"]))
         L.append("alvo: k=%.2f N/mm, Fmax=%.1f N, L0=%.1f mm" % (r["k_alvo"], r["Fmax"], r["L0"]))
-        L.append("%6s %7s %6s %6s %8s %7s %9s %9s %5s %8s" % (
-            "d", "De", "C", "Na", "k", "Ls", "L(Fmax)", "tau(MPa)", "uso", "massa g"))
+        L.append("%6s %7s %6s %6s %8s %7s %9s %9s %5s %7s %8s" % (
+            "d", "De", "C", "Na", "k", "Ls", "L(Fmax)", "tau(MPa)", "uso", "solido", "massa g"))
         for a in r["candidatas"]:
-            L.append("%6.2f %7.2f %6.2f %6.2f %8.3f %7.2f %9.2f %9d %5.2f %8.1f" % (
+            L.append("%6.2f %7.2f %6.2f %6.2f %8.3f %7.2f %9.2f %9d %5.2f %7s %8.1f" % (
                 a["d"], a["De"], a["C"], a["Na"], a["k"], a["Ls"], a["L_em_Fmax"],
-                a["tau_wahl_Fmax"], a["uso"], a["massa_g"]))
+                a["tau_wahl_Fmax"], a["uso"], a["solido"], a["massa_g"]))
+        if any(a["solido"] == "preset" for a in r["candidatas"]):
+            L.append("solido = preset: so chega ao solido com pre-assentamento no processo")
     else:
         L.append("MOLA DE %s - %s %s" % (t.upper(), r["material"], r["condicao"]))
         L.append("fio d=%.2f  De=%.2f  D=%.2f  C=%.2f" % (r["d"], r["De"], r["D"], r["C"]))
@@ -504,8 +614,10 @@ def imprimir(r):
             r["Na"], r["Nt"], r["extremidades"], r["L0"], r["Ls"], r["passo"], r["angulo_helice"]))
         L.append("G=%.0f MPa  constante k=%.3f N/mm  Wahl=%.3f" % (r["G"], r["k"], r["Kw"]))
         for nome, p in list(r["pontos"].items()) + [("solido", r["solido"])]:
-            L.append("  %-6s L=%7.2f  flecha=%6.2f  F=%8.1f N  tau=%5.0f  tau_Wahl=%5.0f MPa" % (
-                nome, p["L"], p["flecha"], p["F"], p["tau"], p["tau_wahl"]))
+            L.append("  %-6s L=%7.2f  flecha=%6.2f  F=%8.1f N  tau=%5.0f  tau_Wahl=%5.0f MPa%s" % (
+                nome, p["L"], p["flecha"], p["F"], p["tau"], p["tau_wahl"],
+                "  (%.0f%% do admissivel)" % (p["uso_admissivel_sem_preset"] * 100)
+                if "uso_admissivel_sem_preset" in p else ""))
         L.append("comprimento minimo de trabalho recomendado: %.2f mm" % r["L_min_trabalho"])
         fl = r["flambagem"]
         L.append("flambagem: " + ("nao flamba nesse apoio" if not fl["flamba"] else
@@ -550,6 +662,17 @@ def imprimir(r):
             r["dp_inicio_abertura_kPa"], r["dp_inicio_abertura_mca"], r["dp_abertura_total_kPa"]))
         if "pre_angulo_para_dp_alvo_graus" in r:
             L.append("pre-angulo para o dp alvo: %.1f graus" % r["pre_angulo_para_dp_alvo_graus"])
+        f20 = r["a_20C"]
+        if abs(f20["k_Nmm_por_grau"] - r["k_Nmm_por_grau"]) > 1e-9:
+            L.append("a 20 C (bancada): constante %.2f N.mm/grau | dp inicio de abertura %.2f kPa | sigma na abertura "
+                     "total %.0f MPa  <- o veredito estatico usa estes valores" % (
+                         f20["k_Nmm_por_grau"], f20["dp_inicio_abertura_kPa"], f20["sigma_abertura_total"]))
+        L.append("corpo aberto=%.2f mm  fio=%.0f mm  massa=%.1f g por mola" % (
+            r["aberta"]["comprimento_corpo"], r["comprimento_fio"], r["massa_g"]))
+    rx = r.get("relaxacao_a_quente")
+    if rx and rx.get("min"):
+        L.append("relaxacao a quente: tensao %.0f MPa contra tensao de projeto %.0f%s MPa (ate %d C; 5%% em 7 dias) -> %.0f%%" % (
+            rx["tensao"], rx["min"], "" if rx["min"] == rx["max"] else "-%.0f" % rx["max"], rx["temp_ate"], rx["uso"] * 100))
     if r.get("veredito_estatico"):
         L.append("VEREDITO: " + r["veredito_estatico"])
     for a in r["avisos"]:
@@ -628,6 +751,11 @@ def main():
         return listar()
     r = {"compressao": compressao, "tracao": tracao, "torcao": torcao,
          "portinhola": portinhola, "dimensionar": dimensionar}[args.cmd](args)
+    rx = r.get("relaxacao_a_quente")
+    if rx and r.get("veredito_estatico") and (rx.get("min") is None or rx["tensao"] > rx["max"]):
+        r["veredito_estatico"] = "NAO ATENDE A QUENTE (ver aviso de RELAXACAO). A frio: " + r["veredito_estatico"]
+    elif r.get("veredito_estatico") and any("acima do limite recomendado" in a for a in r.get("avisos", [])):
+        r["veredito_estatico"] = "REPROVADA PELA TEMPERATURA (ver aviso). A frio: " + r["veredito_estatico"]
     if args.json:
         print(json.dumps(r, ensure_ascii=False, indent=2))
     else:

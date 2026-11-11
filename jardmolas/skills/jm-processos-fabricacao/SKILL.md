@@ -43,11 +43,14 @@ multieixos (camless) em vez de enroladeira.
 
 **Liga de níquel endurecível (Inconel X-750, 718)**
 receber arame com certificado → enrolar com ferramental dedicado → **limpar
-completamente** → envelhecimento por precipitação (ciclo conforme condição do
-arame — skill `jm-inconel-x750`) → remover óxido (decapagem ou jato fino) →
-ensaio de carga/torque → inspeção, dureza → embalar com rastreabilidade de
-corrida. A limpeza antes do forno não é opcional: enxofre, chumbo, zinco e
-resíduo de lubrificante fragilizam liga de níquel em alta temperatura.
+completamente, removendo o cobreado e o lubrificante** → envelhecimento por
+precipitação (ciclo conforme condição do arame — skill `jm-inconel-x750`) →
+[pré-carga a quente, para molas de alta temperatura] → ensaio de
+carga/torque → inspeção, dureza → embalar com rastreabilidade de corrida. A
+limpeza antes do forno não é opcional: cobre, chumbo, zinco e resíduo de
+lubrificante atacam a liga em alta temperatura. O óxido fino que fica depois
+do tratamento **não se remove** em X-750, salvo exigência do cliente: ele
+protege, e tirá-lo (decapagem ou jato) piora a mola.
 
 **Barra a quente (> 16 mm, molas pesadas de implemento)**
 cortar barra → aquecer → enrolar a quente → temperar → revenir → retificar →
@@ -66,10 +69,10 @@ a linha `[confirmar]`; se não, é item de compra ou parceria.
   encurta o próximo setup.
 - Índice C < 4 ou > 12: avise a engenharia antes de aceitar; exige ferramental
   especial e tolerância maior.
-- Ligas de níquel têm retorno elástico maior e encruam rápido: velocidade
-  menor, ferramenta de metal duro polida, lubrificante sem enxofre e sem
-  cloro, e nada de ferramenta que tenha trabalhado aço carbono sem limpeza
-  (contaminação por ferro vira ponto de corrosão).
+- Ligas de níquel encruam rápido e o retorno elástico muda com a têmpera
+  (maior que o do aço na têmpera mola, menor na No. 1): velocidade menor, ferramenta de metal duro polida, e nada de ferramenta que tenha
+  trabalhado aço carbono sem limpeza (contaminação por ferro vira ponto de
+  corrosão). Qualquer lubrificante usado sai por completo antes do forno.
 - Sentido de enrolamento: direita é padrão; esquerda quando o desenho pede,
   quando duas molas trabalham concêntricas (sentidos opostos para não
   enroscar) ou quando a mola rosqueia em algo.
@@ -115,14 +118,19 @@ meio do cesto sai mole.
   vidro, senão fica ferro incrustado na superfície.
 - Depois do jato vem o alívio baixo da tabela. Nunca tratamento térmico alto
   depois do jato — apaga o efeito.
+- Inconel X-750 para serviço quente: não jatear depois do envelhecimento sem
+  ensaio de relaxação (ver `jm-inconel-x750`).
 
 ## Presetting (assentamento)
 
 Comprimir a mola até o sólido (ou até uma altura definida) algumas vezes para
 que ela tome o assentamento na fábrica, não no cliente. Enrola-se mais
 comprida, na medida que o lote-piloto mostrar. **Presetting a quente** (a
-mola aquecida perto da temperatura de serviço) reduz a relaxação de molas que
-trabalham quentes — válvulas, motores — e é diferencial de fornecimento.
+mola carregada e aquecida um pouco acima da temperatura de serviço) reduz a
+relaxação de molas que trabalham quentes — válvulas, motores — e é
+diferencial de fornecimento. Em Inconel X-750 para alta temperatura o
+assentamento a frio não ajuda; usa-se a pré-carga a quente descrita na
+`jm-inconel-x750`.
 Registrar altura antes e depois: perda acima do previsto indica tratamento
 térmico fraco ou fio fora de especificação.
 
@@ -136,15 +144,17 @@ térmico fraco ou fio fora de especificação.
 | Zinco lamelar (flake, tipo Geomet/Delta) | Alta resistência à corrosão em aço de alta dureza | Sem hidrogênio; cura em estufa; custo maior |
 | Pintura eletrostática a pó / KTL | Molas de implemento expostas | Cura dentro do limite de alívio do material |
 | Passivação (inox) | Sempre que houver exigência de corrosão | Remove ferro livre; banho nítrico ou cítrico conforme ASTM A967 |
-| Decapagem / jato fino (ligas de níquel) | Depois do envelhecimento ao ar | Não deixar ataque intergranular; lavar e neutralizar |
+| Ligas de níquel (X-750) | Padrão: entregar com o óxido fino do tratamento | Decapagem ácida ataca contorno de grão; jato reduz a resistência à relaxação — só por exigência do cliente e com o risco avisado |
 
 **Fragilização por hidrogênio.** Mola de aço com dureza alta (na prática,
 toda mola de aço carbono ou ligado) que passa por decapagem ácida ou banho
 eletrolítico absorve hidrogênio e pode quebrar horas ou dias depois, sob
-carga, sem aviso. Regra da casa: desidrogenar em estufa a 190–220 °C, por no
-mínimo 4 h (mais para fio grosso e dureza alta; referência ASTM B850),
-**começando em até 4 h depois do banho**, e ensaiar amostras sob carga por
-48 h a cada lote zincado. Quando o tratamento é terceirizado, isso vai
+carga, sem aviso. Regra da casa: desidrogenar em estufa a 190–220 °C por no
+mínimo 8 h, e mais — 16 a 24 h — para arame de resistência mais alta (a
+ASTM B850 e a ISO 9588 tabelam o tempo pela resistência do aço: conferir a
+norma para a classe do arame), **começando em até 4 h depois do banho, de
+preferência na primeira hora**, e ensaiar amostras sob carga por 48 h a cada
+lote zincado. Quando o tratamento é terceirizado, isso vai
 escrito no pedido e volta com registro de estufa — sem registro, o lote não
 entra.
 

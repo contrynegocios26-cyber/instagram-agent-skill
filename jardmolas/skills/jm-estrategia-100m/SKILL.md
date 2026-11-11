@@ -39,7 +39,7 @@ ordens de grandeza de equipe, ativo fixo e capital de giro na meta. Os
 parâmetros opcionais são **premissas do usuário**, não dados de mercado.
 
 Leitura típica: uma empresa de pequeno porte que queira chegar a US$ 100
-milhões em 10 a 15 anos precisa crescer na casa de 35% a 50% ao ano, todos
+milhões em 10 a 15 anos precisa crescer na casa de 35% a 60% ao ano, todos
 os anos. Crescimento orgânico sustentado nesse ritmo é raro em indústria;
 por isso o plano tem três motores — orgânico, exportação e aquisições — e
 portões que permitem parar numa empresa excelente de R$ 50, 100 ou 200

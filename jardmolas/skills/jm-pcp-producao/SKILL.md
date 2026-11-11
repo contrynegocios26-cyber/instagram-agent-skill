@@ -46,8 +46,9 @@ mais a soma das operações seguintes:
 
 1. Arame: há estoque livre da bitola e liga? Se não, prazo do fornecedor
    (carbono nacional: dias a poucas semanas; inox: semanas; **liga de níquel
-   importada: tipicamente 8 a 16 semanas** se não houver em distribuidor —
-   confirme com `jm-compras-suprimentos`).
+   importada: de poucas semanas, quando há estoque em distribuidor, a
+   meses, quando é fabricação sob pedido** — nunca prometa data sem a
+   confirmação escrita do fornecedor, via `jm-compras-suprimentos`).
 2. Fila da enroladeira que faz a bitola + setup + (quantidade ÷ peças/h).
 3. Forno: próxima janela. Envelhecimento de Inconel ocupa o forno de câmara
    por até um dia inteiro por carga; ciclos de três etapas, mais que isso.
@@ -88,8 +89,8 @@ Massa por peça vem da ficha técnica (a calculadora informa). Necessidade =
 quantidade × massa × (1 + perda). Perda típica: 2–5% em série; 8–15% em lote
 pequeno e em setup de peça nova, porque as primeiras peças viram ajuste. Em
 liga de níquel a perda de setup pesa no custo: peça ao comercial lote mínimo
-coerente e ajuste a máquina com arame de inox de mesma bitola antes de entrar
-com o Inconel.
+coerente e reserve arame de setup da própria corrida (o acerto com inox de
+mesma bitola só aproxima, porque o retorno elástico muda com a têmpera).
 
 Política de estoque de arame: bitolas de giro com ponto de pedido = consumo
 médio × prazo de reposição + segurança; ligas especiais só sob pedido, salvo

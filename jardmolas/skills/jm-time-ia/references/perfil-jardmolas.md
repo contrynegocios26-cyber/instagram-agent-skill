@@ -60,8 +60,15 @@ trabalho da sessão) com a data.
    980 °C para molas de válvula estão acima dos limites de serviço de mola
    documentados — revisar com `jm-inconel-x750` e `jm-marketing-industrial`.
 2. O site cita DIN 17223; os certificados de arame vêm pela EN 10270-1.
-3. O site menciona certificado do fornecedor de arame; não foi encontrada
-   certificação de sistema de gestão da própria empresa `[confirmar]`.
-4. Dois números de endereço diferentes no site.
+3. Duas páginas (molas para atuadores) afirmam "fabricação conforme ISO
+   9001" / "processos certificados ISO 9001"; outras citam o certificado do
+   fornecedor de arame como selo da empresa. Confirmar se existe certificado
+   ISO 9001 vigente em nome da Jardmolas `[confirmar]` — até lá, nenhum
+   agente afirma a certificação.
+4. Dois números de endereço diferentes no site; "17 anos" desatualizado.
 5. Há outras empresas de nome parecido na mesma cidade; usar sempre a
    identificação completa em documentos.
+6. A lista completa de correções do site, com o texto corrigido, está no
+   relatório `relatorios/revisao-site-jardmolas-2026-11-10.md` do plugin.
+7. A Jardmolas é uma empresa independente de qualquer outro negócio do
+   usuário: não misturar dados, voz, mídia ou clientes.

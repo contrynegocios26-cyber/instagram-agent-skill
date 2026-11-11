@@ -1,0 +1,8 @@
+﻿codigo;equipamento;marca;modelo;posicao;codigo_original;qtd_por_maquina;observacao
+EX-0001;Plantadeira;Marca Exemplo;PX 100;pressão da linha;ABC-12345;12;
+EX-0002;Plantadeira;Marca Exemplo;PX 200;pressão da linha;ABC-12399;;
+EX-0003;Válvula de retenção dupla portinhola;;;DN 200 classe 150;;;
+EX-0004;Enleirador rotativo;Marca Exemplo;RX 300;;84-0568-83;44;
+EX-0004;Enleirador rotativo;Outra Marca;GZ 10;;;;
+EX-0005;Plantadeira;Marca Exemplo;PX 100;limitador de profundidade;;;
+EX-FAM-01;Enleirador de palha de cana;;;;;;

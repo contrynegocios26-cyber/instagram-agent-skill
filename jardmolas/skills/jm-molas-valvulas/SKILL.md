@@ -32,7 +32,7 @@ Cálculo: `jm-engenharia-molas` (comandos `torcao`, `portinhola`,
 |---|---|---|---|---|
 | **Retenção dupla portinhola** (wafer, lug, flangeada — API 594) | Torção no pino central, 1 ou mais por válvula | Fechar as portinholas antes da inversão do fluxo | 316 ou **Inconel X-750** como par padrão; Inconel 600, Monel, 17-7 PH, Hastelloy como opção | 1 a 4 por válvula; DN 50 a DN 1800 |
 | **Esfera trunnion** (API 6D) | Compressão pequenas atrás do anel de sede; mola antiestática | Manter a sede encostada na esfera em baixa pressão; continuidade elétrica | **Inconel X-750** é o padrão de vários catálogos globais | Dezenas por válvula — o maior volume em peças |
-| **Segurança e alívio** (API 526, caldeiras, vapor) | Compressão de fio grosso | Define a pressão de abertura (set) | Aço carbono/ligado; inox; **X-750 para alta temperatura e NACE**; tungstênio/outras em casos especiais | 1 por válvula; faixas de set por mola |
+| **Segurança e alívio** (API 526, caldeiras, vapor) | Compressão de fio grosso | Define a pressão de abertura (set) | Aço carbono/ligado; inox; **X-750 para alta temperatura e NACE** | 1 por válvula; faixas de set por mola |
 | **Retenção axial / silenciosa / nozzle** | Compressão central | Fechamento assistido, sem golpe | X-750 padrão em linhas conhecidas; 316; 718 | 1 por válvula |
 | **Retenção de pistão e de instrumentação** | Compressão pequena | Retorno do pistão/obturador | 316; X-750 nas versões de liga | 1 por válvula, séries longas |
 | **Retenção de disco para vapor** | Compressão cônica | Fechamento | Inox; Nimonic 90 na opção de alta temperatura | Séries |
@@ -69,9 +69,14 @@ quem copia amostra.
 **Dados a pedir** (ou medir na amostra e na válvula): DN e classe; raio da
 portinhola até a aresta do pino; diâmetro do pino da dobradiça; espaço axial
 para o corpo da mola; arranjo e número de molas; ângulo de abertura total;
-pressão de abertura desejada (cracking) e posição de montagem (horizontal ou
+pressão de abertura desejada (cracking), se ela é medida a frio na bancada
+ou vale na temperatura de serviço, e posição de montagem (horizontal ou
 vertical com fluxo ascendente — o peso da portinhola ajuda ou atrapalha);
-temperatura e meio; liga e condição; quantidade por válvula e por ano.
+**número de espiras do corpo, ângulo livre entre as pernas (ou pré-ângulo de
+montagem) e sentido de enrolamento** — e se as molas da válvula são iguais
+ou um par direita/esquerda; torque e ângulo de ensaio com tolerância;
+temperatura de regime e de pico, e meio; liga e condição; quantidade por
+válvula e por ano.
 
 **Cálculo.**
 ```bash
@@ -81,15 +86,28 @@ python scripts/mola.py portinhola --material x750-no1 --d 4 --De 34 --Nb 14 \
 ```
 (rode dentro da pasta da skill `jm-engenharia-molas`). Devolve torque
 fechada e aberta, tensão de flexão, pressão diferencial de início de abertura
-e de abertura total, folga no pino e o pré-ângulo necessário para a pressão
-alvo. A conta considera só a mola; peso da portinhola e atrito entram por
-fora e o ensaio de bancada do cliente fecha a questão.
+e de abertura total, folga no pino, o pré-ângulo necessário para a pressão
+alvo, e a massa e o comprimento de fio por mola (para o orçamento). A conta
+considera só a mola; peso da portinhola e atrito entram por fora e o ensaio
+de bancada do cliente fecha a questão.
+
+Os valores `--Nb 14` e `--pre-ang 20` do exemplo são ilustrativos, não dados
+de cliente. Se o desenho não trouxer espiras ou pré-ângulo: use `--dp-alvo`
+para achar o pré-ângulo, varra o número de espiras (por exemplo 12, 14, 16,
+18), escolha pelo espaço axial entre os mancais e marque `[confirmar]`. Com
+`--temp`, a saída traz as duas situações: a 20 °C (bancada — é dela que sai
+o veredito estático e o que o cliente mede) e na temperatura de serviço
+(pressão de abertura real e verificação de relaxação).
 
 **Regras de projeto que evitam devolução:**
 
 - A tensão que importa é a da **abertura total**, não a da válvula fechada.
   Em X-750 envelhecido use o admissível de mola aliviada (60% de Rm): o
   envelhecimento apaga a tensão residual favorável do enrolamento.
+- **Informe a temperatura** (`--temp`): a calculadora compara a tensão de
+  flexão com a tensão de projeto a quente do fabricante da liga. Em têmpera
+  No. 1 são 690 MPa até 427 °C e só 414 MPa a 538 °C — uma mola que passa
+  folgada a 400 °C reprova a 538 °C com o mesmo desenho.
 - Mola sempre trabalhando no sentido de **fechar as espiras**; diâmetro
   interno na abertura total com 10% de folga sobre o pino.
 - Mais espiras = menos tensão para o mesmo torque, mas mais comprimento de

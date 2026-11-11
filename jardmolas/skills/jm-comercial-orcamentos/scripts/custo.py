@@ -9,8 +9,8 @@ Exemplo (aco carbono, em reais):
 
 Exemplo (liga importada, arame em dolar):
   python custo.py --massa-g 62 --arame-usd 95 --cambio 5.40 --internacao 0.35 --perda 0.10 \
-      --qtds 50 200 1000 --setup-h 3 --taxa-maq 150 --pecas-h 400 --forno-lote 900 \
-      --extra "decapagem:1.20" --extra "ensaio 100%:0.80" --databook-lote 350 \
+      --qtds 50 200 1000 --setup-h 3 --taxa-maq 150 --pecas-h 400 --forno-lote 900 --pecas-carga 500 \
+      --extra "limpeza antes do forno:1.20" --extra "ensaio 100%:0.80" --databook-lote 350 \
       --indiretos 0.25 --impostos 0.18 --margem 0.30
 
 Todos os percentuais sao fracoes (0.18 = 18%). O script nao conhece os numeros
@@ -54,6 +54,10 @@ def main():
     p.add_argument("--json", action="store_true")
     a = p.parse_args()
 
+    if a.arame is not None and a.arame_usd is not None:
+        sys.exit("Informe so um: --arame (R$/kg posto fabrica) ou --arame-usd com --cambio.")
+    if a.pecas_h <= 0 or any(q <= 0 for q in a.qtds):
+        sys.exit("--pecas-h e todas as quantidades devem ser maiores que zero.")
     if a.arame is None:
         if a.arame_usd is None or a.cambio is None:
             sys.exit("Informe --arame (R$/kg) ou --arame-usd com --cambio.")
@@ -93,6 +97,9 @@ def main():
             "acabamento": acab, "outros": outros, "indiretos": indiretos, "ferramental_diluido": ferr,
             "custo_unitario": custo, "preco_unitario": preco, "preco_minimo_margem_zero": minimo,
             "total_lote": preco * q, "margem_reais_lote": preco * q * a.margem,
+            "horas_maquina_lote": a.setup_h + q / a.pecas_h,
+            "margem_reais_por_hora_maquina": preco * q * a.margem / (a.setup_h + q / a.pecas_h),
+            "cargas_de_forno": cargas if a.forno_lote else 0,
             "peso_material_no_custo": material / custo,
             "preco_se_arame_sobe_10pct": preco_arame10,
         })
@@ -113,8 +120,19 @@ def main():
             l["peso_material_no_custo"] * 100))
     print("Piso de negociacao (margem zero) por faixa: " + " | ".join(
         "%d: R$ %.3f" % (l["quantidade"], l["preco_minimo_margem_zero"]) for l in linhas))
-    print("Se o arame subir 10%%, preco para manter a margem: " + " | ".join(
+    print("Se o arame subir 10%, preco para manter a margem: " + " | ".join(
         "%d: R$ %.3f" % (l["quantidade"], l["preco_se_arame_sobe_10pct"]) for l in linhas))
+    print("Margem em R$ por hora de maquina: " + " | ".join(
+        "%d: R$ %.0f/h (%.1f h)" % (l["quantidade"], l["margem_reais_por_hora_maquina"], l["horas_maquina_lote"])
+        for l in linhas))
+    if a.forno_lote:
+        print("Cargas de forno: " + " | ".join("%d: %d" % (l["quantidade"], l["cargas_de_forno"]) for l in linhas)
+              + ("" if a.pecas_carga else "  (sem --pecas-carga: uma carga para qualquer quantidade)"))
+    faltam = [n for n, v in (("--setup-h", a.setup_h), ("--indiretos", a.indiretos), ("--taxa-maq", a.taxa_maq)) if not v]
+    if a.arame_usd is not None and not a.internacao:
+        faltam.append("--internacao (arame em dolar sem custo de internacao)")
+    if faltam:
+        print("ATENCAO - ficaram em zero e o preco nao os cobre: " + ", ".join(faltam))
     if a.ferramental and not a.diluir_ferramental:
         print("Ferramental cobrado a parte: R$ %.2f" % a.ferramental)
 

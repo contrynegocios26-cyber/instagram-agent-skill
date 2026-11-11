@@ -29,6 +29,8 @@ def main():
     p.add_argument("--capital-giro", type=float)
     a = p.parse_args()
 
+    if a.receita_atual <= 0 or a.anos <= 0 or a.cambio <= 0:
+        raise SystemExit("--receita-atual, --anos e --cambio devem ser maiores que zero.")
     meta = a.meta_usd * a.cambio
     mult = meta / a.receita_atual
     cagr = mult ** (1.0 / a.anos) - 1
@@ -39,7 +41,7 @@ def main():
         "%d%%/ano: %.1f anos" % (t * 100, math.log(mult) / math.log(1 + t)) for t in (0.15, 0.25, 0.35, 0.50)))
 
     print("\n%4s %12s" % ("ano", "receita R$mi") + ("%14s %12s %14s" % ("so organico", "lacuna", "func. estim.")
-                                                   if a.organico or a.receita_por_func else ""))
+                                                   if a.organico is not None or a.receita_por_func else ""))
     for n in range(0, a.anos + 1):
         r = a.receita_atual * (1 + cagr) ** n
         linha = "%4d %12.1f" % (n, r)

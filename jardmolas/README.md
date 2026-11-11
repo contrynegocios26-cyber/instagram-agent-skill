@@ -1,6 +1,6 @@
 # Jardmolas — skills da fábrica
 
-Dezesseis skills para o Claude operar, setor por setor, uma fábrica de molas
+Dezessete skills para o Claude operar, setor por setor, uma fábrica de molas
 para implementos agrícolas e indústria, com especialidade em molas de fio
 redondo de Inconel X-750. Feitas para a Jardmolas (Jardinópolis-SP).
 
@@ -12,7 +12,7 @@ passa de um setor ao outro.
 
 | Skill | Setor | O que entrega | Ferramenta |
 |---|---|---|---|
-| `jm-time-ia` | Direção / time de IA | Coordena 15 agentes, fluxos entre setores, rotinas diária, semanal e mensal | perfil da empresa |
+| `jm-time-ia` | Direção / time de IA | Coordena 16 agentes, fluxos entre setores, rotinas diária, semanal e mensal | perfil da empresa |
 | `jm-estrategia-100m` | Estratégia | Plano por etapas até US$ 100 milhões, desenho da fábrica, portões de decisão, painel do dono | `plano.py` |
 | `jm-engenharia-molas` | Engenharia de produto | Projeto e verificação de molas, ficha técnica, diagnóstico de falha | `mola.py` + banco de materiais |
 | `jm-inconel-x750` | Ligas especiais | Têmpera, tratamento térmico por temperatura de serviço, NACE, compra do arame, fabricação | dados com fonte e grau de confiança |
@@ -28,6 +28,7 @@ passa de um setor ao outro.
 | `jm-financeiro` | Financeiro | Custo-hora, margem, caixa, DRE, câmbio e níquel, investimento | — |
 | `jm-rh-seguranca` | Pessoas e segurança | Cargos, formação de preparador, polivalência, riscos de arame e mola, NRs | — |
 | `jm-manutencao` | Manutenção | Preventiva de enroladeiras e fornos, calibração, diagnóstico pela peça | — |
+| `jm-catalogo` | Catálogo | Base de itens e aplicações; busca por máquina, tipo, código original e medidas; página navegável com "como medir" e pedido por WhatsApp | `catalogo.py` + modelo de página |
 
 ## As calculadoras
 
@@ -47,7 +48,24 @@ python skills/jm-qualidade/scripts/capabilidade.py --help
 
 # modelo de crescimento até a meta
 python skills/jm-estrategia-100m/scripts/plano.py --receita-atual 6 --cambio 5.40 --anos 12
+
+# catálogo: validar, buscar e gerar a página
+python skills/jm-catalogo/scripts/catalogo.py validar catalogo
+python skills/jm-catalogo/scripts/catalogo.py buscar catalogo --marca Kuhn --modelo "GA 300"
+python skills/jm-catalogo/scripts/catalogo.py gerar catalogo --saida catalogo/catalogo.html --whatsapp 55DDDNUMERO
 ```
+
+## O que mais vem na pasta
+
+- `catalogo/` — a base inicial do catálogo (19 famílias e 20
+  compatibilidades de fenação publicadas no site, ainda sem medidas) e a
+  página `catalogo.html` gerada a partir dela. É o ponto de partida: os
+  itens, medidas e fotos são cadastrados nas duas planilhas.
+- `relatorios/revisao-site-jardmolas-2026-11-10.md` — revisão técnica das 34
+  páginas do site, com cada trecho errado e o texto corrigido.
+
+Este plugin é só da Jardmolas. Ele fica numa pasta própria e não usa nem
+mistura dados, voz ou material de nenhuma outra empresa.
 
 ## Como instalar
 
@@ -83,13 +101,13 @@ nas entregas.
 
 ## Limites — leia antes de confiar
 
-- **Pesquisa**: o levantamento de mercado e de dados do Inconel X-750 foi
-  feito em 10/11/2026 só por busca na web; os sites e PDFs originais
-  estavam bloqueados na sessão. Cada número de liga traz a etiqueta de
-  confiança em `jm-inconel-x750/references/dados-x750.md`, e cada empresa da
-  lista de compradores traz o tipo de evidência. Confira no boletim do
-  fabricante da liga, nas normas compradas e no catálogo do cliente antes de
-  usar em certificado ou proposta.
+- **Pesquisa**: os dados do Inconel X-750 foram conferidos em 10/11/2026 no
+  boletim técnico original do fabricante da liga (Special Metals); as
+  normas AMS e NACE, que são pagas, não foram lidas e estão marcadas como
+  fonte secundária em `jm-inconel-x750/references/dados-x750.md`. O site da
+  Jardmolas foi lido por inteiro. A lista de compradores veio de busca na
+  web, sem abrir o catálogo de cada empresa: cada linha traz o tipo de
+  evidência e precisa ser conferida antes da abordagem.
 - **Cálculo**: a calculadora verifica o projeto; quem libera a mola é o
   ensaio do lote-piloto. O Rm do certificado do arame vence o Rm estimado.
 - **Impostos e leis**: alíquotas, classificação fiscal, reforma tributária e

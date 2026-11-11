@@ -114,8 +114,9 @@ se houver compressor com reservatório (NR-13); ergonomia (NR-17); proteção
 contra incêndio (NR-23); sinalização (NR-26). As normas são atualizadas com
 frequência: o responsável técnico confirma o texto vigente.
 
-Enroladeira de mola não tem anexo próprio na NR-12; aplicam-se as regras
-gerais de máquinas. Máquina antiga sem proteção é o maior passivo: comece o
+Não foi localizado anexo específico para enroladeiras de mola na NR-12 —
+aplicam-se, em princípio, as regras gerais de máquinas; o responsável
+técnico confirma. Máquina antiga sem proteção é o maior passivo: comece o
 inventário por elas.
 
 ## Rotina de segurança

@@ -53,7 +53,7 @@ pela calculadora `scripts/mola.py`, porque um erro de 5% no diâmetro médio vir
 python scripts/mola.py materiais                     # lista as chaves de material
 python scripts/mola.py compressao --material cromo-silicio --d 3 --De 25 --Na 8 \
        --L0 60 --L1 50 --L2 40 [--extremidades fechada-retificada] [--temp 150] [--Rm 1900]
-python scripts/mola.py tracao --material inox302 --d 2 --De 16 --Nb 20 --Fi 15 --L1 80 --L2 110
+python scripts/mola.py tracao --material inox302 --d 2 --De 16 --Nb 20 --Fi 18 --L1 80 --L2 95
 python scripts/mola.py torcao --material x750-no1 --d 4 --De 34 --Nb 14 \
        --perna1 40 --perna2 40 --ang1 20 --ang2 105 --pino 22
 python scripts/mola.py portinhola --material x750-no1 --d 4 --De 34 --Nb 14 --perna1 40 --perna2 40 \
@@ -63,8 +63,11 @@ python scripts/mola.py dimensionar --material cromo-silicio --k 12 --Fmax 300 --
 
 Unidades: mm, N, MPa, N·mm, graus, °C. `--json` devolve tudo estruturado.
 `dimensionar` varre as bitolas comerciais e devolve as molas de compressão
-mais leves que atendem constante, carga e espaço — ponto de partida, depois
-rode `compressao` na escolhida. As fórmulas e a origem de cada critério estão
+mais leves que atendem constante, carga, espaço, tensão no sólido e, com
+`--temp`, a tensão de projeto a quente — ponto de partida, depois rode
+`compressao` na escolhida. Com `--temp`, cargas e relaxação usam o módulo a
+quente; o veredito estático usa sempre o módulo a 20 °C, porque é a frio
+(montagem, bancada, partida) que a tensão é maior. As fórmulas e a origem de cada critério estão
 em `references/formulas.md`; leia quando precisar explicar a conta ao cliente
 ou quando o caso fugir do padrão (fio retangular, mola cônica, barril — a
 calculadora não cobre esses; diga isso e calcule à parte).
@@ -133,7 +136,7 @@ de projeto.
 | Perdeu altura / carga | Tensão acima do admissível, falta de presetting, temperatura acima do limite do material | Tensão no sólido, temperatura real, tratamento térmico do lote |
 | Quebrou na primeira ou segunda espira | Fadiga com espira batendo, falta de shot peening, marca de ferramenta | Fratura (praia de fadiga), folga em L2, superfície |
 | Quebrou no gancho | Raio de dobra pequeno, tensão de flexão alta | Raio/diâmetro do fio no gancho |
-| Quebra frágil logo após zincagem | Fragilização por hidrogênio | Desidrogenação até 4 h após o banho (ver `jm-processos-fabricacao`) |
+| Quebra frágil logo após zincagem | Fragilização por hidrogênio | Desidrogenação iniciada em até 4 h após o banho, com o tempo de estufa da norma (ver `jm-processos-fabricacao`) |
 | Carga fora no recebimento | Método de medição diferente do cliente | Comprimento de ensaio, bloqueio prévio, paralelismo |
 | Torção travando no eixo | Diâmetro interno fechado menor que o pino | Folga de 10% no ângulo máximo |
 | Corrosão em inox | Contaminação por ferro, falta de passivação | Passivação, ferramenta dedicada |
@@ -158,6 +161,19 @@ Tolerâncias: [norma e grau]   Ensaios: [100% carga | amostral NQA ...] [bloquea
 Certificados: [EN 10204 3.1 do arame, relatório dimensional, relatório de carga, tratamento térmico]
 Massa: [...] g   Fio por peça: [...] mm
 Pendências [confirmar]: [...]
+```
+
+Para **mola de torção** (inclusive dupla portinhola), troque as linhas de
+comprimento e carga por:
+
+```
+d: [...] mm   De: [...] mm   Di livre: [...] mm   Di no ângulo máx.: [...] mm   Pino: [...] mm
+Espiras do corpo: [...]   Sentido: [...]   Corpo livre: [...] mm   Pernas: [...] / [...] mm, forma [...]
+Ângulo livre entre pernas: [...]°   Pré-ângulo de montagem: [...]°   Curso: [...]°
+Torques (a 20 °C): M1 = [...] N·mm ± [...] em [...]° | M2 = [...] N·mm ± [...] em [...]°
+Constante: [...] N·mm/grau (ref.)   Tensão de flexão máx.: [...] MPa ([...]% do admissível)
+Em serviço a [...] °C: constante [...] | tensão [...] MPa contra tensão de projeto [...] MPa
+Válvula: pressão de início de abertura [...] kPa a frio / [...] kPa em serviço
 ```
 
 Entregue a ficha junto com a saída da calculadora e, em uma frase, o risco
