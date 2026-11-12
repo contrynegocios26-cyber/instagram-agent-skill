@@ -5,8 +5,9 @@ description: >-
   implemento, por tipo de mola e por medidas — e atende quem está procurando
   uma peça: descobre qual mola serve em qual equipamento, identifica a mola a
   partir das medidas ou da foto que o cliente manda, e gera o catálogo
-  navegável (página com busca e filtros) e as fichas de produto. Use sempre
-  que falarem em catálogo, tabela de produtos, lista de itens, código de peça,
+  navegável e o aplicativo do cliente (catálogo + calculadora de molas +
+  consultor de Inconel X-750 + pedido de cotação). Use sempre que falarem em
+  aplicativo, app, catálogo, tabela de produtos, lista de itens, código de peça,
   cadastro de mola, compatibilidade, "serve em qual máquina", "qual mola vai
   no implemento X", "tenho uma mola com tantos milímetros", "o cliente mandou
   as medidas", referência cruzada com código original, catálogo em PDF ou no
@@ -86,6 +87,7 @@ python scripts/catalogo.py buscar PASTA --tipo torcao --d 4 --De 34 --tol 10
 python scripts/catalogo.py buscar PASTA --original 84056883
 python scripts/catalogo.py ficha PASTA JM-0001
 python scripts/catalogo.py gerar PASTA --saida catalogo.html --whatsapp 55DDDNUMERO --data dd/mm/aaaa
+python scripts/catalogo.py app PASTA --saida app.html --whatsapp 55DDDNUMERO --data dd/mm/aaaa
 ```
 
 - `validar` barra código repetido, tipo ou setor fora da lista, número
@@ -102,6 +104,24 @@ python scripts/catalogo.py gerar PASTA --saida catalogo.html --whatsapp 55DDDNUM
   medidas", "Não achei: enviar medidas" (monta a mensagem de WhatsApp com os
   dados) e "Como medir" (com desenhos). Só gera se a validação não tiver
   erros.
+
+## O aplicativo (`app`)
+
+`app` gera, num arquivo único que funciona no celular sem instalação, o que
+os melhores do mercado oferecem separado: catálogo por máquina e por medidas,
+calculadora de molas aberta ao cliente (compressão, tração, torção), guia de
+medição e pedido de cotação já preenchido para o WhatsApp — mais o consultor
+de Inconel X-750 por temperatura, que ninguém oferece. Cada item tem endereço
+próprio (`app.html#item-CÓDIGO`), pronto para virar QR na etiqueta da caixa.
+
+- A calculadora do aplicativo usa as mesmas fórmulas e o mesmo banco de
+  materiais da `jm-engenharia-molas` (o gerador lê o `materiais.json` de lá;
+  na falta, a cópia em `assets/`). Se o banco de materiais mudar, gere o
+  aplicativo de novo — e, ao mexer nas fórmulas, confira que os dois dão o
+  mesmo resultado para as mesmas molas.
+- O aplicativo não dá preço e não registra pedido: ele entrega o pedido
+  organizado para uma pessoa da Jardmolas responder.
+- `--artefato` gera só o corpo da página, para publicar como artefato.
 
 ## Atender quem está procurando (roteiro)
 

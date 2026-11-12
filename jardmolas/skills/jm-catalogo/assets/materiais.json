@@ -1,0 +1,641 @@
+{
+  "_leia": "Banco de materiais da calculadora mola.py. Unidades: MPa, kg/m3, C. Rm e o MINIMO estimado; o certificado do arame sempre vence (use --Rm). 'admissivel' sao fracoes de Rm para carga estatica (criterio SMI). 'confianca' diz de onde veio o dado.",
+  "materiais": {
+    "sae1070-sh": {
+      "nome": "Aço carbono patenteado (corda de piano)",
+      "condicao": "ASTM A228 / EN 10270-1 SH-DH",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 120,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.1,
+            "dmax": 6.5,
+            "A": 2211,
+            "m": 0.145
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.45,
+          "com_preset": 0.6
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.8,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
+    },
+    "sae1070-sm": {
+      "nome": "Aço carbono trefilado duro",
+      "condicao": "ASTM A227 / EN 10270-1 SM",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 120,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.7,
+            "dmax": 12.7,
+            "A": 1783,
+            "m": 0.19
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.45,
+          "com_preset": 0.6
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.8,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
+    },
+    "temperado-oleo": {
+      "nome": "Aço carbono temperado em óleo",
+      "condicao": "ASTM A229 / EN 10270-2 FDC",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 150,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.5,
+            "dmax": 12.7,
+            "A": 1855,
+            "m": 0.187
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.5,
+          "com_preset": 0.65
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.85,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
+    },
+    "cromo-vanadio": {
+      "nome": "Aço cromo-vanádio (SAE 6150)",
+      "condicao": "ASTM A232 / EN 10270-2 FDCrV",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 220,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.8,
+            "dmax": 11.1,
+            "A": 2005,
+            "m": 0.168
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.5,
+          "com_preset": 0.65
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.85,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
+    },
+    "cromo-silicio": {
+      "nome": "Aço cromo-silício (SAE 9254)",
+      "condicao": "ASTM A401 / EN 10270-2 FDSiCr",
+      "G": 79300,
+      "E": 207000,
+      "rho": 7850,
+      "temp_max": 245,
+      "zimmerli": true,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 1.6,
+            "dmax": 9.5,
+            "A": 1974,
+            "m": 0.108
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.5,
+          "com_preset": 0.65
+        },
+        "tracao": {
+          "corpo": 0.45,
+          "gancho_flexao": 0.75
+        },
+        "torcao": {
+          "aliviada": 0.85,
+          "residual_favoravel": 1.0
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
+    },
+    "inox302": {
+      "nome": "Aço inoxidável 302/304",
+      "condicao": "ASTM A313 / EN 10270-3 1.4310",
+      "G": 69000,
+      "E": 193000,
+      "rho": 7900,
+      "temp_max": 260,
+      "rm": {
+        "tipo": "potencia",
+        "faixas": [
+          {
+            "dmin": 0.3,
+            "dmax": 2.5,
+            "A": 1867,
+            "m": 0.146
+          },
+          {
+            "dmin": 2.5,
+            "dmax": 5.0,
+            "A": 2065,
+            "m": 0.263
+          },
+          {
+            "dmin": 5.0,
+            "dmax": 10.0,
+            "A": 2911,
+            "m": 0.478
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Shigley tab. 10-4/10-6; SMI"
+    },
+    "inox316": {
+      "nome": "Aço inoxidável 316",
+      "condicao": "ASTM A313 / EN 10270-3 1.4401",
+      "G": 69000,
+      "E": 193000,
+      "rho": 7950,
+      "temp_max": 260,
+      "rm": {
+        "tipo": "potencia",
+        "fator": 0.82,
+        "faixas": [
+          {
+            "dmin": 0.3,
+            "dmax": 2.5,
+            "A": 1867,
+            "m": 0.146
+          },
+          {
+            "dmin": 2.5,
+            "dmax": 5.0,
+            "A": 2065,
+            "m": 0.263
+          },
+          {
+            "dmin": 5.0,
+            "dmax": 10.0,
+            "A": 2911,
+            "m": 0.478
+          }
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "APROXIMACAO: Rm = 0,82 x 302. Usar --Rm do certificado"
+    },
+    "x750-mola": {
+      "nome": "Inconel X-750 (UNS N07750)",
+      "condicao": "têmpera mola AMS 5699 + 650 °C/4 h",
+      "G": 75800,
+      "E": 213700,
+      "rho": 8280,
+      "temp_max": 371,
+      "modulo_vs_temp": [
+        [
+          20,
+          1.0
+        ],
+        [
+          260,
+          0.927
+        ],
+        [
+          538,
+          0.818
+        ],
+        [
+          649,
+          0.736
+        ]
+      ],
+      "rm": {
+        "tipo": "tabela",
+        "faixas": [
+          [
+            6.35,
+            1517
+          ],
+          [
+            10.6,
+            1379
+          ],
+          [
+            12.7,
+            1241
+          ]
+        ],
+        "dmin": 0.3
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Special Metals, boletim INCONEL alloy X-750 (lido no original em 10/11/2026): Rm min. Tabela 31; G e curva de modulo Tabela 5 (torcao estatica 11,0/10,2/9,0/8,1 x10^3 ksi a 27/260/538/649 C); tensoes de projeto a quente Tabela 30 (5% de relaxacao em 7 dias)",
+      "preset_nao_recomendado": true,
+      "tau_relax": [
+        [
+          260,
+          690,
+          690
+        ],
+        [
+          316,
+          621,
+          621
+        ],
+        [
+          371,
+          586,
+          586
+        ]
+      ],
+      "sigma_relax": [
+        [
+          260,
+          827,
+          827
+        ],
+        [
+          316,
+          758,
+          758
+        ],
+        [
+          343,
+          724,
+          724
+        ],
+        [
+          371,
+          690,
+          690
+        ]
+      ],
+      "nota": "tensoes de flexao a quente da Tabela 30 para tempera mola referem-se a envelhecimento 704 C/16 h (molas planas); para 650 C/4 h validar por ensaio"
+    },
+    "x750-no1": {
+      "nome": "Inconel X-750 (UNS N07750)",
+      "condicao": "têmpera No. 1 AMS 5698 + 732 °C/16 h",
+      "G": 75800,
+      "E": 213700,
+      "rho": 8280,
+      "temp_max": 538,
+      "modulo_vs_temp": [
+        [
+          20,
+          1.0
+        ],
+        [
+          260,
+          0.927
+        ],
+        [
+          538,
+          0.818
+        ],
+        [
+          649,
+          0.736
+        ]
+      ],
+      "rm": {
+        "tipo": "tabela",
+        "faixas": [
+          [
+            0.635,
+            1069
+          ],
+          [
+            12.7,
+            1138
+          ]
+        ]
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Special Metals, boletim INCONEL alloy X-750 (lido no original em 10/11/2026): Rm min. Tabela 31; G e curva de modulo Tabela 5 (torcao estatica 11,0/10,2/9,0/8,1 x10^3 ksi a 27/260/538/649 C); tensoes de projeto a quente Tabela 30 (5% de relaxacao em 7 dias)",
+      "preset_nao_recomendado": true,
+      "tau_relax": [
+        [
+          427,
+          483,
+          483
+        ],
+        [
+          454,
+          414,
+          483
+        ],
+        [
+          482,
+          345,
+          379
+        ],
+        [
+          510,
+          310,
+          345
+        ],
+        [
+          538,
+          276,
+          310
+        ],
+        [
+          566,
+          172,
+          207
+        ]
+      ],
+      "sigma_relax": [
+        [
+          427,
+          690,
+          690
+        ],
+        [
+          454,
+          621,
+          621
+        ],
+        [
+          482,
+          552,
+          552
+        ],
+        [
+          510,
+          483,
+          483
+        ],
+        [
+          538,
+          414,
+          414
+        ]
+      ],
+      "nota": "modulo de cisalhamento medido em molas de tempera No.1 no boletim: 68 GPa (Tabela 33), contra 75,8 GPa do material - a constante real pode sair ate ~10% menor; calibrar no lote-piloto"
+    },
+    "x750-triplo": {
+      "nome": "Inconel X-750 (UNS N07750)",
+      "condicao": "AMS 5699 + triplo 1149 °C/2 h + 843 °C/24 h + 704 °C/20 h",
+      "G": 75800,
+      "E": 213700,
+      "rho": 8280,
+      "temp_max": 649,
+      "modulo_vs_temp": [
+        [
+          20,
+          1.0
+        ],
+        [
+          260,
+          0.927
+        ],
+        [
+          538,
+          0.818
+        ],
+        [
+          649,
+          0.736
+        ]
+      ],
+      "rm": {
+        "tipo": "tabela",
+        "faixas": [
+          [
+            6.35,
+            1034
+          ],
+          [
+            12.7,
+            1000
+          ]
+        ],
+        "dmin": 0.3
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "Special Metals, boletim INCONEL alloy X-750 (lido no original em 10/11/2026): Rm min. Tabela 31; G e curva de modulo Tabela 5 (torcao estatica 11,0/10,2/9,0/8,1 x10^3 ksi a 27/260/538/649 C); tensoes de projeto a quente Tabela 30 (5% de relaxacao em 7 dias)",
+      "preset_nao_recomendado": true,
+      "tau_relax": [
+        [
+          538,
+          379,
+          379
+        ],
+        [
+          593,
+          345,
+          345
+        ],
+        [
+          621,
+          276,
+          276
+        ],
+        [
+          649,
+          207,
+          207
+        ]
+      ],
+      "sigma_relax": [
+        [
+          566,
+          483,
+          483
+        ],
+        [
+          593,
+          345,
+          345
+        ],
+        [
+          621,
+          276,
+          276
+        ],
+        [
+          649,
+          207,
+          207
+        ]
+      ],
+      "nota": "limite de proporcionalidade em cisalhamento ~465 MPa (Tabela 33): manter a tensao de trabalho abaixo dele; apoiar a mola em mandril justo durante o tratamento triplo para nao deformar"
+    },
+    "17-7ph": {
+      "nome": "Aço inoxidável 17-7 PH",
+      "condicao": "ASTM A313 tipo 631, condição CH900",
+      "G": 75800,
+      "E": 203400,
+      "rho": 7800,
+      "temp_max": 315,
+      "rm": {
+        "tipo": "certificado"
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "modulos: Shigley tab. 10-5; Rm so pelo certificado (--Rm)"
+    },
+    "inconel718": {
+      "nome": "Inconel 718 (UNS N07718)",
+      "condicao": "trefilado + envelhecido",
+      "G": 77200,
+      "E": 200000,
+      "rho": 8190,
+      "temp_max": 550,
+      "rm": {
+        "tipo": "certificado"
+      },
+      "admissivel": {
+        "compressao": {
+          "sem_preset": 0.35,
+          "com_preset": 0.55
+        },
+        "tracao": {
+          "corpo": 0.35,
+          "gancho_flexao": 0.55
+        },
+        "torcao": {
+          "aliviada": 0.6,
+          "residual_favoravel": 0.8
+        }
+      },
+      "confianca": "modulos de tabela generica de molas (confirmar com o fabricante do arame); Rm so pelo certificado (--Rm); em servico acido a dureza maxima da NACE limita a resistencia"
+    }
+  }
+}

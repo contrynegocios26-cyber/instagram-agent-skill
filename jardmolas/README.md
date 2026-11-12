@@ -57,6 +57,11 @@ python skills/jm-catalogo/scripts/catalogo.py gerar catalogo --saida catalogo/ca
 
 ## O que mais vem na pasta
 
+- `catalogo/app.html` — o aplicativo do cliente: achar a peça, calcular
+  mola, consultor de Inconel X-750 por temperatura, pedido de cotação e guia
+  de medição, num arquivo só que roda no celular.
+- `relatorios/benchmark-mercado-2026-11-12.md` — o que as maiores fábricas
+  de molas oferecem ao cliente e o que foi adotado.
 - `catalogo/` — a base inicial do catálogo (19 famílias e 20
   compatibilidades de fenação publicadas no site, ainda sem medidas) e a
   página `catalogo.html` gerada a partir dela. É o ponto de partida: os

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Central de Molas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: bancada de oficina — faixa verde da marca no topo, abas de ferramenta, um painel de trabalho por vez e a lista de resultados embaixo. */
+:root{--bg:#f3f5f2;--card:#ffffff;--ink:#1d2320;--mut:#5b665f;--line:#d5dbd6;--brand:#0b5a1e;--brand-ink:#ffffff;--go:#2c9a45;--mark:#ffd800;--mark-ink:#231f20;--chip:#e6ebe6;--ok:#1c6b33;--warn:#8a5a00;--bad:#a3261b;
+--display:"Space Grotesk","Segoe UI",system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111512;--card:#1a201c;--ink:#e9eee9;--mut:#9fada4;--line:#2d3731;--brand:#0f3d1a;--brand-ink:#f2f7f2;--go:#4fc06a;--mark:#ffd800;--mark-ink:#231f20;--chip:#242c27;--ok:#7dd696;--warn:#f0c064;--bad:#ff8a7d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111512;--card:#1a201c;--ink:#e9eee9;--mut:#9fada4;--line:#2d3731;--brand:#0f3d1a;--brand-ink:#f2f7f2;--go:#4fc06a;--mark:#ffd800;--mark-ink:#231f20;--chip:#242c27;--ok:#7dd696;--warn:#f0c064;--bad:#ff8a7d;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--body)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{background:var(--brand);color:var(--brand-ink)}
+header .wrap{padding-block:18px 0}
+.marca{display:flex;align-items:center;gap:10px;font:700 13px/1 var(--display);letter-spacing:.16em;text-transform:uppercase}
+.marca i{width:22px;height:8px;background:var(--mark);display:inline-block}
+h1{font:700 clamp(24px,5vw,32px)/1.15 var(--display);margin:8px 0 4px;text-wrap:balance}
+.sub{margin:0 0 14px;opacity:.86;max-width:58ch}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav a{white-space:nowrap;color:inherit;text-decoration:none;padding:10px 14px;border-radius:10px 10px 0 0;font:500 15px/1 var(--display);opacity:.8}
+nav a[aria-current="page"]{background:var(--bg);color:var(--ink);opacity:1}
+nav a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--mark);outline-offset:1px}
+main{padding-block:18px 56px}
+input,select,textarea,button{font:inherit;color:inherit}
+.painel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+.painel h2{font:700 19px/1.2 var(--display);margin:0 0 4px}
+.dica{color:var(--mut);margin:0 0 12px;font-size:14px}
+.grade{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label{display:block;font-size:13px;color:var(--mut);min-width:0}
+label select,label input,label textarea{display:block;width:100%;margin-top:4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.seg button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.duas{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:820px){.duas{grid-template-columns:1fr 1fr;align-items:start}}
+.duas>*{min-width:0}
+.res{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px}
+.veredito{font:700 16px/1.3 var(--display);padding:10px 12px;border-radius:8px;margin-bottom:10px;border-left:6px solid var(--mut);background:var(--card)}
+.veredito.ok{border-color:var(--ok);color:var(--ok)}.veredito.warn{border-color:var(--warn);color:var(--warn)}.veredito.bad{border-color:var(--bad);color:var(--bad)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+td,th{padding:5px 0;border-top:1px solid var(--line);vertical-align:top;text-align:left}
+td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+td:first-child{color:var(--mut);padding-right:10px}
+.av{font-size:13.5px;margin:8px 0 0;padding-left:18px;color:var(--warn)}
+.barra{height:10px;border-radius:5px;background:var(--chip);overflow:hidden;margin:6px 0 2px}
+.barra i{display:block;height:100%;background:var(--go)}
+.barra i.w{background:var(--mark)}.barra i.b{background:var(--bad)}
+.tipos{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tipos button{text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;cursor:pointer}
+.tipos button[aria-pressed="true"]{border-color:var(--go);box-shadow:inset 0 0 0 1px var(--go)}
+.tipos b{display:block;font-size:15px}.tipos span{font-size:13px;color:var(--mut)}
+.resumo{display:flex;justify-content:space-between;gap:12px;margin:4px 2px 10px;color:var(--mut);font-size:14px}
+.resumo button{border:0;background:none;color:var(--go);cursor:pointer;padding:0;text-decoration:underline}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:10px}
+.cod{font:600 13px/1.2 var(--mono);color:var(--go)}
+.item h3{font:700 17px/1.25 var(--display);margin:2px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:12.5px}
+.chip.fam{color:var(--warn)}.chip.linha{color:var(--ok)}
+.aplic{margin:8px 0 0;padding:0;list-style:none;font-size:14px}
+.aplic li{padding:4px 0;border-top:1px solid var(--line)}.aplic small{color:var(--mut)}
+.acoes{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--mark);color:var(--mark-ink);border:0;border-radius:8px;padding:10px 16px;font:600 15px/1.2 var(--body);text-decoration:none;cursor:pointer}
+.btn.sec{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.vazio{text-align:center;padding:24px 16px;color:var(--mut)}
+.cond{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.cond article{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);min-width:0}
+.cond article.rec{border-color:var(--go);box-shadow:inset 0 0 0 1px var(--go)}
+.cond h3{font:700 15px/1.25 var(--display);margin:0 0 6px}
+.cond .n{font:700 26px/1 var(--display);font-variant-numeric:tabular-nums}
+.cond p{margin:6px 0 0;font-size:13.5px;color:var(--mut)}
+.medir{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.medir article{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);min-width:0}
+.medir h3{margin:0 0 6px;font:700 16px/1.2 var(--display)}
+.medir ol{margin:8px 0 0;padding-left:20px;font-size:14px}
+.medir svg{width:100%;height:auto;max-height:140px;color:var(--ink)}
+.medir svg text{font:11px var(--body);fill:var(--mut)}
+pre.msg{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:13px/1.5 var(--mono);margin:10px 0 0;user-select:all}
+footer{color:var(--mut);font-size:13px;border-top:1px solid var(--line);padding-block:16px 36px}
+@media (prefers-reduced-motion:no-preference){.barra i{transition:width .25s}}
+</style>
+
+<header><div class="wrap">
+  <div class="marca"><i></i>Jardmolas</div>
+  <h1>Central de Molas</h1>
+  <p class="sub">Ache a mola pela máquina ou pelas medidas, calcule uma mola nova e peça a cotação com tudo já preenchido.</p>
+  <nav aria-label="Ferramentas">
+    <a href="#achar" data-aba="achar">Achar a peça</a>
+    <a href="#calcular" data-aba="calcular">Calcular mola</a>
+    <a href="#inconel" data-aba="inconel">Inconel X-750</a>
+    <a href="#pedir" data-aba="pedir">Pedir cotação</a>
+    <a href="#medir" data-aba="medir">Como medir</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+
+<section data-painel="achar">
+  <div class="painel">
+    <h2>Qual peça você procura?</h2>
+    <p class="dica">Digite a máquina, o modelo ou o código gravado na peça. Ou filtre: cada escolha reduz a lista seguinte.</p>
+    <label>Busca<input id="q" type="search" placeholder="ex.: pro ted 540, dupla portinhola, 84056883"></label>
+    <div class="grade" style="margin-top:10px">
+      <label>Setor<select id="fSetor"></select></label>
+      <label>Equipamento<select id="fEquip"></select></label>
+      <label>Marca<select id="fMarca"></select></label>
+      <label>Modelo<select id="fModelo"></select></label>
+    </div>
+    <details style="margin-top:12px"><summary style="cursor:pointer;color:var(--mut)">Tenho as medidas da peça</summary>
+      <div class="grade" style="margin-top:10px">
+        <label>Tipo<select id="mTipo"></select></label>
+        <label>Fio (mm)<input id="mD" inputmode="decimal" placeholder="ex.: 4,0"></label>
+        <label>Diâmetro externo (mm)<input id="mDe" inputmode="decimal"></label>
+        <label>Comprimento (mm)<input id="mL" inputmode="decimal"></label>
+        <label>Tolerância<select id="mTol"><option value="5">± 5%</option><option value="10" selected>± 10%</option><option value="20">± 20%</option></select></label>
+      </div>
+    </details>
+  </div>
+  <div id="lista" aria-live="polite"></div>
+</section>
+
+<section data-painel="calcular" hidden>
+  <div class="painel">
+    <h2>Calcular uma mola</h2>
+    <p class="dica">Preencha as medidas e veja constante, cargas e se a mola aguenta. O resultado é uma verificação de projeto: a mola é liberada no ensaio do lote-piloto.</p>
+    <div class="seg" role="group" aria-label="Tipo de mola">
+      <button type="button" data-tipo="compressao" aria-pressed="true">Compressão</button>
+      <button type="button" data-tipo="tracao" aria-pressed="false">Tração</button>
+      <button type="button" data-tipo="torcao" aria-pressed="false">Torção</button>
+    </div>
+    <div class="duas">
+      <div>
+        <div class="grade">
+          <label style="grid-column:1/-1">Material<select id="cMat"></select></label>
+          <label>Fio d (mm)<input id="cD" inputmode="decimal" value="3"></label>
+          <label>Diâmetro externo (mm)<input id="cDe" inputmode="decimal" value="25"></label>
+          <label data-so="compressao">Espiras ativas<input id="cNa" inputmode="decimal" value="8"></label>
+          <label data-so="tracao torcao">Espiras do corpo<input id="cNb" inputmode="decimal" value="14"></label>
+          <label data-so="compressao">Comprimento livre L0 (mm)<input id="cL0" inputmode="decimal" value="60"></label>
+          <label data-so="compressao">Pontas<select id="cExt"><option value="fechada-retificada">Fechadas e retificadas</option><option value="fechada">Fechadas</option><option value="aberta-retificada">Abertas e retificadas</option><option value="aberta">Abertas</option></select></label>
+          <label data-so="compressao tracao">Altura/compr. 1 (mm)<input id="cL1" inputmode="decimal" value="50"></label>
+          <label data-so="compressao tracao">Altura/compr. 2 (mm)<input id="cL2" inputmode="decimal" value="40"></label>
+          <label data-so="tracao">Pré-carga Fi (N)<input id="cFi" inputmode="decimal" value="18"></label>
+          <label data-so="torcao">Perna 1 (mm)<input id="cP1" inputmode="decimal" value="40"></label>
+          <label data-so="torcao">Perna 2 (mm)<input id="cP2" inputmode="decimal" value="40"></label>
+          <label data-so="torcao">Ângulo de montagem (°)<input id="cA1" inputmode="decimal" value="20"></label>
+          <label data-so="torcao">Ângulo máximo (°)<input id="cA2" inputmode="decimal" value="105"></label>
+          <label>Temperatura de trabalho (°C)<input id="cT" inputmode="decimal" placeholder="ambiente"></label>
+          <label>Rm do certificado (MPa)<input id="cRm" inputmode="decimal" placeholder="opcional"></label>
+        </div>
+      </div>
+      <div class="res" id="cRes" aria-live="polite"></div>
+    </div>
+    <div class="acoes"><button class="btn" type="button" id="cPedir">Pedir cotação desta mola</button></div>
+  </div>
+</section>
+
+<section data-painel="inconel" hidden>
+  <div class="painel">
+    <h2>Inconel X-750: qual condição serve na sua temperatura?</h2>
+    <p class="dica">A mesma liga serve até 370, 540 ou 650 °C conforme o arame e o tratamento térmico. Informe a temperatura da mola em serviço.</p>
+    <div class="grade">
+      <label>Temperatura na mola (°C)<input id="xT" inputmode="decimal" value="420"></label>
+      <label>Como a mola trabalha<select id="xTipo"><option value="tau_relax">Compressão ou tração (cisalhamento)</option><option value="sigma_relax">Torção, como na dupla portinhola (flexão)</option></select></label>
+    </div>
+    <div class="cond" id="xRes" style="margin-top:12px" aria-live="polite"></div>
+    <p class="dica" style="margin:12px 0 0">Tensão de projeto = tensão máxima que dá 5% de perda de carga em 7 dias, segundo o boletim técnico do fabricante da liga (Special Metals). Para retenção de carga por meses, peça ensaio de relaxação no lote-piloto.</p>
+  </div>
+</section>
+
+<section data-painel="pedir" hidden>
+  <div class="painel">
+    <h2>Pedir cotação</h2>
+    <p class="dica">Quanto mais dados, mais rápido e certo o preço. Depois de abrir o WhatsApp, envie também uma foto da peça ao lado de uma régua.</p>
+    <div class="grade">
+      <label>Tipo de mola<select id="pTipo"></select></label>
+      <label>Fio (mm)<input id="pD" inputmode="decimal"></label>
+      <label>Diâmetro externo (mm)<input id="pDe" inputmode="decimal"></label>
+      <label>Comprimento livre ou total (mm)<input id="pL" inputmode="decimal"></label>
+      <label>Nº de espiras<input id="pN" inputmode="decimal"></label>
+      <label>Pernas / ganchos / ângulo<input id="pPernas" placeholder="ex.: pernas 40 e 55 mm, 90°"></label>
+      <label>Máquina, marca e modelo<input id="pMaq"></label>
+      <label>Material (se souber)<input id="pMat" placeholder="aço, inox, Inconel X-750…"></label>
+      <label>Temperatura e meio de trabalho<input id="pAmb" placeholder="ex.: vapor a 300 °C"></label>
+      <label>Quantidade<input id="pQtd" inputmode="numeric"></label>
+    </div>
+    <label style="margin-top:10px">Observações<textarea id="pObs" rows="2"></textarea></label>
+    <pre class="msg" id="pMsg"></pre>
+    <div class="acoes"><a class="btn" id="pEnviar" target="_blank" rel="noopener">Abrir no WhatsApp</a><button class="btn sec" id="pCopiar" type="button">Copiar texto</button></div>
+    <p class="dica" id="pFone" style="margin:10px 0 0"></p>
+  </div>
+</section>
+
+<section data-painel="medir" hidden>
+  <div class="painel">
+    <h2>Como medir sua mola</h2>
+    <p class="dica">Use paquímetro e meça a peça menos gasta. Anote sempre o sentido de enrolamento e para que máquina é.</p>
+    <div class="medir">
+      <article><h3>Compressão</h3>
+        <svg viewBox="0 0 260 120" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="Mola de compressão com fio, diâmetro externo e comprimento livre"><polyline points="40,25 200,35 40,45 200,55 40,65 200,75 40,85 200,95"/><line x1="40" y1="20" x2="200" y2="20"/><line x1="40" y1="100" x2="200" y2="100"/><line x1="222" y1="20" x2="222" y2="100" stroke-width="1"/><line x1="40" y1="112" x2="200" y2="112" stroke-width="1"/><text x="228" y="64" stroke="none">L0</text><text x="112" y="110" stroke="none">De</text><text x="6" y="48" stroke="none">fio d</text></svg>
+        <ol><li>Diâmetro do fio.</li><li>Diâmetro externo no meio da mola.</li><li>Comprimento livre, sem carga.</li><li>Número total de espiras, contando as pontas.</li><li>Pontas: fechadas? retificadas (planas)?</li></ol></article>
+      <article><h3>Tração</h3>
+        <svg viewBox="0 0 260 120" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="Mola de tração com ganchos"><circle cx="34" cy="60" r="16"/><polyline points="50,60 62,30 74,90 86,30 98,90 110,30 122,90 134,30 146,90 158,30 170,90 182,30 194,90 206,60"/><circle cx="222" cy="60" r="16"/><line x1="34" y1="106" x2="222" y2="106" stroke-width="1"/><text x="88" y="118" stroke="none">comprimento livre</text></svg>
+        <ol><li>Fio e diâmetro externo do corpo.</li><li>Comprimento do corpo (só as espiras).</li><li>Comprimento por dentro dos ganchos.</li><li>Tipo de gancho e posição entre eles.</li><li>Até onde a mola estica em trabalho.</li></ol></article>
+      <article><h3>Torção</h3>
+        <svg viewBox="0 0 260 120" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="Mola de torção com duas pernas"><circle cx="110" cy="66" r="30"/><circle cx="110" cy="66" r="22" stroke-width="1"/><line x1="110" y1="36" x2="236" y2="36"/><line x1="84" y1="81" x2="20" y2="112"/><text x="150" y="30" stroke="none">perna 1</text><text x="46" y="114" stroke="none">perna 2</text><text x="98" y="70" stroke="none">Di</text></svg>
+        <ol><li>Fio e diâmetro interno (ou o do eixo).</li><li>Número de espiras do corpo.</li><li>Cada perna, medida do centro da mola.</li><li>Ângulo entre as pernas com a mola solta.</li><li>Sentido: direita ou esquerda.</li></ol></article>
+      <article><h3>Dedos e garfos</h3>
+        <svg viewBox="0 0 260 120" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="Dedo de enleirador com espiras e haste"><circle cx="60" cy="40" r="18"/><circle cx="60" cy="40" r="11" stroke-width="1"/><path d="M74 52 L236 108"/><path d="M60 22 L60 6 L36 6"/><line x1="60" y1="116" x2="236" y2="116" stroke-width="1"/><text x="116" y="112" stroke="none">comprimento total</text><text x="88" y="34" stroke="none">espiras</text></svg>
+        <ol><li>Marca e modelo da máquina, e a posição do dedo.</li><li>Diâmetro do arame.</li><li>Comprimento total e da haste reta.</li><li>Diâmetro e número de espiras; simples ou duplo.</li><li>Fixação (olhal, gancho, parafuso) e código gravado.</li></ol></article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <p>Marcas e modelos de máquinas são citados só para indicar em que equipamento a peça pode ser usada; pertencem aos respectivos fabricantes. Cálculos pelas fórmulas clássicas de molas (SMI / EN 13906), com valores mínimos de resistência; servem como verificação de projeto e não substituem o ensaio da peça.</p>
+  <p id="rodape"></p>
+</div></footer>
+
+<script id="calc">
+/* Mesmas fórmulas de jm-engenharia-molas/scripts/mola.py. Unidades: mm, N, MPa, graus, °C. */
+const Calc=(()=>{
+  const TOL=2, EXT={"fechada-retificada":[2,0],"fechada":[2,1],"aberta-retificada":[1,0],"aberta":[0,1]};
+  const wahl=C=>(4*C-1)/(4*C-4)+0.615/C;
+  function interp(tab,x){const p=[...tab].sort((a,b)=>a[0]-b[0]);if(x<p[0][0]||x>p[p.length-1][0])return null;for(let i=0;i<p.length-1;i++){const[x0,y0]=p[i],[x1,y1]=p[i+1];if(x>=x0&&x<=x1)return x1===x0?y0:y0+(y1-y0)*(x-x0)/(x1-x0)}return p[p.length-1][1]}
+  function rm(mat,d){const m=mat.rm;if(m.tipo==="potencia"){for(const f of m.faixas)if(d>=f.dmin&&d<=f.dmax)return f.A/Math.pow(d,f.m)*(m.fator||1);return null}
+    if(m.tipo==="tabela"){if(d<(m.dmin||0))return null;for(const[dm,r]of m.faixas)if(d<=dm)return r;return null}return null}
+  function mods(mat,T,av){let G=mat.G,E=mat.E;if(T!=null&&T>40){let f=null;if(mat.modulo_vs_temp){const u=Math.max(...mat.modulo_vs_temp.map(p=>p[0]));f=interp(mat.modulo_vs_temp,T<=u+TOL?Math.min(T,u):T);if(f==null)av.push("Temperatura fora da curva de módulo deste material: constante calculada a 20 °C.")}else av.push("Sem curva de módulo × temperatura para este material: a mola real fica mais mole a quente.");if(f!=null){G*=f;E*=f}}
+    if(T!=null&&T>(mat.temp_max??1e9)+TOL)av.push("Temperatura acima do limite recomendado para molas deste material ("+mat.temp_max+" °C): a mola relaxa. Troque o material ou a condição.");return{G,E}}
+  function limite(mat,chave,T){const t=mat[chave];if(!t||T==null)return null;for(const[tm,lo,hi]of t)if(T<=tm+TOL)return{ate:tm,min:lo,max:hi};return{ate:null,min:null,max:null}}
+  function quente(mat,chave,T,s,av){const l=limite(mat,chave,T);if(!l)return null;if(l.min==null){av.push("Não há tensão de projeto publicada para esta condição a "+T+" °C.");return l}l.tensao=s;l.uso=s/l.min;if(s>l.max)av.push("Tensão acima da tensão de projeto a quente: a mola perde carga em serviço.");else if(s>l.min)av.push("Tensão dentro da faixa de projeto a quente: só serve se alguma relaxação inicial for tolerável.");return l}
+  function base(mat,e,av){const D=e.De-e.d;if(!(e.d>0)||!(D>e.d))return null;const C=D/e.d;const{G,E}=mods(mat,e.T,av);const Rm=e.Rm||rm(mat,e.d);if(C<4)av.push("Índice C abaixo de 4: difícil de enrolar e o fio pode trincar.");else if(C>12)av.push("Índice C acima de 12: mola instável e tolerância aberta.");if(!Rm)av.push("Sem Rm para esta bitola: informe o Rm do certificado para verificar a tensão.");return{D,C,G,E,Rm}}
+  function compressao(mat,e){const av=[],b=base(mat,e,av);if(!b||!(e.Na>0)||!(e.L0>0))return null;const{D,C,G,E,Rm}=b,d=e.d,[inat,extra]=EXT[e.ext||"fechada-retificada"];const Nt=e.Na+inat,Ls=(Nt+extra)*d;if(e.L0<=Ls)return{erro:"O comprimento livre é menor que o comprimento sólido ("+Ls.toFixed(1)+" mm)."};
+    const k=G*d**4/(8*D**3*e.Na),Kw=wahl(C),frio=mat.G/G;const ponto=L=>{const F=k*(e.L0-L),tau=8*F*D/(Math.PI*d**3);return{L,F,tau,tau_wahl:tau*Kw}};const pontos={};for(const n of["L1","L2"])if(e[n]>0){if(e[n]<Ls)av.push(n+" abaixo do comprimento sólido.");pontos[n]=ponto(e[n])}
+    const sol=ponto(Ls),Sa=(0.0015*D*D/d+0.1*d)*e.Na,Lmin=Ls+Sa;for(const n in pontos)if(pontos[n].L>=Ls&&pontos[n].L<Lmin)av.push(n+" deixa pouca folga entre espiras (mínimo recomendado "+Lmin.toFixed(1)+" mm).");
+    let status="sem-rm",uso=null;if(Rm){const a=mat.admissivel.compressao,t1=sol.tau*Kw*frio,t2=sol.tau*(1+0.5/C)*frio;status=t1<=a.sem_preset*Rm?"ok":mat.preset_nao_recomendado?"sobre":t2<=a.com_preset*Rm?"preset":"sobre";const pior=Math.max(0,...Object.values(pontos).map(p=>p.tau_wahl));uso=pior*frio/(a.sem_preset*Rm)}
+    const r=G/E,arg=(1-r)/(0.5+r)*(Math.PI*D/(0.5*e.L0))**2;let flamba=null;if(arg<1){flamba=e.L0*0.5/(1-r)*(1-Math.sqrt(1-arg));const Lm=Math.min(...Object.values(pontos).map(p=>p.L),e.L0);if(e.L0-Lm>flamba)av.push("Flambagem: a mola entorta antes da carga máxima. Guie por pino ou camisa.")}
+    const pior=Object.values(pontos).length?Math.max(...Object.values(pontos).map(p=>p.tau_wahl)):sol.tau_wahl;const rx=e.T!=null?quente(mat,"tau_relax",e.T,pior,av):null;
+    const ex=e.ext||"fechada-retificada",passo=ex==="fechada-retificada"?(e.L0-2*d)/e.Na:ex==="fechada"?(e.L0-3*d)/e.Na:ex==="aberta-retificada"?e.L0/(e.Na+1):(e.L0-d)/e.Na,fio=Math.PI*D*Nt/Math.cos(Math.atan(passo/(Math.PI*D))),massa=fio*Math.PI*d*d/4*mat.rho*1e-6;return{tipo:"compressao",k,Ls,C,Rm,G,pontos,solido:sol,status,uso,relax:rx,massa,Lmin,avisos:av}}
+  function tracao(mat,e){const av=[],b=base(mat,e,av);if(!b||!(e.Nb>0))return null;const{D,C,G,E,Rm}=b,d=e.d,Na=e.Nb+G/E,k=G*d**4/(8*D**3*Na),Kw=wahl(C),L0=(e.Nb+1)*d+2*(D-d),Fi=e.Fi||0;
+    const taui=8*Fi*D/(Math.PI*d**3),cen=231/Math.exp(0.105*C),ban=6.9*(4-(C-3)/6.5),fx=[(cen-ban)*G/79300,(cen+ban)*G/79300];if(Fi&&(taui<fx[0]||taui>fx[1]))av.push("Pré-carga fora da faixa que a máquina segura com repetibilidade.");
+    const C1=D/d,Ka=(4*C1*C1-C1-1)/(4*C1*(C1-1)),a=mat.admissivel.tracao,pontos={};for(const n of["L1","L2"])if(e[n]>0){const L=e[n];if(L<L0)av.push(n+" menor que o comprimento livre ("+L0.toFixed(1)+" mm).");const F=Fi+k*(L-L0),tw=8*F*D/(Math.PI*d**3)*Kw,sg=F*(Ka*16*D/(Math.PI*d**3)+4/(Math.PI*d*d));pontos[n]={L,F,tau_wahl:tw,sigma_gancho:sg}}
+    let status="sem-rm",uso=null;const ps=Object.values(pontos);if(Rm&&ps.length){const p=ps.reduce((x,y)=>y.F>x.F?y:x),uc=p.tau_wahl/(a.corpo*Rm),ug=p.sigma_gancho/(a.gancho_flexao*Rm);uso=Math.max(uc,ug);status=uso<=1?"ok":"sobre";if(ug>1)av.push("O gancho quebra antes do corpo: reduza a carga ou mude o tipo de gancho.")}
+    const rx=e.T!=null&&ps.length?quente(mat,"tau_relax",e.T,Math.max(...ps.map(p=>p.tau_wahl)),av):null;const fio=Math.PI*D*(e.Nb+2);return{tipo:"tracao",k,L0,C,Rm,G,pontos,status,uso,relax:rx,massa:fio*Math.PI*d*d/4*mat.rho*1e-6,avisos:av}}
+  function torcao(mat,e){const av=[],b=base(mat,e,av);if(!b||!(e.Nb>0))return null;const{D,C,E,Rm}=b,d=e.d,p1=e.P1||0,p2=e.P2||0,Na=e.Nb+(p1+p2)/(3*Math.PI*D),kg=E*d**4/(10.8*D*Na)/360,Ki=(4*C*C-C-1)/(4*C*(C-1)),frio=mat.E/E,a=mat.admissivel.torcao,pontos={};
+    for(const n of["A1","A2"])if(e[n]>0){const M=kg*e[n],s=Ki*32*M/(Math.PI*d**3),v=e[n]/360;pontos[n]={angulo:e[n],M,sigma:s,Di:D*e.Nb/(e.Nb+v)-d,corpo:(e.Nb+1+v)*d}}
+    let status="sem-rm",uso=null;const ps=Object.values(pontos);if(Rm&&ps.length){const s=Math.max(...ps.map(p=>p.sigma))*frio;uso=s/(a.aliviada*Rm);status=uso<=1?"ok":(!mat.preset_nao_recomendado&&s<=a.residual_favoravel*Rm)?"fechando":"sobre"}
+    const rx=e.T!=null&&ps.length?quente(mat,"sigma_relax",e.T,Math.max(...ps.map(p=>p.sigma)),av):null;const fio=Math.PI*D*e.Nb+p1+p2;return{tipo:"torcao",k:kg,C,Rm,E,pontos,status,uso,relax:rx,massa:fio*Math.PI*d*d/4*mat.rho*1e-6,avisos:av}}
+  return{compressao,tracao,torcao,limite,rm};
+})();
+if(typeof module!=="undefined")module.exports=Calc;
+</script>
+<script>
+const DADOS=[{"codigo": "JM-FAM-DEDO-ENLEIRADOR", "nivel": "familia", "familia": "Dedos de palha", "tipo": "dedo", "descricao": "Dedo enleirador de palha de cana", "setor": "agricola", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Enleirador de palha de cana"}]}, {"codigo": "JM-FAM-DEDO-DESENLEIRADOR", "nivel": "familia", "familia": "Dedos de palha", "tipo": "dedo", "descricao": "Dedo desenleirador de palha de cana", "setor": "agricola", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Desenleirador de palha de cana"}]}, {"codigo": "JM-FAM-GARFO-FENO", "nivel": "familia", "familia": "Garfos de fenação", "tipo": "garfo", "descricao": "Garfos e molas para enleiradores e enfardadeiras de feno (retos, curvos e duplos)", "setor": "agricola", "situacao": "linha", "observacoes": "Compatibilidade por modelo declarada no site; cadastrar qual garfo serve em cada modelo. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 450", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 540", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 660", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 690", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 760", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 880", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Ted 880T", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Rotor 290", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Rotor 320", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Rotor 360", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Rotor 420", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "New Holland", "modelo": "Pro Rotor 450", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "GA 300 GM", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "GA 1031", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "GA 1032+", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "GA 1001", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "GA 1002", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "VBP 3200", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "VB 3100", "observacao": "compatibilidade declarada no site"}, {"equipamento": "Fenação — enleiradores, espalhadores e enfardadeiras", "marca": "Kuhn", "modelo": "Haybob", "observacao": "compatibilidade declarada no site"}]}, {"codigo": "JM-FAM-PRATA-MIL", "nivel": "familia", "familia": "Sementes de capim", "tipo": "outros", "descricao": "Mola Prata Mil para colheita de sementes de capim", "setor": "agricola", "situacao": "linha", "observacoes": "Confirmar o tipo de mola e a máquina. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Colheita de sementes de capim"}]}, {"codigo": "JM-FAM-AMENDOIM", "nivel": "familia", "familia": "Amendoim", "tipo": "outros", "descricao": "Molas para recolhedor de amendoim", "setor": "agricola", "situacao": "linha", "observacoes": "Confirmar o tipo de mola. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Recolhedor de amendoim"}]}, {"codigo": "JM-FAM-COMP-AGRO", "nivel": "familia", "familia": "Molas de implemento", "tipo": "compressao", "descricao": "Molas de compressão para implementos agrícolas", "setor": "agricola", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Implementos agrícolas"}]}, {"codigo": "JM-FAM-TORC-AGRO", "nivel": "familia", "familia": "Molas de implemento", "tipo": "torcao", "descricao": "Molas de torção para implementos agrícolas", "setor": "agricola", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Implementos agrícolas"}]}, {"codigo": "JM-FAM-TRAC-AGRO", "nivel": "familia", "familia": "Molas de implemento", "tipo": "tracao", "descricao": "Molas de tração para implementos agrícolas", "setor": "agricola", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Implementos agrícolas"}]}, {"codigo": "JM-FAM-ATUADOR-AGRO", "nivel": "familia", "familia": "Molas de implemento", "tipo": "compressao", "descricao": "Molas para atuadores em implementos agrícolas", "setor": "agricola", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Atuadores de implementos"}]}, {"codigo": "JM-FAM-VRDP", "nivel": "familia", "familia": "Válvulas", "tipo": "torcao", "descricao": "Mola de torção para válvula de retenção dupla portinhola", "setor": "industrial", "material": "Inox 302/304/316 ou Inconel X-750", "situacao": "linha", "observacoes": "Informar DN, classe, temperatura e meio; a condição do Inconel X-750 depende da temperatura de serviço. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Válvula de retenção dupla portinhola"}]}, {"codigo": "JM-FAM-PSV", "nivel": "familia", "familia": "Válvulas", "tipo": "compressao", "descricao": "Mola para válvula de segurança e alívio", "setor": "industrial", "situacao": "linha", "observacoes": "Reposição por desenho ou amostra; a calibração da válvula é de responsabilidade da oficina ou do fabricante. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Válvula de segurança e alívio"}]}, {"codigo": "JM-FAM-ATUADOR-IND", "nivel": "familia", "familia": "Indústria e usinas", "tipo": "compressao", "descricao": "Molas para atuadores industriais e de usinas", "setor": "sucroenergetico", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Atuadores industriais"}]}, {"codigo": "JM-FAM-COMP-IND", "nivel": "familia", "familia": "Indústria e usinas", "tipo": "compressao", "descricao": "Molas de compressão para indústrias e usinas", "setor": "sucroenergetico", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Equipamentos de indústria e usina"}]}, {"codigo": "JM-FAM-PENEIRA", "nivel": "familia", "familia": "Mineração", "tipo": "compressao", "descricao": "Mola para peneira vibratória", "setor": "mineracao", "situacao": "linha", "observacoes": "Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Peneira vibratória"}]}, {"codigo": "JM-FAM-TELA", "nivel": "familia", "familia": "Transporte canavieiro", "tipo": "outros", "descricao": "Molas para tela de cobertura de carretas canavieiras", "setor": "transporte", "situacao": "linha", "observacoes": "Confirmar o tipo de mola. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Carreta canavieira — tela de cobertura"}]}, {"codigo": "JM-FAM-CABECALHO", "nivel": "familia", "familia": "Transporte canavieiro", "tipo": "outros", "descricao": "Molas do cabeçalho para carretas", "setor": "transporte", "situacao": "linha", "observacoes": "Confirmar o tipo de mola. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Carreta — cabeçalho"}]}, {"codigo": "JM-FAM-CHOQUE", "nivel": "familia", "familia": "Transporte rodoviário", "tipo": "outros", "descricao": "Mola para choque (transporte rodoviário)", "setor": "transporte", "situacao": "linha", "observacoes": "Confirmar o tipo de mola. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Transporte rodoviário"}]}, {"codigo": "JM-FAM-DESCANSO-MOTO", "nivel": "familia", "familia": "Motocicletas", "tipo": "tracao", "descricao": "Mola para descanso de moto", "setor": "moto", "situacao": "linha", "observacoes": "Confirmar o tipo de mola. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Motocicleta — descanso"}]}, {"codigo": "JM-FAM-PNEU", "nivel": "familia", "familia": "Pneus", "tipo": "outros", "descricao": "Molas para montadoras de pneu", "setor": "pneus", "situacao": "linha", "observacoes": "Confirmar o tipo de mola. Família cadastrada a partir do site; itens, bitolas e medidas a cadastrar.", "aplic": [{"equipamento": "Montadora de pneu"}]}];
+const CFG={"empresa": "Jardmolas", "titulo": "Central de Molas", "whatsapp": "5516991760936", "tipos": {"compressao": "Mola de compressão", "tracao": "Mola de tração", "torcao": "Mola de torção", "torcao-dupla": "Mola de torção dupla", "dedo": "Dedo (enleirador, molinete, recolhedor)", "garfo": "Garfo / dente de mola", "haste": "Haste flexível", "conica": "Mola cônica", "prato": "Mola prato", "arame-conformado": "Arame conformado", "outros": "Outros"}, "setores": {"agricola": "Implementos agrícolas", "sucroenergetico": "Sucroenergético e usinas", "industrial": "Indústria e válvulas", "mineracao": "Mineração", "transporte": "Transporte", "moto": "Motocicletas", "pneus": "Pneus e borracharia", "outros": "Outros"}, "rotulos": [["material", "Material"], ["norma_material", "Norma do material"], ["acabamento", "Acabamento"], ["d_fio_mm", "Fio (mm)"], ["de_mm", "Diâmetro externo (mm)"], ["di_mm", "Diâmetro interno (mm)"], ["l0_mm", "Comprimento livre / corpo (mm)"], ["comprimento_total_mm", "Comprimento total (mm)"], ["espiras", "Espiras"], ["sentido", "Sentido de enrolamento"], ["extremidades", "Extremidades"], ["perna1_mm", "Perna 1 (mm)"], ["perna2_mm", "Perna 2 (mm)"], ["angulo_livre_graus", "Ângulo livre entre pernas (°)"], ["constante", "Constante"], ["carga1_N", "Carga 1 (N)"], ["em1_mm", "na altura/ângulo 1"], ["carga2_N", "Carga 2 (N)"], ["em2_mm", "na altura/ângulo 2"], ["massa_g", "Massa (g)"], ["embalagem_un", "Embalagem (un.)"]], "atualizado": "12/11/2026"};
+const MATS={"sae1070-sh": {"nome": "Aço carbono patenteado (corda de piano)", "condicao": "ASTM A228 / EN 10270-1 SH-DH", "G": 79300, "E": 207000, "rho": 7850, "temp_max": 120, "rm": {"tipo": "potencia", "faixas": [{"dmin": 0.1, "dmax": 6.5, "A": 2211, "m": 0.145}]}, "admissivel": {"compressao": {"sem_preset": 0.45, "com_preset": 0.6}, "tracao": {"corpo": 0.45, "gancho_flexao": 0.75}, "torcao": {"aliviada": 0.8, "residual_favoravel": 1.0}}}, "sae1070-sm": {"nome": "Aço carbono trefilado duro", "condicao": "ASTM A227 / EN 10270-1 SM", "G": 79300, "E": 207000, "rho": 7850, "temp_max": 120, "rm": {"tipo": "potencia", "faixas": [{"dmin": 0.7, "dmax": 12.7, "A": 1783, "m": 0.19}]}, "admissivel": {"compressao": {"sem_preset": 0.45, "com_preset": 0.6}, "tracao": {"corpo": 0.45, "gancho_flexao": 0.75}, "torcao": {"aliviada": 0.8, "residual_favoravel": 1.0}}}, "temperado-oleo": {"nome": "Aço carbono temperado em óleo", "condicao": "ASTM A229 / EN 10270-2 FDC", "G": 79300, "E": 207000, "rho": 7850, "temp_max": 150, "rm": {"tipo": "potencia", "faixas": [{"dmin": 0.5, "dmax": 12.7, "A": 1855, "m": 0.187}]}, "admissivel": {"compressao": {"sem_preset": 0.5, "com_preset": 0.65}, "tracao": {"corpo": 0.45, "gancho_flexao": 0.75}, "torcao": {"aliviada": 0.85, "residual_favoravel": 1.0}}}, "cromo-vanadio": {"nome": "Aço cromo-vanádio (SAE 6150)", "condicao": "ASTM A232 / EN 10270-2 FDCrV", "G": 79300, "E": 207000, "rho": 7850, "temp_max": 220, "rm": {"tipo": "potencia", "faixas": [{"dmin": 0.8, "dmax": 11.1, "A": 2005, "m": 0.168}]}, "admissivel": {"compressao": {"sem_preset": 0.5, "com_preset": 0.65}, "tracao": {"corpo": 0.45, "gancho_flexao": 0.75}, "torcao": {"aliviada": 0.85, "residual_favoravel": 1.0}}}, "cromo-silicio": {"nome": "Aço cromo-silício (SAE 9254)", "condicao": "ASTM A401 / EN 10270-2 FDSiCr", "G": 79300, "E": 207000, "rho": 7850, "temp_max": 245, "rm": {"tipo": "potencia", "faixas": [{"dmin": 1.6, "dmax": 9.5, "A": 1974, "m": 0.108}]}, "admissivel": {"compressao": {"sem_preset": 0.5, "com_preset": 0.65}, "tracao": {"corpo": 0.45, "gancho_flexao": 0.75}, "torcao": {"aliviada": 0.85, "residual_favoravel": 1.0}}}, "inox302": {"nome": "Aço inoxidável 302/304", "condicao": "ASTM A313 / EN 10270-3 1.4310", "G": 69000, "E": 193000, "rho": 7900, "temp_max": 260, "rm": {"tipo": "potencia", "faixas": [{"dmin": 0.3, "dmax": 2.5, "A": 1867, "m": 0.146}, {"dmin": 2.5, "dmax": 5.0, "A": 2065, "m": 0.263}, {"dmin": 5.0, "dmax": 10.0, "A": 2911, "m": 0.478}]}, "admissivel": {"compressao": {"sem_preset": 0.35, "com_preset": 0.55}, "tracao": {"corpo": 0.35, "gancho_flexao": 0.55}, "torcao": {"aliviada": 0.6, "residual_favoravel": 0.8}}}, "inox316": {"nome": "Aço inoxidável 316", "condicao": "ASTM A313 / EN 10270-3 1.4401", "G": 69000, "E": 193000, "rho": 7950, "temp_max": 260, "rm": {"tipo": "potencia", "fator": 0.82, "faixas": [{"dmin": 0.3, "dmax": 2.5, "A": 1867, "m": 0.146}, {"dmin": 2.5, "dmax": 5.0, "A": 2065, "m": 0.263}, {"dmin": 5.0, "dmax": 10.0, "A": 2911, "m": 0.478}]}, "admissivel": {"compressao": {"sem_preset": 0.35, "com_preset": 0.55}, "tracao": {"corpo": 0.35, "gancho_flexao": 0.55}, "torcao": {"aliviada": 0.6, "residual_favoravel": 0.8}}}, "x750-mola": {"nome": "Inconel X-750 (UNS N07750)", "condicao": "têmpera mola AMS 5699 + 650 °C/4 h", "G": 75800, "E": 213700, "rho": 8280, "temp_max": 371, "rm": {"tipo": "tabela", "faixas": [[6.35, 1517], [10.6, 1379], [12.7, 1241]], "dmin": 0.3}, "admissivel": {"compressao": {"sem_preset": 0.35, "com_preset": 0.55}, "tracao": {"corpo": 0.35, "gancho_flexao": 0.55}, "torcao": {"aliviada": 0.6, "residual_favoravel": 0.8}}, "modulo_vs_temp": [[20, 1.0], [260, 0.927], [538, 0.818], [649, 0.736]], "tau_relax": [[260, 690, 690], [316, 621, 621], [371, 586, 586]], "sigma_relax": [[260, 827, 827], [316, 758, 758], [343, 724, 724], [371, 690, 690]], "preset_nao_recomendado": true}, "x750-no1": {"nome": "Inconel X-750 (UNS N07750)", "condicao": "têmpera No. 1 AMS 5698 + 732 °C/16 h", "G": 75800, "E": 213700, "rho": 8280, "temp_max": 538, "rm": {"tipo": "tabela", "faixas": [[0.635, 1069], [12.7, 1138]]}, "admissivel": {"compressao": {"sem_preset": 0.35, "com_preset": 0.55}, "tracao": {"corpo": 0.35, "gancho_flexao": 0.55}, "torcao": {"aliviada": 0.6, "residual_favoravel": 0.8}}, "modulo_vs_temp": [[20, 1.0], [260, 0.927], [538, 0.818], [649, 0.736]], "tau_relax": [[427, 483, 483], [454, 414, 483], [482, 345, 379], [510, 310, 345], [538, 276, 310], [566, 172, 207]], "sigma_relax": [[427, 690, 690], [454, 621, 621], [482, 552, 552], [510, 483, 483], [538, 414, 414]], "preset_nao_recomendado": true}, "x750-triplo": {"nome": "Inconel X-750 (UNS N07750)", "condicao": "AMS 5699 + triplo 1149 °C/2 h + 843 °C/24 h + 704 °C/20 h", "G": 75800, "E": 213700, "rho": 8280, "temp_max": 649, "rm": {"tipo": "tabela", "faixas": [[6.35, 1034], [12.7, 1000]], "dmin": 0.3}, "admissivel": {"compressao": {"sem_preset": 0.35, "com_preset": 0.55}, "tracao": {"corpo": 0.35, "gancho_flexao": 0.55}, "torcao": {"aliviada": 0.6, "residual_favoravel": 0.8}}, "modulo_vs_temp": [[20, 1.0], [260, 0.927], [538, 0.818], [649, 0.736]], "tau_relax": [[538, 379, 379], [593, 345, 345], [621, 276, 276], [649, 207, 207]], "sigma_relax": [[566, 483, 483], [593, 345, 345], [621, 276, 276], [649, 207, 207]], "preset_nao_recomendado": true}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=t=>String(t??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=t=>String(t??"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const numero=v=>{v=String(v??"").trim().replace(/\s/g,"");if(!v)return null;v=(v.includes(",")&&v.includes("."))?v.replace(/\./g,"").replace(",","."):v.replace(",",".");const n=parseFloat(v);return isFinite(n)&&n>0?n:null};
+const fmt=(n,c=1)=>n==null||!isFinite(n)?"—":n.toLocaleString("pt-BR",{minimumFractionDigits:c,maximumFractionDigits:c});
+const zap=t=>CFG.whatsapp?"https://wa.me/"+CFG.whatsapp+"?text="+encodeURIComponent(t):"";
+DADOS.forEach(d=>{d._txt=norm([d.codigo,d.familia,d.descricao,d.material,d.observacoes,CFG.tipos[d.tipo],CFG.setores[d.setor],...d.aplic.map(a=>Object.values(a).join(" "))].join(" "));d._junto=d._txt.replace(/ /g,"")});
+
+/* ---------- achar a peça ---------- */
+const unicos=a=>[...new Set(a.filter(Boolean))].sort((x,y)=>x.localeCompare(y,"pt-BR",{numeric:true}));
+function opcoes(sel,vals,rot,mapa){const at=sel.value;sel.innerHTML=`<option value="">${rot}</option>`+vals.map(v=>`<option value="${esc(v)}">${esc(mapa?mapa[v]||v:v)}</option>`).join("");if(vals.includes(at))sel.value=at}
+function cascata(){opcoes($("#fSetor"),unicos(DADOS.map(d=>d.setor)),"Todos os setores",CFG.setores);const aps=DADOS.filter(d=>!$("#fSetor").value||d.setor===$("#fSetor").value).flatMap(d=>d.aplic);opcoes($("#fEquip"),unicos(aps.map(a=>a.equipamento)),"Todos os equipamentos");const a2=aps.filter(a=>!$("#fEquip").value||a.equipamento===$("#fEquip").value);opcoes($("#fMarca"),unicos(a2.map(a=>a.marca)),"Todas as marcas");const a3=a2.filter(a=>!$("#fMarca").value||a.marca===$("#fMarca").value);opcoes($("#fModelo"),unicos(a3.map(a=>a.modelo)),"Todos os modelos")}
+function filtrar(){let r=DADOS.map(d=>({d,pts:0,nota:""}));const q=norm($("#q").value);if(q){const ts=q.split(" ");r=r.filter(x=>ts.every(t=>x.d._txt.includes(t)||x.d._junto.includes(t)))}
+  const s=$("#fSetor").value,e=$("#fEquip").value,m=$("#fMarca").value,mo=$("#fModelo").value;if(s)r=r.filter(x=>x.d.setor===s);if(e||m||mo)r=r.filter(x=>x.d.aplic.some(a=>(!e||a.equipamento===e)&&(!m||a.marca===m)&&(!mo||a.modelo===mo)));
+  const t=$("#mTipo").value,tol=+$("#mTol").value,alvo=[["_d_fio_mm",numero($("#mD").value),tol/2,"fio"],["_de",numero($("#mDe").value),tol,"De"],["_comp",numero($("#mL").value),tol,"comprimento"]].filter(a=>a[1]);if(t)r=r.filter(x=>x.d.tipo===t);
+  if(alvo.length){r=r.filter(x=>{let soma=0;const ps=[];for(const[k,v,tl,rot]of alvo){const val=x.d[k];if(val==null)return false;const dv=Math.abs(val-v)/v*100;if(dv>tl)return false;soma+=dv;ps.push(`${rot} ${fmt(val,2)} mm (${fmt(dv,1)}% de diferença)`)}x.pts=-soma;x.nota=ps.join(" · ");return true});r.sort((a,b)=>b.pts-a.pts)}return r}
+function cartao({d,nota}){const linhas=CFG.rotulos.filter(([k])=>d[k]).map(([k,rot])=>`<tr><td>${esc(rot)}</td><td>${esc(d[k])}${k==="constante"&&d.unidade_constante?" "+esc(d.unidade_constante):""}</td></tr>`).join("");
+  const aps=d.aplic.map(a=>`<li><b>${esc([a.equipamento,a.marca,a.modelo].filter(Boolean).join(" · "))}</b>${a.posicao?" — "+esc(a.posicao):""} <small>${[a.codigo_original?"ref. "+esc(a.codigo_original):"",a.qtd_por_maquina?esc(a.qtd_por_maquina)+" por máquina":"",esc(a.observacao||"")].filter(Boolean).join(" · ")}</small></li>`).join("");
+  const sit=d.nivel==="familia"?`<span class="chip fam">Família: medidas sob consulta</span>`:(d.situacao==="linha"?`<span class="chip linha">Item de linha</span>`:(d.situacao?`<span class="chip">${esc(d.situacao)}</span>`:""));
+  const link=zap(`Olá! Quero cotar o item ${d.codigo} — ${d.descricao}.\nQuantidade: \nMáquina/aplicação: `);
+  return `<article class="item" id="item-${esc(d.codigo)}"><div class="cod">${esc(d.codigo)}</div><h3>${esc(d.descricao)}</h3><div class="chips"><span class="chip">${esc(CFG.tipos[d.tipo]||d.tipo)}</span><span class="chip">${esc(CFG.setores[d.setor]||d.setor)}</span>${sit}</div>${nota?`<p class="dica" style="color:var(--ok);margin:0 0 6px">Mais próximo: ${esc(nota)}</p>`:""}${linhas?`<table>${linhas}</table>`:""}${d.observacoes?`<p style="font-size:14px;margin:8px 0 0">${esc(d.observacoes)}</p>`:""}${aps?`<ul class="aplic">${aps}</ul>`:""}<div class="acoes">${link?`<a class="btn" target="_blank" rel="noopener" href="${link}">Pedir cotação deste item</a>`:""}</div></article>`}
+function desenhar(){const r=filtrar(),max=60,algum=$("#q").value||["#fSetor","#fEquip","#fMarca","#fModelo","#mTipo","#mD","#mDe","#mL"].some(s=>$(s).value);
+  let h=`<div class="resumo"><span>${r.length} ${r.length===1?"item":"itens"}${algum?(r.length===1?" encontrado":" encontrados"):" no catálogo"}</span>${algum?`<button type="button" id="limpar">limpar filtros</button>`:""}</div>`;
+  if(!r.length)h+=`<div class="painel vazio"><p><b>Nada com esses critérios.</b></p><p>Aumente a tolerância, tire um filtro, ou envie as medidas: fabricamos sob desenho ou amostra.</p><button class="btn" type="button" id="irPedir">Enviar medidas para cotação</button></div>`;
+  h+=r.slice(0,max).map(cartao).join("");if(r.length>max)h+=`<p class="vazio">Mostrando os ${max} primeiros. Refine a busca para ver os demais.</p>`;$("#lista").innerHTML=h;
+  $("#limpar")?.addEventListener("click",()=>{["#q","#fSetor","#fEquip","#fMarca","#fModelo","#mTipo","#mD","#mDe","#mL"].forEach(s=>$(s).value="");cascata();desenhar()});
+  $("#irPedir")?.addEventListener("click",()=>{if($("#mTipo").value)$("#pTipo").value=$("#mTipo").value;$("#pD").value=$("#mD").value;$("#pDe").value=$("#mDe").value;$("#pL").value=$("#mL").value;const mq=[$("#fEquip").value,$("#fMarca").value,$("#fModelo").value].filter(Boolean).join(" ");if(mq)$("#pMaq").value=mq;textoPedido();location.hash="pedir"})}
+
+/* ---------- calculadora ---------- */
+let tipoCalc="compressao",ultimo=null;
+const NOME={compressao:"Mola de compressão",tracao:"Mola de tração",torcao:"Mola de torção"};
+function entradas(){const n=id=>numero($(id).value);return{d:n("#cD"),De:n("#cDe"),Na:n("#cNa"),Nb:n("#cNb"),L0:n("#cL0"),ext:$("#cExt").value,L1:n("#cL1"),L2:n("#cL2"),Fi:n("#cFi"),P1:n("#cP1"),P2:n("#cP2"),A1:n("#cA1"),A2:n("#cA2"),T:n("#cT"),Rm:n("#cRm")}}
+function calcular(){const mat=MATS[$("#cMat").value],e=entradas(),box=$("#cRes");ultimo=null;if(!mat){box.innerHTML="";return}
+  const r=Calc[tipoCalc](mat,e);if(!r){box.innerHTML=`<p class="dica" style="margin:0">Preencha fio, diâmetro externo e espiras. O diâmetro externo precisa ser maior que duas vezes o fio.</p>`;return}
+  if(r.erro){box.innerHTML=`<div class="veredito bad">${esc(r.erro)}</div>`;return}ultimo={r,e,mat};
+  const rx=r.relax,quenteRuim=rx&&(rx.min==null||rx.tensao>rx.max),tempRuim=e.T!=null&&e.T>(mat.temp_max??1e9)+2;
+  let cls="ok",txt="Aguenta a carga com folga";
+  if(r.status==="sem-rm"){cls="warn";txt="Constante calculada; tensão não verificada (falta o Rm)"}
+  else if(quenteRuim||tempRuim){cls="bad";txt="Não atende na temperatura informada"}
+  else if(r.status==="sobre"){cls="bad";txt="Tensão acima do admissível: a mola cede"}
+  else if(r.status==="preset"){cls="warn";txt="Só chega ao sólido com pré-assentamento no processo"}
+  else if(r.status==="fechando"){cls="warn";txt="Só passa trabalhando no sentido de fechar as espiras"}
+  else if(r.uso!=null&&r.uso>0.85){cls="warn";txt="Aguenta, mas perto do limite"}
+  const tor=r.tipo==="torcao";let L=[];
+  L.push(["Constante",tor?fmt(r.k,2)+" N·mm/grau":fmt(r.k,2)+" N/mm"]);
+  for(const[n,p]of Object.entries(r.pontos))L.push(tor?[`Torque a ${fmt(p.angulo,0)}°`,fmt(p.M,0)+" N·mm"]:[`Carga em ${fmt(p.L,1)} mm`,fmt(p.F,1)+" N ("+fmt(p.F/9.80665,1)+" kgf)"]);
+  if(r.Ls)L.push(["Comprimento sólido",fmt(r.Ls,1)+" mm"]);if(r.tipo==="tracao")L.push(["Comprimento livre (ganchos inteiros)",fmt(r.L0,1)+" mm"]);
+  if(tor){const p=Object.values(r.pontos).pop();if(p){L.push(["Diâmetro interno no ângulo máx.",fmt(p.Di,1)+" mm"]);L.push(["Corpo no ângulo máx.",fmt(p.corpo,1)+" mm"])}}
+  L.push(["Índice de mola C",fmt(r.C,1)]);L.push(["Rm considerado",r.Rm?fmt(r.Rm,0)+" MPa":"—"]);L.push(["Massa",fmt(r.massa,1)+" g"]);
+  if(rx&&rx.min!=null)L.push([`Tensão a quente / de projeto (até ${rx.ate} °C)`,fmt(rx.tensao,0)+" / "+fmt(rx.min,0)+(rx.max!==rx.min?"–"+fmt(rx.max,0):"")+" MPa"]);
+  const u=r.uso==null?null:Math.round(r.uso*100);
+  box.innerHTML=`<div class="veredito ${cls}">${txt}</div>${u==null?"":`<div style="font-size:13px;color:var(--mut)">Uso da tensão admissível: ${u}%</div><div class="barra"><i class="${u>100?"b":u>85?"w":""}" style="width:${Math.min(u,100)}%"></i></div>`}<table>${L.map(l=>`<tr><td>${esc(l[0])}</td><td>${esc(l[1])}</td></tr>`).join("")}</table>${r.avisos.length?`<ul class="av">${[...new Set(r.avisos)].map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`:""}`}
+function trocarTipo(t){tipoCalc=t;$$(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.tipo===t));$$("[data-so]").forEach(l=>l.hidden=!l.dataset.so.split(" ").includes(t));
+  const pad={compressao:{cD:"3",cDe:"25",cL1:"50",cL2:"40"},tracao:{cD:"2",cDe:"16",cNb:"20",cL1:"80",cL2:"95"},torcao:{cD:"4",cDe:"34",cNb:"14"}}[t];for(const k in pad)$("#"+k).value=pad[k];calcular()}
+function pedirDoCalculo(){if(!ultimo)return;const{r,e,mat}=ultimo,tor=r.tipo==="torcao";$("#pTipo").value=r.tipo;$("#pD").value=$("#cD").value;$("#pDe").value=$("#cDe").value;$("#pL").value=r.tipo==="compressao"?$("#cL0").value:"";$("#pN").value=r.tipo==="compressao"?$("#cNa").value+" ativas":$("#cNb").value+" no corpo";
+  $("#pPernas").value=tor?`pernas ${$("#cP1").value} e ${$("#cP2").value} mm; trabalha de ${$("#cA1").value}° a ${$("#cA2").value}°`:"";$("#pMat").value=mat.nome+(mat.condicao?" — "+mat.condicao:"");if(e.T)$("#pAmb").value=e.T+" °C";
+  const cargas=Object.values(r.pontos).map(p=>tor?`${fmt(p.M,0)} N·mm a ${fmt(p.angulo,0)}°`:`${fmt(p.F,1)} N em ${fmt(p.L,1)} mm`).join("; ");$("#pObs").value=`Calculado no aplicativo: constante ${fmt(r.k,2)} ${tor?"N·mm/grau":"N/mm"}${cargas?"; "+cargas:""}.`;textoPedido();location.hash="pedir"}
+
+/* ---------- Inconel X-750 ---------- */
+const COND=[["x750-mola","Arame têmpera mola (AMS 5699)","envelhecer a 650 °C por 4 h"],["x750-no1","Arame têmpera No. 1 (AMS 5698)","envelhecer a 732 °C por 16 h"],["x750-triplo","Arame têmpera mola (AMS 5699)","tratamento triplo: 1149 °C/2 h + 843 °C/24 h + 704 °C/20 h"]];
+function inconel(){const T=numero($("#xT").value),ch=$("#xTipo").value,box=$("#xRes");if(!T){box.innerHTML=`<p class="dica">Informe a temperatura.</p>`;return}
+  const linhas=COND.filter(c=>MATS[c[0]]).map(([k,arame,trat])=>{const l=Calc.limite(MATS[k],ch,T);return{k,arame,trat,min:l&&l.min,max:l&&l.max,rm:Calc.rm(MATS[k],3)}});
+  const melhor=Math.max(0,...linhas.map(l=>l.min||0));
+  box.innerHTML=linhas.map(l=>{const serve=l.min!=null,rec=serve&&l.min===melhor;return `<article class="${rec?"rec":""}"><h3>${esc(l.arame)}</h3><div class="n" style="color:${serve?"var(--ink)":"var(--bad)"}">${serve?fmt(l.min,0)+(l.max!==l.min?"–"+fmt(l.max,0):"")+" MPa":"Não serve"}</div><p>${serve?"tensão de projeto a "+fmt(T,0)+" °C":"sem tensão de projeto publicada a "+fmt(T,0)+" °C para esta condição"}</p><p>Depois de enrolar: ${esc(l.trat)}.</p><p>Rm mínimo após tratamento (fio de 3 mm): ${fmt(l.rm,0)} MPa.</p>${rec?`<p style="color:var(--ok);font-weight:600">Indicada para esta temperatura</p>`:""}</article>`}).join("")||`<p class="dica">Dados de Inconel X-750 não incluídos nesta versão.</p>`;
+  if(melhor===0&&linhas.length)box.insertAdjacentHTML("beforeend",`<article><h3>Acima do limite do X-750 como mola</h3><p>Consulte a engenharia: é caso para outra superliga.</p></article>`)}
+
+/* ---------- pedido ---------- */
+function textoPedido(){const v=id=>$(id).value.trim(),L=["Olá! Preciso de cotação de mola."];if(v("#pTipo"))L.push("Tipo: "+(CFG.tipos[v("#pTipo")]||v("#pTipo")));
+  [["#pD","Fio (mm)"],["#pDe","Diâmetro externo (mm)"],["#pL","Comprimento (mm)"],["#pN","Espiras"],["#pPernas","Pernas/ganchos/ângulo"],["#pMaq","Máquina"],["#pMat","Material"],["#pAmb","Temperatura e meio"],["#pQtd","Quantidade"],["#pObs","Obs."]].forEach(([id,r])=>{if(v(id))L.push(r+": "+v(id))});
+  const t=L.join("\n");$("#pMsg").textContent=t;const a=$("#pEnviar"),h=zap(t);if(h){a.href=h;a.hidden=false}else a.hidden=true;return t}
+
+/* ---------- navegação ---------- */
+const ABAS=["achar","calcular","inconel","pedir","medir"];
+function rota(){let h=location.hash.replace("#","");let item=null;if(h.startsWith("item-")){item=h;h="achar"}if(!ABAS.includes(h))h="achar";$$("nav a").forEach(a=>a.dataset.aba===h?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));$$("[data-painel]").forEach(p=>p.hidden=p.dataset.painel!==h);if(item)document.getElementById(item)?.scrollIntoView({block:"start"})}
+
+const tiposSel=`<option value="">Qualquer tipo</option>`+Object.entries(CFG.tipos).map(([k,v])=>`<option value="${esc(k)}">${esc(v)}</option>`).join("");
+$("#mTipo").innerHTML=tiposSel;$("#pTipo").innerHTML=tiposSel.replace("Qualquer tipo","Não sei / outro");
+$("#cMat").innerHTML=Object.entries(MATS).map(([k,m])=>`<option value="${esc(k)}">${esc(m.nome+(m.condicao?" — "+m.condicao:""))}</option>`).join("");
+if(MATS["cromo-silicio"])$("#cMat").value="cromo-silicio";
+cascata();desenhar();trocarTipo("compressao");inconel();textoPedido();rota();
+["#fSetor","#fEquip","#fMarca","#fModelo"].forEach(s=>$(s).addEventListener("change",()=>{cascata();desenhar()}));
+["#q","#mD","#mDe","#mL"].forEach(s=>$(s).addEventListener("input",desenhar));["#mTipo","#mTol"].forEach(s=>$(s).addEventListener("change",desenhar));
+$$("[data-painel=calcular] input,[data-painel=calcular] select").forEach(e=>e.addEventListener("input",calcular));
+$$(".seg button").forEach(b=>b.addEventListener("click",()=>trocarTipo(b.dataset.tipo)));$("#cPedir").addEventListener("click",pedirDoCalculo);
+["#xT","#xTipo"].forEach(s=>$(s).addEventListener("input",inconel));
+$$("[data-painel=pedir] input,[data-painel=pedir] select,[data-painel=pedir] textarea").forEach(e=>e.addEventListener("input",textoPedido));
+$("#pCopiar").addEventListener("click",async()=>{const b=$("#pCopiar");try{await navigator.clipboard.writeText(textoPedido());b.textContent="Copiado"}catch(e){const r=document.createRange();r.selectNodeContents($("#pMsg"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Texto selecionado: copie"}setTimeout(()=>b.textContent="Copiar texto",2200)});
+addEventListener("hashchange",rota);
+$("#pFone").textContent=CFG.whatsapp?"WhatsApp da fábrica: +"+CFG.whatsapp.replace(/^(\d{2})(\d{2})(\d{5})(\d{4})$/,"$1 ($2) $3-$4"):"";
+$("#rodape").textContent=(CFG.atualizado?"Atualizado em "+CFG.atualizado+" · ":"")+DADOS.length+" registros no catálogo.";
+</script>
+</body>
+</html>

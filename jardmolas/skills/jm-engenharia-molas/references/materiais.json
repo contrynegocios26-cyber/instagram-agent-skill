@@ -2,7 +2,7 @@
   "_leia": "Banco de materiais da calculadora mola.py. Unidades: MPa, kg/m3, C. Rm e o MINIMO estimado; o certificado do arame sempre vence (use --Rm). 'admissivel' sao fracoes de Rm para carga estatica (criterio SMI). 'confianca' diz de onde veio o dado.",
   "materiais": {
     "sae1070-sh": {
-      "nome": "Aco carbono patenteado trefilado (corda de piano)",
+      "nome": "Aço carbono patenteado (corda de piano)",
       "condicao": "ASTM A228 / EN 10270-1 SH-DH",
       "G": 79300,
       "E": 207000,
@@ -37,7 +37,7 @@
       "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "sae1070-sm": {
-      "nome": "Aco carbono trefilado duro",
+      "nome": "Aço carbono trefilado duro",
       "condicao": "ASTM A227 / EN 10270-1 SM",
       "G": 79300,
       "E": 207000,
@@ -72,7 +72,7 @@
       "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "temperado-oleo": {
-      "nome": "Aco carbono temperado e revenido em oleo",
+      "nome": "Aço carbono temperado em óleo",
       "condicao": "ASTM A229 / EN 10270-2 FDC",
       "G": 79300,
       "E": 207000,
@@ -107,7 +107,7 @@
       "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "cromo-vanadio": {
-      "nome": "Aco cromo-vanadio (SAE 6150)",
+      "nome": "Aço cromo-vanádio (SAE 6150)",
       "condicao": "ASTM A232 / EN 10270-2 FDCrV",
       "G": 79300,
       "E": 207000,
@@ -142,7 +142,7 @@
       "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "cromo-silicio": {
-      "nome": "Aco cromo-silicio (SAE 9254)",
+      "nome": "Aço cromo-silício (SAE 9254)",
       "condicao": "ASTM A401 / EN 10270-2 FDSiCr",
       "G": 79300,
       "E": 207000,
@@ -177,7 +177,7 @@
       "confianca": "Shigley tab. 10-4/10-6; SMI; G = 79,3 GPa (SMI) - EN 13906-1 usa 81,5 e Shigley 77 a 83 conforme o arame: ate 3% na constante, calibrar no ensaio"
     },
     "inox302": {
-      "nome": "Aco inoxidavel AISI 302/304",
+      "nome": "Aço inoxidável 302/304",
       "condicao": "ASTM A313 / EN 10270-3 1.4310",
       "G": 69000,
       "E": 193000,
@@ -223,7 +223,7 @@
       "confianca": "Shigley tab. 10-4/10-6; SMI"
     },
     "inox316": {
-      "nome": "Aco inoxidavel AISI 316",
+      "nome": "Aço inoxidável 316",
       "condicao": "ASTM A313 / EN 10270-3 1.4401",
       "G": 69000,
       "E": 193000,
@@ -271,7 +271,7 @@
     },
     "x750-mola": {
       "nome": "Inconel X-750 (UNS N07750)",
-      "condicao": "tempera mola AMS 5699 + 650 C/4 h",
+      "condicao": "têmpera mola AMS 5699 + 650 °C/4 h",
       "G": 75800,
       "E": 213700,
       "rho": 8280,
@@ -371,7 +371,7 @@
     },
     "x750-no1": {
       "nome": "Inconel X-750 (UNS N07750)",
-      "condicao": "tempera No.1 AMS 5698 + 732 C/16 h",
+      "condicao": "têmpera No. 1 AMS 5698 + 732 °C/16 h",
       "G": 75800,
       "E": 213700,
       "rho": 8280,
@@ -486,7 +486,7 @@
     },
     "x750-triplo": {
       "nome": "Inconel X-750 (UNS N07750)",
-      "condicao": "AMS 5699 + triplo 1149 C/2 h + 843 C/24 h + 704 C/20 h",
+      "condicao": "AMS 5699 + triplo 1149 °C/2 h + 843 °C/24 h + 704 °C/20 h",
       "G": 75800,
       "E": 213700,
       "rho": 8280,
@@ -586,8 +586,8 @@
       "nota": "limite de proporcionalidade em cisalhamento ~465 MPa (Tabela 33): manter a tensao de trabalho abaixo dele; apoiar a mola em mandril justo durante o tratamento triplo para nao deformar"
     },
     "17-7ph": {
-      "nome": "Aco inoxidavel 17-7 PH",
-      "condicao": "ASTM A313 tipo 631, condicao CH900",
+      "nome": "Aço inoxidável 17-7 PH",
+      "condicao": "ASTM A313 tipo 631, condição CH900",
       "G": 75800,
       "E": 203400,
       "rho": 7800,

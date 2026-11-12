@@ -16,6 +16,8 @@ Uso:
   python catalogo.py ficha PASTA JM-0001
   python catalogo.py gerar PASTA --saida catalogo.html --empresa "Jardmolas" \
         --whatsapp 5516999999999 [--titulo "Catalogo de molas"] [--fotos URL_BASE]
+  python catalogo.py app PASTA --saida app.html --whatsapp 5516999999999
+        (catalogo + calculadora de molas + consultor de Inconel X-750 + pedido de cotacao)
 Nenhum dado e inventado: campo vazio fica vazio e aparece como "sob consulta".
 """
 import argparse
@@ -396,6 +398,61 @@ def cmd_gerar(a):
     return 0
 
 
+def cmd_app(a):
+    """Gera o aplicativo: catalogo + calculadora de molas + consultor de Inconel X-750 + pedido."""
+    aqui = os.path.dirname(os.path.abspath(__file__))
+    itens, aplic = carregar(a.pasta)
+    erros, _ = validar(itens, aplic)
+    if erros and not a.forcar:
+        for e in erros[:20]:
+            print("ERRO  " + e)
+        sys.exit("O catalogo tem %d erro(s). Corrija (ou use --forcar) antes de gerar." % len(erros))
+    por = indice(itens, aplic)
+    dados = []
+    for it in itens:
+        if it["situacao"] == "descontinuado":
+            continue
+        reg = {k: it[k] for k in CAMPOS_ITENS if it[k]}
+        v = num(it["d_fio_mm"])
+        if isinstance(v, float):
+            reg["_d_fio_mm"] = v
+        if diam_externo(it):
+            reg["_de"] = diam_externo(it)
+        if comprimento(it):
+            reg["_comp"] = comprimento(it)
+        reg["aplic"] = [{k: ap[k] for k in CAMPOS_APLIC[1:] if ap[k]} for ap in por.get(it["codigo"], [])]
+        dados.append(reg)
+    cand = [a.materiais, os.path.join(aqui, "..", "..", "jm-engenharia-molas", "references", "materiais.json"),
+            os.path.join(aqui, "..", "assets", "materiais.json")]
+    mats = {}
+    for c in cand:
+        if c and os.path.exists(c):
+            with open(c, encoding="utf-8") as f:
+                mats = json.load(f)["materiais"]
+            break
+    campos = ("nome", "condicao", "G", "E", "rho", "temp_max", "rm", "admissivel", "modulo_vs_temp",
+              "tau_relax", "sigma_relax", "preset_nao_recomendado")
+    mats = {k: {c: m[c] for c in campos if c in m} for k, m in mats.items() if m["rm"]["tipo"] != "certificado"}
+    with open(os.path.join(aqui, "..", "assets", "app-modelo.html"), encoding="utf-8") as f:
+        pagina = f.read()
+    cfg = {"empresa": a.empresa, "titulo": a.titulo, "whatsapp": re.sub(r"\D", "", a.whatsapp or ""),
+           "tipos": TIPOS, "setores": SETORES, "rotulos": ROTULOS, "atualizado": a.data or ""}
+    emb = lambda o: json.dumps(o, ensure_ascii=False).replace("</", "<\\/")
+    pagina = pagina.replace("__TITULO__", html.escape(a.titulo)).replace("__EMPRESA__", html.escape(a.empresa))
+    pagina = pagina.replace("/*__DADOS__*/[]", emb(dados)).replace("/*__CFG__*/{}", emb(cfg))
+    pagina = pagina.replace("/*__MATS__*/{}", emb(mats))
+    if a.artefato:  # pagina sem o esqueleto do documento, para publicar como artefato
+        ini, fim = pagina.index("<body>") + len("<body>"), pagina.rindex("</body>")
+        pagina = pagina[ini:fim].strip() + "\n"
+    with open(a.saida, "w", encoding="utf-8") as f:
+        f.write(pagina)
+    print("aplicativo gerado: %s (%d registros, %d materiais na calculadora, %.0f KB)" % (
+        a.saida, len(dados), len(mats), os.path.getsize(a.saida) / 1024))
+    if not cfg["whatsapp"]:
+        print("AVISO sem --whatsapp: o botao de pedido fica so com o texto para copiar")
+    return 0
+
+
 def medida(v):
     n = num(v)
     if not isinstance(n, float) or n <= 0:
@@ -424,8 +481,14 @@ def main():
     s.add_argument("--fotos", help="pasta ou URL base das fotos (o campo foto e somado a ela)")
     s.add_argument("--data", help="data de atualizacao a mostrar no rodape")
     s.add_argument("--incluir-descontinuados", action="store_true"); s.add_argument("--forcar", action="store_true")
+    s = sub.add_parser("app"); s.add_argument("pasta"); s.add_argument("--saida", default="app.html")
+    s.add_argument("--empresa", default="Jardmolas"); s.add_argument("--titulo", default="Central de Molas")
+    s.add_argument("--whatsapp"); s.add_argument("--data")
+    s.add_argument("--materiais", help="materiais.json da calculadora (padrao: o da skill de engenharia)")
+    s.add_argument("--artefato", action="store_true", help="gera so o corpo da pagina, para publicar como artefato")
+    s.add_argument("--forcar", action="store_true")
     a = p.parse_args()
-    sys.exit({"novo": cmd_novo, "validar": cmd_validar, "buscar": cmd_buscar, "ficha": cmd_ficha,
+    sys.exit({"app": cmd_app, "novo": cmd_novo, "validar": cmd_validar, "buscar": cmd_buscar, "ficha": cmd_ficha,
               "gerar": cmd_gerar}[a.cmd](a) or 0)
 
 
