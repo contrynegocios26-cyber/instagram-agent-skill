@@ -125,6 +125,12 @@ Troca, financiamento e negociação de valor: só com o Roberto.
 | Vendas | Roberto | segunda a sábado, 9h às 18h |
 | Gerência, reclamações, desconto e exceção de aluguel, vaga e visita | Sandra | segunda a sábado, 8h às 18h |
 | Plantão (quando o responsável não está) | Zé | todos os dias, 7h às 19h |
+| Emergência na água | Zé e telefone de emergência | 24h pelo telefone |
+
+- **Como a equipe responde ao cliente:** neste mesmo WhatsApp
+- **O que o plantão pode decidir:** encaixe na rampa, liberar descida de
+  cliente com pendência, receber reclamação e olhar a embarcação,
+  confirmar Pix recebido. Desconto, não
 
 - **Telefone de emergência da marina (24h):** (44) 90000-0000
 - **Emergência pública:** Marinha 185, Bombeiros 193

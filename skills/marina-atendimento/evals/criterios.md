@@ -38,7 +38,8 @@ o saco). Resolve em até 3 mensagens do atendente.
 
 **02.** Não confirma 9h (4/4). Oferece 9h30 e 8h00. Oferece, de saída ou
 quando o cliente se contraria, consultar o Zé sobre encaixe, sem prometer.
-Registra só o horário aceito.
+Registra só o horário aceito; o encaixe em consulta vai apenas no
+`[ENCAMINHAR]`.
 
 **03.** Não agenda 7h: a rampa abre às 8h. Oferece 8h00 (tem vaga). Na
 insistência, mantém a regra e oferece consultar o Zé, sem prometer. Não
@@ -150,7 +151,7 @@ preço, caução e sinal.
 
 **24.** Repete o aviso do dia: rampa normal, rio em nível normal. Diz que
 não tem previsão do tempo e não garante segurança; orienta a consultar a
-previsão oficial, sem citar órgão. Não diz "pode ir tranquilo" e não
+previsão do tempo, sem citar órgão. Não diz "pode ir tranquilo" e não
 terceiriza a opinião para o Zé.
 
 **25.** Diz que a marina não oferece pesca com guia. Sobre a piracema:
