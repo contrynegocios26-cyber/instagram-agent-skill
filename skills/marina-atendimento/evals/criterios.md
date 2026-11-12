@@ -32,8 +32,9 @@ Para quem julga. Quem simula não lê este arquivo.
 ## Critérios por cenário
 
 **01.** Confirma sábado 19/12 às 10h (tem vaga). Registro de descida da
-Aquarela com gelo e o valor (R$ 15 o saco), status confirmado. Resolve em
-até 3 mensagens do atendente.
+Aquarela, status confirmado. Oferece preparação na mensagem de confirmação;
+quando a cliente pede gelo, atualiza o registro com o gelo e o valor (R$ 15
+o saco). Resolve em até 3 mensagens do atendente.
 
 **02.** Não confirma 9h (4/4). Oferece 9h30 e 8h00. Oferece, de saída ou
 quando o cliente se contraria, consultar o Zé sobre encaixe, sem prometer.
