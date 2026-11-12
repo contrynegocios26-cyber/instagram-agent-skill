@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b4a66">
+<meta name="robots" content="noindex">
+<title>Painel</title>
+<link rel="icon" href="/icone.svg">
+<link rel="stylesheet" href="/painel.css">
+</head>
+<body>
+<form id="login" class="login" hidden>
+  <img src="/icone.svg" alt="" width="56" height="56">
+  <h1>Painel da marina</h1>
+  <label>Seu nome <input id="loginNome" autocomplete="name" maxlength="40" required placeholder="Como a equipe te chama"></label>
+  <label>Senha <input id="loginSenha" type="password" autocomplete="current-password" required></label>
+  <p id="loginErro" class="erro" role="alert"></p>
+  <button class="botao primario">Entrar</button>
+</form>
+
+<div id="app" hidden>
+  <header class="barra">
+    <div class="marca">
+      <img src="/icone.svg" alt="" width="30" height="30">
+      <strong id="marina"></strong>
+      <button id="modo" class="selo" type="button" title="Mudar o modo do atendente"></button>
+    </div>
+    <nav id="abas" class="abas" aria-label="Seções"></nav>
+    <div class="conta"><span id="quem"></span><button id="som" class="link" type="button">Ativar som</button><button id="sair" class="link" type="button">Sair</button></div>
+  </header>
+  <div id="alertas"></div>
+  <main id="conteudo"></main>
+</div>
+
+<dialog id="dlg" class="dialogo"></dialog>
+<script type="module" src="/painel.js"></script>
+</body>
+</html>

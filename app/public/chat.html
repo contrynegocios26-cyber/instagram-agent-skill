@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b4a66">
+<meta name="robots" content="noindex">
+<title>Atendimento</title>
+<link rel="icon" href="/icone.svg">
+<link rel="stylesheet" href="/chat.css">
+</head>
+<body>
+<div class="app">
+  <header class="topo">
+    <img class="avatar" src="/icone.svg" alt="">
+    <div class="titulo">
+      <h1 id="marina">Atendimento</h1>
+      <p id="status">Conectando…</p>
+    </div>
+  </header>
+
+  <section id="agenda" class="agenda" aria-label="Seus agendamentos" hidden></section>
+
+  <main id="mensagens" class="mensagens" aria-live="polite" aria-label="Conversa"></main>
+
+  <div id="atalhos" class="atalhos" hidden></div>
+
+  <form id="form" class="entrada" autocomplete="off">
+    <button type="button" id="btnFoto" class="icone" aria-label="Enviar foto" title="Enviar foto">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.200L15 3H9zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+    </button>
+    <input type="file" id="arquivo" accept="image/*" hidden>
+    <textarea id="texto" rows="1" maxlength="1200" placeholder="Escreva sua mensagem" aria-label="Mensagem" disabled></textarea>
+    <button type="submit" id="btnEnviar" class="enviar" aria-label="Enviar mensagem" disabled>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 20.500v-7l10-1.500-10-1.500v-7L22 12 3 20.500z"/></svg>
+    </button>
+  </form>
+
+  <footer class="rodape">
+    <span>Atendimento por assistente virtual, com a equipe da marina por trás.</span>
+    <button type="button" id="btnPriv" class="link">Privacidade</button>
+  </footer>
+</div>
+
+<dialog id="dlgPriv" class="dialogo">
+  <h2>Privacidade</h2>
+  <p>Suas mensagens ficam registradas pela <span id="privMarina">marina</span> para que a equipe possa atender você.</p>
+  <p>As respostas automáticas são geradas por um assistente de inteligência artificial (Claude, da Anthropic), que recebe o texto das mensagens para responder. As fotos que você envia não vão para o assistente: só a equipe da marina as vê.</p>
+  <p>Para corrigir ou apagar seus dados, fale com a marina.</p>
+  <form method="dialog"><button class="botao">Fechar</button></form>
+</dialog>
+
+<script type="module" src="/chat.js"></script>
+</body>
+</html>
