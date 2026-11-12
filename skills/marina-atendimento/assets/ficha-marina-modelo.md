@@ -82,6 +82,12 @@ deixar em branco do que preencher no chute.
 | Desconto e exceção de aluguel | | |
 | Interessado em vaga e visita | | |
 | Plantão (quando o responsável não está) | | |
+| Emergência na água | | |
+
+- **Como a equipe responde ao cliente:** (neste mesmo WhatsApp, por
+  ligação, pessoalmente na recepção)
+- **O que o plantão pode decidir:** (encaixe, liberar descida, receber
+  reclamação, confirmar Pix)
 
 - **Telefone de emergência da marina (24h):**
 - **Emergência pública:** Marinha 185, Bombeiros 193
