@@ -1,0 +1,10 @@
+.git
+midia
+relatorios
+validacao
+prospeccao
+app/node_modules
+app/data
+app/.env
+app/docs
+app/test

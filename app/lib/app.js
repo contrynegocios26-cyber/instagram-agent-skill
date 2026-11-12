@@ -43,7 +43,7 @@ function carregarSenhas(store) {
   }
   if (geradas) {
     fs.writeFileSync(arq, JSON.stringify({ equipe: senhas.equipe, admin: senhas.admin }, null, 2), { mode: 0o600 });
-    console.log('\nSenhas do painel geradas (guardadas em data/senhas.json):');
+    console.log(`\nSenhas do painel geradas (guardadas em ${arq}):`);
     console.log(`  equipe: ${senhas.equipe}`);
     console.log(`  admin:  ${senhas.admin}\n`);
   }
