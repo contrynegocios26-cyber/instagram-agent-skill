@@ -1,0 +1,20 @@
+{
+  "name": "marina-atendimento-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Atendimento com IA e painel da rampa para marinas",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "IA_FAKE=1 SEMENTE=exemplo node server.js",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "express": "^5.3.0",
+    "qrcode": "^1.5.4"
+  }
+}
