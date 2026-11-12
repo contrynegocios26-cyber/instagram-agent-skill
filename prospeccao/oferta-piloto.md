@@ -1,7 +1,8 @@
 # Oferta do piloto
 
-Rascunho da proposta que será levada à primeira marina. Os valores são
-ponto de partida e ainda não foram validados com nenhum dono.
+Versão 2, revista depois do parecer do "dono cético" simulado. Os valores
+são proposta da agência e ainda não foram validados com nenhum dono de
+verdade.
 
 ## O problema
 
@@ -16,46 +17,92 @@ Um atendente virtual no WhatsApp da marina, 24 horas, que:
 
 - agenda descida e subida dentro das regras e da capacidade da rampa;
 - anota abastecimento, gelo e lavagem junto com o pedido;
-- responde preço e disponibilidade de aluguel e de vaga;
-- passa para a pessoa certa da equipe tudo o que foge das regras, já com o
+- responde preço e disponibilidade de aluguel e de vaga, e passa o
+  interessado para a equipe fechar;
+- chama a pessoa certa da equipe em tudo o que foge das regras, já com o
   resumo da conversa.
 
 A equipe vê a fila da rampa em uma planilha, no tablet ou na TV do pátio.
 
+## O que o atendente não faz
+
+- Não dá desconto, não cobra mensalidade e não barra cliente por conta
+  própria: quem tem pendência é passado na hora para quem a marina
+  indicar.
+- Não opina sobre tempo, rio ou segurança de navegação.
+- Não passa informação sobre clientes nem embarcações a ninguém.
+- Não discute com cliente irritado. Reclamação de mensalista chega na hora
+  ao gerente e ao plantão, com urgência.
+- Clientes que o dono indicar falam direto com ele, sem passar pelo
+  atendente.
+
+Em emergência na água, a primeira resposta já leva o telefone de
+emergência da marina, a Marinha (185) e os Bombeiros (193), e a equipe é
+acionada.
+
 ## Como funciona o teste
 
-- **Duração:** 30 dias.
-- **Semana 1:** o atendente escreve e um funcionário aprova cada resposta
-  antes de enviar.
+- **Duração:** 30 dias, pegando pelo menos um feriado ou fim de semana de
+  temporada.
+- **Antes:** a agência mede um fim de semana normal: quantas mensagens
+  chegam, quanto demora a resposta, quantas descidas.
+- **Semana 1:** o atendente escreve e a resposta só sai depois de
+  aprovada. Quem aprova é a agência, com a ficha da marina na mão; a
+  equipe da marina só é chamada na dúvida.
 - **Semanas 2 a 4:** o atendente responde sozinho o que está combinado e
   chama a equipe no resto.
-- **Medição:** tempo de resposta, mensagens atendidas fora do horário,
-  descidas agendadas pelo atendente e horas da equipe liberadas,
-  comparados com um fim de semana medido antes.
+- **Plantão da agência:** nos fins de semana e feriados do piloto, alguém
+  da agência acompanha as conversas e desliga o atendente na hora se algo
+  sair errado.
+
+## Como saber se deu certo
+
+Combinado antes de começar, por escrito:
+
+- tempo de resposta fora do horário cai de horas para minutos;
+- pelo menos metade das descidas do fim de semana agendadas pelo
+  atendente, sem ninguém da equipe digitar;
+- nenhuma informação errada de preço, horário ou vaga enviada a cliente;
+- o dono diz se quer continuar.
+
+Se não atingir, o piloto termina e a marina não deve nada.
 
 ## O que a marina fornece
 
 Tabela de preços, regras e horários da rampa, lista de clientes e
-embarcações, política de sinal e cancelamento, e uma pessoa de contato
-para os casos encaminhados.
+embarcações com telefones, política de sinal e cancelamento, e os nomes de
+quem recebe cada tipo de assunto, inclusive no fim de semana.
 
 ## Valor
 
-- **Piloto:** implantação isenta e primeira mensalidade pela metade, em
-  troca de depoimento e autorização para usar os números.
-- **Depois do piloto (pacote Essencial):** R$ 800 a R$ 1.200 por mês.
-- **Sem fidelidade:** a marina cancela quando quiser.
+- **Piloto de 30 dias:** sem custo, sem implantação.
+- **Depois do piloto:** R$ 890 por mês, valor fechado, sem taxa de
+  implantação para a marina do piloto.
+- **Baixa temporada (maio a agosto):** R$ 490 por mês.
+- **Sem fidelidade:** a marina cancela quando quiser, com 30 dias de
+  aviso.
 
-## O que não está prometido
+Depoimento e uso dos números do piloto só com autorização da marina, que
+pode dizer não.
 
-Aumento de faturamento em número. O que se promete é o que dá para
-controlar: resposta na hora, atendimento fora do expediente e nenhum
-pedido perdido.
+## O número e os dados são da marina
 
-## Limites conhecidos
+- O número de WhatsApp continua no nome da marina. Se o contrato acabar, a
+  agência devolve o acesso em até 5 dias úteis.
+- A lista de clientes e o histórico de conversas pertencem à marina e são
+  entregues ou apagados no encerramento. Isso vai em um termo assinado.
 
-- O atendente não negocia desconto, não cobra mensalidade atrasada e não
-  opina sobre tempo ou segurança de navegação.
-- O atendimento usa o WhatsApp da marina pela API oficial, o que exige
-  migrar o número ou usar um número novo.
-- Os dados dos clientes ficam sob um termo de uso assinado com a marina.
+## Pontos em aberto, para resolver antes da primeira visita
+
+- **Número de WhatsApp:** a API oficial exige migrar o número atual ou
+  usar um novo. Falta confirmar o passo a passo para voltar o número ao
+  aplicativo comum.
+- **Áudio e foto:** o objetivo é o atendente transcrever áudio e passar
+  fotos (avaria, comprovante, habilitação) direto para a equipe. Falta
+  confirmar o que a plataforma permite.
+- **Custo por mensagem:** a API e o modelo de IA cobram por uso. O piloto
+  mede esse custo; até lá, o valor mensal é uma aposta da agência.
+- **Erro do atendente:** falta definir o que a agência assume se uma
+  resposta errada causar prejuízo.
+- **Quem atualiza a fila** quando o cliente combina direto na rampa, sem
+  passar pelo WhatsApp.

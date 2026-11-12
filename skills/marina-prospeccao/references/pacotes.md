@@ -1,13 +1,16 @@
 # Pacotes
 
 Valores de partida, para validar com as primeiras marinas. Se `agencia.md`
-tiver preços, eles valem no lugar destes.
+tiver preços, eles valem no lugar destes. Apresente sempre um valor
+fechado: faixa de preço o dono lê pelo teto.
 
-| Pacote | Mensalidade | Implantação | Inclui |
-|---|---|---|---|
-| Essencial | R$ 800 a 1.200 | R$ 1.500 | Atendente no WhatsApp, agendamento de descida e subida |
-| Profissional | R$ 1.800 a 2.500 | R$ 2.500 | Essencial + reservas de aluguel, conteúdo para Instagram, Perfil do Google |
-| Completo | R$ 3.000+ | R$ 3.000 | Profissional + leads de venda, anúncios, lembretes à base, relatório mensal |
+| Pacote | Mensalidade | Baixa temporada (maio a agosto) | Implantação | Inclui |
+|---|---|---|---|---|
+| Essencial | R$ 890 | R$ 490 | R$ 1.500 | Atendente no WhatsApp: agenda descida e subida, anota preparação, informa preço de aluguel e de vaga e passa o interessado para a equipe |
+| Profissional | R$ 1.900 | R$ 1.200 | R$ 2.500 | Essencial + fecha reserva de aluguel com sinal por Pix, conteúdo para Instagram, Perfil do Google |
+| Completo | R$ 3.200 | R$ 2.200 | R$ 3.000 | Profissional + leads de venda, anúncios, lembretes à base, relatório mensal |
+
+A marina do piloto não paga implantação.
 
 ## Qual recomendar
 
@@ -20,13 +23,23 @@ tiver preços, eles valem no lugar destes.
 
 ## Piloto
 
-Trinta dias com implantação reduzida ou isenta, em troca de depoimento e
-dos números. Mede-se: mensagens respondidas, tempo médio de resposta,
-reservas fechadas pelo atendente e horas da equipe liberadas. Sem piloto
-gratuito por tempo indeterminado: o prazo é o que faz o dono decidir.
+Trinta dias sem custo, pegando ao menos um feriado ou fim de semana de
+temporada, com critério de sucesso combinado por escrito antes de começar
+(ver `prospeccao/oferta-piloto.md`). Depoimento e uso dos números só com
+autorização. Sem piloto por tempo indeterminado: o prazo é o que faz o
+dono decidir.
+
+## O que nunca muda de pacote para pacote
+
+- O número de WhatsApp e os dados dos clientes são da marina e voltam para
+  ela no encerramento.
+- Sem fidelidade; cancelamento com 30 dias de aviso.
+- Reclamação, pendência financeira e cliente indicado pelo dono vão sempre
+  para gente.
 
 ## O que a marina precisa fornecer
 
 Tabela de preços, frota e disponibilidade, regras de descida (horários,
-antecedência), política de sinal e cancelamento, e uma pessoa da equipe
-para receber os casos que o atendente encaminha.
+antecedência), política de sinal e cancelamento, chave Pix, lista de
+clientes com telefones, e os nomes de quem recebe cada assunto, inclusive
+no fim de semana.
