@@ -23,10 +23,14 @@ deixar em branco do que preencher no chute.
 
 - **Tamanho da janela:** (ex.: 30 min)
 - **Embarcações por janela:**
-- **Antecedência mínima do pedido:**
-- **Quem pode pedir descida:** (titular e autorizados no cadastro)
-- **Cliente com pendência no cadastro:** (o que o atendente diz e para quem
-  encaminha)
+- **Antecedência mínima do pedido:** (e se conta até o início da janela)
+- **Encaixe fora da regra:** (quem autoriza; o atendente pergunta, não
+  promete)
+- **Quem pode pedir descida:** (titular e autorizados, pelo telefone do
+  cadastro)
+- **Número não cadastrado pedindo descida:** (quem confirma com o titular)
+- **Cliente com pendência no cadastro:** (o atendente segura, libera ou só
+  avisa a equipe? o que diz ao cliente? quem ele chama no fim de semana?)
 - **Onde o atendente vê a fila:** (planilha, agenda, sistema)
 
 ## Guarda de embarcações
@@ -37,7 +41,10 @@ deixar em branco do que preencher no chute.
 
 - **Vagas disponíveis hoje:** (por faixa; lista de espera?)
 - **Serviços avulsos e preços:** (lavagem, gelo, abastecimento, teste de
-  motor)
+  motor; até que horas podem ser pedidos)
+- **Preço do combustível:** (valor do dia ou quem informa)
+- **Quem não é cliente:** (faz descida avulsa? quanto?)
+- **Estrutura:** (restaurante, banheiro, estacionamento, loja)
 
 ## Aluguel e passeios
 
@@ -47,10 +54,15 @@ deixar em branco do que preencher no chute.
 
 - **Horário da diária:**
 - **Combustível:** (incluso ou por conta do cliente)
+- **Lotação:** (piloto conta? criança conta?)
+- **Habilitação:** (como o cliente comprova e quem confere)
 - **Caução:**
 - **Sinal:** (percentual e forma de pagamento)
+- **Chave Pix:** (sem ela o atendente não fecha a venda sozinho)
+- **Pré-reserva:** (quanto tempo vale à espera do sinal; quem confirma o
+  comprovante, inclusive no fim de semana)
 - **Cancelamento e mau tempo:**
-- **Crianças, pets, bebidas:**
+- **Crianças, pets, bebidas, churrasqueira, pesca a bordo:**
 - **Onde o atendente vê a disponibilidade:**
 
 ## Embarcações à venda
@@ -67,8 +79,16 @@ deixar em branco do que preencher no chute.
 | Financeiro | | |
 | Vendas | | |
 | Gerência e reclamações | | |
+| Desconto e exceção de aluguel | | |
+| Interessado em vaga e visita | | |
+| Plantão (quando o responsável não está) | | |
 
 - **Telefone de emergência da marina (24h):**
+- **Emergência pública:** Marinha 185, Bombeiros 193
+- **Clientes que falam direto com o dono ou gerente:** (nomes e o que o
+  atendente faz quando escrevem)
+- **Reclamação de cliente da casa:** (quem é avisado na hora, além da
+  gerência)
 
 ## Avisos do dia
 

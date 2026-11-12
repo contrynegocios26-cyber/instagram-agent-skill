@@ -23,11 +23,19 @@ testes. Não representam nenhuma marina real.
 
 - **Tamanho da janela:** 30 min
 - **Embarcações por janela:** 4
-- **Antecedência mínima do pedido:** 1 hora
+- **Antecedência mínima do pedido:** 1 hora, contada até o início da
+  janela
+- **Encaixe fora da regra:** só o Zé autoriza; o atendente pode perguntar
+  a ele, sem prometer
 - **Quem pode pedir descida:** titular e autorizados no cadastro
-- **Cliente com pendência no cadastro:** não confirmar descida; dizer que há
-  uma pendência de cadastro a resolver com o financeiro, sem citar valores;
-  encaminhar para a Carla
+- **Número não cadastrado pedindo descida:** o atendente não confirma;
+  registra como aguardando equipe e chama o Zé, que confirma com o titular
+- **Cliente com pendência no cadastro:** o atendente não confirma nem nega
+  a descida. Registra como aguardando equipe e chama com urgência alta a
+  Carla (se estiver no horário) ou o plantão. Diz ao cliente que a
+  liberação é com a equipe e que já chamou. Só se o cliente perguntar o
+  motivo, diz que há um ponto do cadastro a ver com o financeiro. Nunca
+  cita valor nem atraso
 - **Onde o atendente vê a fila:** bloco "Fila" abaixo
 
 ### Fila
@@ -60,8 +68,11 @@ Domingo, 20/12/2026: todas as janelas livres.
   ou mais só lista de espera
 - **Serviços avulsos e preços:** lavagem simples R$ 80; gelo R$ 15 o saco;
   abastecimento: a marina busca o combustível, taxa de R$ 30 mais o valor
-  do combustível (preço do litro não informado aqui, muda todo dia); teste
-  de motor: incluso na mensalidade, a cada 15 dias
+  do combustível (preço do litro não informado aqui, muda todo dia; quem
+  informa é o Zé); teste de motor: incluso na mensalidade, a cada 15 dias.
+  Lavagem pode ser pedida até 17h
+- **Quem não é cliente:** a marina não faz descida avulsa
+- **Estrutura:** estacionamento e banheiros; não tem restaurante
 
 ## Aluguel e passeios
 
@@ -74,7 +85,13 @@ Domingo, 20/12/2026: todas as janelas livres.
 - **Horário da diária:** 9h às 17h
 - **Combustível:** por conta do cliente em todos os itens
 - **Caução:** R$ 1.500 no cartão, só para jet
+- **Lotação:** o piloto não conta na capacidade; criança conta
+- **Habilitação:** o cliente manda foto pelo WhatsApp; a equipe confere o
+  documento na retirada
 - **Sinal:** 30% por Pix; o restante no dia
+- **Chave Pix:** financeiro@marinaremanso.example (e-mail)
+- **Pré-reserva:** vale 2 horas à espera do sinal. O comprovante vai para
+  a Carla ou, fora do horário dela, para o plantão, que confirma
 - **Cancelamento e mau tempo:** até 72 horas antes, devolução integral do
   sinal; com menos de 72 horas, o sinal vira crédito para remarcar em até
   90 dias; mau tempo, a marina remarca sem custo
@@ -106,9 +123,13 @@ Troca, financiamento e negociação de valor: só com o Roberto.
 | Operação e rampa | Zé (encarregado) | horário da rampa |
 | Financeiro | Carla | segunda a sexta, 8h às 18h |
 | Vendas | Roberto | segunda a sábado, 9h às 18h |
-| Gerência e reclamações | Sandra | segunda a sábado, 8h às 18h |
+| Gerência, reclamações, desconto e exceção de aluguel, vaga e visita | Sandra | segunda a sábado, 8h às 18h |
+| Plantão (quando o responsável não está) | Zé | todos os dias, 7h às 19h |
 
 - **Telefone de emergência da marina (24h):** (44) 90000-0000
+- **Emergência pública:** Marinha 185, Bombeiros 193
+- **Reclamação de cliente da casa:** além da Sandra, avisar o plantão na
+  hora
 
 ## Avisos do dia
 
