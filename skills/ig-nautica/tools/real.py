@@ -18,9 +18,9 @@ def match(J,tint=(0.97,1.0,1.07),bright=1.1,contrast=1.12,sat=1.05):
 def grain(J,s=3.0,seed=0):
     a=np.array(J).astype(float); n=np.random.default_rng(seed).normal(0,s,a.shape[:2])[...,None]; a[...,:3]=np.clip(a[...,:3]+n,0,255)
     return Image.fromarray(a.astype('uint8'),'RGBA')
-def place(bg,J,x,y,wl=0.8,t=0.0,seed=1):
+def place(bg,J,x,y,wl=0.8,t=0.0,seed=1,gr=None):
     """cola o jet com linha d'água realista. (x,y)=canto sup-esq do jet; wl=fração da altura na linha d'água"""
-    W,H=bg.size; J=grain(match(J),seed=seed); jw,jh=J.size; cut=int(jh*wl)
+    W,H=bg.size; J=grain(match(J,**(gr or {})),seed=seed); jw,jh=J.size; cut=int(jh*wl)
     rng=np.random.default_rng(seed+int(t*30))
     # 1) escurecer água ao redor/baixo do casco (sombra)
     sh=Image.new('L',bg.size,0); d=ImageDraw.Draw(sh); d.ellipse((x+jw*0.02,y+cut-jh*0.03,x+jw*1.0,y+cut+jh*0.07),fill=150)
