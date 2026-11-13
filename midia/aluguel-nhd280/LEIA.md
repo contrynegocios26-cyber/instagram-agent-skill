@@ -2,17 +2,16 @@
 
 ## Ficha usada nas artes
 - NHD 280: cerca de 28 pés (8,4 m), boca de 2,70 m (fabricante/itBoat)
-- Motor MerCruiser 4.5 de 250 hp, com rabeta Mercury (foto do motor)
+- Motor de 280 hp (confirmado pelo cliente). As fotos do motor 4.5 de 250 hp e do horímetro são de OUTRA lancha e foram retiradas.
 - Churrasqueira com tábua e pia na popa · som com caixas na torre, alto-falantes e subwoofer Pioneer
 - Cabine com mesa, ar-condicionado (Consul) e banheiro com pia e ducha
-- Horímetro: 68,4 horas (foto do painel) · bússola e âncora elétrica (windlass)
 - Pia com porta-copos e armário com porta de vidro
 - Toldo, bancos em U, plataforma com piso EVA e escada de banho
 - NÃO coloquei: preço, número de pessoas, marinheiro, combustível. Confirmar antes de impulsionar.
 - Fotos com bancos marrons e logo "NX" (volante de madeira, caixa de som grande na popa) são de OUTRA lancha e ficaram de fora.
 
 ## Peças
-Carrossel na ordem: 01, 02, 03, 04, 05, 05b, 06, 07 (8 slides, 4:5) · story-enquete (9:16) · reel-aluguel-nhd280.mp4 (30 s, narrado)
+Carrossel 01 a 07 (7 slides, 4:5) · story-enquete (9:16) · reel-aluguel-nhd280.mp4 (26 s, narrado)
 
 ## Legenda
 Bora passar o dia na Prainha de Santa Rosa... de lancha? 🛥️☀️
