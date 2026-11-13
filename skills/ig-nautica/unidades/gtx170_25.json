@@ -1,0 +1,229 @@
+{
+ "out": "/home/user/instagram-agent-skill/midia/2026-11-13-gtx170-2025/",
+ "foto": "/root/.claude/uploads/c388b183-f909-530a-9de4-4ce57692aac2/9b0e9566-image.jpg",
+ "cut": "/tmp/claude-0/cut170_25.png",
+ "blur": 45,
+ "portrait_w": 900,
+ "portrait_y": 380,
+ "studio_cut": 0.86,
+ "studio_bright": 1.1,
+ "marca": "Sea-Doo",
+ "modelo": "GTX 170",
+ "ano": "2025",
+ "horas": "29",
+ "preco": "135.000",
+ "hp": "170",
+ "cols": [
+  [
+   "Ano",
+   "2025"
+  ],
+  [
+   "Horas de uso",
+   "29"
+  ],
+  [
+   "Potência",
+   "170 hp"
+  ]
+ ],
+ "horas_l1": "É tudo que ele navegou.",
+ "horas_l2": "Sea-Doo GTX 170 · 2025 · praticamente novo",
+ "motor_l1": "Motor Rotax® 1630 ACE™",
+ "motor_l2": "170 cavalos no casco mais estável da Sea-Doo.",
+ "feats": [
+  [
+   "170 hp",
+   "Rotax 1630 ACE"
+  ],
+  [
+   "Casco ST3",
+   "Plataforma mais estável"
+  ],
+  [
+   "iBR",
+   "Freio e ré eletrônicos"
+  ],
+  [
+   "Painel",
+   "Digital grande no guidão"
+  ],
+  [
+   "Ergolock",
+   "Banco em degraus"
+  ],
+  [
+   "3 lugares",
+   "Passeio com a família"
+  ],
+  [
+   "Frontal",
+   "Porta-objetos de acesso direto"
+  ],
+  [
+   "LinQ",
+   "Caixa estanque pro celular"
+  ]
+ ],
+ "feat_note": "Itens da linha GTX 2025, conforme a BRP.",
+ "callouts": [
+  [
+   504,
+   26,
+   390,
+   "Painel",
+   "digital grande"
+  ],
+  [
+   694,
+   125,
+   640,
+   "Banco",
+   "Ergolock"
+  ],
+  [
+   315,
+   599,
+   900,
+   "ST3",
+   "casco estável"
+  ]
+ ],
+ "detalhe_rodape": "29 horas · modelo 2025",
+ "quiz_l1": "Quantas horas",
+ "quiz_l2": "tem esse jet?",
+ "quiz_opts": "29 / 100 / 200",
+ "views": [
+  [
+   540,
+   960,
+   1.2
+  ],
+  [
+   560,
+   440,
+   1.7
+  ],
+  [
+   460,
+   600,
+   1.6
+  ],
+  [
+   700,
+   620,
+   1.6
+  ],
+  [
+   620,
+   940,
+   1.5
+  ],
+  [
+   280,
+   900,
+   1.5
+  ]
+ ],
+ "reel": {
+  "hook1": "29 HORAS",
+  "hook2": "MODELO 2025",
+  "motor_tag": "Rotax 1630 ACE",
+  "pills": [
+   "Casco ST3 estável",
+   "Freio e ré iBR",
+   "Banco em degraus"
+  ],
+  "r1": [
+   "Vinte e nove horas. Modelo dois mil e vinte e cinco.",
+   [
+    "Si Dú, gê tê xis, cento e setenta, modelo dois mil e vinte e cinco.",
+    "Sea-Doo GTX 170, modelo 2025."
+   ],
+   [
+    "Motor Rotax de cento e setenta cavalos, no casco mais estável da Sea Dú.",
+    "Motor Rotax de 170 cavalos, no casco mais estável da Sea-Doo."
+   ],
+   [
+    "Casco ST3, freio e ré eletrônicos e banco em degraus.",
+    "Casco ST3, freio e ré eletrônicos e banco em degraus."
+   ],
+   [
+    "Cento e trinta e cinco mil reais. Pagamento no cartão ou cheque.",
+    "R$ 135 mil. Pagamento no cartão ou cheque."
+   ]
+  ],
+  "r2": [
+   [
+    "O jet de quem gosta de passear com conforto.",
+    "O jet de quem gosta de passear com conforto.",
+    "Feito pra",
+    "passear"
+   ],
+   [
+    "Casco ST3: estável e confortável na onda.",
+    "Casco ST3: estável e confortável na onda.",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco",
+    "Ergolock"
+   ],
+   [
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital",
+    "e porta-objetos"
+   ],
+   [
+    "E só vinte e nove horas de uso.",
+    "E só 29 horas de uso.",
+    "Só 29 horas",
+    "de uso"
+   ]
+  ],
+  "r2_price": [
+   "Cento e trinta e cinco mil. Chama no zap!",
+   "R$ 135 mil. Chama no zap!"
+  ],
+  "r3_hook": [
+   "PREÇO DE ZERO?",
+   "NÃO PRECISA",
+   "olha esse aqui"
+  ],
+  "r3_hook_spk": "Por que pagar preço de zero quilômetro, se esse aqui tem só vinte e nove horas?",
+  "r3": [
+   [
+    "Um: modelo dois mil e vinte e cinco, linha atual da Sea Dú.",
+    "Um: modelo 2025, linha atual da Sea-Doo.",
+    "1",
+    "Modelo 2025",
+    "linha atual"
+   ],
+   [
+    "Dois: só vinte e nove horas. Praticamente novo.",
+    "Dois: só 29 horas. Praticamente novo.",
+    "2",
+    "Só 29 horas",
+    "praticamente novo"
+   ],
+   [
+    "Três: casco ST3 e banco em degraus, conforto pra família toda.",
+    "Três: casco ST3 e banco em degraus, conforto pra família toda.",
+    "3",
+    "Casco ST3",
+    "conforto e estabilidade"
+   ]
+  ],
+  "r3_price": [
+   "Esse Si Dú, gê tê xis, cento e setenta está aqui na Cântri, por cento e trinta e cinco mil.",
+   "Esse Sea-Doo GTX 170 está aqui na Country, por R$ 135 mil."
+  ]
+ },
+ "model_size": 100,
+ "portrait_cut": 0.88,
+ "jet_left": true
+}

@@ -99,7 +99,9 @@ if ONLY in('all','reels'):
         return PP.crop(tuple(int(v*1.5) for v in (cx-w/2,cy-h/2,cx+w/2,cy+h/2))).resize((W,H),Image.BILINEAR)
     def ti(t,font,fill):
         d=ImageDraw.Draw(Image.new('L',(1,1))); b=d.textbbox((0,0),t,font=font)
-        im=Image.new('RGBA',(b[2]-b[0]+20,b[3]-b[1]+20),(0,0,0,0)); ImageDraw.Draw(im).text((10-b[0],10-b[1]),t,font=font,fill=fill); return im
+        im=Image.new('RGBA',(b[2]-b[0]+20,b[3]-b[1]+20),(0,0,0,0)); ImageDraw.Draw(im).text((10-b[0],10-b[1]),t,font=font,fill=fill)
+        if im.width>960: im=im.resize((960,int(im.height*960/im.width)),Image.LANCZOS)
+        return im
     def pc(bg,im,cx,cy,sc=1.0,al=1.0):
         if sc!=1: im=im.resize((max(1,int(im.width*sc)),max(1,int(im.height*sc))),Image.LANCZOS)
         if al<1: im=im.copy(); im.putalpha(im.split()[3].point(lambda v:int(v*al)))
