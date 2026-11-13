@@ -1,0 +1,227 @@
+{
+ "out": "/home/user/instagram-agent-skill/midia/2026-11-13-gtx230-2020/",
+ "foto": "/root/.claude/uploads/c388b183-f909-530a-9de4-4ce57692aac2/ce713fc5-image.jpg",
+ "cut": "/tmp/claude-0/cut230.png",
+ "blur": 40,
+ "portrait_w": 860,
+ "portrait_y": 360,
+ "studio_cut": 0.94,
+ "studio_bright": 1.15,
+ "marca": "Sea-Doo",
+ "modelo": "GTX 230",
+ "ano": "2020",
+ "horas": "105",
+ "preco": "120.000",
+ "hp": "230",
+ "cols": [
+  [
+   "Ano",
+   "2020"
+  ],
+  [
+   "Horas de uso",
+   "105"
+  ],
+  [
+   "Potência",
+   "230 hp"
+  ]
+ ],
+ "horas_l1": "Menos de 20 horas por ano.",
+ "horas_l2": "Sea-Doo GTX 230 · 2020 · supercharged",
+ "motor_l1": "Rotax® 1630 ACE™ supercharged",
+ "motor_l2": "Supercharger com intercooler.",
+ "feats": [
+  [
+   "230 hp",
+   "Rotax com supercharger"
+  ],
+  [
+   "Intercooler",
+   "Ar resfriado, mais força"
+  ],
+  [
+   "Casco ST3",
+   "Plataforma mais estável"
+  ],
+  [
+   "iBR",
+   "Freio e ré eletrônicos"
+  ],
+  [
+   "Ergolock",
+   "Banco em degraus"
+  ],
+  [
+   "3 lugares",
+   "Passeio com a família"
+  ],
+  [
+   "Frontal",
+   "Porta-objetos de acesso direto"
+  ],
+  [
+   "LinQ",
+   "Caixa estanque pro celular"
+  ]
+ ],
+ "feat_note": "Itens da linha GTX 2020, conforme a BRP.",
+ "callouts": [
+  [
+   417,
+   108,
+   390,
+   "Painel",
+   "e guidão"
+  ],
+  [
+   450,
+   205,
+   640,
+   "Frontal",
+   "porta-objetos"
+  ],
+  [
+   303,
+   629,
+   900,
+   "ST3",
+   "casco estável"
+  ]
+ ],
+ "detalhe_rodape": "105 horas · modelo 2020",
+ "quiz_l1": "Quantas horas",
+ "quiz_l2": "tem esse jet?",
+ "quiz_opts": "105 / 300 / 500",
+ "views": [
+  [
+   540,
+   960,
+   1.2
+  ],
+  [
+   600,
+   520,
+   1.7
+  ],
+  [
+   620,
+   720,
+   1.6
+  ],
+  [
+   360,
+   700,
+   1.5
+  ],
+  [
+   600,
+   960,
+   1.4
+  ],
+  [
+   540,
+   820,
+   1.2
+  ]
+ ],
+ "reel": {
+  "hook1": "230 CAVALOS",
+  "hook2": "105 HORAS",
+  "motor_tag": "Rotax 1630 ACE supercharged",
+  "pills": [
+   "Supercharger + intercooler",
+   "Casco ST3 estável",
+   "Freio e ré iBR"
+  ],
+  "r1": [
+   "Duzentos e trinta cavalos. Cento e cinco horas.",
+   [
+    "Si Dú, gê tê xis, duzentos e trinta, modelo dois mil e vinte.",
+    "Sea-Doo GTX 230, modelo 2020."
+   ],
+   [
+    "Motor Rotax de duzentos e trinta cavalos, com supercharger e intercooler.",
+    "Motor Rotax de 230 cavalos, com supercharger e intercooler."
+   ],
+   [
+    "Casco ST3, muito mais estável, e freio e ré eletrônicos.",
+    "Casco ST3, muito mais estável, e freio e ré eletrônicos."
+   ],
+   [
+    "Cento e vinte mil reais. Pagamento no cartão ou cheque.",
+    "R$ 120 mil. Pagamento no cartão ou cheque."
+   ]
+  ],
+  "r2": [
+   [
+    "Esse é o jet pra passear com a família.",
+    "Esse é o jet pra passear com a família.",
+    "Feito pra",
+    "passear"
+   ],
+   [
+    "Casco ST3: mais estável e confortável na onda.",
+    "Casco ST3: mais estável e confortável na onda.",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco",
+    "Ergolock"
+   ],
+   [
+    "Porta-objetos na frente e caixa estanque pro celular.",
+    "Porta-objetos na frente e caixa estanque pro celular.",
+    "Porta-objetos",
+    "e caixa estanque"
+   ],
+   [
+    "E duzentos e trinta cavalos quando você quiser acelerar.",
+    "E 230 cavalos quando você quiser acelerar.",
+    "230 cavalos",
+    "supercharged"
+   ]
+  ],
+  "r2_price": [
+   "Cento e vinte mil. Chama no zap!",
+   "R$ 120 mil. Chama no zap!"
+  ],
+  "r3_hook": [
+   "JET DE 2020",
+   "COM 105 HORAS",
+   "vale a pena?"
+  ],
+  "r3_hook_spk": "Jet de dois mil e vinte, com cento e cinco horas. Vale a pena?",
+  "r3": [
+   [
+    "Um: faz a conta. São menos de vinte horas por ano. Pouquíssimo uso.",
+    "Um: faz a conta. São menos de 20 horas por ano. Pouquíssimo uso.",
+    "1",
+    "Menos de 20 h/ano",
+    "uso de fim de semana"
+   ],
+   [
+    "Dois: potência. Motor Rotax de duzentos e trinta cavalos com supercharger.",
+    "Dois: potência. Motor Rotax de 230 cavalos com supercharger.",
+    "2",
+    "230 cavalos",
+    "supercharged"
+   ],
+   [
+    "Três: veja de perto e confira os documentos antes de pagar.",
+    "Três: veja de perto e confira os documentos antes de pagar.",
+    "3",
+    "Veja de perto",
+    "e confira os documentos"
+   ]
+  ],
+  "r3_price": [
+   "Esse Si Dú, gê tê xis, duzentos e trinta está aqui na Cântri, por cento e vinte mil.",
+   "Esse Sea-Doo GTX 230 está aqui na Country, por R$ 120 mil."
+  ]
+ },
+ "model_size": 96
+}

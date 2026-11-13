@@ -175,3 +175,11 @@ Todo post segue o layout que já está no perfil @countrynegocios:
 - Narração grátis em português: Piper TTS (voz `pt_BR-faber-medium`), com legendas palavra por palavra sincronizadas. Script: `tools/narrar.py`.
   - Escreva o texto falado por extenso e do jeito que se pronuncia: "oitenta e nove", "Si Dú gê tê i", "Cântri", "zap".
   - Se a fala não couber no tempo, aumente o espaço da cena em vez de acelerar abaixo de 0,8.
+
+## Gerador automático (nova unidade em minutos)
+
+1. Recorte o jet com rembg (birefnet-general). Remova balões, papéis e marcas de outras lojas.
+2. Copie `unidades/gtx230.json` e preencha a ficha, as falas (escritas como se pronunciam) e os enquadramentos.
+3. Rode `python3 tools/gen_unit.py unidades/<arquivo>.json`. Saem 7 slides, o quadrado, 2 stories e 3 Reels narrados.
+4. Fundo com logo ou telefone de outra loja: suba o `blur` (40 ou mais).
+5. Nunca anuncie um item da ficha que não foi confirmado para o ano e a versão exatos.
