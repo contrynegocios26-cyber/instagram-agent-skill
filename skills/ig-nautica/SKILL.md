@@ -168,3 +168,10 @@ Todo post segue o layout que já está no perfil @countrynegocios:
 - Rodapé com a logo COUNTRY NEGÓCIOS completa à esquerda e "Chame no WhatsApp (44) 99884-6314" à direita.
 - Post de horas: "63 horas / É tudo que ela navegou." com a logo no topo e "Arraste para conhecer →".
 - Os scripts estão em `tools/`: `country.py` (layout), `posts.py` (capa, carrossel e story), `reel_a.py` e `reel_c.py` (Reels).
+
+## Copy e narração
+
+- Dores, desejos, objeções, ganchos e roteiros: `COPY.md`. Leia antes de escrever qualquer legenda ou roteiro.
+- Narração grátis em português: Piper TTS (voz `pt_BR-faber-medium`), com legendas palavra por palavra sincronizadas. Script: `tools/narrar.py`.
+  - Escreva o texto falado por extenso e do jeito que se pronuncia: "oitenta e nove", "Si Dú gê tê i", "Cântri", "zap".
+  - Se a fala não couber no tempo, aumente o espaço da cena em vez de acelerar abaixo de 0,8.
