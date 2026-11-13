@@ -224,5 +224,25 @@
   ]
  },
  "model_size": 96,
- "jet_right": true
+ "jet_right": true,
+ "sr_out": "/home/user/instagram-agent-skill/midia/santa-rosa/gtx230-2025/",
+ "sr_wl": 0.8,
+ "sr_w": 740,
+ "sr_w_story": 840,
+ "sr_reel": [
+  "Sábado na Prainha de Santa Rosa, em Porto Rico...",
+  [
+   "e você chegando de Si Dú, gê tê xis, duzentos e trinta.",
+   "e você chegando de Sea-Doo GTX 230."
+  ],
+  [
+   "Só dezessete horas de uso, duzentos e trinta cavalos, e conforto pra família toda.",
+   "Só 17 horas de uso, 230 cavalos, e conforto pra família toda.",
+   "supercharger"
+  ],
+  [
+   "Cento e quarenta e cinco mil, aqui na Cântri. Chama no zap!",
+   "R$ 145 mil, aqui na Country. Chama no zap!"
+  ]
+ ]
 }
