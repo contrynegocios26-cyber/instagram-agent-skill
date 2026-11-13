@@ -1,0 +1,218 @@
+[
+  {
+    "setor": "Armazenagem e beneficiamento de grãos",
+    "implemento": "Máquina de limpeza de grãos vibratória (tipo Caliver)",
+    "posicao": "Apoio da estrutura da máquina",
+    "mola": "Mola de apoio",
+    "tipo": "compressao",
+    "funcao": "Sustenta a estrutura vibratória da máquina",
+    "fonte": "https://granelli.com.br/artigos/maquina-de-limpeza-de-graos/"
+  },
+  {
+    "setor": "Armazenagem e beneficiamento de grãos",
+    "implemento": "Peneira vibratória (industrial, uso geral)",
+    "posicao": "Conjuntos de molas de apoio do corpo vibratório",
+    "mola": "Mola de apoio da peneira",
+    "tipo": "compressao",
+    "funcao": "Sustenta e isola o corpo vibratório da peneira",
+    "fonte": "https://tecservcomercial.com.br/2025/12/07/checklist-semanal-para-peneiras-vibratorias-cuidados-que-evitam-paradas-caras/"
+  },
+  {
+    "setor": "Armazenagem e beneficiamento de grãos",
+    "implemento": "Peneira vibratória (industrial, uso geral)",
+    "posicao": "Base de molas (molas inferiores)",
+    "mola": "Mola da base da peneira",
+    "tipo": "compressao",
+    "funcao": "Apoia a peneira sobre a base e absorve a vibração",
+    "fonte": "https://pt.linkedin.com/pulse/relat%C3%B3rio-de-an%C3%A1lise-falha-e-inspe%C3%A7%C3%A3o-uma-peneira-vibrat%C3%B3ria-cossa"
+  },
+  {
+    "setor": "Armazenagem e beneficiamento de grãos",
+    "implemento": "Costuradora de sacaria Newlong NP-7A",
+    "posicao": "Tensor da linha",
+    "mola": "Mola de tensão da linha",
+    "tipo": "compressao",
+    "funcao": "Pressiona os discos que regulam a tensão da linha",
+    "fonte": "https://traceypackaging.com/products/newlong-np-7a-thread-tension-assembly-245081c"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Trator Massey Ferguson",
+    "posicao": "Pedal de freio",
+    "mola": "Mola de retorno do pedal de freio",
+    "tipo": "tracao",
+    "funcao": "Retorna o pedal de freio à posição de repouso",
+    "fonte": "https://masseytractorparts.com/collections/brake-springs"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Trator Massey Ferguson",
+    "posicao": "Acionamento da embreagem",
+    "mola": "Mola de retorno da embreagem",
+    "tipo": "tracao",
+    "funcao": "Retorna o acionamento da embreagem",
+    "fonte": "https://masseytractorparts.com/collections/mf-40-tractors?page=15"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Trator Massey Ferguson",
+    "posicao": "Embreagem (conjunto de pressão)",
+    "mola": "Mola da embreagem (vermelha)",
+    "tipo": "compressao",
+    "funcao": "Aplica a carga de aperto no conjunto da embreagem",
+    "fonte": "https://masseytractorparts.com/products/clutch-spring-red-s-8989"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Trator Massey Ferguson",
+    "posicao": "Colar da embreagem",
+    "mola": "Mola do colar da embreagem",
+    "tipo": "tracao",
+    "funcao": "Recua o colar da embreagem",
+    "fonte": "https://www.parts.agr.br/loja/pecas-para-tratores/massey-ferguson/mola-mf-do-colar-da-embreagem-180-451/"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Trator Massey Ferguson",
+    "posicao": "Alavanca de câmbio",
+    "mola": "Mola de tração da alavanca de câmbio",
+    "tipo": "tracao",
+    "funcao": "Mantém a alavanca de câmbio tensionada",
+    "fonte": "https://masseytractorparts.com/products/gear-lever-tension-spring-s-41555"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Trator Massey Ferguson",
+    "posicao": "Motor (cabeçote)",
+    "mola": "Mola de válvula interna",
+    "tipo": "compressao",
+    "funcao": "Fecha a válvula do motor",
+    "fonte": "https://masseytractorparts.com/products/valve-spring-inner-s-40500"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Eixo cardan Bondioli & Pavesi",
+    "posicao": "Limitador de torque de discos de atrito com calibragem ajustável",
+    "mola": "Mola do limitador de torque",
+    "tipo": "compressao",
+    "funcao": "Define o torque de deslizamento pela altura de trabalho da mola",
+    "fonte": "https://www.bondioli-pavesi.com/pt/transmiss%C3%A3o-de-pot%C3%AAncia/transmiss%C3%B5es-card%C3%A2nicas/limitadores-de-torque-com-discos-de-atrito-com"
+  },
+  {
+    "setor": "Tratores, cardans e engates",
+    "implemento": "Eixo cardan com embreagem de discos (roçadeira)",
+    "posicao": "Embreagem de discos do cardan",
+    "mola": "Mola de compressão da embreagem",
+    "tipo": "compressao",
+    "funcao": "Aperta os discos de atrito da embreagem do cardan",
+    "fonte": "https://the-mower-shop-inc.com/pages/pto-shaft-clutch-assembly-727t6-2011"
+  },
+  {
+    "setor": "Transporte e carretas agrícolas",
+    "implemento": "Carreta / semirreboque (freio a tambor)",
+    "posicao": "Patim/sapata de freio",
+    "mola": "Mola do patim de freio",
+    "tipo": "tracao",
+    "funcao": "Retorna as sapatas de freio após a frenagem",
+    "fonte": "https://www.fortunaautopecas.com.br/produto/MOLA-PATINS-FREIO-CARRETA-INTERICA-RETA/MOP2I"
+  },
+  {
+    "setor": "Transporte e carretas agrícolas",
+    "implemento": "Carreta agrícola graneleira Jan Tanker 15.000",
+    "posicao": "Mancal da rosca superior",
+    "mola": "Mola do mancal da rosca",
+    "tipo": "compressao",
+    "funcao": "Apoia o mancal da rosca superior sobre molas",
+    "fonte": "https://www.jan.com.br/produto/abastecimento-e-transporte-de-graos-carreta-agricola-graneleira-tanker15000"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra Stihl",
+    "posicao": "Conjunto de arranque (partida retrátil)",
+    "mola": "Mola de arranque / mola retrátil",
+    "tipo": "torcao",
+    "funcao": "Recolhe a corda de partida",
+    "fonte": "https://americanforestry.com/products/stihl-1123-190-0600-rewind-spring"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra Stihl",
+    "posicao": "Embreagem centrífuga",
+    "mola": "Mola de tração da embreagem",
+    "tipo": "tracao",
+    "funcao": "Mantém as sapatas da embreagem recolhidas em marcha lenta",
+    "fonte": "https://www.dlastore.com/clutch-springs-fit-stihl-064-066-ms311-ms391-ms640-ms650-ms660-ts460.html"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra Stihl",
+    "posicao": "Lingueta do arranque",
+    "mola": "Mola da lingueta",
+    "tipo": "torcao",
+    "funcao": "Aciona a lingueta de engate da partida",
+    "fonte": "https://www.dlastore.com/pawl-spring-set-for-stihl-034-up-to-ms360-chainsaw-models-11281953500.html"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra Husqvarna",
+    "posicao": "Embreagem centrífuga",
+    "mola": "Mola da embreagem",
+    "tipo": "tracao",
+    "funcao": "Mantém as sapatas da embreagem recolhidas em marcha lenta",
+    "fonte": "https://www.dlastore.com/brand/husqvarna?cat=5&p=5"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra Husqvarna (372, 371, 385, 390, 272, 288, 575)",
+    "posicao": "Freio da corrente",
+    "mola": "Mola principal do freio da corrente",
+    "tipo": "compressao",
+    "funcao": "Aciona a cinta do freio da corrente",
+    "fonte": "https://www.ebay.com/str/barryschainsawshop"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra Husqvarna (372, 371, 365, 362)",
+    "posicao": "Sistema antivibração",
+    "mola": "Mola antivibração (AV)",
+    "tipo": "compressao",
+    "funcao": "Isola a vibração entre motor e empunhaduras",
+    "fonte": "https://www.ebay.com/str/barryschainsawshop"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Motosserra (Tekna, Kawashima, Toyama, Vulcan, Branco, Buffalo e outras)",
+    "posicao": "Embreagem centrífuga",
+    "mola": "Mola da embreagem",
+    "tipo": "tracao",
+    "funcao": "Mantém as sapatas da embreagem recolhidas em marcha lenta",
+    "fonte": "https://www.casadosmotoreschapeco.com.br/florestal/mola-da-embreagem-motosserra-tekna-kawashima-toyama-branco"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Roçadeira Stihl",
+    "posicao": "Conjunto de arranque (caixa de partida)",
+    "mola": "Mola de recuo",
+    "tipo": "torcao",
+    "funcao": "Recolhe a corda de partida",
+    "fonte": "https://www.milioniagro.com.br/pecas-e-reparos/stihl/stihl-41161900600-mola-de-recuo-caixa-85"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Roçadeira Stihl",
+    "posicao": "Embreagem centrífuga",
+    "mola": "Mola da embreagem",
+    "tipo": "tracao",
+    "funcao": "Mantém as sapatas da embreagem recolhidas em marcha lenta",
+    "fonte": "https://www.pastobom.com.br/rocadeira/sistema-de-embreagem/mola-da-embreagem/mola-da-embreagem-stihl-fsfr220-0000-997-6205"
+  },
+  {
+    "setor": "Florestal e máquinas portáteis",
+    "implemento": "Roçadeira Toyama TBC63",
+    "posicao": "Embreagem centrífuga",
+    "mola": "Mola da embreagem",
+    "tipo": "tracao",
+    "funcao": "Mantém as sapatas da embreagem recolhidas em marcha lenta",
+    "fonte": "https://www.gpk.com.br/pecas-para-motores-2-tempos/embreagem/mola-para-embreagem-rocadeira-toyama-tbc63-motobomba-twp25stpfx-motocultivador-zmax-zt630"
+  }
+]

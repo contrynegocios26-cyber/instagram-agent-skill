@@ -1,0 +1,137 @@
+[
+  {
+    "setor": "Pecuária, ordenha e cercas",
+    "implemento": "Kit para-raios de cerca elétrica rural (Zebu KP-R)",
+    "posicao": "Kit para-raios, junto do faiscador e do isolador castanha",
+    "mola": "Mola de tração do kit para-raios",
+    "tipo": "tracao",
+    "funcao": "Compõe o kit para-raios do eletrificador (1 mola de tração por kit)",
+    "fonte": "https://www.casasbahia.com.br/kit-para-raio-zebu-612/p/1582670630"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Bebedouro nipple (Plasson)",
+    "posicao": "Regulador de desnível (slope regulator) da linha de distribuição",
+    "mola": "Mola do regulador de desnível",
+    "tipo": "compressao",
+    "funcao": "Atua no regulador que compensa o desnível da linha de nipple (tipo inferido)",
+    "fonte": "https://plassonlivestock.com/product/spring-for-slope-regulator-15cm"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Linha de transporte de ração Chore-Time FLEX-AUGER",
+    "posicao": "Conjunto do braço da mola de torção (itens 28414/28415)",
+    "mola": "Mola de torção com braço",
+    "tipo": "torcao",
+    "funcao": "Mola de torção montada com braço próprio no sistema FLEX-AUGER",
+    "fonte": "https://www.choretime.com/wp-content/uploads/2023/01/MA1908A_FLEX_AUGER_REPAIR_VOLUME_III_042007.pdf"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Sistema de coleta de ovos Big Dutchman EggSmart",
+    "posicao": "Esticador da corrente",
+    "mola": "Mola de compressão do esticador de corrente",
+    "tipo": "compressao",
+    "funcao": "Mantém a corrente do sistema tensionada",
+    "fonte": "https://shop.bigdutchman.com/bd300/83-52-5537"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Transportador helicoidal de ração Big Dutchman Flex 55/140",
+    "posicao": "Sistema Flex 55/140 (posição exata não informada)",
+    "mola": "Mola de tração 1,25 x 12,7 x 146 mm",
+    "tipo": "tracao",
+    "funcao": "Mola de tração de reposição do sistema Flex 55/140",
+    "fonte": "https://shop.bigdutchman.com/bd300/83-55-2501"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Estação de alimentação de porcas Big Dutchman Callmatic",
+    "posicao": "Estação Callmatic (posição exata não informada)",
+    "mola": "Mola de torção direita 5,5 x 29,5 x 225",
+    "tipo": "torcao",
+    "funcao": "Mola de torção galvanizada da estação Callmatic",
+    "fonte": "https://shop.bigdutchman.com/bd300/83-00-3830"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Dosador de medicamentos mecânico Big Dutchman Mixtron",
+    "posicao": "Mecanismo do dosador",
+    "mola": "Mola de tração do dosador",
+    "tipo": "tracao",
+    "funcao": "Molas de tração de reposição do mecanismo do dosador",
+    "fonte": "https://shop.bigdutchman.com/bd300/06050103"
+  },
+  {
+    "setor": "Avicultura e suinocultura",
+    "implemento": "Elevador de ovos Big Dutchman EggCellent",
+    "posicao": "Elevador de ovos",
+    "mola": "Mola de compressão do elevador",
+    "tipo": "compressao",
+    "funcao": "Molas de compressão de reposição do elevador de ovos",
+    "fonte": "https://shop.bigdutchman.com/bd300/03010102"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Canhão aspersor Nelson Big Gun SR150",
+    "posicao": "Mancal inferior HD150, sobre o freio",
+    "mola": "Mola do freio",
+    "tipo": "compressao",
+    "funcao": "Pressiona o freio do mancal para controlar a rotação do canhão (12 por conjunto; tipo inferido)",
+    "fonte": "https://nelsonirrigation.com/library/BG_SR150PL.pdf"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Canhão aspersor Nelson Big Gun SR150",
+    "posicao": "Conjunto do corpo, mecanismo de gatilho (trip)",
+    "mola": "Mola do gatilho (trip)",
+    "tipo": "torcao",
+    "funcao": "Arma o gatilho que inverte o sentido de giro no fim do setor (tipo inferido)",
+    "fonte": "https://nelsonirrigation.com/library/BG_SR150PL.pdf"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Aspersor de impacto Rain Bird (30H, 14070, 70CH, 85EHD, 35A-TNT)",
+    "posicao": "Braço oscilante (martelo), no pino de articulação",
+    "mola": "Mola do braço",
+    "tipo": "torcao",
+    "funcao": "Retorna o braço de impacto ao jato a cada batida",
+    "fonte": "https://rainbird.com/sites/default/files/media/documents/2021-06/2021_mnppl.pdf"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Canhão aspersor Komet Twin 140",
+    "posicao": "Mecanismo de setor (reversão)",
+    "mola": "Mola do setor",
+    "tipo": "torcao",
+    "funcao": "Atua no mecanismo que delimita o setor irrigado (tipo inferido)",
+    "fonte": "https://partao.com/komet-k1400b70000-sector-spring-twin-140.html"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Canhão aspersor Komet Twin 101/140",
+    "posicao": "Mecanismo de reversão (shift)",
+    "mola": "Molas de reversão",
+    "tipo": "tracao",
+    "funcao": "Fazem a troca de sentido do braço de acionamento (tipo inferido)",
+    "fonte": "https://partao.com/komet-07010209-shift-spring-set-tw101-140-0-f00-4.html"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Canhão aspersor Sime Ranger",
+    "posicao": "Mecanismo do braço do canhão",
+    "mola": "Mola de tração do Ranger",
+    "tipo": "tracao",
+    "funcao": "Mola de tração de reposição do canhão Ranger",
+    "fonte": "https://partao.com/rm-irrigation-sime30892-ranger-tension-spring.html"
+  },
+  {
+    "setor": "Irrigação",
+    "implemento": "Canhão aspersor Sime Ranger",
+    "posicao": "Limitador de curso",
+    "mola": "Mola limitadora",
+    "tipo": "compressao",
+    "funcao": "Limita o curso do mecanismo do canhão (tipo inferido)",
+    "fonte": "https://partao.com/sime-30906-limiting-spring-ranger-rain-cannon.html"
+  }
+]

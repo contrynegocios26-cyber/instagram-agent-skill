@@ -1,0 +1,218 @@
+[
+  {
+    "setor": "Ensilagem e alimentação animal",
+    "implemento": "Ensiladeira JF (1300 AT, 1600 AT, 1900 AT, 2000 AT, 3200)",
+    "posicao": "Cilindro móvel dentado da alimentação",
+    "mola": "Mola do cilindro dentado",
+    "tipo": "tracao",
+    "funcao": "Pressiona o cilindro dentado móvel sobre a forragem na alimentação [tipo presumido, não informado pela fonte]",
+    "fonte": "https://produto.mercadolivre.com.br/MLB-3120505007-mola-do-cilindro-dentado-da-ensiladeira-jf-at-1600-_JM"
+  },
+  {
+    "setor": "Ensilagem e alimentação animal",
+    "implemento": "Ensiladeira Nogueira (EN-9, EN-12, EN-6400 a EN-6800)",
+    "posicao": "Rolo dentado da alimentação",
+    "mola": "Mola do rolo dentado",
+    "tipo": "tracao",
+    "funcao": "Pressiona o rolo dentado sobre a forragem na alimentação [tipo presumido, não informado pela fonte]",
+    "fonte": "https://produto.mercadolivre.com.br/MLB-3611301488-mola-do-rolo-dentado-pensiladeiras-nogueira-2904641-_JM"
+  },
+  {
+    "setor": "Ensilagem e alimentação animal",
+    "implemento": "Ensiladeira Nogueira Pecus 9004",
+    "posicao": "Rolo dentado da alimentação",
+    "mola": "Mola do rolo dentado",
+    "tipo": "tracao",
+    "funcao": "Pressiona o rolo dentado sobre a forragem na alimentação [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/ensiladeiras-pecus-9004-pecas"
+  },
+  {
+    "setor": "Ensilagem e alimentação animal",
+    "implemento": "Ensiladeira Nogueira New Pecus",
+    "posicao": "Rolo dentado da alimentação",
+    "mola": "Mola do rolo dentado",
+    "tipo": "tracao",
+    "funcao": "Pressiona o rolo dentado sobre a forragem na alimentação [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/ensiladeira-nogueira-new-pecus"
+  },
+  {
+    "setor": "Ensilagem e alimentação animal",
+    "implemento": "Ensiladeira Nogueira Pecus 9000 / Pecus 9004",
+    "posicao": "Engate",
+    "mola": "Mola do engate",
+    "tipo": "tracao",
+    "funcao": "Mantém o mecanismo de engate na posição [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/ensiladeiras-pecus-9004-pecas"
+  },
+  {
+    "setor": "Ensilagem e alimentação animal",
+    "implemento": "Ensiladeiras JF, Nogueira, Pinheiro e Cremasco",
+    "posicao": "Quebra-jato (defletor) na ponta da bica de descarga",
+    "mola": "Mola do quebra-jato / mola da bica",
+    "tipo": "tracao",
+    "funcao": "Alinha o quebra-jato com a bica de descarga [tipo presumido, não informado pela fonte]",
+    "fonte": "https://produto.mercadolivre.com.br/MLB-4863733166-mola-quebra-jato-ensiladeiras-jf-nogueira-pinheiro-2904509-_JM"
+  },
+  {
+    "setor": "Café",
+    "implemento": "Colhedora de café Jacto K3",
+    "posicao": "Pá (nome usado no anúncio: 'mola da pá')",
+    "mola": "Mola da pá",
+    "tipo": "torcao",
+    "funcao": "Retorno da pá após a passagem do tronco do cafeeiro [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/colheitadeira-cafe"
+  },
+  {
+    "setor": "Café",
+    "implemento": "Colhedora de café Jacto",
+    "posicao": "Recolhedor (sistema de recolhimento)",
+    "mola": "Mola reforçada do recolhedor",
+    "tipo": "torcao",
+    "funcao": "Retorna as lâminas do recolhedor após a passagem do tronco [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/colhedora-de-cafe-jacto"
+  },
+  {
+    "setor": "Café",
+    "implemento": "Colhedora de café (anúncio: 'colhedora de café Matão')",
+    "posicao": "Recolhedor (sistema de recolhimento)",
+    "mola": "Mola reforçada do recolhedor",
+    "tipo": "torcao",
+    "funcao": "Retorna as lâminas do recolhedor após a passagem do tronco [tipo presumido, não informado pela fonte]",
+    "fonte": "https://produto.mercadolivre.com.br/MLB-5390340602-kit-10-molas-reforcadas-recolhedor-colhedora-de-cafe-mato-_JM"
+  },
+  {
+    "setor": "Café",
+    "implemento": "Colhedora de café (marca não informada, anúncio de Varginha-MG)",
+    "posicao": "Recolhedor",
+    "mola": "Mola para recolhedor de café",
+    "tipo": "torcao",
+    "funcao": "Retorna as lâminas do recolhedor após a passagem do tronco [tipo presumido, não informado pela fonte]",
+    "fonte": "https://www.mfrural.com.br/busca/recolhedor/categoria/17-pecas"
+  },
+  {
+    "setor": "Algodão",
+    "implemento": "Colhedora de algodão picker John Deere (9970, 9986, CP690)",
+    "posicao": "Placa de pressão dianteira e traseira da unidade de colheita",
+    "mola": "Mola de torção da placa de pressão (direita e esquerda)",
+    "tipo": "torcao",
+    "funcao": "Mantém a placa de pressão comprimindo a planta contra os fusos",
+    "fonte": "https://www.abilenemachine.com/torsion-spring-right-hand"
+  },
+  {
+    "setor": "Algodão",
+    "implemento": "Colhedora de algodão picker John Deere (unidades Pro 12 / Pro 16: 7660, 7760, 9970, 9986, 9996, CP690)",
+    "posicao": "Placa de pressão - posições central e superior",
+    "mola": "Mola de torção central e superior da placa de pressão",
+    "tipo": "torcao",
+    "funcao": "Mantém a placa de pressão comprimindo a planta contra os fusos",
+    "fonte": "https://zoro.com/aftermarket-amn276341-torsion-spring-middle-and-top-amn276341-abl/i/G008394177"
+  },
+  {
+    "setor": "Algodão",
+    "implemento": "Colhedora de algodão picker Case IH",
+    "posicao": "Porta de pressão dianteira (haste das molas, 'spring rod' OEM 673851R3 / 10322R / 1982712C1)",
+    "mola": "Molas da porta de pressão montadas na haste",
+    "tipo": "torcao",
+    "funcao": "Mantêm a porta de pressão carregada contra a planta [tipo presumido, não informado pela fonte]",
+    "fonte": "https://certipik.com/case-ih/deep-dish-doors/"
+  },
+  {
+    "setor": "Algodão",
+    "implemento": "Colhedora de algodão picker John Deere",
+    "posicao": "Pino da porta de pressão",
+    "mola": "Mola do pino da porta de pressão",
+    "tipo": "compressao",
+    "funcao": "Retém o pino de fixação da porta de pressão [tipo presumido, não informado pela fonte]",
+    "fonte": "https://certipik.com/john-deere/deep-dish-doors/"
+  },
+  {
+    "setor": "Feijão, mandioca e hortaliças",
+    "implemento": "Recolhedora-trilhadora de feijão MIAC/Colombo Double Master II",
+    "posicao": "Unidade recolhedora",
+    "mola": "Molas de sustentação da unidade recolhedora",
+    "tipo": "tracao",
+    "funcao": "Sustentam a unidade recolhedora e aliviam seu peso sobre o solo [tipo presumido, não informado pela fonte]",
+    "fonte": "https://industriascolombo.com.br/double-master-ii-recolhedora-trilhadora-de-feijao"
+  },
+  {
+    "setor": "Feijão, mandioca e hortaliças",
+    "implemento": "Recolhedora-trilhadora de feijão MIAC/Colombo Double Master IV / IVs",
+    "posicao": "Unidade recolhedora (sistema de molas e rodas-guia; controle de altura)",
+    "mola": "Molas de sustentação e de absorção de impactos da unidade recolhedora",
+    "tipo": "tracao",
+    "funcao": "Sustentam a unidade recolhedora e absorvem impactos do terreno [tipo presumido, não informado pela fonte]",
+    "fonte": "https://industriascolombo.com.br/double-master-ivs-recolhedora-trilhadora-de-feijao"
+  },
+  {
+    "setor": "Feijão, mandioca e hortaliças",
+    "implemento": "Recolhedora-trilhadora de feijão MIAC/Colombo Double Master IV / IVs",
+    "posicao": "Recolhedor (68 dedos no IV; 174 no IVs)",
+    "mola": "Dedo recolhedor flexível com base de borracha",
+    "tipo": "torcao",
+    "funcao": "Dedo flexível que levanta a leira de feijão para a máquina",
+    "fonte": "https://industriascolombo.com.br/double-master-ivs-recolhedora-trilhadora-de-feijao"
+  },
+  {
+    "setor": "Feijão, mandioca e hortaliças",
+    "implemento": "Plataforma recolhedora de feijão MIAC",
+    "posicao": "Recolhedor da plataforma",
+    "mola": "Dedo recolhedor flexível de aço revestido de borracha",
+    "tipo": "torcao",
+    "funcao": "Dedo flexível que levanta a leira de feijão para a plataforma",
+    "fonte": "https://www.mfrural.com.br/busca/dedo-recolhedor"
+  },
+  {
+    "setor": "Feijão, mandioca e hortaliças",
+    "implemento": "Microtrator Yanmar/Agritech TC8, TC10, TC11, TC12, TC14 (com enxada rotativa)",
+    "posicao": "Embreagem principal",
+    "mola": "Mola da embreagem",
+    "tipo": "compressao",
+    "funcao": "Mantém a embreagem do microtrator acoplada [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/pecas-para-micro-trator-yanmar"
+  },
+  {
+    "setor": "Feijão, mandioca e hortaliças",
+    "implemento": "Enxada rotativa do microtrator Yanmar TC10, TC11, TC12, TC14, TC14S",
+    "posicao": "Alavanca de mudança da rotativa",
+    "mola": "Mola da alavanca de mudança da rotativa",
+    "tipo": "tracao",
+    "funcao": "Mantém a alavanca de mudança da enxada rotativa na posição [tipo presumido, não informado pela fonte]",
+    "fonte": "https://lista.mercadolivre.com.br/rotativa-yanmar-para-tc-12"
+  },
+  {
+    "setor": "Fruticultura e citros",
+    "implemento": "Tesoura de poda manual Felco (2, 4, 7, 8, 9, 10, 11)",
+    "posicao": "Entre os cabos da tesoura",
+    "mola": "Mola da tesoura de poda",
+    "tipo": "compressao",
+    "funcao": "Reabre os cabos da tesoura após cada corte",
+    "fonte": "https://kilianhardware.com/fe2sp.html"
+  },
+  {
+    "setor": "Fruticultura e citros",
+    "implemento": "Tesoura de poda manual Tramontina (78304, 78308, 78316)",
+    "posicao": "Entre os cabos da tesoura",
+    "mola": "Mola helicoidal da tesoura de poda",
+    "tipo": "compressao",
+    "funcao": "Reabre os cabos da tesoura após cada corte [tipo presumido, não informado pela fonte]",
+    "fonte": "https://www.lojadomecanico.com.br/produto/133543/33/594/mola-helicoidal-para-tesoura-de-poda-em-aco-tramontina-78399017"
+  },
+  {
+    "setor": "Fruticultura e citros",
+    "implemento": "Pulverizador estacionário Yamaho HS-3 / HS-40",
+    "posicao": "Válvulas da bomba",
+    "mola": "Conjunto de mola da válvula",
+    "tipo": "compressao",
+    "funcao": "Fecha a válvula da bomba a cada ciclo do pistão [tipo presumido, não informado pela fonte]",
+    "fonte": "https://www.lojadomecanico.com.br/produto/156946/33/349/conjunto-de-mola-da-valvula-para-pulverizadores-hs-3-e-hs-40-yamaho-6515"
+  },
+  {
+    "setor": "Fruticultura e citros",
+    "implemento": "Pulverizador estacionário Yamaho",
+    "posicao": "Válvula reguladora de pressão",
+    "mola": "Mola da válvula reguladora",
+    "tipo": "compressao",
+    "funcao": "Define a pressão de abertura da válvula reguladora [tipo presumido, não informado pela fonte]",
+    "fonte": "https://www.lojadomecanico.com.br/produto/156947/33/349/mola-valvula-reguladora-para-pulverizadores-yamaho-464"
+  }
+]
