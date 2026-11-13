@@ -86,7 +86,7 @@ Troca, financiamento e negociação de valor: só com o Roberto.
 
 | Assunto | Pessoa | Horário |
 |---|---|---|
-| Operação e rampa | Zé (encarregado) | horário da rampa |
+| Operação e rampa | Zé (encarregado) | todos os dias, 7h às 19h |
 | Financeiro | Carla | segunda a sexta, 8h às 18h |
 | Vendas | Roberto | segunda a sábado, 9h às 18h |
 | Gerência, reclamações, desconto e exceção de aluguel, vaga e visita | Sandra | segunda a sábado, 8h às 18h |

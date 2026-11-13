@@ -70,7 +70,7 @@ export const CENARIOS = [
     nome: 'Aluguel de jet até o sinal',
     quem: null,
     agora: '2026-12-17T14:00',
-    falas: ['Oi, quero alugar um jet no sábado, 19/12, pra mim e minha namorada. Tenho habilitação de motonauta.', 'Fechado, pode reservar. Meu nome é Lucas.'],
+    falas: ['Oi, quero alugar um jet no sábado, 19/12, a diária, pra mim e minha namorada. Tenho habilitação de motonauta.', 'Fechado, pode reservar. Meu nome é Lucas.'],
     conferir: ({ store, respostas }) => {
       const r = store.registros.find((x) => x.tipo === 'reserva');
       return [
