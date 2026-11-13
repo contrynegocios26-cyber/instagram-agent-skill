@@ -184,9 +184,9 @@ Todo post segue o layout que já está no perfil @countrynegocios:
 4. Fundo com logo ou telefone de outra loja: suba o `blur` (40 ou mais).
 5. Nunca anuncie um item da ficha que não foi confirmado para o ano e a versão exatos.
 
-## Jet na Prainha de Santa Rosa (padrão para as próximas unidades)
+## Cenário de Porto Rico (regra)
 
-- `tools/santarosa.py <unidade>.json [reel]` gera o feed 4:5 e o story 9:16 com o jet na água em
-  frente à Prainha de Santa Rosa. Com `reel`, gera também o Reel narrado que abre com a foto aérea da prainha.
-- Cenários e licença: `cenarios/` (fotos CC0 da AEN). Sempre com crédito e "montagem ilustrativa".
-- Ajustes por unidade no JSON: `sr_wl` (linha d'água), `sr_w` e `sr_w_story` (tamanho), `sr_reel` (falas).
+- NÃO montar o jet dentro da foto do rio. O cliente achou artificial e reprovou.
+- Padrão aprovado: foto real de Porto Rico (cenários CC0 em `cenarios/`) num bloco e o jet em
+  estúdio em outro bloco ou slide, como no slide 4 e no Reel de `midia/miami-do-parana/` (`tools/miami.py`).
+- Para o jet aparecer na água de verdade: vídeo ou foto real gravados pela loja.

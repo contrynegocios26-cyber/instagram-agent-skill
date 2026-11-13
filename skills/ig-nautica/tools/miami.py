@@ -14,7 +14,7 @@ def cut(p,bottom=None):
         a=np.array(J).astype(float); h=a.shape[0]; c=int(h*bottom); a[...,3]*=np.clip((c-np.arange(h))/6,0,1)[:,None]; J=Image.fromarray(a.astype('uint8'),'RGBA')
     return J
 def rs(J,w): return J.resize((w,int(J.height*w/J.width)),Image.LANCZOS)
-CREDIT='Fotos de Porto Rico: Roberto Dziura Jr./AEN (domínio público) · montagens ilustrativas'
+CREDIT='Fotos de Porto Rico: Roberto Dziura Jr./AEN (domínio público)'
 def credit(im): ImageDraw.Draw(im).text((im.width/2,im.height-22),CREDIT,font=sans(17,'m'),fill=(235,238,240),anchor='mm',stroke_width=2,stroke_fill=(20,25,30))
 def shade(im,top=420,bot=0,a1=190,a2=0):
     im=im.convert('RGBA'); W_,H_=im.size; ov=Image.new('RGBA',im.size,(0,0,0,0)); d=ImageDraw.Draw(ov)
@@ -42,18 +42,23 @@ if 'img' in sys.argv:
     T(d,(60,80),'+ de 4 mil',wide(130,900),WHITE); T(d,(60,240),'embarcações',wide(80,900),TAG)
     T(d,(62,360),'Porto Rico é a cidade do Paraná com mais',sans(36,'sb'),WHITE); T(d,(62,408),'barcos registrados na Marinha.*',sans(36,'sb'),WHITE)
     T(d,(62,H_-70),'*Segundo o Governo do Paraná.',sans(24,'m'),WHITE,sw=3); credit(s); s.save(OUT+'02-4-mil-embarcacoes.jpg',quality=96)
-    # 3 pôr do sol com jet
-    s=crop(B+'portorico_pordosol_foto_rdziura-1648.jpg',W_,H_,cx=0.22,cy=0.55)
-    j=rs(J170,720); real.place(s,j,W_-720+10,int(H_*0.78-j.height*0.82),wl=0.82,gr=SUNSET)
-    s=shade(s,top=430,a1=170); d=ImageDraw.Draw(s)
+    # 3 pôr do sol real (sem montagem)
+    s=shade(crop(B+'portorico_pordosol_foto_rdziura-0060.jpg',W_,H_,cx=0.5,cy=0.5),top=430,bot=300,a1=170,a2=170); d=ImageDraw.Draw(s)
     T(d,(60,90),'O pôr do sol',wide(92,900),WHITE); T(d,(60,205),'que vale a viagem.',wide(66,900),TAG)
     T(d,(62,310),'Rio Paraná · Porto Rico',sans(36,'sb'),WHITE); credit(s); s.save(OUT+'03-por-do-sol.jpg',quality=96)
-    # 4 só falta você
-    s=real.bg_crop('ilha_carioca_foto_rdzura-1754.jpg',W_,H_,cx_frac=0.5,cy_frac=0.55)
-    j=rs(J230,760); real.place(s,j,W_-760+10,int(H_*0.80-j.height*0.80),wl=0.80)
-    s=shade(s,top=430,a1=180); d=ImageDraw.Draw(s)
-    T(d,(60,90),'Só falta',wide(110,900),WHITE); T(d,(60,225),'você aqui.',wide(110,900),TAG); T(d,(62,370),'De jet ou de lancha, na Prainha de Santa Rosa.',sans(32,'sb'),WHITE)
-    credit(s); s.save(OUT+'04-so-falta-voce.jpg',quality=96)
+    # 4 só falta o seu jet: cenário real em cima, jet em estúdio embaixo
+    s=Image.new('RGB',(W_,H_),NAVY)
+    top=shade(real.bg_crop('ilha_carioca_foto_rdzura-1754.jpg',W_,640,cx_frac=0.5,cy_frac=0.42),top=300,a1=170); s.paste(top,(0,0))
+    d=ImageDraw.Draw(s); T(d,(60,70),'Só falta',wide(100,900),WHITE); T(d,(60,190),'o seu jet.',wide(100,900),TAG)
+    pw=d.textlength('Prainha de Santa Rosa',font=sans(30,'sb')); d.rounded_rectangle((60,540,60+pw+80,598),radius=29,fill=WHITE)
+    d.ellipse((80,557,104,581),fill=(220,60,50)); d.ellipse((88,565,96,573),fill=WHITE); d.text((116,552),'Prainha de Santa Rosa',font=sans(30,'sb'),fill=NAVY2)
+    d.rectangle((0,640,W_,646),fill=TAG)
+    st=kit.studio(W_,H_-646,cy=360); kit.place_jet(st,rs(J230,600),W_-600+12,60); s.paste(st,(0,646))
+    d=ImageDraw.Draw(s); d.text((60,700),'Sea-Doo',font=sans(36,'sb'),fill=TAG); d.text((56,745),'GTX 230',font=wide(84,900),fill=WHITE)
+    d.text((60,880),'2025 · 17 horas',font=sans(36,'sb'),fill=WHITE); d.text((60,930),'230 hp',font=sans(36,'sb'),fill=WHITE)
+    d.rounded_rectangle((60,1010,420,1100),radius=45,fill=TAG); d.text((240,1055),'R$ 145 mil',font=wide(44,900),fill=NAVY2,anchor='mm')
+    L=logo(240); s.paste(L,(60,1200),L); d.text((1020,1230),'(44) 99884-6314',font=wide(36,850),fill=WHITE,anchor='ra')
+    credit(s); s.save(OUT+'04-so-falta-o-seu.jpg',quality=96)
     # 5 escolha o seu
     s=kit.studio(W_,H_,cy=600); d=ImageDraw.Draw(s); L=logo(250); s.paste(L,(60,50),L)
     d.text((60,150),'Escolha o seu',font=wide(76,900),fill=WHITE); d.text((62,255),'Pronta entrega na Country',font=sans(34,'sb'),fill=TAG)
@@ -71,7 +76,7 @@ if 'img' in sys.argv:
     d.line((140,940,940,940),fill=GOLD,width=3)
     T(d,(540,980),'Chame no WhatsApp',sans(40,'m'),WHITE,'ma'); T(d,(540,1040),'(44) 99884-6314',wide(68,900),WHITE,'ma'); T(d,(540,1150),'ou comente MIAMI',sans(40,'sb'),TAG,'ma')
     credit(s); s.save(OUT+'06-cta.jpg',quality=96)
-    names=['01-miami-do-parana','02-4-mil-embarcacoes','03-por-do-sol','04-so-falta-voce','05-escolha-o-seu','06-cta']
+    names=['01-miami-do-parana','02-4-mil-embarcacoes','03-por-do-sol','04-so-falta-o-seu','05-escolha-o-seu','06-cta']
     ims=[Image.open(OUT+n+'.jpg').resize((360,450)) for n in names]; c=Image.new('RGB',(370*6,450),'white')
     for i,im in enumerate(ims): c.paste(im,(i*370,0))
     c.save('/tmp/claude-0/miami_prev.jpg'); print('img ok')
@@ -122,8 +127,8 @@ if 'reel' in sys.argv:
         dr.text((540,1270),'ou comente MIAMI',font=sans(40,'sb'),fill=TAG,anchor='mm'); credit(b); return b
     sc=[dict(spk='Tem gente que chama de Miami do Paraná.',cap=None,draw=titled(city,'MIAMI','DO PARANÁ'),flash=False,min=3.0),
         dict(spk='Porto Rico tem mais de quatro mil embarcações registradas. É a cidade com mais barcos do estado.',cap='Porto Rico tem mais de 4 mil embarcações registradas. É a cidade com mais barcos do estado.',draw=titled(prai,'+4 MIL','EMBARCAÇÕES',s1=130),ycap=1560),
-        dict(spk='O pôr do sol mais bonito do rio Paraná...',cap='O pôr do sol mais bonito do rio Paraná...',draw=sunset,ycap=1560),
-        dict(spk='E a Prainha de Santa Rosa te esperando. Só falta você chegar de jet.',cap='E a Prainha de Santa Rosa te esperando. Só falta você chegar de jet.',draw=ilha,ycap=1560),
+        dict(spk='O pôr do sol mais bonito do rio Paraná...',cap='O pôr do sol mais bonito do rio Paraná...',draw=titled(kb(B+'portorico_pordosol_foto_rdziura-0060.jpg',cx=0.5,z0=1.0,z1=1.12,dx=0.05),'PÔR DO SOL','QUE VALE A VIAGEM',s1=110,s2=60),ycap=1560),
+        dict(spk='E a Prainha de Santa Rosa te esperando. Só falta o seu jet.',cap='E a Prainha de Santa Rosa te esperando. Só falta o seu jet.',draw=titled(kb(SRD+'praia_santa_rosa_foto_rdzura-0085.jpg',cx=0.55,z0=1.0,z1=1.15,dx=0.04),'PRAINHA DE','SANTA ROSA',s1=96,s2=110),ycap=1560),
         dict(spk='Na Cântri você escolhe o seu. Tem GTI e GTX, de cento e cinco a cento e quarenta e cinco mil.',cap='Na Country você escolhe o seu. Tem GTI e GTX, de R$ 105 a R$ 145 mil.',draw=lineup,ycap=1680,min=6.3),
         dict(spk='Seu lugar na Miami do Paraná começa na Cântri. Chama no zap!',cap=None,draw=endcard,min=4.0)]
     print('reel',build(sc,OUT+'reel-miami-do-parana.mp4'))

@@ -16,3 +16,4 @@ Evitar fotos com pessoas identificáveis em primeiro plano (direito de imagem).
 | protorico_aereas_foto_rdziura-0109.jpg | Roberto Dziura Jr./AEN, jan/2023 (prainha com barcos) | idem |
 | portorico_pordosol_foto_rdziura-1648.jpg | Roberto Dziura Jr./AEN, jan/2023 (pôr do sol no rio) | idem |
 | portorico_pordosol_foto_rdziura-0076.jpg | Roberto Dziura Jr./AEN, jan/2023 (rio dourado, aérea) | idem |
+| portorico_pordosol_foto_rdziura-0060.jpg | Roberto Dziura Jr./AEN, jan/2023 (pôr do sol com nuvens) | idem |
