@@ -49,7 +49,7 @@ def build(scenes,out,ycap=1040,voice='faber'):
     with wave.open(wav,'wb') as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((track*32767).astype(np.int16).tobytes())
     wr=subprocess.Popen(['ffmpeg','-y','-loglevel','error','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-i',wav,
       '-af','highpass=f=80,acompressor=threshold=-18dB:ratio=3:attack=5:release=80,loudnorm=I=-14:TP=-1.5,aresample=44100','-ac','2',
-      '-c:v','libx264','-pix_fmt','yuv420p','-crf','19','-preset','medium','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',out],stdin=subprocess.PIPE)
+      '-c:v','libx264','-pix_fmt','yuv420p','-crf','15','-preset','slow','-profile:v','high','-tune','film','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',out],stdin=subprocess.PIPE)
     N=int(T*FPS)
     for i in range(N):
         t=i/FPS

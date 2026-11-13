@@ -107,7 +107,7 @@ if ONLY in('all','reels'):
     PP=P.resize((1620,2880),Image.LANCZOS)
     def view(cx,cy,z):
         w=W/z; h=H/z; cx=min(max(cx,w/2),W-w/2); cy=min(max(cy,h/2),H-h/2)
-        return PP.crop(tuple(int(v*1.5) for v in (cx-w/2,cy-h/2,cx+w/2,cy+h/2))).resize((W,H),Image.BILINEAR)
+        return PP.crop(tuple(int(v*1.5) for v in (cx-w/2,cy-h/2,cx+w/2,cy+h/2))).resize((W,H),Image.LANCZOS)
     def ti(t,font,fill):
         d=ImageDraw.Draw(Image.new('L',(1,1))); b=d.textbbox((0,0),t,font=font)
         im=Image.new('RGBA',(b[2]-b[0]+20,b[3]-b[1]+20),(0,0,0,0)); ImageDraw.Draw(im).text((10-b[0],10-b[1]),t,font=font,fill=fill)
@@ -150,7 +150,7 @@ if ONLY in('all','reels'):
             s=eob(seg(t,0,0.35)); pc(fr,ti(n,wide(150,900),TAG),150,1430,sc=0.6+0.4*s)
             dr.text((280,1350),title,font=wide(60,850),fill=WHITE); dr.text((282,1440),sub,font=sans(40,'sb'),fill=MUTE); return fr
         return f
-    V=[tuple(v) for v in C['views']]  # 6 enquadramentos (cx,cy,z) usados nas cenas
+    V=[(v[0],v[1],min(v[2],C.get('max_zoom',1.35))) for v in C['views']]  # 6 enquadramentos (cx,cy,z) usados nas cenas
     R=C['reel']
     # REEL 1 estúdio
     H1=ti(R['hook1'],wide(116,900),TAG); H2=ti(R['hook2'],wide(104,900),WHITE)
