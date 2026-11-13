@@ -16,7 +16,7 @@ function montar({ redigir = null, agora = '2026-12-18T12:00' } = {}) {
   const store = criarStore(fs.mkdtempSync(path.join(os.tmpdir(), 'marina-equipe-')));
   semear(store, 'exemplo');
   const agenda = criarAgenda(store);
-  const equipe = criarEquipe({ store, agenda, ia: { redigir, modelo: 'teste' }, urlBase: 'https://marina.exemplo' });
+  const equipe = criarEquipe({ store, agenda, ia: { redigir, modelo: 'teste' } });
   const cli = (nome) => store.clientes.find((c) => c.nome.startsWith(nome));
   const descida = (nome, data, hora, detalhes = '') => agenda.registrar({ cliente: cli(nome), conversaId: null, origem: 'equipe', forcar: true }, { tipo: 'descida', data, hora, detalhes });
   return { store, agenda, equipe, cli, descida };
@@ -80,7 +80,8 @@ test('relacionamento: vencimento, revisão, documento, retomada e pós-passeio',
   assert.match(por('documento')[0].texto, /documento da Lancha "Serena", 29 pés vence em 10\/01/);
 
   assert.equal(por('retomada').length, 1);
-  assert.match(por('retomada')[0].texto, /Olá, Fernanda!.*pelo seu link: https:\/\/marina\.exemplo\/c\//);
+  assert.match(por('retomada')[0].texto, /Olá, Fernanda!.*pelo seu link de atendimento\./);
+  assert.ok(store.clientes.every((c) => !JSON.stringify(store.sugestoes).includes(c.token)), 'nenhuma sugestão carrega o link pessoal');
 
   assert.equal(por('pos-passeio').length, 1);
   assert.match(por('pos-passeio')[0].texto, /Olá, Paulo!.*passeio de 17\/12.*https:\/\/g\.page\/r\/marina-remanso-exemplo\/review/);

@@ -99,7 +99,7 @@ export const FERRAMENTAS = [
   {
     name: 'encaminhar',
     description:
-      'Chama uma pessoa da equipe da marina. O chamado aparece no painel da equipe com o resumo. Use o nome e a função que estão na ficha. Um assunto, um chamado: se surgir fato novo, mande outro chamado completo. No resumo entra só o que o cliente disse ou o que está na ficha.',
+      'Chama uma pessoa da equipe da marina. O chamado aparece no painel da equipe com o resumo; o cliente não vê. Use o nome e a função que estão na ficha. Um assunto, um chamado: se surgir fato novo, mande outro chamado completo para a mesma pessoa, que o sistema troca pelo anterior. No resumo entra o que o cliente disse, o que está na ficha e o que você já respondeu.',
     strict: true,
     input_schema: {
       type: 'object',
@@ -125,11 +125,19 @@ export const FERRAMENTAS = [
       properties: {
         tipo: { type: 'string', enum: TIPOS },
         data: ouNulo('Data no formato AAAA-MM-DD. Obrigatória para descida e reserva.'),
-        hora: ouNulo('Hora no formato HH:MM, 24 horas. Para descida, o início da janela. Para subida, a hora que o cliente informou.'),
+        hora: ouNulo('Hora no formato HH:MM, 24 horas. Para descida, o início da janela. Para subida, a hora que o cliente informou. Para reserva, nulo na diária ou a hora de início no aluguel por hora.'),
         item_aluguel: ouNulo('Id do item de aluguel, só para tipo reserva.'),
         registro_id: ouNulo('Id de um registro em aberto do contexto. Obrigatório para alteracao e cancelamento; opcional para servico ligado a uma descida.'),
-        detalhes: { type: 'string', description: 'Preparação, serviço com valor, número de pessoas, o que o interessado procura. Texto curto.' },
-        status: { type: 'string', enum: ['confirmado', 'pre-reserva', 'interesse', 'aguardando equipe'] },
+        detalhes: {
+          type: 'string',
+          description:
+            'Só o pedido do cliente: preparação, serviço com valor, número de pessoas, o que o interessado procura. Texto curto. O cliente pode ver este campo: observação para a equipe (pendência, desconfiança, contexto) vai no resumo de encaminhar, nunca aqui.',
+        },
+        status: {
+          type: 'string',
+          enum: ['confirmado', 'pre-reserva', 'interesse', 'aguardando equipe'],
+          description: 'Para alteracao e cancelamento este campo é ignorado: mande confirmado.',
+        },
         nome_cliente: ouNulo('Nome que o visitante informou. Nulo para cliente do link pessoal.'),
         embarcacao: ouNulo('Embarcação citada pelo visitante. Nulo para cliente do link pessoal.'),
         telefone: ouNulo('WhatsApp de contato que o visitante informou, só os números com DDD. Nulo se não informou ou se é cliente do link pessoal.'),
@@ -151,7 +159,8 @@ const QUEM = { cliente: 'cliente', assistente: 'você', equipe: 'equipe', sistem
 function linhaDeMensagem(m) {
   const texto = m.tipo === 'foto' ? '(foto)' : m.texto;
   const autor = m.de === 'equipe' && m.autor ? `equipe, ${m.autor}` : QUEM[m.de] || m.de;
-  return `- [${autor}] ${String(texto).replace(/\s+/g, ' ').slice(0, 400)}`;
+  const quando = m.dataLocal ? `${m.dataLocal.split('-').reverse().slice(0, 2).join('/')} ${m.horaLocal} ` : '';
+  return `- ${quando}[${autor}] ${String(texto).replace(/\s+/g, ' ').slice(0, 400)}`;
 }
 
 /**

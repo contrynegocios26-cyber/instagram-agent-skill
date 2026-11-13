@@ -18,6 +18,7 @@ process.env.ADMIN_SENHA = 'admin-teste';
 const aqui = path.dirname(fileURLToPath(import.meta.url));
 const telas = path.join(aqui, '..', 'docs', 'telas');
 const { criarApp } = await import('../lib/app.js');
+const { agora, somarDias } = await import('../lib/tempo.js');
 const { app, store, atendente } = criarApp({ dir: fs.mkdtempSync(path.join(os.tmpdir(), 'marina-e2e-')), semente: 'exemplo' });
 const servidor = await new Promise((r) => {
   const s = app.listen(0, () => r(s));
@@ -32,6 +33,7 @@ const vigiar = (pagina, nome) => {
   pagina.on('console', (m) => m.type() === 'error' && !/401|409/.test(m.text()) && erros.push(`${nome} console: ${m.text()}`));
 };
 const passos = [];
+let novo = null; // segundo visitante, aberto já no modo automático
 const passo = async (nome, fn) => {
   await fn();
   passos.push(nome);
@@ -164,6 +166,30 @@ try {
     assert.equal(store.rascunhos.filter((r) => r.conversaId === atendente.conversaDoCliente(fernanda).id).length, 0, 'IA parada com a equipe na conversa');
   });
 
+  await passo('foto do cliente aparece no chat dele e no painel, por endereço próprio', async () => {
+    const imagem = await chat.screenshot(); // um PNG de verdade, do tamanho de uma foto de celular
+    await chat.locator('#arquivo').setInputFiles({ name: 'casco.png', mimeType: 'image/png', buffer: imagem });
+    const noChat = chat.locator('.balao.meu:not(.enviando) img');
+    await noChat.waitFor();
+    const src = await noChat.getAttribute('src');
+    assert.match(src, /^\/api\/chat\/foto\/foto_[0-9a-f]+\.jpg\?f=/, 'endereço assinado só para esta foto');
+    assert.ok(!/[?&]k=/.test(src), 'a chave da sessão não vai no endereço');
+    // A imagem é procurada de novo a cada tentativa: o painel redesenha a tela quando chega novidade.
+    const carregou = (seletor) => {
+      const i = document.querySelector(seletor);
+      if (!i) return false;
+      i.scrollIntoView({ block: 'nearest' });
+      return i.complete && i.naturalWidth > 0;
+    };
+    await chat.waitForFunction(carregou, '.balao.meu:not(.enviando) img');
+    await painel.waitForFunction(carregou, '.msgs img');
+    // Sem a assinatura a foto não abre (o servidor responde como se não existisse).
+    const arquivo = src.split('?')[0];
+    assert.equal((await chat.request.get(base + arquivo)).status(), 404);
+    assert.equal((await chat.request.get(`${base + arquivo}?f=${encodeURIComponent('a.b')}`)).status(), 404);
+    assert.equal((await outro.request.get(base + src)).status(), 200, 'o endereço assinado abre a foto, e só ela');
+  });
+
   await passo('administração: clientes, configuração e relatório abrem', async () => {
     await painel.getByRole('button', { name: 'Clientes' }).click();
     await painel.getByText('Link público').waitFor();
@@ -172,6 +198,7 @@ try {
     await painel.getByRole('button', { name: 'Configuração' }).click();
     await painel.getByLabel('Embarcações por janela').waitFor();
     assert.equal(await painel.getByLabel('Embarcações por janela').inputValue(), '4');
+    assert.equal(await painel.getByLabel('Fuso horário da marina').inputValue(), 'America/Sao_Paulo');
     await painel.getByLabel('Embarcações por janela').fill('5');
     await painel.getByRole('button', { name: 'Salvar configuração' }).first().click();
     await painel.getByText('Configuração salva.').waitFor();
@@ -203,12 +230,83 @@ try {
     await painel.getByText('Automático', { exact: true }).click();
     await painel.getByRole('button', { name: 'Salvar', exact: true }).click();
     await painel.getByRole('button', { name: /Atendente: Automático/ }).waitFor();
-    const novo = await (await navegador.newContext({ viewport: { width: 390, height: 780 } })).newPage();
+    novo = await (await navegador.newContext({ viewport: { width: 390, height: 780 }, locale: 'pt-BR' })).newPage();
     vigiar(novo, 'visitante2');
     await novo.goto(base);
     await novo.getByLabel('Mensagem', { exact: true }).fill('boa tarde');
     await novo.getByRole('button', { name: 'Enviar mensagem' }).click();
     await novo.locator('.balao', { hasText: 'assistente virtual da marina' }).first().waitFor();
+  });
+
+  const amanha = somarDias(agora().data, 1);
+
+  await passo('descida pedida pelo link público espera a equipe, com aviso para conferir quem é', async () => {
+    await novo.getByLabel('Mensagem', { exact: true }).fill('desce a dona lúcia amanhã 9h');
+    await novo.getByRole('button', { name: 'Enviar mensagem' }).click();
+    await novo.locator('#agenda .selo', { hasText: 'aguardando a equipe' }).waitFor();
+    const pedido = store.registros.find((r) => r.tipo === 'descida' && r.hora === '09:00' && r.data === amanha);
+    assert.equal(pedido.status, 'aguardando equipe');
+    assert.equal(pedido.publico, true);
+    await painel.getByRole('button', { name: /^Rampa/ }).click();
+    // O pedido aparece na fila de decisão e, como o quadro está em amanhã, na janela das 9h.
+    const cartao = painel.locator('.barco', { hasText: 'link público: confirme quem é' }).first();
+    await cartao.waitFor();
+    assert.equal(await painel.locator('.barco', { hasText: 'link público: confirme quem é' }).count(), 2);
+    await painel.screenshot({ path: path.join(telas, 'painel-link-publico.png') });
+    await cartao.getByRole('button', { name: 'Liberar', exact: true }).click();
+    await painel.locator('#dlg').getByText('O sistema não sabe quem escreveu', { exact: false }).waitFor();
+    assert.equal(pedido.status, 'aguardando equipe', 'nada é liberado antes de confirmar');
+    await painel.locator('#dlg').getByRole('button', { name: 'Já confirmei, liberar' }).click();
+    await novo.locator('.balao.sistema', { hasText: 'A equipe confirmou' }).waitFor();
+    assert.equal(pedido.status, 'confirmado');
+    await painel.waitForFunction(() => ![...document.querySelectorAll('.barco')].some((b) => b.textContent.includes('link público: confirme quem é')));
+  });
+
+  await passo('a mesma pessoa não marca duas descidas no mesmo dia', async () => {
+    await novo.getByLabel('Mensagem', { exact: true }).fill('desce a dona lúcia amanhã 11h');
+    await novo.getByRole('button', { name: 'Enviar mensagem' }).click();
+    await novo.locator('.balao', { hasText: 'Já existe uma descida' }).waitFor();
+    assert.equal(store.registros.filter((r) => r.tipo === 'descida' && r.hora === '11:00').length, 0);
+  });
+
+  await passo('janela que lotou depois do pedido só libera como encaixe', async () => {
+    // Outro visitante, em outro aparelho, pede as 11h.
+    const terceiro = await (await navegador.newContext({ viewport: { width: 390, height: 780 }, locale: 'pt-BR' })).newPage();
+    vigiar(terceiro, 'visitante3');
+    await terceiro.goto(base);
+    await terceiro.getByLabel('Mensagem', { exact: true }).fill('desce a maré alta amanhã 11h');
+    await terceiro.getByRole('button', { name: 'Enviar mensagem' }).click();
+    await painel.locator('.barco', { hasText: 'link público: confirme quem é' }).first().waitFor();
+    const pedido = store.registros.find((r) => r.tipo === 'descida' && r.hora === '11:00' && r.data === amanha);
+    assert.equal(pedido.status, 'aguardando equipe');
+    // Enquanto o pedido espera, a equipe lota a janela das 11h pelo painel.
+    for (let i = 1; i <= store.config.rampa.capacidade; i++) {
+      const r = await painel.request.post(`${base}/api/painel/registro`, {
+        headers: { 'X-Painel': '1' },
+        data: { tipo: 'descida', nome: `Cliente ${i}`, embarcacao: `Lancha ${i}`, data: amanha, hora: '11:00' },
+      });
+      assert.equal(r.status(), 200, `lançamento ${i}`);
+    }
+    const cartao = painel.locator('.barco', { hasText: 'janela lotada' }).first();
+    await cartao.waitFor();
+    await cartao.getByRole('button', { name: 'Liberar como encaixe' }).click();
+    await painel.locator('#dlg').getByText('já está lotada', { exact: false }).waitFor();
+    await painel.locator('#dlg').getByRole('button', { name: 'Liberar como encaixe' }).click();
+    await terceiro.locator('.balao.sistema', { hasText: 'às 11h' }).waitFor();
+    assert.equal(pedido.status, 'confirmado');
+    await painel.locator('.janela header', { hasText: 'com encaixe' }).waitFor();
+  });
+
+  await passo('mudar a grade avisa das descidas que ficaram fora e o quadro continua mostrando', async () => {
+    await painel.getByRole('button', { name: 'Configuração' }).click();
+    await painel.getByLabel('Janela (minutos)').fill('45');
+    await painel.getByRole('button', { name: 'Salvar configuração' }).first().click();
+    await painel.locator('#dlg').getByText(/Atenção: \d+ descida\(s\) já marcada\(s\) ficaram em horários que não existem na grade nova/).waitFor();
+    await painel.locator('#dlg').getByRole('button', { name: 'Ok' }).click();
+    await painel.getByRole('button', { name: /^Rampa/ }).click();
+    await painel.locator('.janela header', { hasText: 'fora da grade atual' }).first().waitFor();
+    await painel.locator('.barco', { hasText: 'Lancha Maré' }).waitFor();
+    await painel.screenshot({ path: path.join(telas, 'painel-fora-da-grade.png') });
   });
 
   await passo('link pessoal inválido mostra erro claro', async () => {

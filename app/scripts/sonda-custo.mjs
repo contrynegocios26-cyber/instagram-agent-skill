@@ -52,3 +52,26 @@ if (!segunda.cache_read_input_tokens) {
   process.exit(1);
 }
 console.log('\nCache funcionando: o segundo pedido leu o prompt do cache.');
+
+// Manutenção do cache: o pedido sem resposta (max_tokens 0) tem de ler o
+// mesmo cache dos pedidos de verdade. É ele que o servidor manda de hora em
+// hora para o prompt não precisar ser gravado de novo.
+if (!ia.aquecer) {
+  console.log('Manutenção do cache: desligada (IA_MANTER_CACHE=off ou IA_CACHE_TTL diferente de 1h).');
+} else {
+  try {
+    const r = await ia.aquecer({ sistema });
+    const u = r.usage;
+    const usd = custoEstimado(r.model, u);
+    console.log(
+      `manutenção: entrada ${u.input_tokens} · cache gravado ${u.cache_creation_input_tokens ?? 0} · cache lido ${u.cache_read_input_tokens ?? 0} · saída ${u.output_tokens}${usd === null ? '' : ` · US$ ${usd.toFixed(4)}`}`,
+    );
+    if (u.cache_read_input_tokens > 0 && !u.output_tokens) {
+      console.log('Manutenção do cache funcionando: releu o prompt sem gerar resposta.');
+    } else {
+      console.log('ATENÇÃO: a manutenção do cache não releu o prompt. O servidor percebe isso e desliga a manutenção sozinho; o atendimento não é afetado. Avise quem cuida do aplicativo.');
+    }
+  } catch (e) {
+    console.log(`ATENÇÃO: a manutenção do cache foi recusada pela API (${e.message}). O servidor desliga a manutenção sozinho; o atendimento não é afetado.`);
+  }
+}

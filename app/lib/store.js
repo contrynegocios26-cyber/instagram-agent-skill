@@ -83,13 +83,27 @@ export function criarStore(dir) {
     }
   }
 
+  // Erro de gravação (disco cheio, permissão) não pode derrubar o processo
+  // de dentro de um timer: a chave continua marcada e a gravação é tentada
+  // de novo em instantes.
   s.descarregar = () => {
     if (timer) clearTimeout(timer);
     timer = null;
+    let falhou = false;
     for (const chave of [...sujos]) {
-      sujos.delete(chave);
-      gravar(chave);
+      try {
+        gravar(chave);
+        sujos.delete(chave);
+      } catch (e) {
+        falhou = true;
+        console.error(`[dados] não consegui gravar "${chave}": ${e.message}`);
+      }
     }
+    if (falhou && !timer) {
+      timer = setTimeout(s.descarregar, 5000);
+      timer.unref?.();
+    }
+    return !falhou;
   };
 
   /** Marca uma coleção como alterada: 'config', 'ficha', 'clientes',
@@ -101,20 +115,32 @@ export function criarStore(dir) {
   };
 
   s.registrarUso = (linha) => {
-    fs.appendFileSync(arq('uso.jsonl'), `${JSON.stringify(linha)}\n`);
+    try {
+      fs.appendFileSync(arq('uso.jsonl'), `${JSON.stringify(linha)}\n`);
+    } catch (e) {
+      console.error(`[dados] não consegui gravar o uso da IA: ${e.message}`);
+    }
   };
 
+  // Uma linha cortada (queda no meio da gravação) é pulada, não impede a partida.
   s.lerUso = () => {
+    let texto;
     try {
-      return fs
-        .readFileSync(arq('uso.jsonl'), 'utf8')
-        .split('\n')
-        .filter(Boolean)
-        .map((l) => JSON.parse(l));
+      texto = fs.readFileSync(arq('uso.jsonl'), 'utf8');
     } catch (e) {
       if (e.code === 'ENOENT') return [];
       throw e;
     }
+    const linhas = [];
+    for (const l of texto.split('\n')) {
+      if (!l) continue;
+      try {
+        linhas.push(JSON.parse(l));
+      } catch {
+        /* linha incompleta */
+      }
+    }
+    return linhas;
   };
 
   /** Segredo de sessão: vem do ambiente ou é criado e guardado na pasta de dados. */

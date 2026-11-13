@@ -72,7 +72,7 @@ function tempoFalado(seg) {
   return `${(seg / 3600).toFixed(1).replace('.', ',')} horas`;
 }
 
-export function criarEquipe({ store, agenda, ia, avisar = () => {}, urlBase = '' }) {
+export function criarEquipe({ store, agenda, ia, avisar = () => {} }) {
   const cfg = () => store.config;
   const rodando = new Set();
 
@@ -172,15 +172,16 @@ export function criarEquipe({ store, agenda, ia, avisar = () => {}, urlBase = ''
       const temFutura = descidas.some((x) => x.data > hoje);
       const ultima = passadas.at(-1);
       if (ultima && !temFutura && diasEntre(ultima, hoje) >= r.diasSumido) {
-        const link = urlBase && cli.token ? `${urlBase}/c/${cli.token}` : '';
+        // O link pessoal é a credencial do cliente: não entra em sugestão,
+        // em exportação nem em pedido à IA. Ele já tem o link no WhatsApp dele.
         fatos.push({
           chave: `sumido:${cli.id}:${hoje.slice(0, 7)}`,
           tipo: 'retomada',
           titulo: `Sem sair desde ${ddmm(ultima)} · ${cli.nome}`,
           para,
-          dados: { cliente: nome, embarcacao: barco, ultimaSaida: ddmm(ultima), link },
-          modelo: `Olá, ${nome}! Aqui é da ${marina}. Faz um tempo que a ${barco} não vai pra água. Quando quiser sair, é só pedir a descida${link ? ` pelo seu link: ${link}` : ' por aqui'}.`,
-          exige: link ? [link] : [],
+          dados: { cliente: nome, embarcacao: barco, ultimaSaida: ddmm(ultima) },
+          modelo: `Olá, ${nome}! Aqui é da ${marina}. Faz um tempo que a ${barco} não vai pra água. Quando quiser sair, é só pedir a descida pelo seu link de atendimento.`,
+          exige: [],
         });
       }
     }
@@ -220,7 +221,7 @@ export function criarEquipe({ store, agenda, ia, avisar = () => {}, urlBase = ''
     return store.registros
       .filter((r) => frases[r.tipo] && r.status === 'interesse' && !r.rascunho)
       .filter((r) => {
-        const dias = diasEntre(r.criadoEm.slice(0, 10), hoje);
+        const dias = diasEntre(r.criadoDia || r.criadoEm.slice(0, 10), hoje);
         return dias >= 1 && dias <= 14;
       })
       .map((r) => {
@@ -379,7 +380,17 @@ export function criarEquipe({ store, agenda, ia, avisar = () => {}, urlBase = ''
         criadas++;
       }
       const a = agora();
-      store.equipe[id] = { ultimaData: a.data, ultimaSemana: segundaDe(a.data), ultimaEm: `${dataPorExtenso(a.data)}, ${a.hora}`, criadas, erro, por };
+      // Rodar na mão não conta como a rodada do dia: a agendada ainda acontece.
+      const anterior = store.equipe[id] || {};
+      const pelaAgenda = por === 'agenda';
+      store.equipe[id] = {
+        ultimaData: pelaAgenda ? a.data : anterior.ultimaData || null,
+        ultimaSemana: pelaAgenda ? segundaDe(a.data) : anterior.ultimaSemana || null,
+        ultimaEm: `${dataPorExtenso(a.data)}, ${a.hora}`,
+        criadas,
+        erro,
+        por,
+      };
       store.salvar('sugestoes');
       store.salvar('equipe');
       avisar();

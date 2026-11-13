@@ -15,7 +15,7 @@ import { criarAtendente } from './atendente.js';
 import { criarEquipe, AGENTES } from './equipe.js';
 import { relatorio } from './relatorio.js';
 import { assinar, verificar, senhaConfere, lerCookies, criarLimite } from './auth.js';
-import { agora, definirFuso, dataValida, horaValida, normalizarHora, dataPorExtenso, dataCurta, horaFalada } from './tempo.js';
+import { agora, definirFuso, FUSOS, dataValida, horaValida, normalizarHora, dataPorExtenso, dataCurta, horaFalada } from './tempo.js';
 
 const aqui = path.dirname(fileURLToPath(import.meta.url));
 const PUBLICO = path.join(aqui, '..', 'public');
@@ -70,11 +70,21 @@ export function criarApp({ dir, semente = 'vazio' }) {
   const esperaPainel = new Set();
   const esperaChat = new Map();
 
+  // Quem avisa pode estar no meio do atendimento de um cliente. Um erro ao
+  // responder a um painel que estava esperando não pode subir até ali.
+  function chamar(f) {
+    try {
+      f();
+    } catch (e) {
+      console.error('[avisos]', e);
+    }
+  }
+
   function avisar(conversaId) {
     versao++;
-    for (const f of [...esperaPainel]) f();
+    for (const f of [...esperaPainel]) chamar(f);
     const alvos = conversaId ? [esperaChat.get(conversaId)] : [...esperaChat.values()];
-    for (const grupo of alvos) if (grupo) for (const f of [...grupo]) f();
+    for (const grupo of alvos) if (grupo) for (const f of [...grupo]) chamar(f);
   }
 
   function esperar(conjunto, req, res, responder) {
@@ -84,7 +94,13 @@ export function criarApp({ dir, semente = 'vazio' }) {
       feito = true;
       clearTimeout(timer);
       conjunto.delete(fim);
-      if (!res.writableEnded) responder();
+      if (res.writableEnded) return;
+      try {
+        responder();
+      } catch (e) {
+        console.error('[servidor]', e);
+        if (!res.headersSent) res.status(500).json({ erro: 'Erro interno. Tente de novo.' });
+      }
     };
     const timer = setTimeout(fim, ESPERA_LONGA_MS);
     conjunto.add(fim);
@@ -96,7 +112,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
   }
 
   const atendente = criarAtendente({ store, agenda, ia, avisar });
-  const equipe = criarEquipe({ store, agenda, ia, avisar, urlBase: (process.env.URL_PUBLICA || '').replace(/\/$/, '') });
+  const equipe = criarEquipe({ store, agenda, ia, avisar });
 
   const app = express();
   app.set('trust proxy', 1);
@@ -126,8 +142,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
   const marca = (token) => crypto.createHash('sha256').update(token).digest('hex').slice(0, 16);
 
   function conversaDaChave(req) {
-    const chave = req.get('x-chat') || (typeof req.query.k === 'string' ? req.query.k : '');
-    const dados = verificar(chave, segredo);
+    const dados = verificar(req.get('x-chat') || '', segredo, 'chat');
     const conversa = dados ? store.conversas.get(dados.c) || null : null;
     if (!conversa) return null;
     if (conversa.clienteId) {
@@ -137,7 +152,11 @@ export function criarApp({ dir, semente = 'vazio' }) {
     return conversa;
   }
 
-  function paraCliente(m) {
+  // O endereço de cada foto leva uma assinatura própria, que só abre aquela
+  // foto e vence em 12 horas. A chave da sessão nunca vai em endereço.
+  const linkDaFoto = (conversa, arquivo) => `/api/chat/foto/${arquivo}?f=${encodeURIComponent(assinar({ c: conversa.id, n: arquivo }, segredo, HORAS_12, 'foto'))}`;
+
+  function paraCliente(conversa, m) {
     return {
       id: m.id,
       de: m.de,
@@ -146,7 +165,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
       texto: m.texto,
       data: m.dataLocal,
       hora: m.horaLocal,
-      foto: m.tipo === 'foto' ? `/api/chat/foto/${m.arquivo}` : undefined,
+      foto: m.tipo === 'foto' ? linkDaFoto(conversa, m.arquivo) : undefined,
     };
   }
 
@@ -157,7 +176,6 @@ export function criarApp({ dir, semente = 'vazio' }) {
       tipo: r.tipo,
       titulo: r.tipo === 'reserva' ? agenda.nomeDoItem(r.item) : r.tipo === 'servico' ? r.detalhes : r.tipo,
       quando: r.data ? `${dataCurta(r.data)}${r.hora ? `, ${horaFalada(r.hora)}` : ''}` : '',
-      detalhes: r.tipo === 'servico' ? '' : r.detalhes,
       status: r.status,
       etapa: r.etapa || null,
     }));
@@ -167,7 +185,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     const i = depois ? conversa.mensagens.findIndex((m) => m.id === depois) : -1;
     const registros = agendamentosDe(conversa);
     return {
-      mensagens: conversa.mensagens.slice(i + 1).map(paraCliente),
+      mensagens: conversa.mensagens.slice(i + 1).map((m) => paraCliente(conversa, m)),
       digitando: atendente.ocupado(conversa.id),
       comEquipe: conversa.estado === 'humano',
       registros,
@@ -175,10 +193,35 @@ export function criarApp({ dir, semente = 'vazio' }) {
     };
   }
 
-  app.post('/api/chat/foto', express.json({ limit: '8mb' }), (req, res) => {
-    const conversa = conversaDaChave(req);
-    if (!conversa) return erro(res, 401, 'Sessão expirada. Abra o link de novo.');
+  // Espaço ocupado pelas fotos, para o disco não encher.
+  const LIMITE_FOTOS = Number(process.env.FOTOS_LIMITE_MB ?? 1000) * 1024 * 1024;
+  const FOTOS_POR_CONVERSA = 40;
+  const pastaFotos = path.dirname(store.caminhoFoto('x'));
+  let bytesDeFotos = fs.readdirSync(pastaFotos).reduce((t, f) => t + fs.statSync(path.join(pastaFotos, f)).size, 0);
+
+  function apagarFoto(nome) {
+    try {
+      const arq = store.caminhoFoto(nome);
+      bytesDeFotos = Math.max(0, bytesDeFotos - fs.statSync(arq).size);
+      fs.rmSync(arq, { force: true });
+    } catch {
+      /* já não existia */
+    }
+  }
+
+  const sessaoDoChat = (req, res, next) => {
+    req.conversa = conversaDaChave(req);
+    if (!req.conversa) return erro(res, 401, 'Sessão expirada. Abra o link de novo.');
+    next();
+  };
+
+  // A sessão é conferida antes de o servidor ler o corpo de até 8 MB.
+  app.post('/api/chat/foto', sessaoDoChat, express.json({ limit: '8mb' }), (req, res) => {
+    const conversa = req.conversa;
     if (!permitido(`foto:${conversa.id}`, 6, 600_000)) return erro(res, 429, 'Muitas fotos em pouco tempo. Aguarde um pouco.');
+    if (!conversa.clienteId && !permitido(`fotoip:${req.ip}`, 12, 3600_000)) return erro(res, 429, 'Muitas fotos deste aparelho. Tente mais tarde.');
+    if (conversa.mensagens.filter((x) => x.tipo === 'foto').length >= FOTOS_POR_CONVERSA) return erro(res, 429, 'Esta conversa já tem fotos demais. Fale com a equipe.');
+    if (bytesDeFotos >= LIMITE_FOTOS) return erro(res, 507, 'Não consigo receber fotos agora. Fale com a equipe.');
     const m = /^data:image\/(jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/.exec(req.body?.dados || '');
     if (!m) return erro(res, 400, 'Envie uma foto JPG, PNG ou WebP.');
     const buf = Buffer.from(m[2], 'base64');
@@ -190,7 +233,13 @@ export function criarApp({ dir, semente = 'vazio' }) {
     };
     if (!assinaturas[m[1]]) return erro(res, 400, 'Arquivo de imagem inválido.');
     const nome = `${novoId('foto')}.${m[1] === 'jpeg' ? 'jpg' : m[1]}`;
-    fs.writeFileSync(store.caminhoFoto(nome), buf);
+    try {
+      fs.writeFileSync(store.caminhoFoto(nome), buf);
+    } catch (e) {
+      console.error(`[fotos] ${e.message}`);
+      return erro(res, 507, 'Não consigo receber fotos agora. Fale com a equipe.');
+    }
+    bytesDeFotos += buf.length;
     const msg = atendente.receberDoCliente(conversa, { foto: nome });
     res.json({ ok: true, id: msg.id });
   });
@@ -210,7 +259,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
       if (!cliente) return erro(res, 404, 'Este link não é mais válido. Peça um novo à marina.');
       conversa = atendente.conversaDoCliente(cliente);
     } else {
-      const dados = verificar(corpo.chave, segredo);
+      const dados = verificar(corpo.chave, segredo, 'chat');
       conversa = dados ? store.conversas.get(dados.c) : null;
       if (conversa && conversa.clienteId) conversa = null; // conversa de cadastro só entra pelo link pessoal
       if (!conversa) {
@@ -220,7 +269,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     }
     const cliente = atendente.clienteDe(conversa);
     res.json({
-      chave: assinar(cliente ? { c: conversa.id, t: marca(cliente.token) } : { c: conversa.id }, segredo, DIAS_180),
+      chave: assinar(cliente ? { c: conversa.id, t: marca(cliente.token) } : { c: conversa.id }, segredo, DIAS_180, 'chat'),
       marina: { nome: store.config.nome, cidade: store.config.cidade, agencia: store.config.agencia || '' },
       cliente: cliente ? { primeiroNome: cliente.nome.split(' ')[0], embarcacao: cliente.embarcacao } : null,
       alugueis: (store.config.itensAluguel || []).length > 0,
@@ -247,6 +296,8 @@ export function criarApp({ dir, semente = 'vazio' }) {
     const t = texto(req.body?.texto, 1200);
     if (!t) return erro(res, 400, 'Escreva uma mensagem.');
     if (!permitido(`msg:${conversa.id}`, 20, 600_000)) return erro(res, 429, 'Muitas mensagens em pouco tempo. Aguarde um instante.');
+    // No link público o limite vale também por aparelho, somando todas as conversas dele.
+    if (!conversa.clienteId && !permitido(`msgip:${req.ip}`, 40, 600_000)) return erro(res, 429, 'Muitas mensagens deste aparelho. Aguarde um instante.');
     const msg = atendente.receberDoCliente(conversa, { texto: t });
     res.json({ ok: true, id: msg.id });
   });
@@ -260,7 +311,8 @@ export function criarApp({ dir, semente = 'vazio' }) {
   }
 
   app.get('/api/chat/foto/:nome', (req, res) => {
-    const conversa = conversaDaChave(req);
+    const dados = verificar(typeof req.query.f === 'string' ? req.query.f : '', segredo, 'foto');
+    const conversa = dados && dados.n === req.params.nome ? store.conversas.get(dados.c) : null;
     if (!conversa || !conversa.mensagens.some((m) => m.arquivo === req.params.nome)) return erro(res, 404, 'Foto não encontrada.');
     enviarFoto(res, req.params.nome);
   });
@@ -270,7 +322,8 @@ export function criarApp({ dir, semente = 'vazio' }) {
   // =====================================================================
 
   function sessaoDoPainel(req) {
-    return verificar(lerCookies(req).painel, segredo);
+    const s = verificar(lerCookies(req).painel, segredo, 'painel');
+    return s && (s.p === 'equipe' || s.p === 'admin') ? s : null;
   }
 
   function exigir(papel) {
@@ -295,7 +348,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     const seguro = req.secure || process.env.COOKIE_SEGURO === '1';
     res.set(
       'Set-Cookie',
-      `painel=${encodeURIComponent(assinar({ p: papel, n: nome }, segredo, HORAS_12))}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${HORAS_12}${seguro ? '; Secure' : ''}`,
+      `painel=${encodeURIComponent(assinar({ p: papel, n: nome }, segredo, HORAS_12, 'painel'))}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${HORAS_12}${seguro ? '; Secure' : ''}`,
     );
     res.json({ papel, nome });
   });
@@ -312,9 +365,10 @@ export function criarApp({ dir, semente = 'vazio' }) {
   });
 
   const telefoneDe = (clienteId) => (clienteId ? store.clientes.find((c) => c.id === clienteId)?.telefone || '' : '');
-  const comTelefone = (r) => ({ ...r, telefone: telefoneDe(r.clienteId), antes: undefined, historico: undefined });
+  const comTelefone = (r) => ({ ...r, telefone: telefoneDe(r.clienteId) || r.telefone || '', pendente: undefined, historico: undefined });
 
   function nomeDaConversa(c) {
+    if (!c) return { nome: 'Conversa apagada', embarcacao: '', visitante: true, telefone: '' };
     const cli = atendente.clienteDe(c);
     if (cli) return { nome: cli.nome, embarcacao: cli.embarcacao, visitante: false, telefone: cli.telefone || '' };
     const reg = store.registros.find((r) => r.conversaId === c.id && r.clienteNome && r.clienteNome !== 'Visitante');
@@ -354,11 +408,11 @@ export function criarApp({ dir, semente = 'vazio' }) {
       marina: { nome: store.config.nome, modo: store.config.modo, fuso: store.config.fuso, avisoDoDia: store.config.avisoDoDia },
       demonstracao: ia.demonstracao,
       saude: atendente.saude(),
-      ia: { usoHoje: atendente.usoHoje(), limite: atendente.limiteDiario, modelo: ia.modelo },
+      ia: { usoHoje: atendente.usoHoje(), limite: atendente.limiteDiario, usoPublicoHoje: atendente.usoPublicoHoje(), limitePublico: atendente.limitePublico, modelo: ia.modelo },
       quadro: { ...q, descidas: q.descidas.map(comTelefone), subidas: q.subidas.map(comTelefone), servicos: q.servicos.map(comTelefone), reservas: q.reservas.map(comTelefone) },
       pendentes: pend.map(comTelefone),
       chamados: { abertos, resolvidos },
-      rascunhos: store.rascunhos.map((r) => ({
+      rascunhos: store.rascunhos.filter((r) => store.conversas.has(r.conversaId)).map((r) => ({
         id: r.id,
         conversaId: r.conversaId,
         ...nomeDaConversa(store.conversas.get(r.conversaId)),
@@ -375,7 +429,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
       contadores: {
         chamados: abertos.length,
         emergencias: abertos.filter((c) => c.urgencia === 'emergencia').length,
-        rascunhos: store.rascunhos.length,
+        rascunhos: store.rascunhos.filter((r) => store.conversas.has(r.conversaId)).length,
         pendentes: pend.length,
         sugestoes: equipe.pendentes().length,
         naoLidas: conversas.reduce((t, c) => t + c.naoLidas, 0),
@@ -476,7 +530,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     let r;
     let aviso = null;
     if (acao === 'liberar') {
-      r = agenda.liberar(id, por);
+      r = agenda.liberar(id, por, { forcar: req.body?.forcar === true });
       if (r.ok) aviso = `A equipe confirmou: ${frase(r.registro)}.`;
     } else if (acao === 'recusar' || acao === 'cancelar') {
       r = agenda.recusar(id, por, motivo);
@@ -587,6 +641,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
       ...c,
       nome: texto(b.nome, 80) || c.nome,
       cidade: 'cidade' in b ? texto(b.cidade, 80) : c.cidade,
+      fuso: typeof b.fuso === 'string' && b.fuso in FUSOS ? b.fuso : c.fuso,
       agencia: 'agencia' in b ? texto(b.agencia, 60) : c.agencia,
       rampa: {
         abre: hhmm(rampa.abre, c.rampa.abre),
@@ -623,6 +678,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
         diasSumido: inteiro(b.relacionamento?.diasSumido, 7, 365, c.relacionamento.diasSumido),
       },
     };
+    if ('fuso' in b && !(b.fuso in FUSOS)) return erro(res, 400, 'Fuso horário desconhecido.');
     if (nova.linkAvaliacao && !/^https:\/\/[^\s]+$/.test(nova.linkAvaliacao)) return erro(res, 400, 'O link de avaliação precisa começar com https://');
     if (nova.rampa.abre >= nova.rampa.ultimaDescida) return erro(res, 400, 'A última descida precisa ser depois da abertura da rampa.');
     if (Array.isArray(b.itensAluguel)) {
@@ -638,8 +694,14 @@ export function criarApp({ dir, semente = 'vazio' }) {
     }
     store.config = nova;
     store.salvar('config');
+    definirFuso(nova.fuso);
     avisar();
-    res.json({ ok: true, config: nova });
+    const fora = agenda.foraDaGrade();
+    res.json({
+      ok: true,
+      config: nova,
+      aviso: fora ? `${fora} descida(s) já marcada(s) ficaram em horários que não existem na grade nova. Elas continuam no quadro; combine o novo horário com cada cliente.` : null,
+    });
   });
 
   app.put('/api/painel/ficha', admin, (req, res) => {
@@ -686,13 +748,8 @@ export function criarApp({ dir, semente = 'vazio' }) {
   });
 
   function apagarConversa(c) {
-    for (const m of c.mensagens) if (m.arquivo) fs.rmSync(store.caminhoFoto(m.arquivo), { force: true });
-    store.rascunhos = store.rascunhos.filter((r) => {
-      if (r.conversaId !== c.id) return true;
-      agenda.descartarTurno(r.turnoId);
-      return false;
-    });
-    store.salvar('rascunhos');
+    atendente.esquecer(c.id);
+    for (const m of c.mensagens) if (m.arquivo) apagarFoto(m.arquivo);
     for (const r of store.registros) if (r.conversaId === c.id) r.conversaId = null;
     for (const ch of store.chamados) if (ch.conversaId === c.id) ch.conversaId = null;
     store.salvar('registros');

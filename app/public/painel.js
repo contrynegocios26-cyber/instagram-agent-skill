@@ -230,6 +230,16 @@ async function atualizar() {
 
 // ---------- moldura ----------
 
+// Os mesmos fusos que o servidor aceita (lib/tempo.js).
+const FUSOS = {
+  'America/Sao_Paulo': 'Horário de Brasília (PR, SP, SC, RS, MG, RJ, GO…)',
+  'America/Campo_Grande': 'Mato Grosso do Sul (1 hora a menos que Brasília)',
+  'America/Cuiaba': 'Mato Grosso (1 hora a menos que Brasília)',
+  'America/Manaus': 'Amazonas, Rondônia e Roraima (1 hora a menos que Brasília)',
+  'America/Rio_Branco': 'Acre (2 horas a menos que Brasília)',
+  'America/Noronha': 'Fernando de Noronha (1 hora a mais que Brasília)',
+};
+
 const MODOS = {
   auto: ['Automático', 'ok', 'O assistente responde direto ao cliente.'],
   sombra: ['Sombra', 'espera', 'O assistente escreve e alguém da equipe aprova antes de enviar.'],
@@ -269,6 +279,9 @@ function desenharMoldura() {
   }
   if (!E.saude.ok) faixas.push(h('div', { class: 'faixa aviso' }, `O assistente está fora do ar: ${E.saude.motivo} As mensagens estão indo para a equipe.`));
   if (E.ia.usoHoje >= E.ia.limite) faixas.push(h('div', { class: 'faixa aviso' }, 'O limite diário de respostas automáticas foi atingido. As mensagens estão indo para a equipe.'));
+  else if (E.ia.usoPublicoHoje >= E.ia.limitePublico) {
+    faixas.push(h('div', { class: 'faixa aviso' }, 'O link público atingiu o limite de respostas automáticas de hoje. Quem escrever por ele vai direto para a equipe; os clientes com link pessoal continuam atendidos.'));
+  }
   if (E.demonstracao) faixas.push(h('div', { class: 'faixa info' }, 'Modo de demonstração: as respostas vêm de um roteiro simples, sem inteligência artificial e sem custo.'));
   $('alertas').replaceChildren(...faixas);
 }
@@ -354,6 +367,25 @@ function pedirMotivo(titulo, id, acao) {
   ]);
 }
 
+/** Liberar um pedido que espera a equipe. Dois casos pedem confirmação:
+ *  pedido que veio do link público (o sistema não sabe quem escreveu) e
+ *  janela que já está cheia (só entra como encaixe). */
+function liberarPedido(r) {
+  const avisos = [];
+  if (r.publico) {
+    avisos.push(
+      h('p', {}, h('b', {}, 'Pedido do link público. '), `O sistema não sabe quem escreveu: a pessoa disse ser ${r.clienteNome || 'cliente'}${r.embarcacao ? `, da embarcação ${r.embarcacao}` : ''}. Confirme com o cliente pelo telefone do cadastro antes de liberar.`),
+    );
+  }
+  if (r.janelaLotada) {
+    avisos.push(h('p', {}, h('b', {}, `A janela das ${horaBr(r.hora)} já está lotada. `), 'Se liberar, esta embarcação entra como encaixe, além da capacidade da rampa.'));
+  }
+  if (!avisos.length) return acaoRegistro(r.id, 'liberar');
+  return dialogo('Liberar pedido', h('div', { class: 'pilha' }, avisos), [
+    botao(r.janelaLotada ? 'Liberar como encaixe' : 'Já confirmei, liberar', () => acaoRegistro(r.id, 'liberar', { forcar: !!r.janelaLotada }), 'ok'),
+  ]);
+}
+
 function seloStatus(r) {
   if (r.vencida) return h('span', { class: 'selo alerta' }, 'pré-reserva vencida');
   if (r.status === 'aguardando equipe') return h('span', { class: 'selo espera' }, 'aguardando a equipe');
@@ -367,7 +399,7 @@ function seloStatus(r) {
 function cartaoRegistro(r) {
   const acoes = [];
   if (r.status === 'aguardando equipe') {
-    acoes.push(botao('Liberar', () => acaoRegistro(r.id, 'liberar'), 'ok'), botao('Recusar', () => pedirMotivo('Recusar pedido', r.id, 'recusar'), 'perigo'));
+    acoes.push(botao(r.janelaLotada ? 'Liberar como encaixe' : 'Liberar', () => liberarPedido(r), 'ok'), botao('Recusar', () => pedirMotivo('Recusar pedido', r.id, 'recusar'), 'perigo'));
   } else if (r.tipo === 'reserva' && r.status === 'pre-reserva') {
     acoes.push(botao('Confirmar pagamento', () => acaoRegistro(r.id, 'pagamento'), 'ok'), botao('Liberar unidade', () => pedirMotivo('Cancelar pré-reserva', r.id, 'cancelar'), 'perigo'));
   } else if (r.tipo === 'descida' && r.status === 'confirmado') {
@@ -392,6 +424,8 @@ function cartaoRegistro(r) {
     r.detalhes ? h('div', {}, r.detalhes) : null,
     r.voltaPrevista ? h('div', {}, `Volta prevista: ${horaBr(r.voltaPrevista)}`) : null,
     r.origem === 'equipe' ? h('small', {}, 'lançado pela equipe') : null,
+    r.publico && r.status === 'aguardando equipe' ? h('div', {}, h('span', { class: 'selo alerta' }, 'link público: confirme quem é')) : null,
+    r.janelaLotada ? h('div', {}, h('span', { class: 'selo alerta' }, 'janela lotada')) : null,
     acoes.length ? h('div', { class: 'acoes' }, acoes) : null,
   );
 }
@@ -496,14 +530,22 @@ function telaRampa() {
   }
 
   partes.push(h('h2', {}, 'Descidas'));
-  const comBarco = q.janelas.filter((j) => q.descidas.some((d) => d.hora === j.hora));
-  if (!comBarco.length) partes.push(h('div', { class: 'vazio' }, 'Nenhuma descida marcada para este dia.'));
-  for (const j of comBarco) {
+  // q.horas traz todo horário que tem barco, inclusive os que ficaram fora
+  // da grade depois de uma mudança na configuração.
+  if (!q.horas.length) partes.push(h('div', { class: 'vazio' }, 'Nenhuma descida marcada para este dia.'));
+  for (const j of q.horas) {
     partes.push(
       h(
         'section',
         { class: 'janela' },
-        h('header', {}, h('b', {}, horaBr(j.hora)), h('span', { class: `selo ${j.livres === 0 ? 'alerta' : 'neutro'}` }, `${j.ocupadas}/${j.capacidade}${j.livres === 0 ? ' lotada' : ''}`)),
+        h(
+          'header',
+          {},
+          h('b', {}, horaBr(j.hora)),
+          j.foraDaGrade
+            ? h('span', { class: 'selo alerta' }, 'fora da grade atual: combine novo horário')
+            : h('span', { class: `selo ${j.livres === 0 ? 'alerta' : 'neutro'}` }, `${j.ocupadas}/${j.capacidade}${j.ocupadas > j.capacidade ? ' com encaixe' : j.livres === 0 ? ' lotada' : ''}`),
+        ),
         h('div', { class: 'grade' }, q.descidas.filter((d) => d.hora === j.hora).map(cartaoRegistro)),
       ),
     );
@@ -990,6 +1032,7 @@ function telaConfig() {
       const r = await api('PUT', '/api/painel/config', {
         nome: valor('cfg:nome', c.nome),
         cidade: valor('cfg:cidade', c.cidade),
+        fuso: valor('cfg:fuso', c.fuso),
         agencia: valor('cfg:agencia', c.agencia),
         rampa: {
           abre: valor('cfg:abre', c.rampa.abre),
@@ -1018,9 +1061,13 @@ function telaConfig() {
       });
       adm.config = r.config;
       for (const chave of [...local.keys()]) if (chave.startsWith('cfg:')) local.delete(chave);
-      aviso('Configuração salva.');
+      aviso(r.aviso ? `Configuração salva. Atenção: ${r.aviso}` : 'Configuração salva.');
       desenhar();
     });
+
+  // O relógio da marina: é por ele que o sistema confere horário de rampa e antecedência.
+  const seletorFuso = h('select', { 'data-chave': 'cfg:fuso' }, Object.entries(FUSOS).map(([id, rotulo]) => h('option', { value: id }, rotulo)));
+  seletorFuso.value = valor('cfg:fuso', c.fuso);
 
   const linhaItem = (it, i) =>
     h(
@@ -1042,6 +1089,7 @@ function telaConfig() {
         { class: 'formulario' },
         h('label', {}, 'Nome da marina', k('nome', c.nome, { maxlength: 80 })),
         h('label', {}, 'Cidade', k('cidade', c.cidade, { maxlength: 80 })),
+        h('label', {}, 'Fuso horário da marina', seletorFuso),
         h('label', {}, 'Telefone de emergência (24h)', k('tel', c.emergencia?.telefone || '', { maxlength: 30 })),
         h('label', {}, 'Rampa abre às', k('abre', c.rampa.abre, { type: 'time' })),
         h('label', {}, 'Última descida', k('ultima', c.rampa.ultimaDescida, { type: 'time' })),
@@ -1188,7 +1236,14 @@ function telaRelatorio() {
       n(rel.ia.chamadas, 'chamadas ao modelo'),
       n(pct(rel.ia.parteLidaDoCache), 'da entrada lida do cache'),
     ),
-    h('small', {}, `Modelo: ${rel.ia.modelos.join(', ') || E.ia.modelo}. O valor é calculado pelos tokens de cada chamada e pela tabela de preços; a fatura da Anthropic é a referência.`),
+    rel.ia.chamadasSemPreco
+      ? h('div', { class: 'faixa aviso' }, `${rel.ia.chamadasSemPreco} chamada(s) deste período não têm preço na tabela do aplicativo e ficaram fora do total. O gasto real é maior do que o mostrado: confira a fatura da Anthropic.`)
+      : null,
+    h(
+      'small',
+      {},
+      `Modelo: ${rel.ia.modelos.filter(Boolean).join(', ') || E.ia.modelo}. O valor é calculado pelos tokens de cada chamada e pela tabela de preços; a fatura da Anthropic é a referência.${rel.ia.manutencoesDeCache ? ` Das chamadas, ${rel.ia.manutencoesDeCache} foram manutenção do cache (releituras baratas que evitam regravar o prompt).` : ''}`,
+    ),
   ];
 }
 

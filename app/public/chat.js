@@ -49,7 +49,8 @@ function balao(m) {
     const img = el('img');
     img.alt = 'Foto enviada';
     img.loading = 'lazy';
-    img.src = m.local || `${m.foto}?k=${encodeURIComponent(chave)}`;
+    // O endereço já vem assinado pelo servidor (vale só para esta foto).
+    img.src = m.local || m.foto;
     b.append(img);
   } else if (b.classList.contains('emergencia')) {
     // Na emergência, cada telefone vira um link de ligação.

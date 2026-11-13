@@ -8,7 +8,10 @@ import { agora, somarDias, normalizarHora } from './tempo.js';
 
 export const MODELO = process.env.IA_MODELO || 'claude-opus-5-5';
 const ESFORCOS = ['low', 'medium', 'high', 'xhigh', 'max'];
-const ESFORCO = ESFORCOS.includes(process.env.IA_ESFORCO) ? process.env.IA_ESFORCO : null;
+// O esforço controla quanto o modelo raciocina (e, com isso, custo e demora).
+// Vai sempre declarado: o padrão da API muda de um modelo para outro. "medium"
+// é o ponto de partida que a Anthropic indica para conversas com ferramentas.
+export const ESFORCO = ESFORCOS.includes(process.env.IA_ESFORCO) ? process.env.IA_ESFORCO : 'medium';
 const TTL_1H = (process.env.IA_CACHE_TTL || '1h') === '1h';
 
 // Fallback do lado do servidor quando um classificador de segurança recusa
@@ -21,6 +24,10 @@ const PRECOS = {
   'claude-opus-5-5': { entrada: 4, saida: 20, leitura: 0.2 },
   'claude-sonnet-5-5': { entrada: 2, saida: 10, leitura: 0.1 },
   'claude-haiku-5-5': { entrada: 0.1, saida: 0.5, leitura: 0.01 },
+  // Modelos que podem atender no lugar do principal quando um filtro recusa.
+  'claude-opus-5': { entrada: 5, saida: 25, leitura: 0.5 },
+  'claude-opus-4-8': { entrada: 5, saida: 25, leitura: 0.5 },
+  'claude-sonnet-5': { entrada: 2, saida: 10, leitura: 0.2 },
 };
 
 /** Custo estimado em USD de uma resposta, ou null se o modelo não está na tabela. */
@@ -85,6 +92,7 @@ const RECURSOS = {
   cacheAuto: 'cache de 1 hora e cache automático do fim da conversa',
   papelSistema: 'contexto como mensagem de sistema dentro da conversa',
   estrito: 'validação estrita dos campos das ferramentas',
+  esforco: 'nível de esforço declarado (o modelo usa o padrão dele)',
 };
 
 /**
@@ -92,20 +100,23 @@ const RECURSOS = {
  * @param {object} [inicio] recursos ligados no começo
  */
 export function criarReal(client = new Anthropic({ timeout: 120_000, maxRetries: 2 }), inicio = {}) {
-  const ligado = { fallback: COM_FALLBACK, cacheAuto: true, papelSistema: true, estrito: true, ...inicio };
+  const ligado = { fallback: COM_FALLBACK, cacheAuto: true, papelSistema: true, estrito: true, esforco: true, ...inicio };
 
-  function enviar({ sistema, messages }, f) {
+  function enviar({ sistema, messages }, f, { aquecer = false } = {}) {
     const req = {
       model: MODELO,
-      max_tokens: 16000,
+      // Com max_tokens 0 a API só relê o prompt em cache (e renova o prazo
+      // dele), sem gerar resposta: é o pedido de manutenção do cache.
+      max_tokens: aquecer ? 0 : 16000,
       // Prefixo estável, igual em todas as conversas da marina: fica em cache.
       system: [{ type: 'text', text: sistema, cache_control: f.cacheAuto && TTL_1H ? { type: 'ephemeral', ttl: '1h' } : { type: 'ephemeral' } }],
       tools: f.estrito ? FERRAMENTAS : FERRAMENTAS.map(({ strict, ...resto }) => resto),
       messages: f.papelSistema ? messages : semPapelDeSistema(messages),
     };
     // Cache automático para o final da conversa, que cresce a cada turno.
-    if (f.cacheAuto) req.cache_control = { type: 'ephemeral' };
-    if (ESFORCO) req.output_config = { effort: ESFORCO };
+    // No pedido de manutenção não entra: ele gravaria a mensagem de enchimento.
+    if (f.cacheAuto && !aquecer) req.cache_control = { type: 'ephemeral' };
+    if (f.esforco) req.output_config = { effort: ESFORCO };
     if (f.fallback) return client.beta.messages.create({ ...req, betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' });
     return client.messages.create(req);
   }
@@ -118,12 +129,16 @@ export function criarReal(client = new Anthropic({ timeout: 120_000, maxRetries:
       if (!(e instanceof Anthropic.BadRequestError)) throw traduzir(e);
       primeiro = e;
     }
+    // Numa conversa que já tem respostas do modelo, um 400 costuma ser do
+    // histórico, não do formato: quem chamou recomeça a conversa. O formato
+    // só é sondado em pedido novo, onde o histórico não pode ser a causa.
+    if (pedido.messages.some((m) => m.role === 'assistant')) throw traduzir(primeiro);
     // A API recusou o formato do pedido. Pode ser um recurso opcional que
     // esta conta ou este modelo não aceita: tenta sem cada um deles, um por
     // vez, e por fim sem nenhum. O primeiro formato aceito fica valendo.
     const nomes = Object.keys(RECURSOS).filter((k) => ligado[k]);
     const tentativas = nomes.map((k) => ({ ...ligado, [k]: false }));
-    if (nomes.length > 1) tentativas.push({ fallback: false, cacheAuto: false, papelSistema: false, estrito: false });
+    if (nomes.length > 1) tentativas.push({ fallback: false, cacheAuto: false, papelSistema: false, estrito: false, esforco: false });
     for (const f of tentativas) {
       try {
         const r = await enviar(pedido, f);
@@ -140,6 +155,20 @@ export function criarReal(client = new Anthropic({ timeout: 120_000, maxRetries:
 
   /** Muda quando um recurso é desligado; entra na versão do histórico. */
   criar.formato = () => Object.keys(RECURSOS).map((k) => (ligado[k] ? '1' : '0')).join('');
+
+  /**
+   * Renova o prazo do prompt em cache sem gerar resposta. Usa exatamente o
+   * formato dos pedidos de verdade (mesmas ferramentas, mesmo prompt, mesmo
+   * esforço), senão leria outra entrada. Só faz sentido com o cache de 1 hora.
+   */
+  criar.aquecer = async ({ sistema }) => {
+    try {
+      return await enviar({ sistema, messages: [{ role: 'user', content: [{ type: 'text', text: 'manter o cache' }] }] }, ligado, { aquecer: true });
+    } catch (e) {
+      throw traduzir(e);
+    }
+  };
+  criar.aquecer.disponivel = TTL_1H && process.env.IA_MANTER_CACHE !== 'off';
   return criar;
 }
 
@@ -157,7 +186,7 @@ export function criarRedator(client = new Anthropic({ timeout: 120_000, maxRetri
         max_tokens: 8000,
         system: sistema,
         messages: [{ role: 'user', content: JSON.stringify(dados) }],
-        output_config: { format: { type: 'json_schema', schema }, ...(ESFORCO ? { effort: ESFORCO } : {}) },
+        output_config: { format: { type: 'json_schema', schema }, effort: ESFORCO },
       });
     } catch (e) {
       throw traduzir(e);
@@ -188,7 +217,13 @@ function criarFake() {
     if (ultima.role === 'user' && Array.isArray(ultima.content) && ultima.content.some((b) => b.type === 'tool_result')) {
       const res = ultima.content.filter((b) => b.type === 'tool_result').map((b) => JSON.parse(b.content));
       const ruim = res.find((r) => !r.ok);
-      if (ruim) return texto(`Não consegui registrar. ${ruim.erro}`);
+      if (ruim) {
+        // A recusa do servidor traz instruções para o modelo (ids, nomes de campos); o roteiro tira essa parte.
+        const motivo = String(ruim.erro)
+          .replace(/\s*\(id [^)]*\)/g, '')
+          .replace(/\s*Para [^.]*(registro_id|tipo ")[^.]*\./g, '');
+        return texto(`Não consegui registrar. ${motivo}`);
+      }
       const partes = res.map((r) => (r.chamado_id ? 'já chamei a equipe' : `${r.resumo}${r.avisos?.length ? ' (a equipe confirma)' : ''}`));
       return texto(`Certo: ${partes.join('; ')}.`);
     }
@@ -226,5 +261,5 @@ export function criarIA() {
   if (process.env.IA_FAKE === '1') return { criar: criarFake(), redigir: null, modelo: 'fake', demonstracao: true, formato: () => 'fake' };
   const client = new Anthropic({ timeout: 120_000, maxRetries: 2 });
   const criar = criarReal(client);
-  return { criar, redigir: criarRedator(client), modelo: MODELO, demonstracao: false, formato: criar.formato };
+  return { criar, redigir: criarRedator(client), modelo: MODELO, demonstracao: false, formato: criar.formato, aquecer: criar.aquecer.disponivel ? criar.aquecer : null };
 }

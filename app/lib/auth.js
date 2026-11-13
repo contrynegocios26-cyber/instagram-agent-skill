@@ -5,22 +5,30 @@ import crypto from 'node:crypto';
 
 const b64 = (buf) => Buffer.from(buf).toString('base64url');
 
-export function assinar(dados, segredo, validadeSeg) {
-  const corpo = b64(JSON.stringify({ ...dados, exp: Math.floor(Date.now() / 1000) + validadeSeg }));
-  const mac = crypto.createHmac('sha256', segredo).update(corpo).digest('base64url');
+// Cada tipo de sessão (painel, chat, foto) é assinado com uma chave própria,
+// derivada do segredo, e leva o seu uso dentro. Assim a chave que o chat
+// entrega a qualquer visitante nunca vale como login do painel.
+const chaveDe = (segredo, uso) => crypto.createHmac('sha256', segredo).update(`uso:${uso}`).digest();
+
+export function assinar(dados, segredo, validadeSeg, uso) {
+  if (!uso) throw new Error('assinar: informe o uso da chave');
+  const corpo = b64(JSON.stringify({ ...dados, u: uso, exp: Math.floor(Date.now() / 1000) + validadeSeg }));
+  const mac = crypto.createHmac('sha256', chaveDe(segredo, uso)).update(corpo).digest('base64url');
   return `${corpo}.${mac}`;
 }
 
-export function verificar(token, segredo) {
+export function verificar(token, segredo, uso) {
+  if (!uso) throw new Error('verificar: informe o uso da chave');
   if (typeof token !== 'string' || token.length > 2000) return null;
   const [corpo, mac] = token.split('.');
   if (!corpo || !mac) return null;
-  const esperado = crypto.createHmac('sha256', segredo).update(corpo).digest('base64url');
+  const esperado = crypto.createHmac('sha256', chaveDe(segredo, uso)).update(corpo).digest('base64url');
   const a = Buffer.from(mac);
   const b = Buffer.from(esperado);
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
   try {
     const dados = JSON.parse(Buffer.from(corpo, 'base64url').toString('utf8'));
+    if (dados.u !== uso) return null;
     if (typeof dados.exp !== 'number' || dados.exp < Date.now() / 1000) return null;
     return dados;
   } catch {

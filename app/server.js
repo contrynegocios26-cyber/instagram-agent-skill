@@ -12,7 +12,8 @@ const { app, store, atendente, equipe } = criarApp({ dir, semente: process.env.S
 
 const retomadas = atendente.retomar();
 // De minuto em minuto: avisa quem está esperando demais, limpa conversas
-// vazias e roda os agentes de retaguarda que estão na hora.
+// vazias, roda os agentes de retaguarda que estão na hora e renova o prazo
+// do prompt em cache quando ele está perto de vencer.
 setInterval(() => {
   try {
     atendente.vigiar();
@@ -20,6 +21,7 @@ setInterval(() => {
     console.error('[vigia]', e);
   }
   equipe.tique().catch((e) => console.error('[equipe]', e));
+  atendente.manterCache().catch((e) => console.error('[cache]', e));
 }, 60_000).unref();
 const servidor = app.listen(porta, () => {
   console.log(`Atendimento da ${store.config.nome} no ar: http://localhost:${porta}  (painel em /painel)`);

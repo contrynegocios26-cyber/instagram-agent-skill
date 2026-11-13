@@ -38,20 +38,23 @@ export function relatorio(store, { de, ate }) {
     r.conversas++;
     if (msgs.some((m) => m.de === 'equipe')) r.conversasComEquipe++;
     let esperando = null; // primeira mensagem do cliente ainda sem resposta
-    let aprovacaoAberta = false;
+    let anterior = null;
     for (const m of msgs) {
+      // Uma resposta pode sair em vários balões: conta uma vez só.
+      const continuacao = !!anterior && anterior.de === m.de && (m.de === 'assistente' ? (m.turno ? m.turno === anterior.turno : true) : false);
+      anterior = m;
       if (m.de === 'cliente') {
         r.mensagensCliente++;
         if (foraDoHorario(store.config, m)) r.foraDoHorario.mensagens++;
         if (!esperando) esperando = m;
-        aprovacaoAberta = false;
-      } else if (m.de === 'assistente' || m.de === 'equipe') {
-        if (m.de === 'assistente') r.respostasAssistente++;
-        else r.respostasEquipe++;
-        if (m.aprovadoPor && !aprovacaoAberta) {
-          r.aprovacoes.aprovadas++;
-          if (m.editado) r.aprovacoes.editadas++;
-          aprovacaoAberta = true;
+      } else if ((m.de === 'assistente' || m.de === 'equipe') && !m.recado) {
+        if (!continuacao) {
+          if (m.de === 'assistente') r.respostasAssistente++;
+          else r.respostasEquipe++;
+          if (m.aprovadoPor) {
+            r.aprovacoes.aprovadas++;
+            if (m.editado) r.aprovacoes.editadas++;
+          }
         }
         if (esperando) {
           const seg = (new Date(m.em) - new Date(esperando.em)) / 1000;
@@ -75,7 +78,9 @@ export function relatorio(store, { de, ate }) {
     alvo.p90Seg = percentil(lista, 0.9);
   }
 
-  const regs = store.registros.filter((x) => !x.rascunho && dentro((x.criadoEm || '').slice(0, 10)));
+  // O dia é o da marina (criadoDia), não o do relógio do servidor.
+  const diaDe = (x) => x.criadoDia || (x.criadoEm || '').slice(0, 10);
+  const regs = store.registros.filter((x) => !x.rascunho && dentro(diaDe(x)));
   const conta = (f) => regs.filter(f).length;
   const valida = (x) => x.status !== 'cancelado' && x.status !== 'recusado';
   r.descidas = {
@@ -96,7 +101,7 @@ export function relatorio(store, { de, ate }) {
   };
   r.reclamacoes = conta((x) => x.tipo === 'reclamacao');
 
-  const chs = store.chamados.filter((x) => !x.rascunho && dentro((x.criadoEm || '').slice(0, 10)));
+  const chs = store.chamados.filter((x) => !x.rascunho && dentro(diaDe(x)));
   r.chamados = {
     total: chs.length,
     emergencia: chs.filter((x) => x.urgencia === 'emergencia').length,
@@ -108,16 +113,20 @@ export function relatorio(store, { de, ate }) {
   const uso = store.lerUso().filter((u) => dentro(u.dia));
   const soma = (k) => uso.reduce((t, u) => t + (u[k] || 0), 0);
   const entradaTotal = soma('entrada') + soma('cacheLeitura') + soma('cacheGravacao');
-  const semPreco = uso.some((u) => u.usd === null || u.usd === undefined);
-  const usd = semPreco ? null : uso.reduce((t, u) => t + u.usd, 0);
+  // Chamada de modelo fora da tabela de preços não zera o período: o custo
+  // soma o que tem preço e o relatório diz quantas ficaram de fora.
+  const comPreco = uso.filter((u) => typeof u.usd === 'number');
+  const usd = comPreco.length ? comPreco.reduce((t, u) => t + u.usd, 0) : null;
   r.ia = {
     chamadas: uso.length,
+    manutencoesDeCache: uso.filter((u) => u.aquecimento).length,
     tokensEntrada: soma('entrada'),
     tokensCacheLeitura: soma('cacheLeitura'),
     tokensCacheGravacao: soma('cacheGravacao'),
     tokensSaida: soma('saida'),
     parteLidaDoCache: entradaTotal ? soma('cacheLeitura') / entradaTotal : null,
     usd,
+    chamadasSemPreco: uso.length - comPreco.length,
     usdPorResposta: usd !== null && r.respostasAssistente ? usd / r.respostasAssistente : null,
     modelos: [...new Set(uso.map((u) => u.modelo))],
   };

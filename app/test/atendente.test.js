@@ -155,7 +155,9 @@ test('emergência: telefones saem na hora, mesmo em modo sombra', async () => {
   await atendente.ocioso();
   assert.equal(store.rascunhos.length, 0, 'emergência não espera aprovação');
   assert.equal(falas(c, 'assistente').length, 1);
-  assert.equal(store.chamados.filter((x) => x.urgencia === 'emergencia').length, 2);
+  const vermelhos = store.chamados.filter((x) => x.urgencia === 'emergencia');
+  assert.equal(vermelhos.length, 1, 'o chamado do atendente completa o do sistema, sem duplicar');
+  assert.match(vermelhos[0].resumo, /Possível emergência na água[\s\S]*Atendente: Emergência relatada/);
 });
 
 test('atendente desligado: avisa uma vez e abre um chamado só', async () => {

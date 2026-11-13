@@ -8,8 +8,18 @@ const DIAS_CURTOS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
 let relogioFixo = null; // usado só em teste: "2026-12-19T08:30"
 let fuso = 'America/Sao_Paulo';
 
+/** Fusos aceitos na configuração: nome oficial -> como aparece no painel. */
+export const FUSOS = {
+  'America/Sao_Paulo': 'Horário de Brasília (PR, SP, SC, RS, MG, RJ, GO…)',
+  'America/Campo_Grande': 'Mato Grosso do Sul (1 hora a menos que Brasília)',
+  'America/Cuiaba': 'Mato Grosso (1 hora a menos que Brasília)',
+  'America/Manaus': 'Amazonas, Rondônia e Roraima (1 hora a menos que Brasília)',
+  'America/Rio_Branco': 'Acre (2 horas a menos que Brasília)',
+  'America/Noronha': 'Fernando de Noronha (1 hora a mais que Brasília)',
+};
+
 export function definirFuso(tz) {
-  if (tz) fuso = tz;
+  if (tz && tz in FUSOS) fuso = tz;
 }
 
 export function fixarRelogio(iso) {
