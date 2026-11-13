@@ -123,6 +123,32 @@ próprio (`app.html#item-CÓDIGO`), pronto para virar QR na etiqueta da caixa.
   organizado para uma pessoa da Jardmolas responder.
 - `--artefato` gera só o corpo da página, para publicar como artefato.
 
+## Catálogos impressos da linha agrícola
+
+`scripts/impressos.py` monta dois catálogos em A4 a partir de
+`assets/aplicacoes-agro.json` (onde vai cada mola, implemento por implemento)
+e de uma pasta de fotos; `node scripts/pdf.js PASTA` converte em PDF e avisa
+se algum conteúdo passou do rodapé.
+
+- **Catálogo técnico**: para o vendedor e o balcão. Tabela por implemento com
+  posição na máquina, peça, tipo, função, se é item de linha ou sob medida, e
+  colunas em branco para anotar código e medidas; compatibilidade de fenação,
+  materiais, guia de medição e ficha de pedido.
+- **Catálogo de apresentação**: 8 páginas para entregar ao cliente — quem é a
+  fábrica, as linhas com fotos, resumo de onde vai cada mola, como pedir,
+  contatos e QR do WhatsApp. `--sangria 3` gera a versão para gráfica.
+
+```bash
+python scripts/impressos.py --fotos PASTA_FOTOS --saida PASTA --whatsapp 55DDDNUMERO \
+       --telefone "(DD) 0000-0000" --email contato@empresa --data mm/aaaa [--sangria 3]
+node scripts/pdf.js PASTA
+```
+
+Regras: só entram fotos da própria Jardmolas (ou com licença para impressão);
+nenhuma medida é impressa sem estar no cadastro; marcas de máquinas só como
+"para uso em"; para acrescentar um implemento ou uma posição, edite o JSON —
+"linha" só para o que a fábrica produz em série.
+
 ## Atender quem está procurando (roteiro)
 
 1. **Entenda por onde a pessoa chegou** e busque por esse caminho. Tem

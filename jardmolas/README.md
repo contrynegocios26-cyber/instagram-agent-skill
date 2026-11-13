@@ -57,6 +57,9 @@ python skills/jm-catalogo/scripts/catalogo.py gerar catalogo --saida catalogo/ca
 
 ## O que mais vem na pasta
 
+- `catalogo/impressos/` — os dois catálogos da linha agrícola em PDF: o
+  técnico (onde vai cada mola, por implemento) e o de apresentação, em A4 e
+  com sangria para gráfica.
 - `catalogo/app.html` — o aplicativo do cliente: achar a peça, calcular
   mola, consultor de Inconel X-750 por temperatura, pedido de cotação e guia
   de medição, num arquivo só que roda no celular.
