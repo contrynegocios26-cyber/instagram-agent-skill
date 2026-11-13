@@ -1,0 +1,22 @@
+# Para VPS que já tem outro serviço nas portas 80 e 443 (por exemplo o
+# Traefik do modelo "Hermes Agent" da Hostinger). Sobe só o app, sem o
+# Caddy, direto na porta 8080, em HTTP simples. Serve para demonstração:
+# as senhas do painel trafegam sem criptografia, então não use com dados
+# reais nem com a chave da IA por muito tempo.
+#
+#   docker compose -f docker-compose.porta.yml up -d --build
+#   abra http://IP_DA_VPS:8080  e  http://IP_DA_VPS:8080/painel
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: app/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - dados:/dados
+    ports:
+      - "8080:3000"
+
+volumes:
+  dados:
