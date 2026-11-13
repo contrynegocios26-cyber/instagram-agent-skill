@@ -1,8 +1,8 @@
 # Oferta do piloto
 
-Versão 2, revista depois do parecer do "dono cético" simulado. Os valores
-são proposta da agência e ainda não foram validados com nenhum dono de
-verdade.
+Versão 3. Revista depois do parecer do "dono cético" simulado e alinhada
+ao aplicativo do piloto (pasta `app/`). Os valores são proposta da agência
+e ainda não foram validados com nenhum dono de verdade.
 
 ## O problema
 
@@ -13,7 +13,9 @@ aluguel que foi para o vizinho.
 
 ## O que entra no piloto
 
-Um atendente virtual no WhatsApp da marina, 24 horas, que:
+Um atendente virtual, 24 horas, em um link de atendimento da marina. O
+WhatsApp da marina continua exatamente como está: ela só manda o link a
+cada cliente e põe o link na bio e na mensagem automática. O atendente:
 
 - agenda descida e subida dentro das regras e da capacidade da rampa;
 - anota abastecimento, gelo e lavagem junto com o pedido;
@@ -22,7 +24,8 @@ Um atendente virtual no WhatsApp da marina, 24 horas, que:
 - chama a pessoa certa da equipe em tudo o que foge das regras, já com o
   resumo da conversa.
 
-A equipe vê a fila da rampa em uma planilha, no tablet ou na TV do pátio.
+A equipe vê a fila da rampa em um painel, no tablet ou na TV do pátio, e
+marca "na água" e "guardada" com um toque.
 
 ## O que o atendente não faz
 
@@ -87,22 +90,22 @@ pode dizer não.
 
 ## O número e os dados são da marina
 
-- O número de WhatsApp continua no nome da marina. Se o contrato acabar, a
-  agência devolve o acesso em até 5 dias úteis.
+- O piloto não usa nem mexe no número de WhatsApp da marina.
 - A lista de clientes e o histórico de conversas pertencem à marina e são
   entregues ou apagados no encerramento. Isso vai em um termo assinado.
 
 ## Pontos em aberto, para resolver antes da primeira visita
 
-- **Número de WhatsApp:** a API oficial exige migrar o número atual ou
-  usar um novo. Falta confirmar o passo a passo para voltar o número ao
-  aplicativo comum.
-- **Áudio e foto:** o objetivo é o atendente transcrever áudio e passar
-  fotos (avaria, comprovante, habilitação) direto para a equipe. Falta
-  confirmar o que a plataforma permite.
+- **Link em vez de WhatsApp:** o cliente precisa abrir o link e só vê a
+  resposta com a página aberta. Falta ver, com clientes de verdade, se
+  isso atrapalha. Ligar o atendente direto no WhatsApp fica para depois
+  do piloto e exige a API oficial.
+- **Áudio e foto:** no piloto o cliente escreve (ou dita pelo teclado) e
+  pode mandar foto de avaria, comprovante e habilitação, que só a equipe
+  vê. Não há áudio.
 - **Custo por mensagem:** a API e o modelo de IA cobram por uso. O piloto
   mede esse custo; até lá, o valor mensal é uma aposta da agência.
 - **Erro do atendente:** falta definir o que a agência assume se uma
   resposta errada causar prejuízo.
-- **Quem atualiza a fila** quando o cliente combina direto na rampa, sem
-  passar pelo WhatsApp.
+- **Quem atualiza a fila** quando o cliente combina direto na rampa: o
+  painel tem "Lançar manualmente", mas alguém da equipe precisa usar.

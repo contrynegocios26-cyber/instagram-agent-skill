@@ -48,49 +48,99 @@ export class FalhaIA extends Error {
   }
 }
 
-function criarReal() {
-  const client = new Anthropic({ timeout: 120_000, maxRetries: 2 });
+const MARCA = 'contexto_do_sistema';
 
-  return async function criar({ sistema, messages }) {
+/** Para modelos que não aceitam mensagem de sistema no meio da conversa:
+ *  o contexto vai como texto marcado, e a marca é retirada de tudo o que o
+ *  cliente escreveu, para ninguém se passar pelo sistema. */
+export function semPapelDeSistema(messages) {
+  const re = new RegExp(`</?\\s*${MARCA}\\s*>`, 'gi');
+  return messages.map((m) => {
+    if (m.role === 'system') return { role: 'user', content: [{ type: 'text', text: `<${MARCA}>\n${m.content}\n</${MARCA}>` }] };
+    if (m.role === 'user' && Array.isArray(m.content)) {
+      return { ...m, content: m.content.map((b) => (b.type === 'text' ? { ...b, text: b.text.replace(re, '') } : b)) };
+    }
+    return m;
+  });
+}
+
+function traduzir(e) {
+  if (e instanceof Anthropic.AuthenticationError || e instanceof Anthropic.PermissionDeniedError) {
+    return new FalhaIA('config', 'Chave da API da Anthropic inválida ou sem permissão.', e);
+  }
+  if (e instanceof Anthropic.NotFoundError) return new FalhaIA('config', `Modelo "${MODELO}" não encontrado para esta chave.`, e);
+  if (e instanceof Anthropic.BadRequestError) return new FalhaIA('requisicao', `A API recusou o pedido: ${e.message}`, e);
+  if (e instanceof Anthropic.RateLimitError) return new FalhaIA('temporaria', 'Limite de uso da API atingido no momento.', e);
+  if (e instanceof Anthropic.APIConnectionError) return new FalhaIA('temporaria', 'Sem conexão com a API da Anthropic.', e);
+  if (e instanceof Anthropic.APIError) return new FalhaIA('temporaria', `Erro ${e.status ?? ''} da API da Anthropic.`, e);
+  // Qualquer outro erro vem do SDK antes de o pedido sair. Quase sempre é a
+  // chave que falta; a mensagem original vai junto para o painel.
+  return new FalhaIA('config', `O pedido à IA não saiu. Confira a chave ANTHROPIC_API_KEY. Detalhe: ${e?.message ?? e}`, e);
+}
+
+// Recursos opcionais do pedido. Nenhum muda o que o atendente faz; mudam
+// custo, robustez e o formato em que o contexto chega ao modelo.
+const RECURSOS = {
+  fallback: 'troca de modelo quando um filtro de segurança recusa',
+  cacheAuto: 'cache de 1 hora e cache automático do fim da conversa',
+  papelSistema: 'contexto como mensagem de sistema dentro da conversa',
+  estrito: 'validação estrita dos campos das ferramentas',
+};
+
+/**
+ * @param {object} [client] cliente da Anthropic (injetável nos testes)
+ * @param {object} [inicio] recursos ligados no começo
+ */
+export function criarReal(client = new Anthropic({ timeout: 120_000, maxRetries: 2 }), inicio = {}) {
+  const ligado = { fallback: COM_FALLBACK, cacheAuto: true, papelSistema: true, estrito: true, ...inicio };
+
+  function enviar({ sistema, messages }, f) {
     const req = {
       model: MODELO,
       max_tokens: 16000,
       // Prefixo estável, igual em todas as conversas da marina: fica em cache.
-      system: [{ type: 'text', text: sistema, cache_control: TTL_1H ? { type: 'ephemeral', ttl: '1h' } : { type: 'ephemeral' } }],
-      tools: FERRAMENTAS,
-      messages,
-      // Cache automático para o final da conversa, que cresce a cada turno.
-      cache_control: { type: 'ephemeral' },
+      system: [{ type: 'text', text: sistema, cache_control: f.cacheAuto && TTL_1H ? { type: 'ephemeral', ttl: '1h' } : { type: 'ephemeral' } }],
+      tools: f.estrito ? FERRAMENTAS : FERRAMENTAS.map(({ strict, ...resto }) => resto),
+      messages: f.papelSistema ? messages : semPapelDeSistema(messages),
     };
+    // Cache automático para o final da conversa, que cresce a cada turno.
+    if (f.cacheAuto) req.cache_control = { type: 'ephemeral' };
     if (ESFORCO) req.output_config = { effort: ESFORCO };
+    if (f.fallback) return client.beta.messages.create({ ...req, betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' });
+    return client.messages.create(req);
+  }
 
+  async function criar(pedido) {
+    let primeiro;
     try {
-      if (COM_FALLBACK) {
-        return await client.beta.messages.create({ ...req, betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' });
-      }
-      return await client.messages.create(req);
+      return await enviar(pedido, ligado);
     } catch (e) {
-      if (e instanceof Anthropic.AuthenticationError || e instanceof Anthropic.PermissionDeniedError) {
-        throw new FalhaIA('config', 'Chave da API da Anthropic inválida ou sem permissão.', e);
-      }
-      if (e instanceof Anthropic.NotFoundError) {
-        throw new FalhaIA('config', `Modelo "${MODELO}" não encontrado para esta chave.`, e);
-      }
-      if (e instanceof Anthropic.BadRequestError) {
-        throw new FalhaIA('requisicao', `A API recusou o pedido: ${e.message}`, e);
-      }
-      if (e instanceof Anthropic.RateLimitError) {
-        throw new FalhaIA('temporaria', 'Limite de uso da API atingido no momento.', e);
-      }
-      if (e instanceof Anthropic.APIConnectionError) {
-        throw new FalhaIA('temporaria', 'Sem conexão com a API da Anthropic.', e);
-      }
-      if (e instanceof Anthropic.APIError) {
-        throw new FalhaIA('temporaria', `Erro ${e.status ?? ''} da API da Anthropic.`, e);
-      }
-      throw e;
+      if (!(e instanceof Anthropic.BadRequestError)) throw traduzir(e);
+      primeiro = e;
     }
-  };
+    // A API recusou o formato do pedido. Pode ser um recurso opcional que
+    // esta conta ou este modelo não aceita: tenta sem cada um deles, um por
+    // vez, e por fim sem nenhum. O primeiro formato aceito fica valendo.
+    const nomes = Object.keys(RECURSOS).filter((k) => ligado[k]);
+    const tentativas = nomes.map((k) => ({ ...ligado, [k]: false }));
+    if (nomes.length > 1) tentativas.push({ fallback: false, cacheAuto: false, papelSistema: false, estrito: false });
+    for (const f of tentativas) {
+      try {
+        const r = await enviar(pedido, f);
+        const desligados = nomes.filter((k) => !f[k]);
+        console.warn(`[ia] a API recusou o pedido completo (${primeiro.message}). Seguindo sem: ${desligados.map((k) => RECURSOS[k]).join('; ')}.`);
+        Object.assign(ligado, f);
+        return r;
+      } catch (e) {
+        if (!(e instanceof Anthropic.BadRequestError)) throw traduzir(e);
+      }
+    }
+    throw traduzir(primeiro);
+  }
+
+  /** Muda quando um recurso é desligado; entra na versão do histórico. */
+  criar.formato = () => Object.keys(RECURSOS).map((k) => (ligado[k] ? '1' : '0')).join('');
+  return criar;
 }
 
 // ---------- modo demonstração ----------
@@ -142,6 +192,7 @@ function criarFake() {
 }
 
 export function criarIA() {
-  if (process.env.IA_FAKE === '1') return { criar: criarFake(), modelo: 'fake', demonstracao: true };
-  return { criar: criarReal(), modelo: MODELO, demonstracao: false };
+  if (process.env.IA_FAKE === '1') return { criar: criarFake(), modelo: 'fake', demonstracao: true, formato: () => 'fake' };
+  const criar = criarReal();
+  return { criar, modelo: MODELO, demonstracao: false, formato: criar.formato };
 }

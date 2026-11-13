@@ -11,6 +11,14 @@ const porta = Number(process.env.PORT || 3000);
 const { app, store, atendente } = criarApp({ dir, semente: process.env.SEMENTE || 'vazio' });
 
 const retomadas = atendente.retomar();
+// De minuto em minuto: avisa quem está esperando demais e limpa conversas vazias.
+setInterval(() => {
+  try {
+    atendente.vigiar();
+  } catch (e) {
+    console.error('[vigia]', e);
+  }
+}, 60_000).unref();
 const servidor = app.listen(porta, () => {
   console.log(`Atendimento da ${store.config.nome} no ar: http://localhost:${porta}  (painel em /painel)`);
   console.log(`Modo: ${store.config.modo}${process.env.IA_FAKE === '1' ? ' · IA em modo de demonstração (sem custo)' : ''}`);

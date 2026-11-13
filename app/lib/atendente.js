@@ -13,6 +13,7 @@ const HORAS_DE_SESSAO = 12;
 const MAX_MENSAGENS_API = 80;
 const ESPERA_MS = Number(process.env.IA_ESPERA_MS ?? 1500);
 const LIMITE_DIARIO = Number(process.env.IA_LIMITE_DIARIO ?? 1500);
+const MINUTOS_SEM_RESPOSTA = Number(process.env.AVISO_SEM_RESPOSTA_MIN ?? 10);
 
 // Só termos que quase nunca aparecem fora de uma emergência real. O resto
 // fica por conta do atendente, que segue a regra de emergência da skill.
@@ -31,10 +32,10 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
   // ---------- prompt ----------
 
   function prompt() {
-    const chave = `${store.ficha}\u0000${JSON.stringify(store.config.rampa)}\u0000${JSON.stringify(store.config.itensAluguel)}\u0000${store.config.nome}\u0000${store.config.cidade}\u0000${store.config.preReservaMin}\u0000${store.config.emergencia?.telefone}`;
+    const chave = `${ia.formato?.() ?? ''}\u0000${store.ficha}\u0000${JSON.stringify(store.config.rampa)}\u0000${JSON.stringify(store.config.itensAluguel)}\u0000${store.config.nome}\u0000${store.config.cidade}\u0000${store.config.preReservaMin}\u0000${store.config.emergencia?.telefone}`;
     if (!cachePrompt || cachePrompt.chave !== chave) {
       const sistema = promptDeSistema(store);
-      cachePrompt = { chave, sistema, versao: versaoDoPrompt(sistema, ia.modelo) };
+      cachePrompt = { chave, sistema, versao: versaoDoPrompt(sistema, `${ia.modelo}:${ia.formato?.() ?? ''}`) };
     }
     return cachePrompt;
   }
@@ -126,7 +127,12 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
     const pend = store.rascunhos.find((r) => r.conversaId === conversa.id);
     if (pend) removerRascunho(pend, true);
 
-    if (emergencia) {
+    // Um aviso e um chamado por conversa a cada 10 minutos: quem repete
+    // "socorro" não recebe a mesma mensagem dez vezes nem enche o painel.
+    const recente = store.chamados.some(
+      (c) => c.conversaId === conversa.id && c.urgencia === 'emergencia' && c.origem === 'sistema' && c.status === 'aberto' && agoraMs() - new Date(c.criadoEm).getTime() < 600_000,
+    );
+    if (emergencia && !recente) {
       abrirChamado({
         conversa,
         para: 'Toda a equipe',
@@ -180,11 +186,62 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
     }
   }
 
-  /** O cliente deve ver "digitando"? */
+  /** Primeira mensagem do cliente que ainda não teve resposta de ninguém. */
+  function semResposta(conversa) {
+    let primeira = null;
+    let avisado = false;
+    for (let i = conversa.mensagens.length - 1; i >= 0; i--) {
+      const m = conversa.mensagens[i];
+      if (m.de === 'assistente' || m.de === 'equipe') break;
+      if (m.de === 'cliente') primeira = m;
+      if (m.de === 'sistema' && m.avisoDeEspera) avisado = true;
+    }
+    return { primeira, avisado: !!primeira && avisado };
+  }
+
+  /** O cliente deve ver "digitando"? Não depois de ouvir que a equipe vai responder. */
   function ocupado(id) {
     const f = filas.get(id);
     if (f && (f.timer || f.rodando)) return true;
-    return store.rascunhos.some((r) => r.conversaId === id);
+    if (!store.rascunhos.some((r) => r.conversaId === id)) return false;
+    const conversa = store.conversas.get(id);
+    return !!conversa && !semResposta(conversa).avisado;
+  }
+
+  /**
+   * Roda de minuto em minuto. Cliente esperando há tempo demais, com resposta
+   * parada na aprovação ou com a equipe na conversa, recebe um aviso honesto
+   * e a equipe recebe um chamado. Também apaga conversas que nunca começaram.
+   */
+  function vigiar() {
+    let avisos = 0;
+    const agoraEm = agoraMs();
+    for (const c of [...store.conversas.values()]) {
+      if (!c.mensagens.length) {
+        if (!c.clienteId && agoraEm - new Date(c.criadaEm).getTime() > 86_400_000) {
+          store.conversas.delete(c.id);
+          store.salvar(`conversa:${c.id}`);
+        }
+        continue;
+      }
+      const { primeira, avisado } = semResposta(c);
+      if (!primeira || avisado) continue;
+      if (agoraEm - new Date(primeira.em).getTime() < MINUTOS_SEM_RESPOSTA * 60_000) continue;
+      if (filas.get(c.id)?.rodando) continue;
+      const temRascunho = store.rascunhos.some((r) => r.conversaId === c.id);
+      if (!store.chamados.some((ch) => ch.conversaId === c.id && ch.status === 'aberto' && ch.origem === 'sistema' && !ch.rascunho)) {
+        abrirChamado({
+          conversa: c,
+          para: 'Equipe',
+          urgencia: 'alta',
+          resumo: `Cliente sem resposta há mais de ${MINUTOS_SEM_RESPOSTA} minutos.${temRascunho ? ' Há uma resposta do assistente esperando aprovação.' : ''}`,
+          origem: 'sistema',
+        });
+      }
+      mensagem(c, { de: 'sistema', avisoDeEspera: true, texto: 'Sua mensagem está com a equipe da marina, que responde por aqui assim que puder.' });
+      avisos++;
+    }
+    return avisos;
   }
 
   async function ocioso() {
@@ -208,6 +265,7 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
       mensagem(conversa, {
         de: 'sistema',
         avisoDesligado: true,
+        avisoDeEspera: true,
         texto: 'Recebemos sua mensagem. O atendimento automático está desligado agora; a equipe da marina responde por aqui no horário de atendimento.',
       });
     }
@@ -353,7 +411,7 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
         resumo: `O atendente virtual não conseguiu responder (${falha.message}). Última mensagem do cliente: "${(aResponder.at(-1).texto || '(foto)').slice(0, 300)}"`,
         origem: 'sistema',
       });
-      mensagem(conversa, { de: 'sistema', texto: 'Não consegui concluir seu atendimento por aqui. Já chamei a equipe da marina, que continua por este chat.' });
+      mensagem(conversa, { de: 'sistema', avisoDeEspera: true, texto: 'Não consegui concluir seu atendimento por aqui. Já chamei a equipe da marina, que continua por este chat.' });
       return;
     }
 
@@ -501,6 +559,7 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
     receberDoCliente,
     ocupado,
     ocioso,
+    vigiar,
     aprovarRascunho,
     descartarRascunho,
     responderComoEquipe,

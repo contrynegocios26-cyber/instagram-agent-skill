@@ -211,3 +211,77 @@ test('na partida, rascunho antigo é desfeito e a mensagem sem resposta é retom
   assert.equal(store2.registros.length, 1);
   assert.equal(agenda.quadro('2026-12-19').descidas.length, 0);
 });
+
+test('vigia: resposta parada na aprovação vira aviso ao cliente e chamado, uma vez só', async () => {
+  const { store, atendente, conversa, falas } = montar('sombra');
+  const c = conversa('Fernanda');
+  atendente.receberDoCliente(c, { texto: 'desce amanhã 10h' });
+  await atendente.ocioso();
+  assert.equal(atendente.vigiar(), 0, 'ainda dentro do prazo');
+  assert.equal(atendente.ocupado(c.id), true);
+
+  fixarRelogio('2026-12-18T19:25');
+  assert.equal(atendente.vigiar(), 1);
+  assert.match(falas(c, 'sistema')[0], /está com a equipe da marina/);
+  assert.equal(store.chamados.length, 1);
+  assert.match(store.chamados[0].resumo, /sem resposta há mais de 10 minutos.*esperando aprovação/);
+  assert.equal(atendente.ocupado(c.id), false, 'para de mostrar "digitando"');
+  assert.equal(atendente.vigiar(), 0, 'não repete');
+  assert.equal(store.rascunhos.length, 1, 'a resposta continua esperando aprovação');
+
+  atendente.aprovarRascunho(store.rascunhos[0].id, { por: 'Ana' });
+  assert.equal(falas(c, 'assistente').length, 1);
+  fixarRelogio('2026-12-18T20:30');
+  assert.equal(atendente.vigiar(), 0, 'respondido: nada a avisar');
+});
+
+test('vigia: com a equipe na conversa e ninguém respondendo, o cliente também é avisado', async () => {
+  const { store, atendente, conversa, falas } = montar('auto');
+  const c = conversa('Paulo');
+  atendente.responderComoEquipe(c.id, 'Dr. Paulo, aqui é a Sandra.', 'Sandra');
+  atendente.receberDoCliente(c, { texto: 'preciso falar sobre a mensalidade' });
+  await atendente.ocioso();
+  assert.equal(falas(c, 'assistente').length, 0);
+  fixarRelogio('2026-12-18T19:30');
+  assert.equal(atendente.vigiar(), 1);
+  assert.equal(store.chamados.length, 1);
+  assert.equal(store.lerUso().length, 0);
+});
+
+test('vigia: falha da IA já avisou o cliente, então não avisa de novo', async () => {
+  const { store, atendente, conversa, falas } = montar('auto');
+  const c = conversa('Paulo');
+  atendente.receberDoCliente(c, { texto: 'boa noite ERRO_IA' });
+  await atendente.ocioso();
+  fixarRelogio('2026-12-18T20:00');
+  assert.equal(atendente.vigiar(), 0);
+  assert.equal(falas(c, 'sistema').length, 1);
+  assert.equal(store.chamados.length, 1);
+});
+
+test('vigia: conversa anônima que nunca começou é apagada depois de um dia', async () => {
+  const { store, atendente, conversa } = montar('auto');
+  const vazia = conversa(null);
+  const comCliente = conversa('Carlos');
+  fixarRelogio('2026-12-19T19:00');
+  atendente.vigiar();
+  assert.equal(store.conversas.has(vazia.id), true, 'menos de um dia');
+  fixarRelogio('2026-12-19T19:20');
+  atendente.vigiar();
+  assert.equal(store.conversas.has(vazia.id), false);
+  assert.equal(store.conversas.has(comCliente.id), true, 'conversa de cadastro fica');
+});
+
+test('emergência repetida não repete o aviso nem abre chamado em cima de chamado', async () => {
+  const { store, atendente, conversa, falas } = montar('auto');
+  const c = conversa('Fernanda');
+  atendente.receberDoCliente(c, { texto: 'socorro estamos à deriva' });
+  atendente.receberDoCliente(c, { texto: 'socorro!! alguém!' });
+  await atendente.ocioso();
+  assert.equal(falas(c, 'sistema').filter((t) => t.startsWith('Emergência')).length, 1);
+  assert.equal(store.chamados.filter((x) => x.origem === 'sistema' && x.urgencia === 'emergencia').length, 1);
+  fixarRelogio('2026-12-18T19:25');
+  atendente.receberDoCliente(c, { texto: 'socorro de novo' });
+  await atendente.ocioso();
+  assert.equal(falas(c, 'sistema').filter((t) => t.startsWith('Emergência')).length, 2, 'depois de 10 minutos avisa outra vez');
+});

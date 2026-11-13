@@ -10,6 +10,7 @@ COPY app/server.js ./
 COPY app/lib ./lib
 COPY app/public ./public
 COPY app/dados-exemplo ./dados-exemplo
+COPY app/scripts ./scripts
 COPY skills/marina-atendimento/SKILL.md ./skill/SKILL.md
 RUN mkdir /dados && chown node:node /dados
 ENV DADOS_DIR=/dados PORT=3000

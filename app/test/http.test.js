@@ -216,3 +216,102 @@ test('muitas senhas erradas bloqueiam novas tentativas', async (t) => {
   assert.equal(r.status, 429);
   assert.equal((await s.pedir('POST', '/api/painel/login', { corpo: { senha: 'senha-admin', nome: 'a' } })).status, 429);
 });
+
+test('equipe: libera pedido pendente, confirma pagamento, lança reserva e o cliente é avisado', async (t) => {
+  const s = await subir();
+  t.after(s.fechar);
+  const admin = await s.entrar('senha-admin', 'Ana');
+  await s.pedir('POST', '/api/painel/modo', { cookie: admin, corpo: { modo: 'auto' } });
+
+  // Cliente com pendência pede descida: fica aguardando a equipe.
+  const marcos = s.store.clientes.find((c) => c.nome.startsWith('Marcos'));
+  const ses = await s.sessao({ token: marcos.token });
+  await s.pedir('POST', '/api/chat/enviar', { corpo: { texto: 'desce o jet amanhã 10h' }, chave: ses.chave });
+  await s.atendente.ocioso();
+  let estado = (await s.pedir('GET', '/api/painel/estado', { cookie: admin })).dados;
+  assert.equal(estado.pendentes.length, 1);
+  assert.equal(estado.pendentes[0].status, 'aguardando equipe');
+  assert.equal(estado.pendentes[0].telefone, marcos.telefone);
+  const id = estado.pendentes[0].id;
+
+  assert.equal((await s.pedir('POST', `/api/painel/registro/${id}/acao`, { cookie: admin, corpo: { acao: 'na_agua' } })).status, 409, 'não vai para a água antes de liberar');
+  const lib = await s.pedir('POST', `/api/painel/registro/${id}/acao`, { cookie: admin, corpo: { acao: 'liberar' } });
+  assert.equal(lib.status, 200);
+  let novas = (await s.pedir('GET', '/api/chat/novas?depois=&d=0&r=', { chave: ses.chave })).dados;
+  assert.match(novas.mensagens.at(-1).texto, /A equipe confirmou: descida de Jet "MT-07" em .* às 10h\./);
+  assert.equal(novas.registros[0].status, 'confirmado');
+  assert.equal((await s.pedir('POST', `/api/painel/registro/${id}/acao`, { cookie: admin, corpo: { acao: 'liberar' } })).status, 409, 'já liberado');
+
+  // Cancelar com motivo, sem avisar.
+  const antes = novas.mensagens.length;
+  const canc = await s.pedir('POST', `/api/painel/registro/${id}/acao`, { cookie: admin, corpo: { acao: 'cancelar', motivo: 'teste', avisar: false } });
+  assert.equal(canc.status, 200);
+  novas = (await s.pedir('GET', '/api/chat/novas?depois=&d=0&r=', { chave: ses.chave })).dados;
+  assert.equal(novas.mensagens.length, antes, 'sem aviso quando a equipe desmarca a caixa');
+  assert.equal(novas.registros.length, 0);
+
+  // Reserva lançada pela equipe e pagamento de pré-reserva feita pelo assistente.
+  const hoje = estado.agora.data;
+  const manual = await s.pedir('POST', '/api/painel/registro', { cookie: admin, corpo: { tipo: 'reserva', nome: 'Seu Jorge', item: 'lancha22', data: hoje, detalhes: '6 pessoas' } });
+  assert.equal(manual.status, 200);
+  assert.equal(manual.dados.status, 'confirmado');
+  const repetida = await s.pedir('POST', '/api/painel/registro', { cookie: admin, corpo: { tipo: 'reserva', nome: 'Outro', item: 'lancha22', data: hoje } });
+  assert.equal(repetida.status, 409);
+  assert.match(repetida.dados.erro, /Sem unidade livre/);
+  assert.equal((await s.pedir('POST', '/api/painel/registro', { cookie: admin, corpo: { tipo: 'descida', data: hoje, hora: '10h' } })).status, 400, 'sem cliente nem nome');
+
+  const v = await s.sessao();
+  await s.pedir('POST', '/api/chat/enviar', { corpo: { texto: 'quero o jet hoje, pode reservar' }, chave: v.chave });
+  await s.atendente.ocioso();
+  const pre = s.store.registros.find((r) => r.tipo === 'reserva' && r.status === 'pre-reserva');
+  assert.ok(pre, 'pré-reserva criada pelo assistente');
+  const pago = await s.pedir('POST', `/api/painel/registro/${pre.id}/acao`, { cookie: admin, corpo: { acao: 'pagamento' } });
+  assert.equal(pago.status, 200);
+  const doVisitante = (await s.pedir('GET', '/api/chat/novas?depois=&d=0&r=', { chave: v.chave })).dados;
+  assert.match(doVisitante.mensagens.at(-1).texto, /Pagamento confirmado: reserva de Jet Sea-Doo .* está garantida\./);
+
+  estado = (await s.pedir('GET', '/api/painel/estado', { cookie: admin })).dados;
+  assert.equal(estado.quadro.aluguel.find((i) => i.id === 'lancha22').livres, 0);
+  assert.equal(estado.quadro.aluguel.find((i) => i.id === 'jet').livres, 1);
+});
+
+test('equipe: aviso do dia, assumir e devolver conversa, QR e relatório', async (t) => {
+  const s = await subir();
+  t.after(s.fechar);
+  const admin = await s.entrar('senha-admin', 'Ana');
+  await s.pedir('POST', '/api/painel/modo', { cookie: admin, corpo: { modo: 'auto' } });
+
+  await s.pedir('POST', '/api/painel/aviso', { cookie: admin, corpo: { texto: 'Rio baixo: cuidado com os bancos de areia.' } });
+  const v = await s.sessao();
+  await s.pedir('POST', '/api/chat/enviar', { corpo: { texto: 'boa tarde' }, chave: v.chave });
+  await s.atendente.ocioso();
+  const conversa = [...s.store.conversas.values()].find((c) => c.mensagens.length);
+  assert.match(conversa.thread.apiMessages[1].content, /Aviso do dia \(atualizado em .*\): Rio baixo/);
+
+  assert.equal((await s.pedir('POST', `/api/painel/conversa/${conversa.id}/estado`, { cookie: admin, corpo: { estado: 'humano' } })).status, 200);
+  await s.pedir('POST', '/api/chat/enviar', { corpo: { texto: 'tem alguém aí?' }, chave: v.chave });
+  await s.atendente.ocioso();
+  let fio = (await s.pedir('GET', `/api/painel/conversa/${conversa.id}`, { cookie: admin })).dados;
+  assert.equal(fio.mensagens.at(-1).texto, 'tem alguém aí?', 'IA parada com a equipe na conversa');
+  assert.equal((await s.pedir('POST', `/api/painel/conversa/${conversa.id}/estado`, { cookie: admin, corpo: { estado: 'ia' } })).status, 200);
+  await s.atendente.ocioso();
+  fio = (await s.pedir('GET', `/api/painel/conversa/${conversa.id}`, { cookie: admin })).dados;
+  assert.equal(fio.mensagens.at(-1).de, 'assistente', 'devolvida, a IA responde o que ficou pendente');
+  assert.equal((await s.pedir('POST', `/api/painel/conversa/${conversa.id}/estado`, { cookie: admin, corpo: { estado: 'outro' } })).status, 400);
+  assert.equal((await s.pedir('POST', '/api/painel/conversa/con_nao_existe/responder', { cookie: admin, corpo: { texto: 'oi' } })).status, 404);
+
+  const qr = await fetch(`${s.base}/api/painel/qr?u=${encodeURIComponent(`${s.base}/`)}`, { headers: { Cookie: admin } });
+  assert.equal(qr.status, 200);
+  assert.match(qr.headers.get('content-type'), /svg/);
+  assert.equal((await fetch(`${s.base}/api/painel/qr?u=${encodeURIComponent('https://outro.site/')}`, { headers: { Cookie: admin } })).status, 400);
+
+  const rel = (await s.pedir('GET', '/api/painel/relatorio', { cookie: admin })).dados;
+  assert.equal(rel.conversas, 1);
+  assert.equal(rel.mensagensCliente, 2);
+  assert.equal(rel.respostasAssistente >= 2, true);
+  assert.equal(rel.ia.chamadas >= 2, true);
+  assert.equal(rel.ia.usd, null, 'modelo de roteiro não tem preço');
+
+  assert.equal((await s.pedir('DELETE', `/api/painel/conversa/${conversa.id}`, { cookie: admin, corpo: {} })).status, 200);
+  assert.equal(s.store.conversas.has(conversa.id), false);
+});

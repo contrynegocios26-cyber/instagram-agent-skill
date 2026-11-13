@@ -53,8 +53,10 @@ IA e sem custo). As senhas do painel aparecem no terminal na primeira vez.
   e "socorro" disparam na hora o telefone da marina, Marinha 185 e
   Bombeiros 193, e um chamado vermelho no painel.
 - **Falhou, chama gente.** Se a IA erra, recusa ou cai, o cliente é avisado
-  e a conversa vai para a equipe com um chamado. Nenhuma mensagem fica sem
-  alguém avisado.
+  e a conversa vai para a equipe com um chamado.
+- **Ninguém fica esperando sem saber.** Se uma mensagem passa de 10 minutos
+  sem resposta (aprovação parada no modo sombra, ou equipe na conversa sem
+  responder), o cliente recebe um aviso e a equipe, um chamado.
 
 ## Instalar na Hostinger
 
@@ -78,13 +80,16 @@ não foram conferidos; os comandos são os mesmos em qualquer VPS.
    ```
    O Caddy emite o certificado HTTPS sozinho. Em um ou dois minutos o
    endereço responde.
-5. **Atualizar depois:** `git pull && docker compose up -d --build`.
+5. **Confira a IA antes de mostrar a alguém** (veja "Antes de ligar para
+   clientes", abaixo).
+6. **Atualizar depois:** `git pull && docker compose up -d --build`.
 
 Os dados ficam no volume `dados`. Faça cópia dele, ou use "Baixar todos os
 dados" na aba Configuração.
 
-Se o Docker Hub recusar o download da imagem por limite de uso, tente de
-novo mais tarde.
+Se as senhas do painel ficarem em branco no `.env`, o aplicativo cria as
+duas e mostra no log (`docker compose logs app`). Se o Docker Hub recusar
+o download da imagem por limite de uso, tente de novo mais tarde.
 
 ## Preparar a marina
 
@@ -102,8 +107,32 @@ Entre no painel com a senha de administrador.
 5. **Aviso do dia:** na aba Rampa. É a única coisa que o assistente repete
    sobre rio, rampa e tempo.
 
-Antes de ligar para clientes, rode a bancada de validação com a ficha real
-(skill `marina-validacao`).
+## Antes de ligar para clientes
+
+A parte que conversa com a IA de verdade ainda não foi executada: o
+ambiente de desenvolvimento não tinha chave da API. Tudo em volta dela foi
+testado com respostas de roteiro. Por isso, com a chave no `.env`, rode
+estes dois comandos, nesta ordem, antes de mostrar o aplicativo a qualquer
+marina:
+
+```bash
+docker compose exec app node scripts/sonda-custo.mjs    # a IA responde? o cache funciona? quanto custa?
+docker compose exec app node scripts/bancada-real.mjs   # dez situações de cliente, com conferência automática
+```
+
+Fora do Docker, na pasta `app`, com a chave na variável
+`ANTHROPIC_API_KEY`, os mesmos comandos funcionam sem o
+`docker compose exec app`.
+
+- A **sonda** faz dois pedidos e gasta poucos centavos de dólar.
+- A **bancada** faz cerca de 30 pedidos. Ela usa a marina fictícia e não
+  toca nos dados reais. Se alguma situação falhar, leia a conversa
+  impressa: ela mostra o que o assistente disse e o que ficou registrado.
+- Se a API recusar algum recurso opcional do pedido, o aplicativo desliga
+  esse recurso sozinho e avisa no log (`docker compose logs app`).
+
+Depois, com a ficha real da marina preenchida, rode a bancada de validação
+da skill `marina-validacao`.
 
 ## Rodar o piloto
 
@@ -144,9 +173,11 @@ a bancada de cenários antes de trocar.
 - **Uma marina por instalação.**
 - **Aluguel por dia:** uma unidade reservada conta como ocupada o dia
   inteiro, mesmo em aluguel por hora.
-- **Ainda não rodou com clientes reais.** A imagem Docker não foi
-  construída no ambiente de desenvolvimento; os mesmos arquivos foram
-  executados fora do Docker.
+- **Ainda não rodou com a IA de verdade nem com clientes reais.** Veja
+  "Antes de ligar para clientes".
+- **A imagem Docker não foi construída no ambiente de desenvolvimento**
+  (o download da imagem base foi recusado lá). Os mesmos arquivos que vão
+  na imagem foram executados fora do Docker, em uma pasta limpa.
 
 ## Segurança e dados
 
@@ -167,8 +198,9 @@ npm test                 # regras da rampa, motor do atendente e rotas
 node test/e2e.mjs        # navegador: cliente e equipe, do pedido à rampa
 ```
 
-Os dois usam o roteiro sem IA. Para conversar com o modelo de verdade pela
-linha de comando, com a marina de exemplo:
+Os dois usam o roteiro sem IA. Com o modelo de verdade, use a sonda e a
+bancada da seção "Antes de ligar para clientes". Para experimentar uma
+frase de cliente pela linha de comando, com a marina de exemplo:
 
 ```bash
 ANTHROPIC_API_KEY=... node scripts/conversa.mjs --cliente Fernanda \
@@ -186,6 +218,7 @@ ANTHROPIC_API_KEY=... node scripts/conversa.mjs --cliente Fernanda \
 | `IA_ESFORCO` | `low`, `medium` ou `high`; em branco usa o padrão do modelo |
 | `IA_CACHE_TTL` | `1h` (padrão) ou `5m` |
 | `IA_LIMITE_DIARIO` | Teto de chamadas ao modelo por dia (padrão 1500) |
+| `AVISO_SEM_RESPOSTA_MIN` | Minutos sem resposta até avisar o cliente e a equipe (padrão 10) |
 | `IA_FALLBACK` | `off` desliga a troca de modelo quando um filtro de segurança recusa o pedido |
 | `SEMENTE` | `exemplo` começa com a marina fictícia |
 | `IA_FAKE` | `1` roda sem IA, com roteiro |
