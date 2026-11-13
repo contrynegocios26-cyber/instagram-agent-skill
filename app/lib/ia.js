@@ -71,7 +71,14 @@ export function semPapelDeSistema(messages) {
   });
 }
 
+/** Conta sem crédito ou com problema de pagamento: erro 402; em algumas
+ *  contas a API responde 400 com a mensagem de saldo insuficiente. */
+const semCredito = (e) => e instanceof Anthropic.APIError && (e.status === 402 || e.type === 'billing_error' || (e.status === 400 && /credit balance/i.test(e.message ?? '')));
+
 function traduzir(e) {
+  if (semCredito(e)) {
+    return new FalhaIA('config', 'A conta da Anthropic está sem crédito ou com problema de pagamento. Confira em Billing, no console da Anthropic (platform.claude.com).', e);
+  }
   if (e instanceof Anthropic.AuthenticationError || e instanceof Anthropic.PermissionDeniedError) {
     return new FalhaIA('config', 'Chave da API da Anthropic inválida ou sem permissão.', e);
   }
@@ -129,6 +136,8 @@ export function criarReal(client = new Anthropic({ timeout: 120_000, maxRetries:
       if (!(e instanceof Anthropic.BadRequestError)) throw traduzir(e);
       primeiro = e;
     }
+    // Sem crédito não é problema de formato: não adianta tentar de outro jeito.
+    if (semCredito(primeiro)) throw traduzir(primeiro);
     // Numa conversa que já tem respostas do modelo, um 400 costuma ser do
     // histórico, não do formato: quem chamou recomeça a conversa. O formato
     // só é sondado em pedido novo, onde o histórico não pode ser a causa.

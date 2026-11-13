@@ -480,33 +480,42 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
       cacheQuente = null; // já venceu: a próxima conversa grava de novo
       return 'vencido';
     }
-    const inicio = agoraMs();
-    cacheQuente = { versao, inicio }; // não repete o pedido enquanto este não volta
-    let leu = false;
+    const anterior = cacheQuente;
+    const marca = { versao, inicio: agoraMs() };
+    cacheQuente = marca; // não repete o pedido enquanto este não volta
+    let resp;
     try {
-      const resp = await ia.aquecer({ sistema });
-      const u = resp.usage || {};
-      leu = (u.cache_read_input_tokens ?? 0) > 0;
-      store.registrarUso({
-        dia: agora().data,
-        em: carimbo(),
-        aquecimento: true,
-        modelo: resp.model || ia.modelo,
-        entrada: u.input_tokens ?? 0,
-        saida: u.output_tokens ?? 0,
-        cacheLeitura: u.cache_read_input_tokens ?? 0,
-        cacheGravacao: u.cache_creation_input_tokens ?? 0,
-        usd: custoEstimado(resp.model || ia.modelo, u),
-      });
+      resp = await ia.aquecer({ sistema });
     } catch (e) {
-      console.warn(`[cache] a manutenção do cache falhou: ${e.message}`);
+      if (e?.tipo === 'temporaria') {
+        // Falha passageira (rede, limite de uso): tenta de novo no próximo
+        // minuto, enquanto o cache ainda não venceu.
+        if (cacheQuente === marca) cacheQuente = anterior;
+        return 'falhou';
+      }
+      manutencaoLigada = false;
+      console.warn(`[cache] a API não aceitou o pedido de manutenção do cache (${e?.message ?? e}). A manutenção foi desligada; o atendimento segue normal.`);
+      return 'falhou';
     }
-    if (leu) {
+    const u = resp.usage || {};
+    store.registrarUso({
+      dia: agora().data,
+      em: carimbo(),
+      aquecimento: true,
+      modelo: resp.model || ia.modelo,
+      entrada: u.input_tokens ?? 0,
+      saida: u.output_tokens ?? 0,
+      cacheLeitura: u.cache_read_input_tokens ?? 0,
+      cacheGravacao: u.cache_creation_input_tokens ?? 0,
+      usd: custoEstimado(resp.model || ia.modelo, u),
+    });
+    if ((u.cache_read_input_tokens ?? 0) > 0) {
       falhasDeManutencao = 0;
       return 'renovado';
     }
-    // Não leu nada do cache: ou o pedido falhou, ou ele não bate com o cache
-    // dos pedidos de verdade. Insistir só gastaria; depois de duas vezes para.
+    // O pedido passou mas não leu nada do cache: ou o cache tinha vencido,
+    // ou este pedido não bate com o dos atendimentos. Uma vez pode ser
+    // acaso; na segunda seguida, insistir só gastaria.
     falhasDeManutencao++;
     if (falhasDeManutencao >= 2) {
       manutencaoLigada = false;

@@ -38,7 +38,14 @@ const pedido = () => ({
 
 let segunda = null;
 for (const n of [1, 2]) {
-  const r = await ia.criar(pedido());
+  let r;
+  try {
+    r = await ia.criar(pedido());
+  } catch (e) {
+    console.error(`\nFALHA no pedido ${n}: ${e.message}`);
+    console.error('Confira a chave ANTHROPIC_API_KEY no arquivo .env e se a conta da Anthropic tem crédito.');
+    process.exit(1);
+  }
   const u = r.usage;
   const usd = custoEstimado(r.model, u);
   console.log(

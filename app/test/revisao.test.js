@@ -577,17 +577,31 @@ test('manutenção do cache: se não reaproveita o cache, desliga em vez de gast
     assert.equal(ia.manutencoes.length, 2);
     assert.ok(avisos.some((t) => /foi desligada/.test(t)));
 
-    // Erro da API também conta, e o atendimento continua funcionando.
-    const ia2 = iaComCache(() => new Error('fora do ar'));
+    // Pedido recusado pela API: desliga na hora, e o atendimento continua funcionando.
+    const ia2 = iaComCache(() => Object.assign(new Error('formato recusado'), { tipo: 'requisicao' }));
     const m2 = motor({ modo: 'auto', ia: ia2, agora: '2026-12-18T09:00' });
     const c = m2.conversa('Fernanda');
     m2.atendente.receberDoCliente(c, { texto: 'oi' });
     await m2.atendente.ocioso();
     fixarRelogio('2026-12-18T09:52');
     assert.equal(await m2.atendente.manterCache(), 'falhou');
+    fixarRelogio('2026-12-18T09:53');
+    assert.equal(await m2.atendente.manterCache(), 'parado');
+    assert.equal(ia2.manutencoes.length, 1);
     m2.atendente.receberDoCliente(c, { texto: 'desce amanhã 10h' });
     await m2.atendente.ocioso();
     assert.equal(m2.store.registros.length, 1);
+
+    // Falha passageira (rede, limite de uso): tenta de novo no minuto seguinte, sem desligar.
+    const ia3 = iaComCache((n) => (n === 1 ? Object.assign(new Error('sem conexão'), { tipo: 'temporaria' }) : 9000));
+    const m3 = motor({ modo: 'auto', ia: ia3, agora: '2026-12-18T09:00' });
+    m3.atendente.receberDoCliente(m3.conversa('Fernanda'), { texto: 'oi' });
+    await m3.atendente.ocioso();
+    fixarRelogio('2026-12-18T09:52');
+    assert.equal(await m3.atendente.manterCache(), 'falhou');
+    fixarRelogio('2026-12-18T09:53');
+    assert.equal(await m3.atendente.manterCache(), 'renovado');
+    assert.equal(m3.store.lerUso().filter((u) => u.aquecimento).length, 1, 'só o pedido que deu certo entra no custo');
   } finally {
     console.warn = original;
   }

@@ -169,3 +169,20 @@ test('manutenção do cache: erro da API volta traduzido, sem sondar formatos', 
   assert.equal(c.chamadas.length, 1);
   assert.equal(criar.formato(), '01111', 'o formato dos pedidos de verdade não muda');
 });
+
+test('conta sem crédito: mensagem clara para o painel, sem sondar formatos', async () => {
+  for (const erro of [
+    Anthropic.APIError.generate(402, { type: 'error', error: { type: 'billing_error', message: 'payment required' } }, 'payment required', new Headers()),
+    erro400('Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'),
+  ]) {
+    let n = 0;
+    const falha = async () => {
+      n++;
+      throw erro;
+    };
+    const criar = criarReal({ beta: { messages: { create: falha } }, messages: { create: falha } }, { fallback: true });
+    await assert.rejects(criar(pedido()), (e) => e instanceof FalhaIA && e.tipo === 'config' && /sem crédito/.test(e.message));
+    assert.equal(n, 1, 'um pedido só');
+    assert.equal(criar.formato(), '11111');
+  }
+});

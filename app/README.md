@@ -147,7 +147,7 @@ Entre no painel com a senha de administrador.
 
 O que já foi testado, e como:
 
-- **104 testes automáticos** das regras da rampa, do motor do atendente,
+- **105 testes automáticos** das regras da rampa, do motor do atendente,
   das rotas, dos agentes e do formato dos pedidos à IA, com respostas de
   roteiro.
 - **19 passos no navegador**, do pedido do cliente no celular até a rampa
@@ -201,8 +201,11 @@ da skill `marina-validacao`.
 
 ## Custo da IA
 
-A cobrança é da Anthropic, por uso, na chave que estiver no `.env`. O
-painel mostra o custo estimado por resposta na aba Relatório.
+A cobrança é da Anthropic, por uso, na chave que estiver no `.env`. É
+pré-paga: você põe crédito em dólar e o uso desconta dele. O painel mostra
+o custo estimado por resposta na aba Relatório. Se o crédito acabar, o
+painel mostra uma faixa avisando e as mensagens vão para a equipe até o
+crédito voltar; vale ligar a recarga automática no console da Anthropic.
 
 O prompt (regras, ficha e ferramentas, perto de 9 mil tokens) é igual para
 todos os clientes da marina e fica em cache por 1 hora. Ler do cache custa
@@ -293,7 +296,7 @@ bancada (`scripts/bancada-real.mjs`) antes e depois de trocar.
 ## Testes
 
 ```bash
-npm test                 # 104 testes: rampa, atendente, rotas, agentes, pedidos à IA
+npm test                 # 105 testes: rampa, atendente, rotas, agentes, pedidos à IA
 node test/e2e.mjs        # 19 passos no navegador: cliente e equipe, do pedido à rampa
 ```
 
