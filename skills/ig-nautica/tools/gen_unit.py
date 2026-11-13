@@ -8,7 +8,14 @@ ONLY=sys.argv[2] if len(sys.argv)>2 else 'all'
 cut=Image.open(C['cut']).convert('RGBA'); bb=cut.getbbox(); J=cut.crop(bb)
 src=Image.open(C['foto']).convert('RGB')
 jw=C.get('portrait_w',960); sc=jw/J.width; Jp=J.resize((jw,int(J.height*sc)),Image.LANCZOS)
-bg=src.copy(); r=max(1080/bg.width,1920/bg.height); bg=bg.resize((int(bg.width*r),int(bg.height*r)),Image.LANCZOS)
+bg=src.copy()
+if C.get('bg_kill'):
+    A=np.array(bg).astype(float); R_,G_,B_=A[...,0],A[...,1],A[...,2]; yy_,xx_=np.mgrid[0:A.shape[0],0:A.shape[1]]
+    m=((R_-G_>50)&(R_-B_>50))
+    for (cx_,cy_,rr) in C.get('bg_circles',[]): m|=((xx_-cx_)**2+(yy_-cy_)**2<rr**2)
+    m=np.array(Image.fromarray((m*255).astype('uint8')).filter(ImageFilter.MaxFilter(15)))>0
+    A[m]=np.median(A[~m][::50],0); bg=Image.fromarray(A.astype('uint8'))
+r=max(1080/bg.width,1920/bg.height); bg=bg.resize((int(bg.width*r),int(bg.height*r)),Image.LANCZOS)
 bg=bg.crop(((bg.width-1080)//2,(bg.height-1920)//2,(bg.width-1080)//2+1080,(bg.height-1920)//2+1920))
 bg=bg.filter(ImageFilter.GaussianBlur(C.get('blur',36))); bg=ImageEnhance.Brightness(bg).enhance(0.85)
 jx=-12 if C.get('jet_left') else (1080-jw)//2; jy=C.get('portrait_y',250)
@@ -16,7 +23,10 @@ if C.get('portrait_cut'):
     ap=np.array(Jp).astype(float); hp_=ap.shape[0]; co=int(hp_*C['portrait_cut']); ap[...,3]*=np.clip((co-np.arange(hp_))/(hp_*0.06),0,1)[:,None]; Jp=Image.fromarray(ap.astype('uint8'),'RGBA')
 sh=Image.new('L',(1080,1920),0); ImageDraw.Draw(sh).ellipse((jx+jw*0.1,jy+Jp.height*0.85,jx+jw*0.9,jy+Jp.height*1.02),fill=150); sh=sh.filter(ImageFilter.GaussianBlur(30)); bg.paste((0,0,0),(0,0),sh)
 bg.paste(Jp,(jx,jy),Jp); bg=ImageEnhance.Contrast(bg).enhance(1.1); bg=ImageEnhance.Color(bg).enhance(1.12); P=bg.filter(ImageFilter.UnsharpMask(2,60,2))
-a=np.array(J.resize((800,int(J.height*800/J.width)),Image.LANCZOS)).astype(float); hh=a.shape[0]; cutoff=int(hh*C.get('studio_cut',0.94))
+JS=J
+if C.get('studio_pad'):
+    JS=Image.new('RGBA',(int(J.width*C['studio_pad']),J.height),(0,0,0,0)); JS.paste(J,((JS.width-J.width)//2,0),J)
+a=np.array(JS.resize((800,int(JS.height*800/JS.width)),Image.LANCZOS)).astype(float); hh=a.shape[0]; cutoff=int(hh*C.get('studio_cut',0.94))
 a[...,3]*=np.clip((cutoff-np.arange(hh))/(hh*0.12),0,1)[:,None]
 SJ=Image.fromarray(a.astype('uint8'),'RGBA').crop((0,0,800,cutoff)); SJ=ImageEnhance.Contrast(SJ).enhance(1.08); SJ=ImageEnhance.Brightness(SJ).enhance(C.get('studio_bright',1.0))
 def sj(w): return SJ.resize((w,int(SJ.height*w/SJ.width)),Image.LANCZOS)

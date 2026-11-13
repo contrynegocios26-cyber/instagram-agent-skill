@@ -1,0 +1,238 @@
+{
+ "out": "/home/user/instagram-agent-skill/midia/2026-11-13-gtx170-2025-47h/",
+ "foto": "/root/.claude/uploads/c388b183-f909-530a-9de4-4ce57692aac2/33eb14e7-image.jpg",
+ "cut": "/tmp/claude-0/cut170_47c.png",
+ "blur": 40,
+ "portrait_w": 760,
+ "portrait_y": 330,
+ "studio_cut": 1.0,
+ "studio_bright": 1.08,
+ "marca": "Sea-Doo",
+ "modelo": "GTX 170",
+ "ano": "2025",
+ "horas": "47",
+ "preco": "135.000",
+ "hp": "170",
+ "cols": [
+  [
+   "Ano",
+   "2025"
+  ],
+  [
+   "Horas de uso",
+   "47"
+  ],
+  [
+   "Potência",
+   "170 hp"
+  ]
+ ],
+ "horas_l1": "É tudo que ele navegou.",
+ "horas_l2": "Sea-Doo GTX 170 · 2025 · linha atual",
+ "motor_l1": "Motor Rotax® 1630 ACE™",
+ "motor_l2": "170 cavalos no casco mais estável da Sea-Doo.",
+ "feats": [
+  [
+   "170 hp",
+   "Rotax 1630 ACE"
+  ],
+  [
+   "Casco ST3",
+   "Plataforma mais estável"
+  ],
+  [
+   "iBR",
+   "Freio e ré eletrônicos"
+  ],
+  [
+   "Painel",
+   "Digital grande no guidão"
+  ],
+  [
+   "Ergolock",
+   "Banco em degraus"
+  ],
+  [
+   "3 lugares",
+   "Passeio com a família"
+  ],
+  [
+   "Frontal",
+   "Porta-objetos de acesso direto"
+  ],
+  [
+   "LinQ",
+   "Caixa estanque pro celular"
+  ]
+ ],
+ "feat_note": "Itens da linha GTX 2025, conforme a BRP.",
+ "callouts": [
+  [
+   392,
+   82,
+   390,
+   "Painel",
+   "digital grande"
+  ],
+  [
+   392,
+   364,
+   640,
+   "Frontal",
+   "porta-objetos"
+  ],
+  [
+   217,
+   593,
+   900,
+   "ST3",
+   "casco estável"
+  ]
+ ],
+ "detalhe_rodape": "47 horas · modelo 2025",
+ "quiz_l1": "Quantas horas",
+ "quiz_l2": "tem esse jet?",
+ "quiz_opts": "47 / 150 / 300",
+ "views": [
+  [
+   540,
+   900,
+   1.2
+  ],
+  [
+   530,
+   470,
+   1.7
+  ],
+  [
+   530,
+   640,
+   1.6
+  ],
+  [
+   300,
+   840,
+   1.5
+  ],
+  [
+   540,
+   1030,
+   1.5
+  ],
+  [
+   540,
+   1200,
+   1.3
+  ]
+ ],
+ "reel": {
+  "hook1": "47 HORAS",
+  "hook2": "MODELO 2025",
+  "motor_tag": "Rotax 1630 ACE",
+  "pills": [
+   "Casco ST3 estável",
+   "Freio e ré iBR",
+   "Banco em degraus"
+  ],
+  "r1": [
+   "Quarenta e sete horas. Modelo dois mil e vinte e cinco.",
+   [
+    "Si Dú, gê tê xis, cento e setenta, modelo dois mil e vinte e cinco.",
+    "Sea-Doo GTX 170, modelo 2025."
+   ],
+   [
+    "Motor Rotax de cento e setenta cavalos, no casco mais estável da Sea Dú.",
+    "Motor Rotax de 170 cavalos, no casco mais estável da Sea-Doo."
+   ],
+   [
+    "Casco ST3, freio e ré eletrônicos e banco em degraus.",
+    "Casco ST3, freio e ré eletrônicos e banco em degraus."
+   ],
+   [
+    "Cento e trinta e cinco mil reais. Pagamento no cartão ou cheque.",
+    "R$ 135 mil. Pagamento no cartão ou cheque."
+   ]
+  ],
+  "r2": [
+   [
+    "O jet de quem gosta de passear com conforto.",
+    "O jet de quem gosta de passear com conforto.",
+    "Feito pra",
+    "passear"
+   ],
+   [
+    "Casco ST3: estável e confortável na onda.",
+    "Casco ST3: estável e confortável na onda.",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco",
+    "Ergolock"
+   ],
+   [
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital",
+    "e porta-objetos"
+   ],
+   [
+    "E só quarenta e sete horas de uso.",
+    "E só 47 horas de uso.",
+    "Só 47 horas",
+    "de uso"
+   ]
+  ],
+  "r2_price": [
+   "Cento e trinta e cinco mil. Chama no zap!",
+   "R$ 135 mil. Chama no zap!"
+  ],
+  "r3_hook": [
+   "NÃO COMPRE",
+   "JET SKI USADO",
+   "antes de ver isso"
+  ],
+  "r3_hook_spk": "Não compre jet ski usado antes de ver isso.",
+  "r3": [
+   [
+    "Um: horas de motor. Esse tem quarenta e sete, num modelo dois mil e vinte e cinco.",
+    "Um: horas de motor. Esse tem 47, num modelo 2025.",
+    "1",
+    "Horas de motor",
+    "47 h, modelo 2025"
+   ],
+   [
+    "Dois: o casco. O ST3 é o mais estável da Sea Dú.",
+    "Dois: o casco. O ST3 é o mais estável da Sea-Doo.",
+    "2",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Três: veja de perto e confira os documentos antes de pagar.",
+    "Três: veja de perto e confira os documentos antes de pagar.",
+    "3",
+    "Veja de perto",
+    "e confira os documentos"
+   ]
+  ],
+  "r3_price": [
+   "Esse Si Dú, gê tê xis, cento e setenta está aqui na Cântri, por cento e trinta e cinco mil.",
+   "Esse Sea-Doo GTX 170 está aqui na Country, por R$ 135 mil."
+  ]
+ },
+ "model_size": 100,
+ "portrait_cut": null,
+ "jet_left": false,
+ "studio_pad": 1.45,
+ "bg_kill": true,
+ "bg_circles": [
+  [
+   690,
+   165,
+   85
+  ]
+ ]
+}
