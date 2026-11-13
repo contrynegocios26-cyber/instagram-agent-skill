@@ -1,0 +1,228 @@
+{
+ "out": "/home/user/instagram-agent-skill/midia/2026-11-13-gtx230-2025/",
+ "foto": "/root/.claude/uploads/c388b183-f909-530a-9de4-4ce57692aac2/a35958ff-image.jpg",
+ "cut": "/tmp/claude-0/cut230_25.png",
+ "blur": 45,
+ "portrait_w": 1000,
+ "portrait_y": 400,
+ "studio_cut": 0.92,
+ "studio_bright": 1.08,
+ "marca": "Sea-Doo",
+ "modelo": "GTX 230",
+ "ano": "2025",
+ "horas": "17",
+ "preco": "145.000",
+ "hp": "230",
+ "cols": [
+  [
+   "Ano",
+   "2025"
+  ],
+  [
+   "Horas de uso",
+   "17"
+  ],
+  [
+   "Potência",
+   "230 hp"
+  ]
+ ],
+ "horas_l1": "É tudo que ele navegou.",
+ "horas_l2": "Sea-Doo GTX 230 · 2025 · praticamente zero",
+ "motor_l1": "Rotax® 1630 ACE™ supercharged",
+ "motor_l2": "Supercharger com intercooler.",
+ "feats": [
+  [
+   "230 hp",
+   "Rotax com supercharger"
+  ],
+  [
+   "Intercooler",
+   "Ar resfriado, mais força"
+  ],
+  [
+   "Casco ST3",
+   "Plataforma mais estável"
+  ],
+  [
+   "iBR",
+   "Freio e ré eletrônicos"
+  ],
+  [
+   "Painel",
+   "Digital grande no guidão"
+  ],
+  [
+   "Ergolock",
+   "Banco em degraus"
+  ],
+  [
+   "Frontal",
+   "Porta-objetos de acesso direto"
+  ],
+  [
+   "LinQ",
+   "Caixa estanque pro celular"
+  ]
+ ],
+ "feat_note": "Itens da linha GTX 2025, conforme a BRP.",
+ "callouts": [
+  [
+   348,
+   25,
+   390,
+   "Painel",
+   "digital grande"
+  ],
+  [
+   152,
+   127,
+   640,
+   "Banco",
+   "Ergolock"
+  ],
+  [
+   493,
+   417,
+   900,
+   "ST3",
+   "casco estável"
+  ]
+ ],
+ "detalhe_rodape": "17 horas · modelo 2025",
+ "quiz_l1": "Quantas horas",
+ "quiz_l2": "tem esse jet?",
+ "quiz_opts": "17 / 80 / 150",
+ "views": [
+  [
+   540,
+   800,
+   1.15
+  ],
+  [
+   526,
+   470,
+   1.7
+  ],
+  [
+   708,
+   640,
+   1.6
+  ],
+  [
+   880,
+   740,
+   1.6
+  ],
+  [
+   452,
+   820,
+   1.5
+  ],
+  [
+   300,
+   600,
+   1.5
+  ]
+ ],
+ "reel": {
+  "hook1": "17 HORAS",
+  "hook2": "230 CAVALOS",
+  "motor_tag": "Rotax 1630 ACE supercharged",
+  "pills": [
+   "Supercharger + intercooler",
+   "Casco ST3 estável",
+   "Freio e ré iBR"
+  ],
+  "r1": [
+   "Dezessete horas. Duzentos e trinta cavalos.",
+   [
+    "Si Dú, gê tê xis, duzentos e trinta, modelo dois mil e vinte e cinco.",
+    "Sea-Doo GTX 230, modelo 2025."
+   ],
+   [
+    "Motor Rotax de duzentos e trinta cavalos, com supercharger e intercooler.",
+    "Motor Rotax de 230 cavalos, com supercharger e intercooler."
+   ],
+   [
+    "Casco ST3, muito mais estável, e freio e ré eletrônicos.",
+    "Casco ST3, muito mais estável, e freio e ré eletrônicos."
+   ],
+   [
+    "Cento e quarenta e cinco mil reais. Pagamento no cartão ou cheque.",
+    "R$ 145 mil. Pagamento no cartão ou cheque."
+   ]
+  ],
+  "r2": [
+   [
+    "Esse é o jet de quem quer tudo: força e conforto.",
+    "Esse é o jet de quem quer tudo: força e conforto.",
+    "Força e",
+    "conforto"
+   ],
+   [
+    "Casco ST3: mais estável e confortável na onda.",
+    "Casco ST3: mais estável e confortável na onda.",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco",
+    "Ergolock"
+   ],
+   [
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital",
+    "e porta-objetos"
+   ],
+   [
+    "E duzentos e trinta cavalos quando você quiser acelerar.",
+    "E 230 cavalos quando você quiser acelerar.",
+    "230 cavalos",
+    "supercharged"
+   ]
+  ],
+  "r2_price": [
+   "Cento e quarenta e cinco mil. Chama no zap!",
+   "R$ 145 mil. Chama no zap!"
+  ],
+  "r3_hook": [
+   "POTÊNCIA OU",
+   "CONFORTO?",
+   "leve os dois"
+  ],
+  "r3_hook_spk": "Potência ou conforto? Nesse jet você leva os dois.",
+  "r3": [
+   [
+    "Um: duzentos e trinta cavalos, com supercharger.",
+    "Um: 230 cavalos, com supercharger.",
+    "1",
+    "230 cavalos",
+    "supercharged"
+   ],
+   [
+    "Dois: casco ST3 e banco em degraus. Conforto pra família toda.",
+    "Dois: casco ST3 e banco em degraus. Conforto pra família toda.",
+    "2",
+    "Casco ST3",
+    "e banco em degraus"
+   ],
+   [
+    "Três: só dezessete horas, modelo dois mil e vinte e cinco. Praticamente zero.",
+    "Três: só 17 horas, modelo 2025. Praticamente zero.",
+    "3",
+    "Só 17 horas",
+    "modelo 2025"
+   ]
+  ],
+  "r3_price": [
+   "Esse Si Dú, gê tê xis, duzentos e trinta está aqui na Cântri, por cento e quarenta e cinco mil.",
+   "Esse Sea-Doo GTX 230 está aqui na Country, por R$ 145 mil."
+  ]
+ },
+ "model_size": 96,
+ "jet_right": true
+}
