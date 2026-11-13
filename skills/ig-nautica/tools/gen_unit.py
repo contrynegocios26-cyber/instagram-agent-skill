@@ -11,13 +11,16 @@ jw=C.get('portrait_w',960); sc=jw/J.width; Jp=J.resize((jw,int(J.height*sc)),Ima
 bg=src.copy(); r=max(1080/bg.width,1920/bg.height); bg=bg.resize((int(bg.width*r),int(bg.height*r)),Image.LANCZOS)
 bg=bg.crop(((bg.width-1080)//2,(bg.height-1920)//2,(bg.width-1080)//2+1080,(bg.height-1920)//2+1920))
 bg=bg.filter(ImageFilter.GaussianBlur(C.get('blur',36))); bg=ImageEnhance.Brightness(bg).enhance(0.85)
-jx=(1080-jw)//2; jy=C.get('portrait_y',250)
+jx=-12 if C.get('jet_left') else (1080-jw)//2; jy=C.get('portrait_y',250)
+if C.get('portrait_cut'):
+    ap=np.array(Jp).astype(float); hp_=ap.shape[0]; co=int(hp_*C['portrait_cut']); ap[...,3]*=np.clip((co-np.arange(hp_))/(hp_*0.06),0,1)[:,None]; Jp=Image.fromarray(ap.astype('uint8'),'RGBA')
 sh=Image.new('L',(1080,1920),0); ImageDraw.Draw(sh).ellipse((jx+jw*0.1,jy+Jp.height*0.85,jx+jw*0.9,jy+Jp.height*1.02),fill=150); sh=sh.filter(ImageFilter.GaussianBlur(30)); bg.paste((0,0,0),(0,0),sh)
 bg.paste(Jp,(jx,jy),Jp); bg=ImageEnhance.Contrast(bg).enhance(1.1); bg=ImageEnhance.Color(bg).enhance(1.12); P=bg.filter(ImageFilter.UnsharpMask(2,60,2))
 a=np.array(J.resize((800,int(J.height*800/J.width)),Image.LANCZOS)).astype(float); hh=a.shape[0]; cutoff=int(hh*C.get('studio_cut',0.94))
 a[...,3]*=np.clip((cutoff-np.arange(hh))/(hh*0.12),0,1)[:,None]
 SJ=Image.fromarray(a.astype('uint8'),'RGBA').crop((0,0,800,cutoff)); SJ=ImageEnhance.Contrast(SJ).enhance(1.08); SJ=ImageEnhance.Brightness(SJ).enhance(C.get('studio_bright',1.0))
 def sj(w): return SJ.resize((w,int(SJ.height*w/SJ.width)),Image.LANCZOS)
+def XL(x): return -12 if C.get('jet_left') else x
 COLS=[tuple(x) for x in C['cols']]; MOD=C['modelo']; MAR=C['marca']
 W_,H_=1080,1350
 def base(ct,panel,h=H_):
@@ -39,7 +42,7 @@ if ONLY in('all','img'):
     d.text((72,1290),'Arraste para conhecer →',font=sans(28,'sb'),fill=GOLD); s.save(OUT+'02-horas.jpg',quality=95)
     s=kit.studio(W_,H_,cy=760); d=ImageDraw.Draw(s); L=logo(300); s.paste(L,(60,56),L)
     gold_big(s,C['hp'],190); d.text((W_/2,520),'CAVALOS',font=wide(56,850),fill=WHITE,anchor='ma')
-    kit.place_jet(s,sj(760),160,600); ov=Image.new('RGBA',(W_,H_),(0,0,0,0)); od=ImageDraw.Draw(ov)
+    kit.place_jet(s,sj(760),XL(160),600); ov=Image.new('RGBA',(W_,H_),(0,0,0,0)); od=ImageDraw.Draw(ov)
     for i in range(280): od.line((0,H_-280+i,W_,H_-280+i),fill=NAVY+(int(240*i/280),))
     s.paste(ov,(0,0),ov); d=ImageDraw.Draw(s)
     d.text((72,1150),C['motor_l1'],font=wide(42,800),fill=WHITE); d.text((72,1210),C['motor_l2'],font=sans(34,'m'),fill=MUTE); num(d,3); s.save(OUT+'03-motor.jpg',quality=95)
@@ -51,7 +54,7 @@ if ONLY in('all','img'):
     d.text((72,1190),C['feat_note'],font=sans(24,'m'),fill=(130,145,165)); num(d,4); s.save(OUT+'04-equipamentos.jpg',quality=95)
     s=kit.studio(W_,H_,cy=700); d=ImageDraw.Draw(s); L=logo(300); s.paste(L,(60,56),L)
     d.text((72,190),f'Conheça o {MOD}',font=wide(60,850),fill=WHITE)
-    jw2=760; jx2,jy2=40,420; kit.place_jet(s,sj(jw2),jx2,jy2); d=ImageDraw.Draw(s); k2=jw2/800
+    jw2=760; jx2,jy2=XL(40),420; kit.place_jet(s,sj(jw2),jx2,jy2); d=ImageDraw.Draw(s); k2=jw2/800
     for (px,py,ty,t1,t2) in C['callouts']:
         X,Y=jx2+px*k2,jy2+py*k2; tx=820
         d.ellipse((X-10,Y-10,X+10,Y+10),fill=TAG); d.ellipse((X-21,Y-21,X+21,Y+21),outline=TAG,width=3)
@@ -84,7 +87,7 @@ if ONLY in('all','img'):
     tx='[ cole aqui o link do WhatsApp ]'; d.text((540-d.textlength(tx,font=sans(30,'m'))/2,1822),tx,font=sans(30,'m'),fill=MUTE); st.save(OUT+'story-1-oferta.jpg',quality=95)
     st=kit.studio(1080,1920,cy=1000); d=ImageDraw.Draw(st); L=logo(300); st.paste(L,(390,110),L)
     d.text((540,330),'QUIZ',font=sans(44,'sb'),fill=GOLD,anchor='ma'); d.text((540,400),C['quiz_l1'],font=wide(80,850),fill=WHITE,anchor='ma'); d.text((540,500),C['quiz_l2'],font=wide(80,850),fill=WHITE,anchor='ma')
-    kit.place_jet(st,sj(900),90,700); d=ImageDraw.Draw(st)
+    kit.place_jet(st,sj(900),XL(90),700); d=ImageDraw.Draw(st)
     d.rounded_rectangle((140,1560,940,1700),radius=30,outline=TAG,width=3)
     d.text((540,1630),f"[ coloque aqui a figurinha QUIZ: {C['quiz_opts']} ]",font=sans(28,'m'),fill=MUTE,anchor='mm'); st.save(OUT+'story-2-quiz.jpg',quality=95)
     print('imagens ok')
@@ -103,7 +106,7 @@ if ONLY in('all','reels'):
         bg.paste(im,(int(cx-im.width/2),int(cy-im.height/2)),im)
     LG=logo(320); TAGI=tag(C['preco'],TAGSUB,w=480,angle=0)
     def jetframe(t,d,jy=760,w=900):
-        fr=BG.copy(); z=1+0.05*t/max(d,1); jw=int(w*z); kit.place_jet(fr,sj(jw),(W-jw)/2,jy); pc(fr,LG,W/2,150); return fr
+        fr=BG.copy(); z=1+0.05*t/max(d,1); jw=int(w*z); kit.place_jet(fr,sj(jw),XL((W-jw)/2),jy); pc(fr,LG,W/2,150); return fr
     def endcard(t,d):
         e=eo(seg(t,0,0.4)); fr=Image.new('RGB',(W,H),NAVY); dr=ImageDraw.Draw(fr)
         L=logo(700); fr.paste(L,(int(W/2-350),int(520-40*(1-e))),L)
@@ -146,7 +149,7 @@ if ONLY in('all','reels'):
     def s2(t,d):
         fr=BG.copy(); r_=eo(seg(t,0,0.9)); jw=int(900*(0.85+0.15*r_)); j=sj(jw)
         if r_<1: j=j.copy(); j.putalpha(j.split()[3].point(lambda v:int(v*min(1,r_*1.4))))
-        kit.place_jet(fr,j,(W-jw)/2,760+260*(1-r_)); pc(fr,LG,W/2,150); pc(fr,TM,W/2,330,al=seg(t,0.3,0.7)); return fr
+        kit.place_jet(fr,j,XL((W-jw)/2),760+260*(1-r_)); pc(fr,LG,W/2,150); pc(fr,TM,W/2,330,al=seg(t,0.3,0.7)); return fr
     HPN=int(C['hp'])
     def s3(t,d):
         fr=jetframe(t,d); c=int(HPN*eo(seg(t,0.1,1.4))); pc(fr,ti(f'{c} hp',wide(170,900),TAG),W/2,480)
@@ -160,7 +163,7 @@ if ONLY in('all','reels'):
                 dd.text((430,55),it,font=wide(38,850),fill=WHITE,anchor='mm'); pc(fr,im,W/2+80*(1-eo(s)),380+k*135,al=s)
         return fr
     def s5(t,d):
-        fr=BG.copy(); kit.place_jet(fr,sj(900),90,520); pc(fr,LG,W/2,150)
+        fr=BG.copy(); kit.place_jet(fr,sj(900),XL(90),520); pc(fr,LG,W/2,150)
         ang=10*math.exp(-4*t)*math.cos(9*t); im=TAGI.rotate(6+ang,resample=Image.BICUBIC,expand=True); pc(fr,im,W/2+40,1330-260*(1-eo(seg(t,0,0.5)))); return fr
     sc1=[dict(spk=R['r1'][0],cap=None,draw=s1,flash=False,min=2.6)]
     for (spk,cap),fn,yc in zip(R['r1'][1:5],[s2,s3,s4,s5],[1640,1640,1640,1060]): sc1.append(dict(spk=spk,cap=cap,draw=fn,ycap=yc))

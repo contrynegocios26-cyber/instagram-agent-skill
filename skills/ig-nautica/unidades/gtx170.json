@@ -1,0 +1,229 @@
+{
+ "out": "/home/user/instagram-agent-skill/midia/2026-11-13-gtx170-2024/",
+ "foto": "/root/.claude/uploads/c388b183-f909-530a-9de4-4ce57692aac2/525542ae-image.jpg",
+ "cut": "/tmp/claude-0/cut170g.png",
+ "blur": 30,
+ "portrait_w": 880,
+ "portrait_y": 400,
+ "studio_cut": 0.76,
+ "studio_bright": 1.05,
+ "marca": "Sea-Doo",
+ "modelo": "GTX 170",
+ "ano": "2024",
+ "horas": "39",
+ "preco": "135.000",
+ "hp": "170",
+ "cols": [
+  [
+   "Ano",
+   "2024"
+  ],
+  [
+   "Horas de uso",
+   "39"
+  ],
+  [
+   "Potência",
+   "170 hp"
+  ]
+ ],
+ "horas_l1": "É tudo que ele navegou.",
+ "horas_l2": "Sea-Doo GTX 170 · 2024 · linha touring",
+ "motor_l1": "Motor Rotax® 1630 ACE™",
+ "motor_l2": "170 cavalos no casco mais estável da Sea-Doo.",
+ "feats": [
+  [
+   "170 hp",
+   "Rotax 1630 ACE"
+  ],
+  [
+   "Casco ST3",
+   "Plataforma mais estável"
+  ],
+  [
+   "iBR",
+   "Freio e ré eletrônicos"
+  ],
+  [
+   "Painel",
+   "Digital grande no guidão"
+  ],
+  [
+   "Ergolock",
+   "Banco em degraus"
+  ],
+  [
+   "3 lugares",
+   "Passeio com a família"
+  ],
+  [
+   "Frontal",
+   "Porta-objetos de acesso direto"
+  ],
+  [
+   "LinQ",
+   "Caixa estanque pro celular"
+  ]
+ ],
+ "feat_note": "Itens da linha GTX 2024, conforme a BRP.",
+ "callouts": [
+  [
+   503,
+   35,
+   390,
+   "Painel",
+   "digital grande"
+  ],
+  [
+   677,
+   165,
+   640,
+   "Banco",
+   "Ergolock"
+  ],
+  [
+   260,
+   590,
+   900,
+   "ST3",
+   "casco estável"
+  ]
+ ],
+ "detalhe_rodape": "39 horas · modelo 2024",
+ "quiz_l1": "Quantas horas",
+ "quiz_l2": "tem esse jet?",
+ "quiz_opts": "39 / 120 / 250",
+ "views": [
+  [
+   540,
+   960,
+   1.2
+  ],
+  [
+   560,
+   440,
+   1.7
+  ],
+  [
+   460,
+   580,
+   1.6
+  ],
+  [
+   720,
+   580,
+   1.6
+  ],
+  [
+   640,
+   900,
+   1.5
+  ],
+  [
+   300,
+   880,
+   1.5
+  ]
+ ],
+ "reel": {
+  "hook1": "39 HORAS",
+  "hook2": "MODELO 2024",
+  "motor_tag": "Rotax 1630 ACE",
+  "pills": [
+   "Casco ST3 estável",
+   "Freio e ré iBR",
+   "Banco em degraus"
+  ],
+  "r1": [
+   "Trinta e nove horas. Modelo dois mil e vinte e quatro.",
+   [
+    "Si Dú, gê tê xis, cento e setenta, modelo dois mil e vinte e quatro.",
+    "Sea-Doo GTX 170, modelo 2024."
+   ],
+   [
+    "Motor Rotax de cento e setenta cavalos, no casco mais estável da Sea Dú.",
+    "Motor Rotax de 170 cavalos, no casco mais estável da Sea-Doo."
+   ],
+   [
+    "Casco ST3, freio e ré eletrônicos e banco em degraus.",
+    "Casco ST3, freio e ré eletrônicos e banco em degraus."
+   ],
+   [
+    "Cento e trinta e cinco mil reais. Pagamento no cartão ou cheque.",
+    "R$ 135 mil. Pagamento no cartão ou cheque."
+   ]
+  ],
+  "r2": [
+   [
+    "O jet de quem gosta de passear com conforto.",
+    "O jet de quem gosta de passear com conforto.",
+    "Feito pra",
+    "passear"
+   ],
+   [
+    "Casco ST3: estável e confortável na onda.",
+    "Casco ST3: estável e confortável na onda.",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco em degraus: quem vai atrás enxerga por cima e vai firme.",
+    "Banco",
+    "Ergolock"
+   ],
+   [
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital grande e porta-objetos na frente.",
+    "Painel digital",
+    "e porta-objetos"
+   ],
+   [
+    "E só trinta e nove horas de uso.",
+    "E só 39 horas de uso.",
+    "Só 39 horas",
+    "de uso"
+   ]
+  ],
+  "r2_price": [
+   "Cento e trinta e cinco mil. Chama no zap!",
+   "R$ 135 mil. Chama no zap!"
+  ],
+  "r3_hook": [
+   "JET QUE BALANÇA",
+   "NA ONDA?",
+   "olha esse aqui"
+  ],
+  "r3_hook_spk": "Cansou de jet que balança e assusta quem vai na garupa?",
+  "r3": [
+   [
+    "Um: casco ST3. Mais largo e mais estável na água.",
+    "Um: casco ST3. Mais largo e mais estável na água.",
+    "1",
+    "Casco ST3",
+    "mais estável"
+   ],
+   [
+    "Dois: banco em degraus. O passageiro vai firme e enxerga por cima.",
+    "Dois: banco em degraus. O passageiro vai firme e enxerga por cima.",
+    "2",
+    "Banco em degraus",
+    "passageiro firme"
+   ],
+   [
+    "Três: esse aqui tem só trinta e nove horas, modelo dois mil e vinte e quatro.",
+    "Três: esse aqui tem só 39 horas, modelo 2024.",
+    "3",
+    "Só 39 horas",
+    "modelo 2024"
+   ]
+  ],
+  "r3_price": [
+   "Esse Si Dú, gê tê xis, cento e setenta está aqui na Cântri, por cento e trinta e cinco mil.",
+   "Esse Sea-Doo GTX 170 está aqui na Country, por R$ 135 mil."
+  ]
+ },
+ "model_size": 100,
+ "portrait_cut": 0.77,
+ "jet_left": true
+}
