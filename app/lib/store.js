@@ -7,7 +7,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
+// Nos testes de bancada os ids são sequenciais, para que repetir a mesma
+// conversa produza exatamente os mesmos pedidos ao modelo.
+let sequencia = null;
+export function idsSequenciais() {
+  sequencia = 0;
+}
+
 export function novoId(prefixo) {
+  if (sequencia !== null) return `${prefixo}_${String(++sequencia).padStart(6, '0')}`;
   return `${prefixo}_${crypto.randomBytes(5).toString('hex')}`;
 }
 
