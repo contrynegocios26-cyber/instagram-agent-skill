@@ -1,0 +1,1976 @@
+{
+ "_leia": "Mapa de onde vai mola no agro: setor > implemento > posição. Cada posição: [onde vai na máquina, nome da mola no mercado, tipo, função]. Tipo: compressao, tracao, torcao (dedos e garfos de arame entram como torcao); use + quando a posição aparece com mais de um tipo conforme o fabricante. São posições típicas do mercado: confirmar sempre na máquina do cliente. Nenhuma medida ou código é informado aqui.",
+ "setores": [
+  {
+   "nome": "Tratores, cardans e engates",
+   "resumo": "Molas de pedais, assento, levante hidráulico e engate do trator, e das embreagens de segurança dos eixos cardan.",
+   "implementos": [
+    {
+     "nome": "Trator agrícola",
+     "posicoes": [
+      [
+       "Pedal de embreagem",
+       "Mola de retorno do pedal",
+       "tracao",
+       "Devolve o pedal e mantém a folga"
+      ],
+      [
+       "Garfo e colar da embreagem",
+       "Mola de retorno do colar",
+       "tracao",
+       "Recolhe o colar e o garfo da embreagem"
+      ],
+      [
+       "Pedais de freio",
+       "Mola de retorno do pedal de freio",
+       "tracao",
+       "Devolve o pedal e solta o freio"
+      ],
+      [
+       "Acelerador de pé e de mão",
+       "Mola do acelerador",
+       "tracao+torcao",
+       "Retorno da alavanca e do pedal"
+      ],
+      [
+       "Platô de embreagem",
+       "Molas do platô",
+       "compressao",
+       "Dão a carga de aperto do disco"
+      ],
+      [
+       "Assento do operador",
+       "Mola da suspensão do banco",
+       "compressao+tracao",
+       "Sustenta e amortece o peso do operador"
+      ],
+      [
+       "Alavancas e trambulador do câmbio",
+       "Mola da alavanca e de posição das marchas",
+       "tracao+compressao",
+       "Centraliza a alavanca e segura a marcha engatada"
+      ],
+      [
+       "Levante hidráulico (controle de posição e de reação)",
+       "Mola de controle / mola mestra",
+       "compressao",
+       "Dá a sensibilidade do terceiro ponto"
+      ],
+      [
+       "Braços inferiores e estabilizadores",
+       "Mola do estabilizador",
+       "tracao",
+       "Mantém as correntes e os braços recolhidos"
+      ],
+      [
+       "Freio de estacionamento e travas",
+       "Mola de trava",
+       "tracao+compressao",
+       "Mantém a trava engatada"
+      ],
+      [
+       "Válvulas do hidráulico e do motor",
+       "Mola de válvula",
+       "compressao",
+       "Fecha e regula a válvula"
+      ]
+     ]
+    },
+    {
+     "nome": "Eixo cardan e tomada de força",
+     "posicoes": [
+      [
+       "Embreagem de discos de fricção (limitador de torque)",
+       "Molas da embreagem",
+       "compressao",
+       "Definem o torque em que a embreagem patina"
+      ],
+      [
+       "Limitador de catraca / de pinos",
+       "Molas dos cames",
+       "compressao",
+       "Desarmam e rearmam na sobrecarga"
+      ],
+      [
+       "Roda livre",
+       "Mola das linguetas",
+       "compressao",
+       "Engata a lingueta no sentido de trabalho"
+      ],
+      [
+       "Garfo de engate rápido (pino ou colar)",
+       "Mola do pino de trava",
+       "compressao",
+       "Mantém o cardan travado no eixo"
+      ]
+     ]
+    },
+    {
+     "nome": "Engate de três pontos, engate rápido e carregador frontal",
+     "posicoes": [
+      [
+       "Engate rápido de implementos",
+       "Mola da trava",
+       "torcao+compressao",
+       "Fecha a trava automaticamente"
+      ],
+      [
+       "Barra de tração e pino",
+       "Mola do pino-trava",
+       "compressao",
+       "Segura o pino no lugar"
+      ],
+      [
+       "Carregador frontal (acoplamento da concha)",
+       "Mola dos pinos de acoplamento",
+       "compressao+tracao",
+       "Recolhe e trava os pinos"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Preparo de solo",
+   "resumo": "Molas pesadas, que trabalham em choque: desarme de hastes, pressão de discos e limpadores.",
+   "implementos": [
+    {
+     "nome": "Grade aradora, intermediária e niveladora",
+     "posicoes": [
+      [
+       "Varão estabilizador do cabeçalho",
+       "Mola do cabeçalho",
+       "compressao",
+       "Estabiliza o cabeçalho e amortece os trancos"
+      ],
+      [
+       "Limpadores (raspadores) de disco",
+       "Mola do limpador",
+       "tracao",
+       "Mantém o limpador encostado no disco"
+      ],
+      [
+       "Pinos e travas do cabeçalho e das rodas",
+       "Mola do pino-trava",
+       "compressao",
+       "Segura o pino na posição"
+      ],
+      [
+       "Catracas e alavancas de regulagem",
+       "Mola de retorno",
+       "tracao+torcao",
+       "Devolve a lingueta e a alavanca"
+      ]
+     ]
+    },
+    {
+     "nome": "Arado de discos e de aivecas",
+     "posicoes": [
+      [
+       "Limpador de disco",
+       "Mola do limpador",
+       "tracao",
+       "Mantém o limpador encostado"
+      ],
+      [
+       "Desarme automático do corpo (arados com desarme por mola)",
+       "Mola de desarme",
+       "compressao",
+       "Deixa o corpo recuar no obstáculo e o devolve"
+      ],
+      [
+       "Roda-guia traseira",
+       "Mola da roda-guia",
+       "compressao+tracao",
+       "Amortece e mantém a roda na direção"
+      ]
+     ]
+    },
+    {
+     "nome": "Subsolador",
+     "posicoes": [
+      [
+       "Hastes com desarme automático",
+       "Mola de desarme e rearme da haste",
+       "compressao",
+       "Deixa a haste recuar no obstáculo e volta à posição"
+      ],
+      [
+       "Disco de corte dianteiro",
+       "Mola do disco de corte",
+       "compressao",
+       "Dá a pressão de corte e absorve impacto"
+      ],
+      [
+       "Rolo destorroador",
+       "Mola do rolo",
+       "compressao+tracao",
+       "Dá a pressão do rolo sobre o solo"
+      ]
+     ]
+    },
+    {
+     "nome": "Escarificador e cultivador de hastes",
+     "posicoes": [
+      [
+       "Hastes com mola de segurança",
+       "Mola da haste",
+       "compressao",
+       "Protege a haste e a devolve à posição"
+      ],
+      [
+       "Discos de corte e facões",
+       "Mola do disco",
+       "compressao",
+       "Pressão de corte"
+      ]
+     ]
+    },
+    {
+     "nome": "Cultivador-adubador de cobertura",
+     "posicoes": [
+      [
+       "Hastes e sulcadores",
+       "Mola de desarme",
+       "compressao",
+       "Proteção contra pedra e toco"
+      ],
+      [
+       "Discos de corte",
+       "Mola do disco de corte",
+       "compressao",
+       "Pressão de corte da palha"
+      ],
+      [
+       "Linhas articuladas",
+       "Mola da linha",
+       "tracao+compressao",
+       "Pressão e acompanhamento do terreno"
+      ]
+     ]
+    },
+    {
+     "nome": "Enxada rotativa e encanteirador",
+     "posicoes": [
+      [
+       "Tampa traseira / chapa niveladora",
+       "Mola da tampa",
+       "compressao+tracao",
+       "Pressiona a tampa sobre o canteiro"
+      ],
+      [
+       "Embreagem de segurança do cardan",
+       "Molas da embreagem",
+       "compressao",
+       "Protegem a transmissão"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Plantio",
+   "resumo": "A mola define a pressão da linha, do disco de corte e do sulcador sobre o solo. Quando cansa, a profundidade deixa de repetir.",
+   "implementos": [
+    {
+     "nome": "Plantadeira e semeadora-adubadora (plantio direto e convencional)",
+     "posicoes": [
+      [
+       "Linha pantográfica (paralelogramo)",
+       "Mola da linha / mola do pantógrafo",
+       "compressao+tracao",
+       "Dá a pressão da linha de semente sobre o solo"
+      ],
+      [
+       "Disco de corte de palha",
+       "Mola do disco de corte",
+       "compressao",
+       "Pressão de corte e desarme em pedra"
+      ],
+      [
+       "Sulcador, facão ou botinha de adubo",
+       "Mola do sulcador",
+       "compressao",
+       "Protege no obstáculo e devolve à profundidade"
+      ],
+      [
+       "Discos duplos de adubo e de semente",
+       "Mola de pressão dos discos",
+       "compressao",
+       "Mantém os discos na profundidade"
+      ],
+      [
+       "Rodas limitadoras de profundidade",
+       "Mola da roda limitadora",
+       "tracao+compressao",
+       "Mantém o contato e a regulagem"
+      ],
+      [
+       "Rodas compactadoras (fechamento do sulco)",
+       "Mola da roda compactadora",
+       "compressao+torcao",
+       "Pressão de fechamento do sulco"
+      ],
+      [
+       "Marcador de linha",
+       "Mola do marcador",
+       "tracao",
+       "Amortece e recolhe o braço"
+      ],
+      [
+       "Transmissão (correntes e catracas)",
+       "Mola do esticador / da catraca",
+       "tracao+torcao",
+       "Tensão da corrente e retorno da lingueta"
+      ],
+      [
+       "Dosador de sementes",
+       "Mola do rolete ejetor e do raspador",
+       "compressao",
+       "Mantém o contato com o disco dosador"
+      ],
+      [
+       "Limpadores de disco",
+       "Mola do limpador",
+       "tracao+torcao",
+       "Encosta o limpador no disco"
+      ]
+     ]
+    },
+    {
+     "nome": "Semeadora de fluxo contínuo (trigo, arroz, pastagens)",
+     "posicoes": [
+      [
+       "Linhas de discos duplos",
+       "Mola da linha",
+       "compressao",
+       "Pressão individual de cada linha"
+      ],
+      [
+       "Rodas compactadoras",
+       "Mola da roda",
+       "compressao",
+       "Fecha o sulco"
+      ],
+      [
+       "Marcador de linha e travas",
+       "Mola de retorno",
+       "tracao",
+       "Recolhe e trava"
+      ]
+     ]
+    },
+    {
+     "nome": "Semeadora a lanço e distribuidor de sementes",
+     "posicoes": [
+      [
+       "Comporta dosadora",
+       "Mola da comporta",
+       "tracao",
+       "Fecha a comporta ao soltar a alavanca"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Pulverização e distribuição",
+   "resumo": "Molas de barras, bicos, válvulas e bombas de pulverizadores, e de comportas e esteiras de distribuidores. Em contato com calda, o material é inox.",
+   "implementos": [
+    {
+     "nome": "Pulverizador de barras (montado, de arrasto e autopropelido)",
+     "posicoes": [
+      [
+       "Ponta da barra (desarme)",
+       "Mola de desarme da ponteira",
+       "tracao+compressao",
+       "Deixa a ponta recuar no obstáculo e a devolve"
+      ],
+      [
+       "Quadro, pêndulo e suspensão da barra",
+       "Mola de amortecimento da barra",
+       "compressao+tracao",
+       "Amortece e nivela a barra"
+      ],
+      [
+       "Bicos (válvula antigotejo)",
+       "Mola do antigotejo",
+       "compressao",
+       "Fecha o bico quando a pressão cai"
+      ],
+      [
+       "Comando e regulador de pressão",
+       "Mola da válvula reguladora",
+       "compressao",
+       "Define a pressão de trabalho"
+      ],
+      [
+       "Bomba de pistão ou de membrana",
+       "Mola das válvulas da bomba",
+       "compressao",
+       "Fecha as válvulas de admissão e de saída"
+      ],
+      [
+       "Escada, tampas e travas",
+       "Mola de trava",
+       "tracao+torcao",
+       "Mantém fechado e recolhido"
+      ]
+     ]
+    },
+    {
+     "nome": "Distribuidor de calcário e adubo (esteira e discos)",
+     "posicoes": [
+      [
+       "Comporta dosadora",
+       "Mola da comporta",
+       "tracao",
+       "Retorno da comporta"
+      ],
+      [
+       "Esteira ou corrente transportadora",
+       "Mola do esticador",
+       "compressao",
+       "Mantém a tensão da esteira"
+      ],
+      [
+       "Transmissão dos discos",
+       "Molas da embreagem de segurança",
+       "compressao",
+       "Protegem a caixa de transmissão"
+      ]
+     ]
+    },
+    {
+     "nome": "Adubadora centrífuga e pendular",
+     "posicoes": [
+      [
+       "Alavanca de abertura e dosagem",
+       "Mola de retorno",
+       "tracao",
+       "Fecha a saída de adubo"
+      ],
+      [
+       "Agitador",
+       "Mola do agitador",
+       "torcao+tracao",
+       "Mantém o adubo em movimento"
+      ]
+     ]
+    },
+    {
+     "nome": "Distribuidor de esterco e de adubo orgânico",
+     "posicoes": [
+      [
+       "Esteira de fundo",
+       "Mola do esticador",
+       "compressao",
+       "Tensão da esteira"
+      ],
+      [
+       "Tampa e travas",
+       "Mola de trava",
+       "tracao",
+       "Mantém a tampa fechada"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Irrigação",
+   "resumo": "Do aspersor ao pivô: molas pequenas, muitas delas em inox ou latão, que trabalham o tempo todo molhadas.",
+   "implementos": [
+    {
+     "nome": "Aspersor de impacto",
+     "posicoes": [
+      [
+       "Braço oscilante (martelo)",
+       "Mola do braço",
+       "torcao",
+       "Devolve o braço para o novo impacto no jato"
+      ],
+      [
+       "Mancal / tubo de subida",
+       "Mola de vedação do mancal",
+       "compressao",
+       "Mantém a vedação e o freio de giro"
+      ],
+      [
+       "Mecanismo setorial (reversão)",
+       "Mola do reversor",
+       "torcao",
+       "Inverte o sentido no fim do setor"
+      ]
+     ]
+    },
+    {
+     "nome": "Canhão hidráulico",
+     "posicoes": [
+      [
+       "Braço oscilante",
+       "Mola do braço",
+       "tracao+torcao",
+       "Retorno do braço"
+      ],
+      [
+       "Freio de giro",
+       "Mola do freio",
+       "compressao",
+       "Regula a velocidade de giro"
+      ],
+      [
+       "Mecanismo de reversão do setor",
+       "Mola do setor / da chave de reversão",
+       "tracao",
+       "Inverte o giro no fim do setor"
+      ]
+     ]
+    },
+    {
+     "nome": "Pivô central e sistema linear",
+     "posicoes": [
+      [
+       "Reguladores de pressão dos emissores",
+       "Mola do regulador",
+       "compressao",
+       "Mantém a pressão na saída"
+      ],
+      [
+       "Válvulas de dreno",
+       "Mola da válvula de dreno",
+       "compressao",
+       "Abre o dreno quando a pressão cai"
+      ],
+      [
+       "Caixa de alinhamento das torres",
+       "Mola do braço de alinhamento",
+       "tracao+torcao",
+       "Retorno do braço do microinterruptor"
+      ],
+      [
+       "Canhão final e válvula",
+       "Mola da válvula",
+       "compressao",
+       "Fecha a válvula do canhão"
+      ]
+     ]
+    },
+    {
+     "nome": "Carretel enrolador (autopropelido)",
+     "posicoes": [
+      [
+       "Freio do carretel e desligador de fim de curso",
+       "Mola do freio / do desligador",
+       "tracao+compressao",
+       "Trava o carretel e desliga no fim"
+      ],
+      [
+       "Guia da mangueira",
+       "Mola da guia",
+       "tracao",
+       "Mantém a guia encostada"
+      ]
+     ]
+    },
+    {
+     "nome": "Válvulas, ventosas e motobombas",
+     "posicoes": [
+      [
+       "Válvulas hidráulicas, de alívio e de retenção",
+       "Mola da válvula",
+       "compressao",
+       "Fecha e define a pressão de abertura"
+      ],
+      [
+       "Selo mecânico da bomba",
+       "Mola do selo",
+       "compressao",
+       "Mantém as faces do selo encostadas"
+      ],
+      [
+       "Válvula de pé",
+       "Mola da válvula de pé",
+       "compressao",
+       "Fecha a sucção e mantém a escorva"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Colheita de grãos",
+   "resumo": "Peças de alto ciclo: cada dedo trabalha milhares de vezes por hectare. Troca em jogo completo antes da colheita.",
+   "implementos": [
+    {
+     "nome": "Plataforma de corte (soja, trigo, arroz, feijão)",
+     "posicoes": [
+      [
+       "Molinete",
+       "Dedo do molinete (de arame) e mola-grampo",
+       "torcao",
+       "Conduz a planta para a barra de corte"
+      ],
+      [
+       "Catraca do caracol (sem-fim)",
+       "Mola da catraca",
+       "compressao",
+       "Mantém a catraca engatada e deixa o caracol patinar no embuchamento"
+      ],
+      [
+       "Flutuação da plataforma e da barra flexível",
+       "Mola de flutuação",
+       "tracao+compressao",
+       "Alivia o peso sobre o solo"
+      ],
+      [
+       "Acionamentos por correia e corrente",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Mantém a tensão constante"
+      ],
+      [
+       "Embreagem deslizante do caracol e do molinete",
+       "Molas da embreagem",
+       "compressao",
+       "Protegem no embuchamento"
+      ],
+      [
+       "Bicos divisores",
+       "Mola do bico",
+       "tracao",
+       "Sustenta o bico e alivia o peso sobre o solo"
+      ]
+     ]
+    },
+    {
+     "nome": "Plataforma draper (esteiras)",
+     "posicoes": [
+      [
+       "Flutuação",
+       "Mola de flutuação",
+       "tracao",
+       "Sustenta a plataforma e copia o terreno"
+      ],
+      [
+       "Esteiras",
+       "Mola do tensionador",
+       "compressao",
+       "Mantém a esteira esticada"
+      ]
+     ]
+    },
+    {
+     "nome": "Plataforma de milho",
+     "posicoes": [
+      [
+       "Correntes recolhedoras",
+       "Mola do esticador da corrente",
+       "compressao",
+       "Mantém a corrente tensionada"
+      ],
+      [
+       "Linhas (embreagem de segurança)",
+       "Molas da embreagem",
+       "compressao",
+       "Desarmam a linha na sobrecarga"
+      ],
+      [
+       "Capôs e bicos",
+       "Mola de trava",
+       "torcao+tracao",
+       "Mantém o capô fechado ou aberto"
+      ]
+     ]
+    },
+    {
+     "nome": "Colheitadeira (corpo)",
+     "posicoes": [
+      [
+       "Correias e correntes de acionamento",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão constante"
+      ],
+      [
+       "Elevadores de grãos e de retrilha",
+       "Mola do esticador do elevador",
+       "compressao",
+       "Mantém a corrente esticada"
+      ],
+      [
+       "Variadores e polias",
+       "Mola do variador",
+       "compressao",
+       "Dá a carga das polias variadoras"
+      ],
+      [
+       "Tubo descarregador, tampas e portas",
+       "Mola de trava",
+       "tracao+torcao",
+       "Travamento e retorno"
+      ],
+      [
+       "Pedais e alavancas",
+       "Mola de retorno",
+       "tracao",
+       "Devolve o comando"
+      ],
+      [
+       "Espalhador e picador de palha",
+       "Mola do espalhador / do picador",
+       "tracao+compressao",
+       "Tensiona o acionamento e trava as peças móveis"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Cana-de-açúcar",
+   "resumo": "Da palha à usina: dedos de enleiradores, molas de plantadoras, cultivadores, transbordos e equipamentos da indústria.",
+   "implementos": [
+    {
+     "nome": "Enleirador de palha",
+     "posicoes": [
+      [
+       "Rodas e rotores de enleiramento",
+       "Dedo enleirador de palha",
+       "torcao",
+       "Recolhe e alinha a palha em leiras"
+      ],
+      [
+       "Suspensão das rodas (flutuação)",
+       "Mola de flutuação",
+       "tracao+compressao",
+       "Alivia o peso e copia o terreno"
+      ]
+     ]
+    },
+    {
+     "nome": "Desenleirador (aleirador) de palha",
+     "posicoes": [
+      [
+       "Rotores e rodas de afastamento",
+       "Dedo desenleirador de palha",
+       "torcao",
+       "Afasta a palha da linha da cana"
+      ],
+      [
+       "Braços articulados",
+       "Mola de retorno do braço",
+       "tracao",
+       "Mantém o braço em trabalho e absorve impacto"
+      ]
+     ]
+    },
+    {
+     "nome": "Plantadora de cana",
+     "posicoes": [
+      [
+       "Sulcador",
+       "Mola de desarme",
+       "compressao",
+       "Protege no obstáculo"
+      ],
+      [
+       "Cobridores e rodas compactadoras",
+       "Mola do cobridor",
+       "compressao+tracao",
+       "Pressão de cobertura do tolete"
+      ],
+      [
+       "Esteiras e correntes dosadoras",
+       "Mola do esticador",
+       "compressao+tracao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Cultivador de soqueira e cortador de soqueira",
+     "posicoes": [
+      [
+       "Hastes",
+       "Mola de desarme da haste",
+       "compressao",
+       "Proteção e rearme"
+      ],
+      [
+       "Discos de corte",
+       "Mola do disco",
+       "compressao",
+       "Pressão de corte da palha"
+      ]
+     ]
+    },
+    {
+     "nome": "Colhedora de cana",
+     "posicoes": [
+      [
+       "Esteira do elevador e acionamentos",
+       "Mola do tensionador",
+       "compressao+tracao",
+       "Tensão"
+      ],
+      [
+       "Tampas, travas e comandos",
+       "Mola de trava e de retorno",
+       "tracao+torcao",
+       "Travamento e retorno"
+      ]
+     ]
+    },
+    {
+     "nome": "Transbordo e carreta canavieira",
+     "posicoes": [
+      [
+       "Tela de cobertura da carga",
+       "Mola da tela de cobertura",
+       "tracao+torcao",
+       "Recolhe e tensiona a tela"
+      ],
+      [
+       "Cabeçalho",
+       "Mola do cabeçalho",
+       "compressao+tracao",
+       "Sustenta e amortece o cabeçalho"
+      ],
+      [
+       "Tampas e travas",
+       "Mola de trava",
+       "tracao",
+       "Mantém fechado"
+      ]
+     ]
+    },
+    {
+     "nome": "Usina (indústria)",
+     "posicoes": [
+      [
+       "Válvulas de retenção dupla portinhola",
+       "Mola da portinhola",
+       "torcao",
+       "Fecha as portinholas antes do refluxo"
+      ],
+      [
+       "Válvulas de segurança e alívio",
+       "Mola da válvula de segurança",
+       "compressao",
+       "Define a pressão de ajuste"
+      ],
+      [
+       "Peneiras vibratórias",
+       "Mola de apoio da peneira",
+       "compressao",
+       "Sustenta e isola a vibração"
+      ],
+      [
+       "Atuadores",
+       "Mola de retorno do atuador",
+       "compressao",
+       "Leva a válvula à posição de segurança"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Café",
+   "resumo": "Molas de colhedoras, recolhedoras, podadoras e das máquinas de beneficiamento.",
+   "implementos": [
+    {
+     "nome": "Colhedora de café (automotriz e tracionada)",
+     "posicoes": [
+      [
+       "Recolhedores (lâminas retráteis / escamas)",
+       "Mola da lâmina recolhedora",
+       "torcao",
+       "Fecha a lâmina em volta do tronco"
+      ],
+      [
+       "Freio dos cilindros derriçadores",
+       "Mola do freio",
+       "compressao",
+       "Regula a resistência ao giro do cilindro"
+      ],
+      [
+       "Esteiras e elevadores",
+       "Mola do esticador",
+       "compressao+tracao",
+       "Tensão"
+      ],
+      [
+       "Portas, tampas e comandos",
+       "Mola de trava e de retorno",
+       "tracao+torcao",
+       "Travamento e retorno"
+      ]
+     ]
+    },
+    {
+     "nome": "Recolhedora e varredora de café do chão",
+     "posicoes": [
+      [
+       "Recolhedor",
+       "Dedos e molas do recolhedor",
+       "torcao",
+       "Erguem o café enleirado"
+      ],
+      [
+       "Esteiras e peneiras",
+       "Mola do esticador e de suspensão",
+       "tracao+compressao",
+       "Tensão e vibração"
+      ]
+     ]
+    },
+    {
+     "nome": "Podadora, esqueletadeira e decotadeira",
+     "posicoes": [
+      [
+       "Barras de discos ou de facas",
+       "Mola de desarme",
+       "compressao+tracao",
+       "Protege a barra no obstáculo"
+      ]
+     ]
+    },
+    {
+     "nome": "Beneficiamento (lavador, descascador, despolpador, classificadores)",
+     "posicoes": [
+      [
+       "Descascador e despolpador",
+       "Mola de pressão do encosto",
+       "compressao",
+       "Dá a pressão do cilindro sobre o fruto"
+      ],
+      [
+       "Peneiras, peneirões e mesas densimétricas",
+       "Mola de suspensão",
+       "compressao",
+       "Sustenta e permite a vibração"
+      ],
+      [
+       "Registros e comportas",
+       "Mola de retorno",
+       "tracao",
+       "Fecha a comporta"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Algodão",
+   "resumo": "Molas das unidades de colheita e das prensas.",
+   "implementos": [
+    {
+     "nome": "Colhedora de algodão de fusos (picker)",
+     "posicoes": [
+      [
+       "Placas de pressão das unidades",
+       "Mola da placa de pressão",
+       "torcao+compressao",
+       "Pressiona a planta contra os fusos"
+      ],
+      [
+       "Portas e travas das unidades",
+       "Mola de trava",
+       "tracao+torcao",
+       "Mantém a porta fechada"
+      ],
+      [
+       "Correias e correntes",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Colhedora stripper",
+     "posicoes": [
+      [
+       "Rolos e escovas",
+       "Mola de pressão dos rolos",
+       "compressao",
+       "Mantém a folga de trabalho"
+      ],
+      [
+       "Acionamentos",
+       "Mola do esticador",
+       "tracao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Prensa de módulos e beneficiamento",
+     "posicoes": [
+      [
+       "Travas e portas",
+       "Mola de trava",
+       "compressao+tracao",
+       "Travamento"
+      ],
+      [
+       "Alimentadores e esteiras",
+       "Mola do esticador",
+       "compressao",
+       "Tensão"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Amendoim",
+   "resumo": "Molas e dedos que trabalham na terra e sofrem impacto de pedras e torrões.",
+   "implementos": [
+    {
+     "nome": "Arrancador-invertedor",
+     "posicoes": [
+      [
+       "Esteira vibratória",
+       "Mola da esteira",
+       "tracao",
+       "Tensão e vibração da esteira"
+      ],
+      [
+       "Discos de corte",
+       "Mola do disco de corte",
+       "compressao",
+       "Pressão de corte da rama"
+      ],
+      [
+       "Rodas de profundidade",
+       "Mola da roda",
+       "compressao+tracao",
+       "Mantém a profundidade"
+      ]
+     ]
+    },
+    {
+     "nome": "Recolhedora-trilhadora",
+     "posicoes": [
+      [
+       "Recolhedor (pick-up)",
+       "Dedo e mola do recolhedor",
+       "torcao",
+       "Ergue as ramas enleiradas"
+      ],
+      [
+       "Esteiras e correntes",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão"
+      ],
+      [
+       "Peneiras e saca-palhas",
+       "Mola de suspensão",
+       "compressao+tracao",
+       "Sustenta e permite a vibração"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Feijão, mandioca e hortaliças",
+   "resumo": "Arrancadoras, recolhedoras, trilhadoras, plantadoras de tubérculos e transplantadoras.",
+   "implementos": [
+    {
+     "nome": "Arrancadora-enleiradora e recolhedora de feijão",
+     "posicoes": [
+      [
+       "Recolhedor e levantadores",
+       "Dedo e mola do recolhedor",
+       "torcao",
+       "Ergue a planta arrancada"
+      ],
+      [
+       "Esteiras",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Trilhadora e batedeira de cereais",
+     "posicoes": [
+      [
+       "Peneiras",
+       "Mola de suspensão da peneira",
+       "tracao+compressao",
+       "Sustenta e permite a vibração"
+      ],
+      [
+       "Correias",
+       "Mola do esticador",
+       "tracao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Plantadora de mandioca, batata, alho e cebola",
+     "posicoes": [
+      [
+       "Dosador e pinças",
+       "Mola da pinça / do dosador",
+       "torcao+tracao",
+       "Fecha a pinça e devolve o mecanismo"
+      ],
+      [
+       "Sulcador",
+       "Mola de desarme",
+       "compressao",
+       "Protege no obstáculo"
+      ],
+      [
+       "Cobridores e rodas compactadoras",
+       "Mola do cobridor",
+       "compressao",
+       "Pressão de cobertura"
+      ]
+     ]
+    },
+    {
+     "nome": "Arrancadora de mandioca e colhedora de batata, cebola e cenoura",
+     "posicoes": [
+      [
+       "Esteira vibratória e separadora",
+       "Mola da esteira",
+       "tracao",
+       "Tensão e vibração"
+      ],
+      [
+       "Hastes e lâminas",
+       "Mola de desarme",
+       "compressao",
+       "Proteção"
+      ]
+     ]
+    },
+    {
+     "nome": "Transplantadora de mudas",
+     "posicoes": [
+      [
+       "Pinças e copos distribuidores",
+       "Mola da pinça",
+       "torcao+tracao",
+       "Abre e fecha a pinça a cada muda"
+      ],
+      [
+       "Rodas compactadoras",
+       "Mola da roda",
+       "compressao",
+       "Firma a muda no solo"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Fruticultura e citros",
+   "resumo": "Molas de atomizadores, roçadeiras de entrelinha, podadoras e ferramentas de poda.",
+   "implementos": [
+    {
+     "nome": "Turboatomizador",
+     "posicoes": [
+      [
+       "Bicos (válvula antigotejo)",
+       "Mola do antigotejo",
+       "compressao",
+       "Fecha o bico sem pressão"
+      ],
+      [
+       "Comando e regulador",
+       "Mola da válvula",
+       "compressao",
+       "Define a pressão de trabalho"
+      ],
+      [
+       "Bomba",
+       "Mola das válvulas",
+       "compressao",
+       "Fecha admissão e saída"
+      ]
+     ]
+    },
+    {
+     "nome": "Roçadeira de entrelinha com braço apalpador",
+     "posicoes": [
+      [
+       "Braço ou disco apalpador de tronco",
+       "Mola de retorno do braço",
+       "tracao+compressao",
+       "Devolve o braço depois de contornar o tronco"
+      ],
+      [
+       "Correias",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Podadora de discos ou de barras",
+     "posicoes": [
+      [
+       "Barra de corte",
+       "Mola de desarme",
+       "compressao+tracao",
+       "Protege a barra"
+      ]
+     ]
+    },
+    {
+     "nome": "Tesoura de poda (manual, pneumática e elétrica)",
+     "posicoes": [
+      [
+       "Entre os cabos ou no corpo",
+       "Mola da tesoura",
+       "compressao",
+       "Abre a tesoura depois do corte"
+      ]
+     ]
+    },
+    {
+     "nome": "Classificadoras e esteiras de packing house",
+     "posicoes": [
+      [
+       "Esteiras e roletes",
+       "Mola do esticador",
+       "compressao+tracao",
+       "Tensão"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Fenação e forragem",
+   "resumo": "Dentes, dedos e garfos de mola são peças de desgaste: quebram por fadiga na espira ou na dobra junto à fixação.",
+   "implementos": [
+    {
+     "nome": "Segadora e segadora-condicionadora",
+     "posicoes": [
+      [
+       "Flutuação da barra de corte",
+       "Mola de flutuação",
+       "tracao",
+       "Alivia o peso da barra sobre o solo"
+      ],
+      [
+       "Desarme de segurança",
+       "Mola do desarme",
+       "compressao+tracao",
+       "Deixa a barra recuar no obstáculo"
+      ],
+      [
+       "Rolos condicionadores",
+       "Mola de pressão dos rolos",
+       "tracao+compressao",
+       "Dá a pressão de esmagamento"
+      ]
+     ]
+    },
+    {
+     "nome": "Enleirador rotativo (giratório)",
+     "posicoes": [
+      [
+       "Braços do rotor",
+       "Garfo duplo de mola",
+       "torcao",
+       "Varre e forma a leira"
+      ]
+     ]
+    },
+    {
+     "nome": "Espalhador / revolvedor de feno",
+     "posicoes": [
+      [
+       "Braços dos rotores",
+       "Garfo duplo de pernas desiguais",
+       "torcao",
+       "Espalha e revira o capim para secar"
+      ]
+     ]
+    },
+    {
+     "nome": "Ancinho de rodas e de barras",
+     "posicoes": [
+      [
+       "Rodas de dedos e barras",
+       "Dedo do ancinho",
+       "torcao",
+       "Arrasta o capim para a leira"
+      ],
+      [
+       "Braços das rodas",
+       "Mola de flutuação",
+       "tracao",
+       "Regula a pressão da roda sobre o solo"
+      ]
+     ]
+    },
+    {
+     "nome": "Enfardadeira de fardos prismáticos",
+     "posicoes": [
+      [
+       "Recolhedor (pick-up)",
+       "Dente duplo do recolhedor",
+       "torcao",
+       "Ergue a leira para a câmara"
+      ],
+      [
+       "Câmara (regulagem de densidade)",
+       "Mola de densidade",
+       "compressao+tracao",
+       "Dá a resistência à saída do fardo"
+      ],
+      [
+       "Atador e agulhas",
+       "Molas do atador e da trava das agulhas",
+       "torcao+compressao",
+       "Retorno das peças do nó e segurança"
+      ]
+     ]
+    },
+    {
+     "nome": "Enfardadeira de fardos redondos",
+     "posicoes": [
+      [
+       "Recolhedor (pick-up)",
+       "Dente duplo do recolhedor",
+       "torcao",
+       "Ergue a leira"
+      ],
+      [
+       "Braço tensor das correias",
+       "Mola de tensão",
+       "tracao",
+       "Mantém a densidade do fardo"
+      ],
+      [
+       "Amarrador e porta traseira",
+       "Mola de retorno e de trava",
+       "tracao+torcao",
+       "Retorno de facas, alavancas e travas"
+      ]
+     ]
+    },
+    {
+     "nome": "Vagão forrageiro e colhedora de sementes de capim",
+     "posicoes": [
+      [
+       "Recolhedor",
+       "Dente e mola do recolhedor",
+       "torcao",
+       "Ergue o material"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Ensilagem e alimentação animal",
+   "resumo": "Molas de rolos alimentadores, esticadores e comportas de ensiladeiras, picadores e vagões de trato.",
+   "implementos": [
+    {
+     "nome": "Ensiladeira / colhedora de forragem",
+     "posicoes": [
+      [
+       "Rolos alimentadores",
+       "Mola do rolo alimentador",
+       "tracao+compressao",
+       "Pressiona o rolo superior sobre o material"
+      ],
+      [
+       "Rolo recolhedor e plataforma",
+       "Mola do recolhedor",
+       "tracao",
+       "Mantém o contato e a flutuação"
+      ],
+      [
+       "Correias e correntes",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão"
+      ],
+      [
+       "Bica de descarga e defletor",
+       "Mola de trava e de retorno",
+       "torcao+tracao",
+       "Posiciona e trava a bica"
+      ]
+     ]
+    },
+    {
+     "nome": "Picador e triturador de forragem e grãos",
+     "posicoes": [
+      [
+       "Rolo alimentador",
+       "Mola do rolo",
+       "tracao",
+       "Pressiona o material contra o rolo"
+      ],
+      [
+       "Tampas e peneiras",
+       "Mola de trava",
+       "tracao+torcao",
+       "Travamento"
+      ]
+     ]
+    },
+    {
+     "nome": "Vagão misturador e distribuidor de ração",
+     "posicoes": [
+      [
+       "Comporta de descarga",
+       "Mola da comporta",
+       "tracao",
+       "Fecha a descarga"
+      ],
+      [
+       "Esteira de descarga",
+       "Mola do esticador",
+       "compressao",
+       "Tensão"
+      ]
+     ]
+    },
+    {
+     "nome": "Desensiladeira",
+     "posicoes": [
+      [
+       "Correntes e esteiras",
+       "Mola do esticador",
+       "compressao+tracao",
+       "Tensão"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Roçadeiras, trituradores e pastagem",
+   "resumo": "Molas de esticadores, tampas e embreagens de segurança.",
+   "implementos": [
+    {
+     "nome": "Roçadeira (central, lateral e articulada)",
+     "posicoes": [
+      [
+       "Transmissão por correias",
+       "Mola do esticador",
+       "tracao+compressao",
+       "Tensão constante"
+      ],
+      [
+       "Cardan (embreagem de segurança)",
+       "Molas da embreagem",
+       "compressao",
+       "Protegem a caixa de transmissão"
+      ],
+      [
+       "Deslocamento lateral e travas",
+       "Mola de trava",
+       "tracao+compressao",
+       "Travamento"
+      ]
+     ]
+    },
+    {
+     "nome": "Triturador e trincha",
+     "posicoes": [
+      [
+       "Correias",
+       "Mola do esticador",
+       "compressao+tracao",
+       "Tensão"
+      ],
+      [
+       "Tampa traseira",
+       "Mola da tampa",
+       "tracao+compressao",
+       "Mantém a tampa na posição"
+      ]
+     ]
+    },
+    {
+     "nome": "Renovadora de pastagem e distribuidor a lanço",
+     "posicoes": [
+      [
+       "Hastes",
+       "Mola de desarme",
+       "compressao",
+       "Proteção"
+      ],
+      [
+       "Comporta",
+       "Mola da comporta",
+       "tracao",
+       "Fecha a saída"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Pecuária, ordenha e cercas",
+   "resumo": "Da sala de ordenha à porteira: molas de válvulas, travas e tensionadores.",
+   "implementos": [
+    {
+     "nome": "Ordenhadeira",
+     "posicoes": [
+      [
+       "Regulador de vácuo",
+       "Mola do regulador",
+       "compressao",
+       "Define o nível de vácuo"
+      ],
+      [
+       "Pulsador",
+       "Mola do pulsador",
+       "compressao",
+       "Retorno da válvula do pulsador"
+      ],
+      [
+       "Coletor e válvula de corte",
+       "Mola da válvula",
+       "compressao",
+       "Fecha o vácuo ao retirar o conjunto"
+      ],
+      [
+       "Extrator de teteiras e portões da sala",
+       "Mola de retorno",
+       "tracao+torcao",
+       "Recolhe e fecha"
+      ]
+     ]
+    },
+    {
+     "nome": "Tronco de contenção, brete e balança",
+     "posicoes": [
+      [
+       "Pescoceira e travas",
+       "Mola da trava",
+       "tracao+compressao",
+       "Trava e destrava a contenção"
+      ],
+      [
+       "Porteiras e cancelas",
+       "Mola de fechamento",
+       "tracao+torcao",
+       "Fecha a porteira"
+      ]
+     ]
+    },
+    {
+     "nome": "Cerca elétrica e convencional",
+     "posicoes": [
+      [
+       "Passagens e porteiras",
+       "Mola de porteira",
+       "tracao",
+       "Fecha a passagem e mantém o fio esticado"
+      ],
+      [
+       "Linhas de arame e fita",
+       "Mola tensionadora",
+       "compressao+tracao",
+       "Mantém a tensão do arame com a variação de temperatura"
+      ],
+      [
+       "Catraca esticadora",
+       "Mola da lingueta",
+       "torcao",
+       "Engata a lingueta da catraca"
+      ]
+     ]
+    },
+    {
+     "nome": "Porteiras, colchetes e bebedouros",
+     "posicoes": [
+      [
+       "Fechos e trincos",
+       "Mola do trinco",
+       "compressao+torcao",
+       "Fecha o trinco automaticamente"
+      ],
+      [
+       "Bebedouro de válvula",
+       "Mola da válvula",
+       "compressao",
+       "Fecha a água ao soltar a alavanca"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Avicultura e suinocultura",
+   "resumo": "Molas de bebedouros, comedouros, cortinas, ninhos e travas de baias.",
+   "implementos": [
+    {
+     "nome": "Bebedouro nipple e regulador de pressão",
+     "posicoes": [
+      [
+       "Nipple",
+       "Mola do nipple",
+       "compressao",
+       "Veda o bico e devolve o pino"
+      ],
+      [
+       "Regulador de pressão da linha",
+       "Mola do regulador",
+       "compressao",
+       "Mantém a pressão da linha"
+      ]
+     ]
+    },
+    {
+     "nome": "Comedouro automático e linha de ração",
+     "posicoes": [
+      [
+       "Sensor de fim de linha e prato de controle",
+       "Mola do sensor",
+       "compressao+tracao",
+       "Aciona e desarma o motor da linha"
+      ],
+      [
+       "Regulagem dos pratos",
+       "Mola do prato",
+       "compressao",
+       "Mantém a abertura regulada"
+      ]
+     ]
+    },
+    {
+     "nome": "Cortinas, entradas de ar e exaustores",
+     "posicoes": [
+      [
+       "Catraca e guincho de cortina",
+       "Mola da lingueta",
+       "torcao",
+       "Engata a catraca"
+      ],
+      [
+       "Entradas de ar (inlets)",
+       "Mola de retorno",
+       "tracao",
+       "Fecha a entrada de ar"
+      ],
+      [
+       "Persiana do exaustor",
+       "Mola da persiana",
+       "tracao",
+       "Fecha a persiana com o motor parado"
+      ]
+     ]
+    },
+    {
+     "nome": "Ninhos automáticos, gaiolas e baias",
+     "posicoes": [
+      [
+       "Portas e travas",
+       "Mola do trinco",
+       "compressao+torcao",
+       "Fecha o trinco"
+      ],
+      [
+       "Expulsor do ninho",
+       "Mola de retorno",
+       "tracao",
+       "Recolhe o expulsor"
+      ]
+     ]
+    },
+    {
+     "nome": "Coleta e elevador de ovos",
+     "posicoes": [
+      [
+       "Esteiras e correntes",
+       "Mola do esticador",
+       "compressao",
+       "Mantém a esteira e a corrente tensionadas"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Armazenagem e beneficiamento de grãos",
+   "resumo": "Molas de peneiras, elevadores, transportadores e registros.",
+   "implementos": [
+    {
+     "nome": "Máquina de pré-limpeza e limpeza / peneira",
+     "posicoes": [
+      [
+       "Caixa de peneiras",
+       "Mola de apoio / suspensão",
+       "compressao",
+       "Sustenta a caixa e isola a vibração"
+      ],
+      [
+       "Batedores e limpadores de peneira",
+       "Mola de retorno",
+       "tracao",
+       "Mantém o batedor em trabalho"
+      ]
+     ]
+    },
+    {
+     "nome": "Mesa densimétrica e classificadores",
+     "posicoes": [
+      [
+       "Mesa vibratória",
+       "Mola de suspensão",
+       "compressao",
+       "Sustenta e permite a vibração"
+      ]
+     ]
+    },
+    {
+     "nome": "Elevador de canecas e transportadores",
+     "posicoes": [
+      [
+       "Pé do elevador e tambor de retorno",
+       "Mola do esticador",
+       "compressao",
+       "Mantém a correia ou a corrente esticada"
+      ],
+      [
+       "Raspador da correia",
+       "Mola do raspador",
+       "tracao+torcao",
+       "Encosta o raspador na correia"
+      ]
+     ]
+    },
+    {
+     "nome": "Secador, silo e ensacadora",
+     "posicoes": [
+      [
+       "Registros e comportas de descarga",
+       "Mola de retorno",
+       "tracao+compressao",
+       "Fecha o registro"
+      ],
+      [
+       "Mordente e travas da ensacadora",
+       "Mola do mordente",
+       "tracao",
+       "Prende o saco"
+      ]
+     ]
+    },
+    {
+     "nome": "Beneficiamento de arroz e de sementes",
+     "posicoes": [
+      [
+       "Descascador de roletes",
+       "Mola de pressão dos roletes",
+       "compressao",
+       "Dá a pressão de descasque"
+      ],
+      [
+       "Dosadores",
+       "Mola de retorno",
+       "tracao",
+       "Fecha a dosagem"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Transporte e carretas agrícolas",
+   "resumo": "Molas de comportas, cabeçalhos, freios e lonas.",
+   "implementos": [
+    {
+     "nome": "Carreta agrícola e reboque",
+     "posicoes": [
+      [
+       "Pé de apoio e cabeçalho",
+       "Mola do pé de apoio / do cabeçalho",
+       "tracao+compressao",
+       "Recolhe o pé e sustenta o cabeçalho"
+      ],
+      [
+       "Freio de inércia",
+       "Mola do freio",
+       "compressao",
+       "Define a força de acionamento"
+      ],
+      [
+       "Tampa traseira e laterais",
+       "Mola de trava",
+       "compressao+tracao",
+       "Mantém a tampa travada"
+      ]
+     ]
+    },
+    {
+     "nome": "Carreta graneleira",
+     "posicoes": [
+      [
+       "Comporta de descarga",
+       "Mola da comporta",
+       "tracao",
+       "Fecha a comporta"
+      ],
+      [
+       "Tubo descarregador",
+       "Mola de alívio e de trava",
+       "tracao",
+       "Ajuda a dobrar e trava o tubo"
+      ],
+      [
+       "Lona de cobertura",
+       "Mola do enlonamento",
+       "torcao+tracao",
+       "Estica e recolhe a lona"
+      ]
+     ]
+    },
+    {
+     "nome": "Tanque e carreta-pipa",
+     "posicoes": [
+      [
+       "Válvulas",
+       "Mola da válvula",
+       "compressao",
+       "Fecha a válvula"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Florestal e máquinas portáteis",
+   "resumo": "Molas pequenas e de alto ciclo de motosserras, roçadeiras, motocultivadores e pulverizadores costais.",
+   "implementos": [
+    {
+     "nome": "Motosserra",
+     "posicoes": [
+      [
+       "Embreagem centrífuga",
+       "Mola da embreagem",
+       "tracao",
+       "Recolhe as sapatas em marcha lenta"
+      ],
+      [
+       "Freio da corrente",
+       "Mola do freio",
+       "tracao+compressao",
+       "Aciona a cinta do freio"
+      ],
+      [
+       "Gatilho do acelerador",
+       "Mola do gatilho",
+       "torcao",
+       "Retorno do acelerador"
+      ],
+      [
+       "Sistema antivibração",
+       "Mola amortecedora",
+       "compressao",
+       "Isola a vibração dos cabos"
+      ],
+      [
+       "Linguetas da partida",
+       "Mola da lingueta",
+       "torcao",
+       "Engata a lingueta ao puxar a corda"
+      ]
+     ]
+    },
+    {
+     "nome": "Roçadeira costal e lateral",
+     "posicoes": [
+      [
+       "Embreagem centrífuga",
+       "Mola da embreagem",
+       "tracao",
+       "Recolhe as sapatas"
+      ],
+      [
+       "Cabeçote de fio de nylon",
+       "Mola do carretel",
+       "compressao",
+       "Devolve o carretel depois da batida"
+      ],
+      [
+       "Gatilho",
+       "Mola do gatilho",
+       "torcao",
+       "Retorno do acelerador"
+      ]
+     ]
+    },
+    {
+     "nome": "Motocultivador e microtrator",
+     "posicoes": [
+      [
+       "Embreagem e correias",
+       "Mola do esticador",
+       "tracao",
+       "Tensão da correia ao engatar"
+      ],
+      [
+       "Alavancas e travas",
+       "Mola de retorno",
+       "tracao+torcao",
+       "Retorno do comando"
+      ],
+      [
+       "Tampa da enxada rotativa",
+       "Mola da tampa",
+       "tracao",
+       "Mantém a tampa na posição"
+      ]
+     ]
+    },
+    {
+     "nome": "Pulverizador costal",
+     "posicoes": [
+      [
+       "Gatilho e válvula",
+       "Mola da válvula",
+       "compressao",
+       "Fecha a saída ao soltar o gatilho"
+      ],
+      [
+       "Câmara e êmbolo",
+       "Mola do êmbolo",
+       "compressao",
+       "Retorno do êmbolo e das válvulas"
+      ]
+     ]
+    },
+    {
+     "nome": "Picador florestal e colheita mecanizada",
+     "posicoes": [
+      [
+       "Rolos de alimentação do picador",
+       "Mola do rolo",
+       "tracao",
+       "Pressiona o material contra o rolo"
+      ],
+      [
+       "Travas e válvulas",
+       "Mola de trava e de válvula",
+       "compressao+tracao",
+       "Travamento e regulagem"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

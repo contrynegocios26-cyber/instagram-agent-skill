@@ -11,7 +11,9 @@ description: >-
   cadastro de mola, compatibilidade, "serve em qual máquina", "qual mola vai
   no implemento X", "tenho uma mola com tantos milímetros", "o cliente mandou
   as medidas", referência cruzada com código original, catálogo em PDF ou no
-  site, ou quando um cliente não sabe o nome da peça que procura.
+  site, catálogo de referências por setor e por marca de máquina, "onde vai
+  mola" em cada implemento, setores do agro que usam mola, ou quando um
+  cliente não sabe o nome da peça que procura.
 ---
 
 # Jardmolas — Catálogo de molas
@@ -123,31 +125,69 @@ próprio (`app.html#item-CÓDIGO`), pronto para virar QR na etiqueta da caixa.
   organizado para uma pessoa da Jardmolas responder.
 - `--artefato` gera só o corpo da página, para publicar como artefato.
 
-## Catálogos impressos da linha agrícola
+## Catálogo de aplicações e referências (PDF para mandar ao cliente)
 
-`scripts/impressos.py` monta dois catálogos em A4 a partir de
-`assets/aplicacoes-agro.json` (onde vai cada mola, implemento por implemento)
-e de uma pasta de fotos; `node scripts/pdf.js PASTA` converte em PDF e avisa
-se algum conteúdo passou do rodapé.
+É o catálogo da linha agrícola para enviar por WhatsApp, e-mail ou imprimir:
+"Molas para implementos agrícolas", com a logo e as fotos da Jardmolas. Ele
+junta três camadas:
 
-- **Catálogo técnico**: para o vendedor e o balcão. Tabela por implemento com
-  posição na máquina, peça, tipo, função, se é item de linha ou sob medida, e
-  colunas em branco para anotar código e medidas; compatibilidade de fenação,
-  materiais, guia de medição e ficha de pedido.
-- **Catálogo de apresentação**: 8 páginas para entregar ao cliente — quem é a
-  fábrica, as linhas com fotos, resumo de onde vai cada mola, como pedir,
-  contatos e QR do WhatsApp. `--sangria 3` gera a versão para gráfica.
+1. **Onde vai mola** — `assets/mapa-agro.json`: 20 setores do agro, cada um
+   com seus implementos e, em cada implemento, a posição na máquina, o nome
+   da mola no mercado, o tipo (compressão, tração, torção) e a função.
+2. **Códigos de referência por marca** — a base `referencias-agro.csv`:
+   marca e modelo da máquina, peça, código original do fabricante, número em
+   catálogos de reposição e medidas publicadas, cada linha com a fonte.
+3. **A empresa** — logo, fotos da linha própria, como medir, quando trocar,
+   ficha de pedido, índice de códigos e índice por marca.
 
 ```bash
-python scripts/impressos.py --fotos PASTA_FOTOS --saida PASTA --whatsapp 55DDDNUMERO \
-       --telefone "(DD) 0000-0000" --email contato@empresa --data mm/aaaa [--sangria 3]
-node scripts/pdf.js PASTA
+python scripts/referencias.py --base PASTA/referencias-agro.csv --saida PASTA_SAIDA \
+       --logo logo.png --fotos PASTA_FOTOS --whatsapp 55DDDNUMERO --telefone "(DD) 0000-0000" \
+       --email contato@empresa --site dominio --endereco "..." --data mm/aaaa
+node scripts/pdf.js PASTA_SAIDA catalogo-molas-agro.html
 ```
 
-Regras: só entram fotos da própria Jardmolas (ou com licença para impressão);
-nenhuma medida é impressa sem estar no cadastro; marcas de máquinas só como
-"para uso em"; para acrescentar um implemento ou uma posição, edite o JSON —
-"linha" só para o que a fábrica produz em série.
+O gerador pagina sozinho (sumário e índices saem com o número da página),
+aperta as tabelas quando sobra uma folha quase vazia e usa o espaço do fim de
+cada setor para anotações e para a chamada de pedido. `pdf.js` avisa se algum
+conteúdo ficou cortado. Sempre abra o PDF e confira antes de enviar.
+
+**A base de referências** (`;` como separador): `setor`, `maquina`, `marca`
+(a principal primeiro; outras separadas por ` / `), `modelos`, `peca`, `tipo`
+(compressao, tracao, torcao, dedo ou vazio), `codigo_original` (vários
+separados por ` · `; qualificador entre parênteses: `H201723 (direito)`),
+`ref_reposicao` (`Sparex S.78950 · Kramp 57601100KR`), `arame_mm`,
+`comprimento_mm`, `diametro_mm`, `diametro_ref` (interno, externo ou vazio),
+`largura_mm`, `medida_publicada` (quando a fonte dá números sem rótulo, copie
+como está), `nota`, `situacao`, `conferido`, `obs_pesquisa`, `fonte`.
+
+Só entra no catálogo a linha com `situacao` = `catalogo`. As demais ficam na
+planilha com o motivo (`fora: ...`), para ninguém pesquisar de novo o que já
+foi descartado.
+
+**Regras editoriais** — o que faz a linha entrar ou ficar de fora:
+
+- Entra: mola de fio redondo (compressão, tração, torção, dedos e garfos)
+  com marca, código (original ou de catálogo de reposição conhecido) e fonte.
+- Fica de fora: peça sem função nem tipo identificado; evidência fraca
+  (marca inferida, código de loja, "pode não ser"); conjunto montado; e o
+  que não é mola de fio — feixe, mola plana, mola prato, mola a gás, mola
+  espiral de partida, dedo retrátil de caracol (é pino), peça fundida.
+- Rosca sem-fim de adubo (helicoide de arame) está fora até a Jardmolas
+  confirmar que fabrica.
+- Nome da peça como o balcão fala; sem nota de pesquisa no nome, no modelo
+  ou no código. Medida só a publicada pela fonte; se a fonte se contradiz,
+  a medida não entra.
+- Código repetido no mesmo setor vira uma linha só, com os modelos somados.
+- Marcas, modelos e códigos são sempre "referência de aplicação": sem
+  logotipo de terceiros e com a nota legal da contracapa.
+- A coluna `conferido` é da Jardmolas: marque `sim` quando o código tiver
+  sido conferido no catálogo de peças do fabricante ou na peça.
+
+Para acrescentar referências: pesquise, registre a fonte, aplique as regras
+acima e inclua as linhas na base; rode o gerador e confira as páginas do
+setor. Para acrescentar um setor, implemento ou posição, edite o
+`mapa-agro.json` (o nome do setor na base tem de ser igual ao do mapa).
 
 ## Atender quem está procurando (roteiro)
 

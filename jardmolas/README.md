@@ -53,13 +53,22 @@ python skills/jm-estrategia-100m/scripts/plano.py --receita-atual 6 --cambio 5.4
 python skills/jm-catalogo/scripts/catalogo.py validar catalogo
 python skills/jm-catalogo/scripts/catalogo.py buscar catalogo --marca Kuhn --modelo "GA 300"
 python skills/jm-catalogo/scripts/catalogo.py gerar catalogo --saida catalogo/catalogo.html --whatsapp 55DDDNUMERO
+
+# catálogo de aplicações e referências em PDF (logo, fotos, índices)
+python skills/jm-catalogo/scripts/referencias.py --base catalogo/referencias-agro.csv --saida SAIDA \
+   --logo catalogo/fotos/logo.png --fotos catalogo/fotos --whatsapp 55DDDNUMERO
+node skills/jm-catalogo/scripts/pdf.js SAIDA catalogo-molas-agro.html
 ```
 
 ## O que mais vem na pasta
 
-- `catalogo/impressos/` — os dois catálogos da linha agrícola em PDF: o
-  técnico (onde vai cada mola, por implemento) e o de apresentação, em A4 e
-  com sangria para gráfica.
+- `catalogo/catalogo-jardmolas-molas-agro.pdf` — o catálogo para mandar ao
+  cliente: "Molas para implementos agrícolas", com a logo e as fotos da
+  Jardmolas, onde vai mola em 20 setores do agro e os códigos de referência
+  por marca de máquina, índice de códigos, como medir e ficha de pedido.
+- `catalogo/referencias-agro.csv` — a base desse catálogo: cada código com
+  marca, modelo, peça, medidas publicadas, fonte e a situação (no catálogo
+  ou fora, com o motivo). É a planilha que a Jardmolas confere e amplia.
 - `catalogo/app.html` — o aplicativo do cliente: achar a peça, calcular
   mola, consultor de Inconel X-750 por temperatura, pedido de cotação e guia
   de medição, num arquivo só que roda no celular.

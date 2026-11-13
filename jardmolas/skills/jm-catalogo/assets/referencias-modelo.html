@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>__TITULO__</title>
+<style>
+/* Catálogo de referências em A4. Cada .pg é uma folha; a paginação é feita pelo script no fim do arquivo. */
+@page{size:210mm 297mm;margin:0}
+:root{--v900:#053310;--v800:#084d17;--v700:#0f6a26;--v600:#33a94c;--v100:#e6f1e4;--lima:#a6ce39;--tinta:#231f20;--cinza:#5b665e;--linha:#d6ded7;--fundo:#f3f6f2;
+--titulo:"Inter Display",Inter,"DejaVu Sans",Arial,sans-serif;--texto:Inter,"DejaVu Sans",Arial,sans-serif;--mono:"JetBrains Mono","DejaVu Sans Mono",monospace}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#7d837e;color:var(--tinta);font:9.2pt/1.42 var(--texto)}
+.pg{width:210mm;height:297mm;position:relative;overflow:hidden;background:#fff;page-break-after:always;margin:0 auto}
+@media screen{.pg{margin:6mm auto;box-shadow:0 1mm 4mm rgba(0,0,0,.3)}}
+i.lg{display:block;background-size:contain;background-repeat:no-repeat;background-position:left center}
+.im{background-size:cover;background-position:center;background-repeat:no-repeat}
+
+/* cabeçalho, rodapé e aba de setor */
+.cab{position:absolute;top:6mm;left:14mm;right:16mm;height:13.6mm;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:.3mm solid var(--linha);padding-bottom:1.6mm}
+.cab::after{content:"";position:absolute;left:0;bottom:-.3mm;width:19mm;height:.7mm;background:var(--v600)}
+.cab i.lg{width:19.4mm;height:11.7mm}
+b.nm{font:800 13pt/1.1 var(--titulo);color:var(--v800);letter-spacing:-.01em}.lgcard b.nm{font-size:26pt;display:block;padding:2mm 3mm}
+.cab span{font-size:7.2pt;letter-spacing:.14em;text-transform:uppercase;color:var(--cinza);font-weight:600}
+.cab span b{color:var(--v800);font-weight:800;margin-right:1.6mm}
+.corpo{position:absolute;top:23.5mm;left:14mm;right:16mm;bottom:16.5mm;overflow:hidden}
+.rod{position:absolute;bottom:6.6mm;left:14mm;right:16mm;display:flex;justify-content:space-between;align-items:center;font-size:7.4pt;color:var(--cinza)}
+.rod b{font:800 9.4pt/1 var(--titulo);color:#fff;background:var(--v800);border-radius:1.4mm;min-width:9mm;text-align:center;padding:1.5mm 2mm}
+.rod em{font-style:normal;color:var(--v800);font-weight:700}
+.aba{position:absolute;right:0;width:8.6mm;height:11.4mm;background:var(--v800);color:var(--lima);font:800 8.8pt/1 var(--titulo);display:flex;align-items:center;justify-content:center;border-radius:1.6mm 0 0 1.6mm;padding-right:1.2mm}
+
+h1,h2,h3{font-family:var(--titulo);margin:0;line-height:1.08}
+h2{font-size:22pt;font-weight:800;color:var(--v800);letter-spacing:-.015em}
+h3{font-size:12pt;font-weight:800;color:var(--v800)}
+p{margin:0 0 2.2mm}
+ul{margin:0 0 2mm;padding-left:4.2mm}li{margin-bottom:.9mm}
+.olho{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--v600);margin-bottom:1.4mm}
+.faixa{display:block;width:16mm;height:2mm;background:var(--lima);border-radius:1mm;margin:3mm 0 4.5mm}
+.lead{font-size:11pt;line-height:1.45;color:#2b332d}
+
+/* abertura de setor */
+.abre{position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr auto;gap:6mm;align-items:center;background:linear-gradient(115deg,var(--v900) 0%,var(--v800) 48%,var(--v700) 100%);color:#fff;border-radius:3mm;padding:6.4mm 6.5mm;margin-bottom:3.2mm}
+.abre>svg{position:absolute;right:38mm;top:-6mm;height:150%;opacity:.16}
+.abre .num{font:800 50pt/.82 var(--titulo);color:var(--lima);letter-spacing:-.04em;position:relative}
+.abre .txt{position:relative}
+.abre h2{color:#fff;font-size:21pt}
+.abre p{margin:1.8mm 0 0;font-size:9.4pt;line-height:1.4;opacity:.95;max-width:98mm}
+.abre .olho{color:var(--lima)}
+.abre .cont{position:relative;font-size:8.2pt;line-height:1.5;border-left:.3mm solid rgba(255,255,255,.3);padding-left:5mm;display:grid;gap:1.3mm}
+.abre .cont b{display:inline-block;min-width:8.5mm;font:800 14pt/1 var(--titulo);color:var(--lima)}
+.fotofaixa{height:42mm;border-radius:3mm;margin-bottom:3.2mm}
+.chips{display:flex;flex-wrap:wrap;gap:1.4mm;margin-bottom:5mm}
+.chips span{background:var(--v100);color:var(--v800);border-radius:10mm;padding:.8mm 3mm;font-size:7.8pt;font-weight:600}
+
+/* blocos e tabelas */
+.bloco{margin-bottom:5mm}
+.sub{display:flex;align-items:center;gap:2.6mm;font:800 12.5pt var(--titulo);color:var(--v800);margin:0 0 2.6mm}
+.sub::before{content:"";width:2.6mm;height:2.6mm;border-radius:.6mm;background:var(--lima);flex:none}
+.sub::after{content:"";flex:1;height:.3mm;background:var(--linha)}
+.sub small{font:500 7.8pt var(--texto);color:var(--cinza)}
+.tit{font:800 10.8pt var(--titulo);display:flex;align-items:baseline;gap:2.5mm;margin:0 0 1.5mm;color:var(--tinta)}
+.tit small{font:500 7.8pt var(--texto);color:var(--cinza)}
+.tit .qt{margin-left:auto;font:600 7.6pt var(--texto);color:var(--v800);background:var(--v100);border-radius:10mm;padding:.5mm 2.6mm}
+table{border-collapse:collapse;width:100%;font-size:8.4pt;line-height:1.3;table-layout:fixed}
+th{background:var(--v800);color:#fff;text-align:left;padding:1.5mm 1.9mm;font-weight:700;font-size:6.9pt;letter-spacing:.06em;text-transform:uppercase}
+th:first-child{border-radius:1.2mm 0 0 0}th:last-child{border-radius:0 1.2mm 0 0}
+td{padding:1.5mm 1.9mm;border-bottom:.2mm solid var(--linha);vertical-align:top;overflow-wrap:anywhere}
+tbody tr:nth-child(even) td{background:#fafbf9}
+tr.grupo td{background:var(--v100)!important;font:800 8.8pt var(--titulo);color:var(--v800);padding:1.5mm 1.9mm;border-left:1.1mm solid var(--v600);border-bottom:none}
+td .mq{display:block;font-weight:700}
+td .md{display:block;font-size:7.6pt;color:#3a443d}
+td .tb{display:block;font-size:7pt;color:var(--cinza)}
+td.cod{font:600 8.4pt var(--mono);color:var(--v800)}
+td.cod span{display:inline-block;margin-right:1.6mm;white-space:nowrap}
+td.cod span i{font:500 7pt var(--texto);font-style:normal;color:var(--cinza)}
+td.med{font-size:7.8pt;color:#2b332d}
+.nb{white-space:nowrap}
+td.cod .rp{display:block;font:500 7.6pt var(--mono);color:#3a443d;white-space:normal}
+td.cod .rp i{font:500 6.8pt var(--texto);color:var(--cinza)}
+td.cod span+.rp{margin-top:.5mm}
+td.pc{position:relative;padding-left:9.6mm}
+td.pc svg{position:absolute;left:1.6mm;top:1.7mm;width:6.4mm;height:3.7mm;fill:none;stroke:var(--v600);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tp{display:inline-flex;align-items:center;gap:1mm;font-size:7.5pt;font-weight:600;white-space:nowrap;margin:0 1.6mm .5mm 0}
+.tp svg{width:6.4mm;height:3.7mm;fill:none;stroke:var(--v600);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.cta{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr auto auto;gap:6mm;align-items:center;background:var(--v100);border-radius:3mm;padding:4.2mm 5mm;border-left:1.4mm solid var(--v600)}
+.cta h3{font-size:12pt}.cta p{margin:1.2mm 0 0;font-size:8.8pt;color:#2b332d}
+.cta .zp{font-size:8.4pt;line-height:1.5;text-align:right}.cta .zp b{display:block;font:800 12.5pt var(--titulo);color:var(--v800);white-space:nowrap}
+.cta img{width:19mm;display:block;background:#fff;border-radius:1.6mm;padding:1.2mm}
+.anot{position:absolute;left:0;right:0;border-radius:3mm;border:.3mm solid var(--linha);overflow:hidden}
+.anot span{position:absolute;left:4mm;top:2.4mm;font-size:7.2pt;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--cinza);background:#fff;padding:0 1.5mm}
+.anot i{position:absolute;inset:0;background:repeating-linear-gradient(#fff 0,#fff 8.2mm,#d3dbd5 8.2mm,#d3dbd5 8.45mm)}
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm;margin-top:4.5mm}
+.passos>div{background:var(--fundo);border-radius:2.4mm;padding:3.6mm 3.6mm 2.6mm;border-top:1mm solid var(--lima)}
+.passos b{font:800 17pt/1 var(--titulo);color:var(--v600)}
+.passos h3{font-size:10.4pt;margin:1.4mm 0 1.2mm}.passos p{font-size:8pt;margin:0;color:#2b332d}
+.famg{margin-top:4.2mm}.famg h3{font-size:11.4pt;display:flex;align-items:baseline;gap:3mm}.famg h3 small{font:500 8pt var(--texto);color:var(--cinza)}
+.famg .fotos{margin-top:2.2mm;gap:2mm}.famg .fotos figure i{aspect-ratio:3/2}
+.denso table{font-size:8.1pt}.denso td{padding-top:1.05mm;padding-bottom:1.05mm}.denso tr.grupo td{padding-top:1.1mm;padding-bottom:1.1mm}.denso td.pc svg{top:1.25mm}.denso .bloco{margin-bottom:3.6mm}
+.denso .abre{padding:5mm 6.5mm;margin-bottom:2.6mm}.denso .fotofaixa{height:33mm;margin-bottom:2.6mm}.denso .chips{margin-bottom:3.6mm}.denso .sub{margin-bottom:2mm}
+.denso .linhaj{padding:2.8mm 4mm 2.4mm;margin-bottom:3.6mm}
+.aviso{background:var(--fundo);border-left:1.2mm solid var(--lima);border-radius:0 2mm 2mm 0;padding:3.4mm 4mm;font-size:8.8pt}
+.linhaj{border:.3mm solid var(--linha);border-radius:3mm;padding:3.6mm 4mm 3mm;margin-bottom:5mm;background:#fff}
+.linhaj .tit{color:var(--v800)}
+.fotos{display:grid;gap:1.6mm}
+.fotos figure{margin:0;border:.25mm solid var(--linha);border-radius:1.6mm;overflow:hidden;background:#fff}
+.fotos figure i{display:block;aspect-ratio:4/3;background-size:contain;background-repeat:no-repeat;background-position:center}
+.fotos figcaption{font-size:6.6pt;text-align:center;color:var(--cinza);padding:0 0 .9mm;line-height:1.2}
+
+/* páginas fixas */
+.cx{background:var(--fundo);border-radius:2.4mm;padding:4.6mm}
+.cx.verde{background:var(--v800);color:#fff}.cx.verde h3{color:var(--lima)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:7mm}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.cols4{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:5mm 0}
+.nums div{border-top:1mm solid var(--lima);background:var(--fundo);border-radius:0 0 2mm 2mm;padding:3mm 3.4mm 3.2mm}
+.nums b{display:block;font:800 17pt/1 var(--titulo);color:var(--v800);letter-spacing:-.02em}
+.nums span{display:block;font-size:7.8pt;color:#3a443d;margin-top:1.2mm;line-height:1.3}
+.trio{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:2.4mm;margin:5mm 0}
+.trio i{display:block;height:58mm;border-radius:2.4mm}
+.tipo{border:.3mm solid var(--linha);border-radius:2.4mm;overflow:hidden;background:#fff}
+.tipo i{display:block;height:23mm;background-size:contain;background-repeat:no-repeat;background-position:center;border-bottom:.3mm solid var(--linha)}
+.tipo div{padding:3mm 3.2mm 2.4mm}
+.tipo h3{font-size:10.6pt;margin:0 0 1mm}
+.tipo p{font-size:7.8pt;margin:0 0 1.2mm;color:#2b332d}
+.tipo ul{font-size:7.6pt;margin:0}
+.fam{display:grid;grid-template-columns:44mm 1fr;gap:4mm;align-items:start;padding:3mm 0;border-bottom:.3mm solid var(--linha)}
+.fam:last-of-type{border-bottom:none}
+.fam h3{font-size:10.4pt;margin-bottom:1mm}
+.fam p{font-size:7.8pt;color:#3a443d;margin:0}
+.des{border:.3mm solid var(--linha);border-radius:2.4mm;padding:3mm 3.4mm;background:#fff}
+.des svg{width:100%;height:44mm;display:block}
+.des svg .m{fill:none;stroke:var(--tinta);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.des svg .c{fill:none;stroke:var(--v600);stroke-width:.9}
+.des svg text{font:700 8.5px var(--texto);fill:var(--v800)}
+.des h3{font-size:10.6pt;margin:1mm 0 1.4mm}
+.des ol{margin:0;padding-left:4.4mm;font-size:8pt}.des ol li{margin-bottom:.7mm}
+.des ol b{color:var(--v800)}
+.rev{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6mm;margin-top:3mm}
+.rev div{border:.3mm solid var(--linha);border-radius:2.4mm;padding:3mm 3mm 2.4mm;background:#fff}
+.rev b{font:800 13pt/1 var(--titulo);color:var(--v600)}.rev h3{font-size:9.4pt;margin:1.2mm 0 1mm}.rev p{font-size:7.7pt;margin:0;color:#2b332d}
+.sinal{display:grid;grid-template-columns:9mm 1fr;gap:3mm;align-items:start;padding:2.6mm 0;border-bottom:.3mm solid var(--linha)}
+.sinal b.n{font:800 15pt/1 var(--titulo);color:var(--lima);background:var(--v800);border-radius:2mm;width:9mm;height:9mm;display:flex;align-items:center;justify-content:center}
+.sinal h3{font-size:10pt;margin-bottom:.8mm}.sinal p{margin:0;font-size:8.4pt}
+.sum{font-size:8.2pt}.sum td{padding:1.3mm 1.9mm}.sum td.im{font-size:7.2pt;line-height:1.28;color:#3a443d}.sum td.n{font:800 11pt var(--titulo);color:var(--v600)}.sum td.r{text-align:right;font-variant-numeric:tabular-nums}
+.sum th.r{text-align:right}.sum td.pg2{text-align:right;font:800 9.4pt var(--titulo);color:var(--v800)}
+.idx{column-gap:5mm;column-fill:auto;font-size:7.3pt;line-height:1.42;overflow:hidden}
+.idx div{break-inside:avoid;display:flex;gap:1.5mm;align-items:baseline;border-bottom:.15mm dotted var(--linha);padding:.25mm 0}
+.idx b{font:600 7.4pt var(--mono);color:var(--v800);white-space:nowrap}
+.idx span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#3a443d}
+.idx i{font-style:normal;font-weight:700;white-space:nowrap}
+.idx.marcas{font-size:8.6pt}.idx.marcas div{padding:.7mm 0}.idx.marcas span{font-weight:600;color:var(--tinta)}
+.pauta{position:absolute;inset:0;background:repeating-linear-gradient(#fff 0,#fff 8.7mm,#bcc6be 8.7mm,#bcc6be 8.95mm)}
+.campo{display:flex;gap:2mm;align-items:flex-end;margin-bottom:7.2mm;font-size:9.6pt}.campo span{white-space:nowrap}.campo i{flex:1;border-bottom:.25mm solid #7b8880;height:4.2mm}
+.nota{font-size:7.5pt;color:var(--cinza);line-height:1.4}
+
+/* capa e contracapa */
+.capa{background:var(--v900);color:#fff}
+.capa .foto{position:absolute;left:0;right:0;top:0;height:176mm}
+.capa .veu{position:absolute;left:0;right:0;top:0;height:176mm;background:linear-gradient(180deg,rgba(5,51,16,.30) 0%,rgba(5,51,16,0) 30%,rgba(5,51,16,.55) 100%)}
+.capa .risco{position:absolute;left:0;right:0;bottom:0;height:153.4mm;background:var(--lima);clip-path:polygon(0 19mm,100% 0,100% 100%,0 100%)}
+.capa .painel{position:absolute;left:0;right:0;bottom:0;height:151mm;background:linear-gradient(160deg,var(--v800) 0%,var(--v900) 78%);clip-path:polygon(0 19mm,100% 0,100% 100%,0 100%)}
+.capa .lgcard{position:absolute;top:13mm;left:14mm;background:#fff;border-radius:3mm;padding:4.4mm 5.4mm;box-shadow:0 1.5mm 6mm rgba(0,0,0,.28)}
+.capa .lgcard i.lg{width:53mm;height:32mm}
+.capa .cont{position:absolute;left:16mm;right:16mm;bottom:19mm}
+.capa .ed{font-size:8pt;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--lima);margin-bottom:4mm}
+.capa h1{font-size:45pt;font-weight:800;letter-spacing:-.03em;line-height:.98;max-width:150mm}
+.capa .linha2{font-size:12.6pt;line-height:1.38;margin:5.5mm 0 0;max-width:138mm;opacity:.96}
+.capa .tipos{display:flex;gap:2mm;margin-top:6.5mm;flex-wrap:wrap}
+.capa .tipos span{border:.35mm solid var(--lima);color:var(--lima);border-radius:10mm;padding:1mm 4mm;font:700 9.6pt var(--titulo)}
+.capa .numc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:9mm;border-top:.3mm solid rgba(255,255,255,.28);padding-top:5mm}
+.capa .numc div{padding-right:4mm}
+.capa .numc b{display:block;font:800 27pt/1 var(--titulo);color:var(--lima);letter-spacing:-.02em}
+.capa .numc span{font-size:8.2pt;opacity:.92;display:block;line-height:1.25;margin-top:1.2mm}
+.capa .pe{position:absolute;left:16mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;font-size:8pt;opacity:.85;letter-spacing:.04em}
+.contra{background:linear-gradient(165deg,var(--v800) 0%,var(--v900) 70%)}
+.contra>svg{position:absolute;right:-30mm;top:20mm;height:260mm;opacity:.10}
+.contra .lgcard{position:absolute;top:26mm;left:18mm}
+.contra .cont{position:absolute;left:18mm;top:92mm;width:150mm}
+.contra h1{font-size:28pt;line-height:1.1;letter-spacing:-.02em}
+.contra .cts{display:flex;gap:10mm;align-items:flex-end;margin-top:9mm;font-size:12pt;line-height:1.8}
+.contra .cts b{color:var(--lima)}
+.contra .qr{background:#fff;color:var(--tinta);padding:2.6mm;border-radius:2.4mm;text-align:center;font-size:7.6pt;font-weight:700}
+.contra .qr img{width:33mm;display:block;margin-bottom:1mm}
+.contra .legal{position:absolute;left:18mm;right:18mm;bottom:15mm;font-size:7.2pt;line-height:1.45;opacity:.82}
+</style>
+<style>/*__IMAGENS__*/</style>
+</head>
+<body>
+<div id="paginas"></div>
+<script>
+window.__pronto=false;
+const D=/*__DADOS__*/{};
+const IC={
+ compressao:'<svg viewBox="0 0 28 16"><path d="M3 2v12M25 2v12"/><polyline points="3,8 6,3 9.5,13 13,3 16.5,13 20,3 23,13 25,8"/></svg>',
+ tracao:'<svg viewBox="0 0 28 16"><circle cx="4" cy="8" r="2.6"/><polyline points="6.6,8 9,3 11.5,13 14,3 16.5,13 19,3 21.4,8"/><circle cx="24" cy="8" r="2.6"/></svg>',
+ torcao:'<svg viewBox="0 0 28 16"><circle cx="11" cy="9" r="5"/><circle cx="11" cy="9" r="2.4"/><path d="M11 4H26M7 12.2L1.5 15"/></svg>',
+ dedo:'<svg viewBox="0 0 28 16"><circle cx="6" cy="5.5" r="3.6"/><path d="M8.6 8L26 14M6 1.9V1H2"/></svg>'};
+const NT={compressao:"Compressão",tracao:"Tração",torcao:"Torção",dedo:"Dedo / garfo"};
+const E=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const el=(tag,cls,h)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(h!=null)e.innerHTML=h;return e};
+const dois=n=>String(n).padStart(2,"0");
+const raiz=document.getElementById("paginas");
+const pags=[];let P=null;
+const c=D.cfg;
+const LG=c.logo?'<i class="lg"></i>':`<b class="nm">${E(c.empresa)}</b>`;
+const RODAPE=`<em>${E(c.empresa)}</em>`+[c.zap?"WhatsApp "+c.zap:"",c.site].filter(Boolean).map(x=>" · "+E(x)).join("");
+/* espiral decorativa (mola vista de lado) */
+const helice=(n,cor)=>{let s="";for(let k=0;k<n;k++)s+=`<ellipse cx="${14+k*9}" cy="30" rx="11" ry="26"/>`;
+  return `<svg viewBox="0 0 ${28+(n-1)*9} 60" fill="none" stroke="${cor||"#a6ce39"}" stroke-width="2.6">${s}</svg>`};
+
+let DENSO=false;
+function nova(setor,rotulo){
+  const pg=el("section","pg"+(DENSO&&setor?" denso":"")),n=pags.length+1;
+  const dir=setor?`<b>${dois(setor.n)}</b>${E(setor.nome)}`:E(rotulo||"");
+  pg.innerHTML=(setor?`<div class="aba" style="top:${(24+(setor.n-1)*12.3).toFixed(1)}mm">${dois(setor.n)}</div>`:"")+
+    `<header class="cab">${LG}<span>${dir}</span></header><div class="corpo"></div>`+
+    `<footer class="rod"><span>${RODAPE}</span><b>${n}</b></footer>`;
+  raiz.appendChild(pg);P={pg,corpo:pg.querySelector(".corpo"),n,setor,rotulo};pags.push(P);return P}
+function especial(cls,h){const pg=el("section","pg "+cls,h);raiz.appendChild(pg);P={pg,corpo:null,n:pags.length+1};pags.push(P);return P}
+const cabe=()=>P.corpo.scrollHeight<=P.corpo.clientHeight+1;
+const outra=()=>nova(P.setor,P.rotulo);
+/* põe um bloco inteiro; se não couber, vai para a folha seguinte */
+function inteiro(e){P.corpo.appendChild(e);if(!cabe()&&P.corpo.children.length>1){e.remove();outra();P.corpo.appendChild(e)}}
+
+/* Tabela que continua na folha seguinte, repetindo cabeçalho e o nome do grupo. linhas: {el, grupo?, reg?} */
+function fluxo(o){
+  let postas=0;
+  const abre=cont=>{const g=el("div","bloco");
+    if(!cont&&o.prefixo)g.appendChild(o.prefixo);
+    if(o.titulo)g.appendChild(el("div","tit",o.titulo+(cont?" <small>(continuação)</small>":(o.qt?`<span class="qt">${o.qt}</span>`:""))));
+    const t=el("table",o.cls||"","<thead>"+o.thead+"</thead><tbody></tbody>");g.appendChild(t);P.corpo.appendChild(g);
+    return{g,tb:t.querySelector("tbody")}};
+  let a=abre(false);
+  for(const ln of o.linhas){
+    const ehGrupo=ln.el.classList.contains("grupo");
+    a.tb.appendChild(ln.el);
+    if(!cabe()){
+      a.tb.removeChild(ln.el);const levar=[];
+      const ult=a.tb.lastElementChild;
+      if(ult&&ult.classList.contains("grupo")){a.tb.removeChild(ult);levar.push(ult)}
+      if(!a.tb.children.length)a.g.remove();
+      outra();a=abre(postas>0);
+      levar.forEach(x=>a.tb.appendChild(x));
+      if(!levar.length&&!ehGrupo&&ln.grupo&&postas>0)a.tb.appendChild(linhaGrupo(ln.grupo+" (continuação)",o.colunas));
+      a.tb.appendChild(ln.el);
+    }
+    if(!ehGrupo){postas++;if(ln.reg)ln.reg.pagina=P.n}
+  }
+}
+const linhaGrupo=(nome,cols)=>el("tr","grupo",`<td colspan="${cols}">${E(nome)}</td>`);
+const tipos=t=>t.split("+").map(x=>`<span class="tp">${IC[x]||""}${NT[x]||E(x)}</span>`).join("");
+const fotos=(itens,cols)=>`<div class="fotos" style="grid-template-columns:repeat(${cols},1fr)">`+itens.map(f=>`<figure><i class="${f.cls}"></i>${f.leg?`<figcaption>${E(f.leg)}</figcaption>`:""}</figure>`).join("")+"</div>";
+
+/* Desenha o setor; se a última folha ficar quase vazia, tenta de novo com as tabelas mais compactas para ganhar uma folha. */
+function setor(s){
+  const ini=pags.length;
+  desenha(s);
+  const ultima=pags[pags.length-1],filhos=[...ultima.corpo.children];
+  const usado=filhos.length?Math.max(...filhos.map(e=>e.offsetTop+e.offsetHeight)):0;
+  if(pags.length-ini>1&&usado<ultima.corpo.clientHeight*.3){
+    const antes=pags.length-ini;
+    pags.splice(ini).forEach(p=>p.pg.remove());DENSO=true;desenha(s);DENSO=false;
+    if(pags.length-ini>=antes){pags.splice(ini).forEach(p=>p.pg.remove());desenha(s)}
+  }
+  fecho(s);
+}
+function desenha(s){
+  nova(s);s.pagina=P.n;
+  const nPos=s.implementos.reduce((a,i)=>a+i.posicoes.length,0),nRef=s.marcas.reduce((a,m)=>a+m.linhas.length,0);
+  P.corpo.appendChild(el("div","abre",helice(9)+`<div class="num">${dois(s.n)}</div><div class="txt"><div class="olho">Setor</div><h2>${E(s.nome)}</h2><p>${E(s.resumo)}</p></div>`+
+    `<div class="cont"><div><b>${s.implementos.length}</b>implementos</div><div><b>${nPos}</b>posições de mola</div><div><b>${nRef||"—"}</b>códigos de referência</div></div>`));
+  if(s.foto)P.corpo.appendChild(el("div","fotofaixa im "+s.foto));
+  P.corpo.appendChild(el("div","chips",s.implementos.map(i=>`<span>${E(i.nome)}</span>`).join("")));
+  const linhas=[];
+  for(const i of s.implementos){linhas.push({el:linhaGrupo(i.nome,4)});
+    for(const p of i.posicoes)linhas.push({grupo:i.nome,el:el("tr","",`<td><b>${E(p[0])}</b></td><td>${E(p[1])}</td><td>${tipos(p[2])}</td><td>${E(p[3])}</td>`)})}
+  fluxo({prefixo:el("div","sub","Onde vai mola"),colunas:4,linhas,
+    thead:'<tr><th style="width:31%">Posição na máquina</th><th style="width:25%">Mola</th><th style="width:19%">Tipo</th><th>Função</th></tr>'});
+  if(s.linha)inteiro(el("div","linhaj",`<div class="tit">${E(s.linha.titulo)}<small>${E(s.linha.texto)}</small></div>`+fotos(s.linha.itens,s.linha.itens.length)));
+  let pre=el("div","sub",'Códigos de referência por marca <small>código original do fabricante da máquina</small>');
+  if(!s.marcas.length){const g=el("div","bloco");g.appendChild(pre);
+    g.appendChild(el("div","aviso","Para este setor ainda não reunimos códigos publicados. Fabricamos pela peça: informe o <b>código gravado na mola ou no manual</b>, mande o <b>desenho</b> ou uma <b>amostra</b>, com a marca e o modelo da máquina."));
+    inteiro(g);return}
+  for(const m of s.marcas){
+    const med=m.linhas.some(r=>r.med.length);
+    const maqs=[...new Set(m.linhas.map(r=>r.maq))],unica=maqs.length===1&&maqs[0]?maqs[0]:"";
+    const sem1=!!unica&&m.linhas.every(r=>!r.modelos&&!r.tambem);
+    const linhas=m.linhas.map(r=>({reg:r,el:el("tr","",
+      (sem1?"":`<td>${!unica&&r.maq?`<span class="mq">${E(r.maq)}</span>`:""}${r.modelos?`<span class="md">${E(r.modelos)}</span>`:(!unica&&r.maq?"":"—")}${r.tambem?`<span class="tb">também ${E(r.tambem)}</span>`:""}</td>`)+
+      `<td class="${r.tipo?"pc":""}">${IC[r.tipo]||""}${E(r.peca)}</td>`+
+      `<td class="cod">${r.cods.map(x=>`<span>${E(x[0])}${x[1]?` <i>${E(x[1])}</i>`:""}</span>`).join("")}${r.reps.map(x=>{const k=x.indexOf(" ");return `<span class="rp">${E(x.slice(k+1))} <i>ref. ${E(x.slice(0,k))}</i></span>`}).join("")}</td>`+
+      (med?`<td class="med">${r.med.map(x=>`<span class="nb">${E(x)}</span>`).join(" · ")}</td>`:""))}));
+    const c1=unica?"Modelo":"Máquina · modelo";
+    fluxo({prefixo:pre,titulo:E(m.marca)+(unica?` <small>${E(unica)}</small>`:""),qt:m.linhas.length+(m.linhas.length===1?" peça":" peças"),colunas:(med?4:3)-(sem1?1:0),linhas,
+      thead:sem1?(med?'<tr><th style="width:42%">Peça</th><th style="width:26%">Código original</th><th>Medidas publicadas</th></tr>'
+                     :'<tr><th style="width:58%">Peça</th><th>Código original</th></tr>')
+           :med?`<tr><th style="width:25%">${c1}</th><th style="width:30%">Peça</th><th style="width:20%">Código original</th><th>Medidas publicadas</th></tr>`
+               :`<tr><th style="width:33%">${c1}</th><th style="width:39%">Peça</th><th>Código original</th></tr>`});
+    pre=null}
+}
+/* aproveita o espaço que sobra no fim do setor: anotações e chamada para pedido */
+function fecho(s){
+  const mm=P.corpo.clientWidth/180,ult=P.corpo.lastElementChild;
+  const usado=ult?ult.offsetTop+ult.offsetHeight:0,livre=(P.corpo.clientHeight-usado)/mm;
+  if(livre<40)return;
+  const cta=el("div","cta",`<div><h3>Não achou a sua peça neste setor?</h3><p>Fabricamos pelo código original, pelo desenho ou pela amostra. Diga a marca, o modelo e onde a mola vai.</p></div>`+
+    (c.zap?`<div class="zp">WhatsApp<b>${E(c.zap)}</b>${E(c.site||"")}</div>`:"")+(c.qr?`<img src="${c.qr}" alt="">`:""));
+  P.corpo.appendChild(cta);
+  const h=cta.offsetHeight/mm;
+  if(livre-h>=48){const a=el("div","anot","<i></i><span>Anotações</span>");a.style.top=(usado/mm+7)+"mm";a.style.bottom=(h+5)+"mm";P.corpo.appendChild(a)}
+}
+
+function indice(rotulo,titulo,texto,itens,colunas,cls){
+  let caixa;
+  const abre=cont=>{nova(null,rotulo);
+    if(!cont)P.corpo.appendChild(el("div","",`<div class="olho">Índice</div><h2>${E(titulo)}</h2><span class="faixa"></span><p style="max-width:150mm">${texto}</p>`));
+    caixa=el("div","idx "+(cls||""));caixa.style.columnCount=colunas;P.corpo.appendChild(caixa);
+    caixa.style.height=Math.floor(P.corpo.clientHeight-caixa.offsetTop-2)+"px"};
+  abre(false);
+  for(const h of itens){const d=el("div","",h);caixa.appendChild(d);
+    if(caixa.scrollWidth>caixa.clientWidth+1){caixa.removeChild(d);abre(true);caixa.appendChild(d)}}
+}
+function fixa(rotulo,h){nova(null,rotulo);P.corpo.innerHTML=h}
+
+function montar(){
+  const T=D.totais;
+  especial("capa",`<div class="foto im im-capa"></div><div class="veu"></div><div class="risco"></div><div class="painel"></div>`+
+    `<div class="lgcard">${LG}</div>`+
+    `<div class="cont"><div class="ed">Catálogo de aplicações e referências${c.data?" · edição "+E(c.data):""}</div>`+
+    `<h1>Molas para implementos agrícolas</h1><p class="linha2">Onde vai cada mola, setor por setor e máquina por máquina, com os códigos de referência do mercado.</p>`+
+    `<div class="tipos"><span>Compressão</span><span>Tração</span><span>Torção</span><span>Dedos e garfos</span></div>`+
+    `<div class="numc"><div><b>${T.setores}</b><span>setores do agro</span></div><div><b>${T.implementos}</b><span>implementos e máquinas</span></div><div><b>${T.posicoes}</b><span>posições de mola</span></div><div><b>${T.refs}</b><span>códigos de referência</span></div></div></div>`+
+    `<div class="pe"><span>${E(c.site||"")}</span><span>${c.zap?"WhatsApp "+E(c.zap):""}</span></div>`);
+  fixa("A empresa",D.paginas.empresa);
+  (D.paginas.galeria||[]).forEach(h=>fixa("Linha de fabricação",h));
+  fixa("Como usar",D.paginas.como);
+  nova(null,"Sumário");
+  P.corpo.innerHTML=`<div class="olho">Sumário</div><h2>${T.setores} setores, ${T.implementos} implementos</h2><span class="faixa"></span>`+
+    `<table class="sum"><thead><tr><th style="width:6%">Nº</th><th style="width:29%">Setor</th><th>Implementos e máquinas</th><th class="r" style="width:9%">Posições</th><th class="r" style="width:9%">Códigos</th><th class="r" style="width:8%">Página</th></tr></thead><tbody>`+
+    D.setores.map(s=>`<tr><td class="n">${dois(s.n)}</td><td><b>${E(s.nome)}</b></td><td class="im">${E(s.implementos.map(i=>i.nome.split(" (")[0].split(" / ")[0]).join(" · "))}</td>`+
+      `<td class="r">${s.implementos.reduce((a,i)=>a+i.posicoes.length,0)}</td><td class="r">${s.marcas.reduce((a,m)=>a+m.linhas.length,0)||"—"}</td><td class="pg2" data-pg="${s.n}"></td></tr>`).join("")+
+    `</tbody></table><p class="nota" style="margin-top:4mm">Depois dos setores: como medir a mola, sinais de troca, ficha de pedido, índice de códigos e índice por marca de máquina.</p>`;
+  const sumario=P;
+  {const t=P.corpo.querySelector("table");let f=8.2;while(!cabe()&&f>6.2){f-=.2;t.style.fontSize=f+"pt";t.querySelectorAll("td.im").forEach(x=>x.style.fontSize=(f-.9)+"pt")}}
+  D.setores.forEach(setor);
+  D.setores.forEach(s=>{sumario.corpo.querySelector(`[data-pg="${s.n}"]`).textContent=s.pagina});
+  fixa("Como medir",D.paginas.medir);
+  fixa("Quando trocar",D.paginas.trocar);
+  fixa("Pedido",D.paginas.pedido);
+  const regs=D.setores.flatMap(s=>s.marcas.flatMap(m=>m.linhas.map(r=>(r._m=m.marca,r))));
+  const cods=[];
+  regs.forEach(r=>{r.cods.forEach(x=>cods.push([x[0],r,""]));r.reps.forEach(x=>{const k=x.indexOf(" ");cods.push([x.slice(k+1),r,x.slice(0,k)])})});
+  cods.sort((a,b)=>a[0].localeCompare(b[0],"pt-BR",{numeric:true}));
+  {const vistos=new Set();for(let k=cods.length-1;k>=0;k--){const x=cods[k],id=x[0]+"|"+x[2]+"|"+x[1].pagina+"|"+x[1]._m+"|"+x[1].peca;if(vistos.has(id))cods.splice(k,1);else vistos.add(id)}}
+  if(cods.length)indice("Índice de códigos","Códigos de referência","Procure pelo código gravado na peça ou do manual de peças. Ao lado, a marca da máquina, a peça e a página. Códigos de catálogos de reposição aparecem com o nome do catálogo.",
+    cods.map(([k,r,rep])=>`<b>${E(k)}</b><span>${rep?"ref. "+E(rep)+" · ":""}${E(r._m)} · ${E(r.peca)}</span><i>${r.pagina}</i>`),3);
+  const porMarca={};regs.forEach(r=>r.marcas.forEach(m=>{(porMarca[m]=porMarca[m]||new Set).add(r.pagina)}));
+  const marcas=Object.keys(porMarca).sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  if(marcas.length)indice("Índice por marca","Marcas de máquinas","Páginas em que há códigos de referência para cada marca.",
+    marcas.map(m=>`<span>${E(m)}</span><i>${[...porMarca[m]].sort((a,b)=>a-b).join(", ")}</i>`),3,"marcas");
+  while((pags.length+1)%2!==0){nova(null,"Anotações");P.corpo.innerHTML='<div class="pauta"></div>'}
+  especial("capa contra",helice(7)+`<div class="lgcard">${LG}</div><div class="cont">`+
+    `<h1>Molas de compressão, tração e torção para todos os implementos agrícolas.</h1><span class="faixa" style="margin-top:6mm"></span>`+
+    `<p style="font-size:13pt;max-width:140mm">Peça pelo código original, pelo desenho ou pela amostra.</p>`+
+    `<div class="cts"><div>${[c.zap?"<b>WhatsApp</b> "+E(c.zap):"",c.telefone?"<b>Telefone</b> "+E(c.telefone):"",c.email?"<b>E-mail</b> "+E(c.email):"",c.site?"<b>Site</b> "+E(c.site):"",E(c.endereco||"")].filter(Boolean).join("<br>")}</div>`+
+    `${c.qr?`<div class="qr"><img src="${c.qr}" alt="">Peça pelo WhatsApp</div>`:""}</div></div><p class="legal">${D.legal}</p>`);
+  window.__paginas=pags.length;
+  window.__estouro=pags.filter(p=>p.corpo&&p.corpo.scrollHeight>p.corpo.clientHeight+1).map(p=>p.n);
+  window.__pronto=true;
+}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(montar);
+</script>
+</body>
+</html>
