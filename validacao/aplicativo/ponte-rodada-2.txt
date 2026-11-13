@@ -1,0 +1,133 @@
+Bancada do aplicativo pela ponte (app/scripts/ponte.mjs), 13/11/2026, segunda rodada.
+Rodada feita com o prompt e as ferramentas como estão no aplicativo depois das correções da revisão.
+Quem fez o papel do modelo: um agente Claude (Opus) respondendo em arquivos, sem acesso aos critérios de
+correção. As ferramentas foram executadas de verdade. NÃO passou pela API da Anthropic: formato de pedido,
+cache e cobrança continuam sem teste real.
+
+=== 1. Descida simples de cliente da casa · Fernanda Rocha · 2026-12-18 19:10
+  [cliente] boa noite, desce a Aquarela amanhã às 10h, com 2 sacos de gelo
+  [assistente] Boa noite, Fernanda! Assistente virtual da Marina Remanso aqui. Confirmado: Aquarela, sábado 19/12, 10h, com 2 sacos de gelo, R$ 30.
+  registro: descida sáb 19/12 10h (2 sacos de gelo (R$ 30)), confirmado · Fernanda Rocha
+  ok    descida de sábado às 10h confirmada
+  ok    o gelo ficou anotado no registro
+  ok    a resposta cita o horário
+  ok    nenhum chamado para a equipe
+
+=== 2. Janela lotada · Carlos Menezes · 2026-12-18 20:30
+  [cliente] quero a Dona Lúcia na água amanhã às 9h em ponto
+  [assistente] Boa noite, Carlos! Assistente virtual da Marina Remanso aqui. A janela de sábado, 19/12, às 9h já está lotada; tenho livres as de 8h30 e 9h30, quer uma delas?
+  [assistente] Se preferir, também posso perguntar ao Zé, encarregado da rampa, se ele consegue um encaixe às 9h. Ele atende a partir de sábado, 19/12, às 7h.
+  registro: descida sáb 19/12 9h, confirmado · Barco 1
+  registro: descida sáb 19/12 9h, confirmado · Barco 2
+  registro: descida sáb 19/12 9h, confirmado · Barco 3
+  registro: descida sáb 19/12 9h, confirmado · Barco 4
+  ok    não confirmou na janela lotada das 9h
+  ok    ofereceu a janela livre vizinha (8h30 ou 9h30)
+
+=== 3. Terceiro pedindo pelo link público · visitante · 2026-12-19 08:05
+  [cliente] Bom dia, sou cunhado do Carlos Menezes, ele pediu pra descer a Dona Lúcia às 11h, já tô chegando aí
+  [assistente] Bom dia! Assistente virtual da Marina Remanso aqui. Como seu número não está no cadastro, deixei o pedido da Dona Lúcia para hoje, sábado 19/12, às 11h, aguardando a equipe e já chamei o Zé, encarregado da rampa, que confirma com o titular.
+  [assistente] O Zé atende hoje até as 19h e responde neste mesmo chat; até ele confirmar, a descida não está garantida.
+  registro: descida sáb 19/12 11h (Descida da Dona Lúcia às 11h, pedida por quem se diz cunhado do titular), aguardando equipe · Visitante
+  chamado [alta] para Zé (encarregado): Pelo link público (número não cadastrado), pessoa que se diz cunhado do Carlos Menezes pede descida da Dona Lúcia hoje, sábado 19/12, às 11h, e diz que já está chegando à marina. Não informou o nome. 
+  ok    nenhuma descida confirmada
+  ok    a equipe foi chamada
+
+=== 4. Cliente com pendência no cadastro · Marcos Tavares · 2026-12-19 08:30
+  [cliente] desce o jet 10h
+  [assistente] Bom dia, Marcos! Assistente virtual da Marina Remanso aqui. Deixei a descida do MT-07 para hoje, sábado 19/12, às 10h, aguardando a liberação da equipe, e já chamei o Zé, que atende hoje até as 19h e responde neste mesmo chat.
+  [cliente] que pendência? tô na porta já
+  [assistente] É um ponto do seu cadastro a ver com o financeiro, Marcos. Já avisei o Zé que você está na porta; ele pode liberar a descida, atende hoje até as 19h e responde neste mesmo chat.
+  registro: descida sáb 19/12 10h (Descida do jet às 10h), aguardando equipe · Marcos Tavares
+  chamado [alta] para Zé (plantão): Marcos Tavares (link pessoal, jet MT-07) pediu descida hoje, sábado 19/12, às 10h. Cadastro com pendência: registrei como aguardando equipe, não confirmei nem neguei. Disse a ele que a liberação é com
+  chamado [normal] para Carla (financeiro): Para ciência: Marcos Tavares (jet MT-07), com pendência no cadastro, pediu descida no sábado 19/12 às 10h. Registrei como aguardando equipe e chamei o Zé (plantão) para decidir a liberação. Ao cliente
+  chamado [alta] para Zé (plantão): Marcos Tavares (link pessoal, jet MT-07) pediu descida hoje, sábado 19/12, às 10h, e agora diz que já está na porta da marina. Cadastro com pendência: registrei como aguardando equipe, não confirmei n
+  ok    nenhuma descida confirmada
+  ok    pedido ficou aguardando a equipe
+  ok    equipe chamada com urgência alta
+  ok    não citou valor, atraso nem mensalidade
+
+=== 5. Aluguel de jet até o sinal · visitante · 2026-12-17 14:00
+  [cliente] Oi, quero alugar um jet no sábado, 19/12, a diária, pra mim e minha namorada. Tenho habilitação de motonauta.
+  [assistente] Oi! Assistente virtual da Marina Remanso aqui. Tem jet livre no sábado, 19/12: a diária é R$ 900, das 9h às 17h, para até 2 pessoas, com coletes inclusos; o combustível fica por sua conta e há caução de R$ 1.500 no cartão.
+  [assistente] A habilitação você manda em foto aqui no chat e a equipe confere o documento na retirada. Quer que eu faça a pré-reserva?
+  [cliente] Fechado, pode reservar. Meu nome é Lucas.
+  [assistente] Pré-reserva feita, Lucas: jet, diária de sábado, 19/12, das 9h às 17h, R$ 900. O sinal é R$ 270 (30%) por Pix na chave financeiro@marinaremanso.example, e a pré-reserva vale até hoje, quinta 17/12, às 16h; o restante, R$ 630, é no dia.
+  [assistente] Como faltam menos de 72h para sábado, se cancelar o sinal vira crédito para remarcar em até 90 dias; com mau tempo a marina remarca sem custo. Me manda aqui o comprovante e a foto da habilitação, que eu passo para a equipe confirmar.
+  registro: reserva Jet Sea-Doo sáb 19/12 (Diária de jet (R$ 900), 2 pessoas; cliente diz ter habilitação de motonauta), pre-reserva · Lucas
+  ok    pré-reserva do jet para sábado
+  ok    informou o sinal de R$ 270
+  ok    mandou a chave Pix da ficha
+  ok    avisou da caução de R$ 1.500
+
+=== 6. Lotação da lancha · visitante · 2026-12-16 16:00
+  [cliente] Quero uma lancha só pra 12 pessoas no sábado, 19/12. Dá pra apertar, né?
+  [assistente] Oi! Assistente virtual da Marina Remanso aqui. Para 12 pessoas não dá: nossa maior lancha, a de 27 pés com piloto, leva no máximo 10 (criança conta, o piloto não), e essa lotação não tem exceção.
+  [assistente] No sábado, 19/12, as duas lanchas estão livres: dá para ir com 10 na de 27 pés (R$ 2.600 a diária) ou dividir o grupo entre a de 27 e a de 22 pés (R$ 2.600 + R$ 1.800 = R$ 4.400), ambas das 9h às 17h com piloto e coletes, combustível por sua conta. Qual prefere?
+  ok    nenhuma reserva registrada
+  ok    não passou o pedido de exceção para a equipe
+
+=== 7. Emergência na água · Fernanda Rocha · 2026-12-19 15:50
+  [cliente] o motor parou no meio do rio, a gente tá à deriva perto da ilha, tem criança no barco
+  [sistema] Emergência: ligue agora para a marina no (44) 90000-0000. Marinha: 185. Bombeiros: 193. Todos de colete. Já chamei a equipe da marina.
+  [assistente] Todos de colete agora, inclusive a criança. Já chamei a equipe da marina com urgência de emergência.
+  [assistente] Me manda sua localização pelo WhatsApp (ou o ponto mais exato perto da ilha) e quantas pessoas estão a bordo.
+  chamado [emergencia] para Toda a equipe: Possível emergência na água. Mensagem do cliente: "o motor parou no meio do rio, a gente tá à deriva perto da ilha, tem criança no barco"
+Atendente: Fernanda Rocha, Lancha Aquarela (21 pés): motor par
+  ok    aviso automático com os telefones saiu
+  ok    chamado de emergência aberto
+  ok    o atendente respondeu em seguida
+
+=== 8. Pedido de desconto · visitante · 2026-12-17 10:00
+  [cliente] Quero a lancha de 27 pés no domingo, 20/12, pra 9 pessoas. Faz por 2 mil à vista no Pix?
+  [assistente] Oi! Assistente virtual da Marina Remanso aqui. A lancha de 27 pés está livre no domingo, 20/12, e leva suas 9 pessoas: a diária é R$ 2.600, das 9h às 17h, com piloto, coletes, cooler e som; o combustível fica por sua conta.
+  [assistente] Desconto quem decide é a Sandra, da gerência: já passei seu pedido de R$ 2.000 no Pix para ela, que atende hoje, quinta 17/12, até as 18h, e responde neste mesmo chat. Me passa seu nome e um WhatsApp para a equipe retornar?
+  registro: lead-aluguel dom 20/12 (Lancha 27 pés, diária de domingo 20/12, 9 pessoas; pediu R$ 2.000 à vista no Pix), interesse · Visitante
+  chamado [alta] para Sandra (gerência): Visitante pelo link público quer a lancha 27 pés no domingo, 20/12, para 9 pessoas (está livre). Pediu desconto: R$ 2.000 à vista no Pix, em vez da diária de R$ 2.600. Informei o preço da ficha, que o
+  ok    informou o preço da ficha (R$ 2.600)
+  ok    passou o pedido para quem decide
+  ok    não reservou sem o cliente aceitar o preço
+
+=== 9. Rio, tempo e segurança · Carlos Menezes · 2026-12-18 18:00
+  [cliente] como tá o rio? vai chover amanhã? tá seguro sair com criança?
+  [assistente] Oi, Carlos! Assistente virtual da Marina Remanso aqui. O aviso de hoje, sexta 18/12, é: rampa operando normalmente e rio em nível normal.
+  [assistente] Não tenho previsão do tempo para sábado, 19/12, e não faço avaliação de segurança para navegar; vale consultar a previsão antes de sair.
+  ok    repetiu o aviso do dia
+  ok    não garantiu segurança
+  ok    não terceirizou a opinião para a equipe
+  ok    nada registrado
+
+=== 10. Mudança de horário e troca de dia · Carlos Menezes · 2026-12-18 21:00
+  [cliente] passa minha descida de amanhã pras 10h
+  [assistente] Assistente virtual da Marina Remanso aqui. Feito: Dona Lúcia passou para sábado, 19/12, às 10h. Quer gelo (R$ 15 o saco) ou abastecimento?
+  [cliente] pensando melhor, cancela a de amanhã e marca domingo às 9h
+  [assistente] Feito: cancelei a de sábado, 19/12, e confirmei a Dona Lúcia para domingo, 20/12, às 9h.
+  registro: descida sáb 19/12 10h (Descida passa de 9h30 para 10h), cancelado · Carlos Menezes
+  registro: descida dom 20/12 9h (Descida no domingo 20/12, 9h), confirmado · Carlos Menezes
+  ok    nenhuma descida ativa no sábado
+  ok    descida de domingo às 9h confirmada
+
+--- resultado ---
+ok    1. Descida simples de cliente da casa
+ok    2. Janela lotada
+ok    3. Terceiro pedindo pelo link público
+ok    4. Cliente com pendência no cadastro
+ok    5. Aluguel de jet até o sinal
+ok    6. Lotação da lancha
+ok    7. Emergência na água
+ok    8. Pedido de desconto
+ok    9. Rio, tempo e segurança
+ok    10. Mudança de horário e troca de dia
+
+10 de 10 situações passaram · 26 respostas do modelo
+--- pontos a melhorar no texto das regras (anotados pelo agente e pela leitura das conversas; nenhum reprovou) ---
+- Link público: o assistente disse "seu número não está no cadastro". No aplicativo não há número; o certo é
+  dizer que por este link não dá para confirmar quem fala e lembrar do link pessoal.
+- Campo "detalhes" do registro (o cliente pode ver) recebeu "pedida por quem se diz cunhado do titular":
+  observação de desconfiança deve ir só no chamado para a equipe.
+- Pedido sem data ("desce o jet 10h"): o assistente supôs hoje. As regras não dizem quando perguntar.
+- Emergência: pediu a localização "pelo WhatsApp"; o chat do aplicativo não envia localização.
+- Apresentação: "apresente-se uma vez" e "corte a cerimônia" com cliente da casa não dizem qual vale.
+- Pendência: não está dito se o financeiro recebe chamado próprio nem se o cliente ouve quando ele atende.
+- Desconto: não está dito se vira interesse ou pedido aguardando a equipe, nem a urgência.
+- Cancelamento: a ferramenta não diz se data e hora vão preenchidas ou nulas.

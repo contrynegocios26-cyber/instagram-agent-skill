@@ -154,9 +154,10 @@ O que já foi testado, e como:
   no painel, incluindo foto, link público, encaixe e emergência.
 - **Dez situações de cliente respondidas por um modelo Claude de verdade**,
   com o prompt, as ferramentas e a validação do servidor reais, mas por uma
-  ponte de arquivos (`scripts/ponte.mjs`), não pela API: 10 de 10
-  (`validacao/aplicativo/ponte-rodada-1.txt`). Depois dessa rodada o prompt
-  recebeu pequenos ajustes e ela não foi refeita.
+  ponte de arquivos (`scripts/ponte.mjs`), não pela API: 10 de 10, na
+  rodada feita com o prompt atual
+  (`validacao/aplicativo/ponte-rodada-2.txt`, que também lista pontos de
+  redação a melhorar nas regras).
 - **Revisão independente do código**, que apontou 15 defeitos (3 graves).
   Todos foram corrigidos e cada um ganhou um teste
   (`test/revisao.test.js`).
