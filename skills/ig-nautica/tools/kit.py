@@ -5,7 +5,13 @@ OUT='/home/user/instagram-agent-skill/midia/2026-11-13-gti-2024/premium/'
 NAVY=(21,39,61); DEEP=(9,18,31); GOLD=(196,152,90); GOLD2=(232,196,135); WHITE=(247,246,242); MUTE=(170,182,200)
 F='/usr/share/fonts/opentype/inter/'
 _fc={}
+ARCH='/tmp/claude-0/fonts/package/files/archivo-latin-wdth-normal.woff2'
 def f(w,s):
+    if w in ('black','xb'):
+        k=('A',w,s)
+        if k not in _fc:
+            ft=ImageFont.truetype(ARCH,int(s*0.8)); ft.set_variation_by_axes([900 if w=='black' else 800,125]); _fc[k]=ft
+        return _fc[k]
     k=(w,s)
     if k not in _fc: _fc[k]=ImageFont.truetype(F+{'black':'InterDisplay-Black.otf','xb':'InterDisplay-ExtraBold.otf','b':'InterDisplay-Bold.otf','m':'InterDisplay-Medium.otf','r':'InterDisplay-Medium.otf'}[w],s)
     return _fc[k]

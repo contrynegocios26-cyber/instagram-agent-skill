@@ -1,5 +1,6 @@
 import sys,subprocess; sys.path.insert(0,'.')
 from kit import *
+import country as C
 W,H,FPS=1080,1920,30; DUR=15.0; N=int(DUR*FPS)
 def eo(t): t=max(0,min(1,t)); return 1-(1-t)**3
 def eob(t):  # ease out back
@@ -17,16 +18,18 @@ def paste_c(bg,im,cx,cy,scale=1.0,alpha=1.0):
     if alpha<1: a=im.split()[3].point(lambda v:int(v*alpha)); im=im.copy(); im.putalpha(a)
     bg.paste(im,(int(cx-im.width/2),int(cy-im.height/2)),im)
 T_ELE=textimg('ELE TEM',f('black',110),WHITE)
-T_89=textimg('89 HORAS',f('black',190),GOLD2)
+T_89=textimg('89 HORAS',f('black',150),GOLD2)
 T_ZERO=textimg('e parece zero.',f('xb',96),WHITE)
-T_MODEL=textimg('SEA-DOO GTI 2024',f('b',54),GOLD2)
+T_MODEL=textimg('Sea-Doo GTI 2024',f('xb',64),GOLD2)
 T_PRICE=textimg('R$ 105 mil',f('black',150),WHITE)
-P18=Image.new('RGBA',(760,120),(0,0,0,0)); pd=ImageDraw.Draw(P18); pill(pd,380,0,'em até 18x no cartão',f('xb',54),GOLD,DEEP,h=116)
+TAGI=C.tag('105.000','ou 18x no cartão',w=520,angle=0)
 T_CTA1=textimg('Comente EU QUERO',f('black',92),WHITE)
 T_CTA2=textimg('e a gente te chama no direct',f('m',48),MUTE)
-T_BR=textimg('COUNTRY NEGÓCIOS',f('b',46),GOLD2)
+T_BR=None
+T_WA1=textimg('Chame no WhatsApp',f('m',44),MUTE)
+T_WA2=textimg('(44) 99884-6314',f('black',76),WHITE)
 proc=subprocess.Popen(['ffmpeg','-y','-loglevel','error','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-',
- '-f','lavfi','-t',str(DUR),'-i','anullsrc=r=44100:cl=stereo','-shortest','-c:v','libx264','-pix_fmt','yuv420p','-crf','18','-preset','medium','-c:a','aac','-movflags','+faststart',OUT+'reel-01-89-horas.mp4'],stdin=subprocess.PIPE)
+ '-f','lavfi','-t',str(DUR),'-i','anullsrc=r=44100:cl=stereo','-shortest','-c:v','libx264','-pix_fmt','yuv420p','-crf','18','-preset','medium','-c:a','aac','-movflags','+faststart','/home/user/instagram-agent-skill/midia/2026-11-13-gti-2024/country/reel-01-89-horas.mp4'],stdin=subprocess.PIPE)
 for i in range(N):
     t=i/FPS
     if t<3.0:
@@ -62,6 +65,7 @@ for i in range(N):
             od.polygon([(x,0),(x+160,0),(x-340,H),(x-500,H)],fill=90); ov=ov.filter(ImageFilter.GaussianBlur(30))
             mask=ImageChops.multiply(ov, Image.new('L',(W,H),0) if False else ov)
             fr.paste(WHITE,(0,0),ov)
+        if t>3.4 and t<11.6: paste_c(fr,C.logo(300),W/2,170,alpha=min(1,seg(t,3.4,3.9)))
         # model label
         ml=seg(t,3.6,4.2)
         if ml>0 and t<11.6: paste_c(fr,T_MODEL,W/2,360-30*(1-eo(ml)),alpha=ml)
@@ -80,17 +84,18 @@ for i in range(N):
         # price 8.6-11.6
         if 8.5<=t<11.8:
             a=seg(t,8.6,8.9)*(1-seg(t,11.5,11.8))
-            paste_c(fr,T_PRICE,W/2,1330,scale=1+0.5*(1-eob(seg(t,8.6,9.0))),alpha=a)
-            s=seg(t,9.4,9.8)*(1-seg(t,11.5,11.8))
-            if s>0: paste_c(fr,P18,W/2,1500,scale=0.7+0.3*eob(s),alpha=s)
+            s=seg(t,8.6,9.6)
+            ang=10*math.exp(-4*(t-8.6))*math.cos(9*(t-8.6)) if t>8.6 else 0
+            ti=TAGI.rotate(6+ang,resample=Image.BICUBIC,expand=True)
+            paste_c(fr,ti,W/2+40,1420-260*(1-eo(seg(t,8.6,9.1))),alpha=a)
         # end card
         if t>=11.6:
             e=seg(t,11.6,12.1)
             ov=Image.new('RGBA',(W,H),DEEP+(int(200*e),)); fr.paste(ov,(0,0),ov)
-            paste_c(fr,icon(300),W/2,560-40*(1-eo(e)),alpha=e)
+            paste_c(fr,C.logo(640),W/2,560-40*(1-eo(e)),alpha=e)
             paste_c(fr,T_CTA1,W/2,1000,scale=0.9+0.1*eob(seg(t,12.0,12.4)),alpha=seg(t,12.0,12.3))
             paste_c(fr,T_CTA2,W/2,1110,alpha=seg(t,12.3,12.6))
-            paste_c(fr,T_BR,W/2,1500,alpha=seg(t,12.6,13.0))
+            paste_c(fr,T_WA1,W/2,1330,alpha=seg(t,12.6,13.0)); paste_c(fr,T_WA2,W/2,1410,alpha=seg(t,12.6,13.0))
             pulse=0.5+0.5*math.sin((t-12)*6)
             d=ImageDraw.Draw(fr)
     proc.stdin.write(fr.tobytes())

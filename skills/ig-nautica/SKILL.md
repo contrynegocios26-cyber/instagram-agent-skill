@@ -156,3 +156,15 @@ Responder em menos de 5 minutos. Primeira mensagem: agradecer, mandar vídeo
 curto da unidade + ficha + condições, e fazer uma pergunta ("é seu primeiro
 jet ski ou já teve?"). Oferecer test drive na água. Dois follow-ups, não mais.
 Ver `/ig-dm`.
+
+## Padrão visual Country Negócios (obrigatório)
+
+Todo post segue o layout que já está no perfil @countrynegocios:
+
+- Foto em cima, com um degradê que vira um painel azul-marinho (#16263C) embaixo.
+- Marca em dourado e pequena ("Sea-Doo"). Modelo em branco, em fonte larga e pesada (Archivo Expanded).
+- Etiqueta de preço cor de areia (#D8BE8C), inclinada uns 6°, com furo e cordão dourado.
+- Uma linha dourada fina e, embaixo dela, colunas com rótulo dourado e valor em branco (Ano / Horas de uso / Potência ou Lugares).
+- Rodapé com a logo COUNTRY NEGÓCIOS completa à esquerda e "Chame no WhatsApp (44) 99884-6314" à direita.
+- Post de horas: "63 horas / É tudo que ela navegou." com a logo no topo e "Arraste para conhecer →".
+- Os scripts estão em `tools/`: `country.py` (layout), `posts.py` (capa, carrossel e story), `reel_a.py` e `reel_c.py` (Reels).
