@@ -283,6 +283,7 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
       status: s(inp.status) || 'confirmado',
       nome_cliente: s(inp.nome_cliente),
       embarcacao: s(inp.embarcacao),
+      telefone: s(inp.telefone),
     };
   }
 
@@ -508,6 +509,15 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
     return { ok: true };
   }
 
+  /** Recado da marina deixado no chat do cliente (lembrete, retorno). Não
+   *  tira a conversa do assistente: ele vê o recado na próxima vez. */
+  function recadoDaMarina(conversaId, texto, autor) {
+    const conversa = conversaId ? store.conversas.get(conversaId) : null;
+    if (!conversa) return false;
+    mensagem(conversa, { de: 'equipe', autor, texto: String(texto).trim().slice(0, 3000) });
+    return true;
+  }
+
   /** Aviso disparado por uma ação da equipe no painel (liberou, barco na água). */
   function avisarCliente(conversaId, texto) {
     const conversa = conversaId ? store.conversas.get(conversaId) : null;
@@ -564,6 +574,7 @@ export function criarAtendente({ store, agenda, ia, avisar }) {
     descartarRascunho,
     responderComoEquipe,
     avisarCliente,
+    recadoDaMarina,
     mudarEstado,
     marcarLida,
     abrirChamado,

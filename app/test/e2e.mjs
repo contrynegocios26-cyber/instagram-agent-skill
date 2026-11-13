@@ -173,13 +173,29 @@ try {
     await painel.getByLabel('Embarcações por janela').waitFor();
     assert.equal(await painel.getByLabel('Embarcações por janela').inputValue(), '4');
     await painel.getByLabel('Embarcações por janela').fill('5');
-    await painel.getByRole('button', { name: 'Salvar configuração' }).click();
+    await painel.getByRole('button', { name: 'Salvar configuração' }).first().click();
     await painel.getByText('Configuração salva.').waitFor();
     await painel.getByRole('button', { name: 'Ok' }).click();
     assert.equal(store.config.rampa.capacidade, 5);
     await painel.getByRole('button', { name: 'Relatório' }).click();
     await painel.getByText('descidas agendadas').waitFor();
     await painel.screenshot({ path: path.join(telas, 'painel-relatorio.png'), fullPage: true });
+  });
+
+  await passo('agentes: resumo do dia sai na hora e a sugestão é marcada como enviada', async () => {
+    await painel.getByRole('button', { name: /^Agentes/ }).click();
+    await painel.getByText('Equipe de agentes').waitFor();
+    await painel.locator('.cartao', { hasText: 'Resumo do dia para a equipe da rampa' }).getByRole('button', { name: 'Rodar agora' }).click();
+    await painel.getByText('1 sugestão(ões) preparada(s).').waitFor();
+    await painel.getByRole('button', { name: 'Ok' }).click();
+    await painel.getByLabel('Texto da sugestão').waitFor();
+    assert.match(await painel.getByLabel('Texto da sugestão').inputValue(), /Rampa de .* · Marina Remanso/);
+    await painel.locator('.cartao', { hasText: 'Lembretes de vencimento' }).getByRole('button', { name: 'Rodar agora' }).click();
+    await painel.locator('#dlg').getByRole('button', { name: 'Ok' }).click();
+    await painel.screenshot({ path: path.join(telas, 'painel-agentes.png'), fullPage: true });
+    await painel.locator('.cartao', { hasText: 'Resumo da rampa de' }).getByRole('button', { name: 'Marcar como enviada' }).click();
+    await painel.locator('.cartao', { hasText: 'Resumo da rampa de' }).waitFor({ state: 'detached' });
+    assert.equal(store.sugestoes.find((s) => s.tipo === 'briefing').status, 'feita');
   });
 
   await passo('modo automático: o assistente responde sem aprovação', async () => {

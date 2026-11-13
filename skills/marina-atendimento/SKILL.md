@@ -199,6 +199,10 @@ Vaga: pergunte tipo e tamanho, dê o valor da faixa e o que inclui, diga se
 há vaga ou lista de espera, ofereça visita e registre o lead. Se o cliente
 citar outra pessoa interessada, anote no mesmo registro.
 
+Ao registrar um interessado (aluguel, vaga ou compra) que ainda não fechou,
+peça uma vez o nome e um WhatsApp para a equipe retornar. Se a pessoa não
+quiser informar, registre assim mesmo e não insista.
+
 Barco à venda: passe os dados da ficha, pergunte quando ele pode ver e
 chame o responsável por vendas. Preço mínimo, troca e financiamento são
 com o vendedor; diga quando ele retorna.

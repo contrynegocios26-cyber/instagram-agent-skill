@@ -46,6 +46,8 @@ export function criarStore(dir) {
     registros: lerJson(arq('registros.json'), []),
     chamados: lerJson(arq('chamados.json'), []),
     rascunhos: lerJson(arq('rascunhos.json'), []),
+    sugestoes: lerJson(arq('sugestoes.json'), []),
+    equipe: lerJson(arq('equipe.json'), {}),
     conversas: new Map(),
   };
 
@@ -62,6 +64,8 @@ export function criarStore(dir) {
     else if (chave === 'registros') gravarAtomico(arq('registros.json'), JSON.stringify(s.registros, null, 2));
     else if (chave === 'chamados') gravarAtomico(arq('chamados.json'), JSON.stringify(s.chamados, null, 2));
     else if (chave === 'rascunhos') gravarAtomico(arq('rascunhos.json'), JSON.stringify(s.rascunhos));
+    else if (chave === 'sugestoes') gravarAtomico(arq('sugestoes.json'), JSON.stringify(s.sugestoes, null, 2));
+    else if (chave === 'equipe') gravarAtomico(arq('equipe.json'), JSON.stringify(s.equipe, null, 2));
     else if (chave.startsWith('conversa:')) {
       const id = chave.slice(9);
       const c = s.conversas.get(id);
@@ -81,7 +85,8 @@ export function criarStore(dir) {
   };
 
   /** Marca uma coleção como alterada: 'config', 'ficha', 'clientes',
-   *  'registros', 'chamados', 'rascunhos' ou 'conversa:<id>'. */
+   *  'registros', 'chamados', 'rascunhos', 'sugestoes', 'equipe' ou
+   *  'conversa:<id>'. */
   s.salvar = (chave) => {
     sujos.add(chave);
     if (!timer) timer = setTimeout(s.descarregar, 50);

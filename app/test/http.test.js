@@ -315,3 +315,73 @@ test('equipe: aviso do dia, assumir e devolver conversa, QR e relatório', async
   assert.equal((await s.pedir('DELETE', `/api/painel/conversa/${conversa.id}`, { cookie: admin, corpo: {} })).status, 200);
   assert.equal(s.store.conversas.has(conversa.id), false);
 });
+
+test('agentes: rodar, conferir a sugestão, deixar no chat do cliente e validar a configuração', async (t) => {
+  const s = await subir();
+  t.after(s.fechar);
+  const equipe = await s.entrar('senha-equipe', 'Zé');
+  const admin = await s.entrar('senha-admin', 'Ana');
+
+  // O vencimento do Carlos (dia 20) sempre cai dentro de 30 dias.
+  assert.equal((await s.pedir('PUT', '/api/painel/config', { cookie: admin, corpo: { relacionamento: { diasAntesVencimento: 30 } } })).status, 200);
+  assert.equal((await s.pedir('POST', '/api/painel/agente/inexistente/rodar', { cookie: equipe, corpo: {} })).status, 409);
+  assert.equal((await s.pedir('POST', '/api/painel/agente/relacionamento/rodar', { corpo: {} })).status, 401);
+  const r = await s.pedir('POST', '/api/painel/agente/relacionamento/rodar', { cookie: equipe, corpo: {} });
+  assert.equal(r.status, 200);
+  assert.equal(r.dados.criadas, 1);
+
+  let estado = (await s.pedir('GET', '/api/painel/estado', { cookie: equipe })).dados;
+  assert.equal(estado.contadores.sugestoes, 1);
+  assert.equal(estado.agentes.length, 5);
+  assert.equal(estado.agentes.find((a) => a.id === 'relacionamento').pendentes, 1);
+  const sug = estado.sugestoes[0];
+  assert.equal(sug.tipo, 'vencimento');
+  assert.equal(sug.para.nome, 'Carlos Menezes');
+
+  assert.equal((await s.pedir('POST', `/api/painel/sugestao/${sug.id}`, { cookie: equipe, corpo: { acao: 'apagar' } })).status, 400);
+  const chat = await s.pedir('POST', `/api/painel/sugestao/${sug.id}`, { cookie: equipe, corpo: { acao: 'chat', texto: 'Carlos, lembrete: a vaga vence dia 20.' } });
+  assert.equal(chat.status, 200);
+  const carlos = s.store.clientes.find((c) => c.nome.startsWith('Carlos'));
+  const conversa = [...s.store.conversas.values()].find((c) => c.clienteId === carlos.id);
+  assert.equal(conversa.mensagens.at(-1).texto, 'Carlos, lembrete: a vaga vence dia 20.');
+  assert.equal(conversa.mensagens.at(-1).de, 'equipe');
+  assert.equal(conversa.mensagens.at(-1).autor, 'Zé');
+  assert.equal(conversa.estado, 'ia', 'o recado não tira a conversa do assistente');
+  assert.equal((await s.pedir('POST', `/api/painel/sugestao/${sug.id}`, { cookie: equipe, corpo: { acao: 'feita' } })).status, 409, 'já tratada');
+  assert.equal((await s.pedir('POST', '/api/painel/sugestao/sug_nada', { cookie: equipe, corpo: { acao: 'feita' } })).status, 404);
+
+  // O cliente vê o recado no link dele, e o assistente fica sabendo no turno seguinte.
+  await s.pedir('POST', '/api/painel/modo', { cookie: admin, corpo: { modo: 'auto' } });
+  const ses = await s.sessao({ token: carlos.token });
+  assert.equal(ses.mensagens.at(-1).autor, 'Zé');
+  await s.pedir('POST', '/api/chat/enviar', { corpo: { texto: 'obrigado pelo lembrete' }, chave: ses.chave });
+  await s.atendente.ocioso();
+  assert.match(conversa.thread.apiMessages[1].content, /\[equipe, Zé\] Carlos, lembrete: a vaga vence dia 20\./);
+
+  // Sugestão sem conversa possível (resumo para o dono) não vai para chat.
+  await s.pedir('POST', '/api/painel/agente/gerente/rodar', { cookie: equipe, corpo: {} });
+  estado = (await s.pedir('GET', '/api/painel/estado', { cookie: equipe })).dados;
+  const resumo = estado.sugestoes.find((x) => x.tipo === 'resumo');
+  assert.equal((await s.pedir('POST', `/api/painel/sugestao/${resumo.id}`, { cookie: equipe, corpo: { acao: 'chat' } })).status, 409);
+  assert.equal((await s.pedir('POST', `/api/painel/sugestao/${resumo.id}`, { cookie: equipe, corpo: { acao: 'descartada' } })).status, 200);
+
+  // Configuração dos agentes e campos de lembrete do cliente.
+  assert.equal((await s.pedir('PUT', '/api/painel/config', { cookie: admin, corpo: { linkAvaliacao: 'javascript:alert(1)' } })).status, 400);
+  const cfg = await s.pedir('PUT', '/api/painel/config', {
+    cookie: admin,
+    corpo: { agentes: { conteudo: { ativo: false, hora: '11:15' }, vendas: { hora: 'tarde' } }, contatos: { dono: '(44) 99900-0009', equipe: '' }, linkAvaliacao: 'https://g.page/r/x/review' },
+  });
+  assert.equal(cfg.status, 200);
+  assert.deepEqual(s.store.config.agentes.conteudo, { ativo: false, hora: '11:15' });
+  assert.deepEqual(s.store.config.agentes.vendas, { ativo: true, hora: '10:00' }, 'hora inválida mantém a anterior');
+  assert.equal(s.store.config.contatos.dono, '44999000009');
+  assert.equal(s.store.config.emergencia.telefone, '(44) 90000-0000', 'salvar só os agentes não apaga o telefone de emergência');
+  assert.equal(s.store.config.cidade, 'Porto Rico, PR', 'nem a cidade');
+
+  const cli = await s.pedir('PUT', `/api/painel/cliente/${carlos.id}`, { cookie: admin, corpo: { nome: carlos.nome, mensalidadeDia: 45, revisaoEm: '2027-02-30', documentoVence: '2027-03-10', semLembretes: true } });
+  assert.equal(cli.status, 200);
+  assert.equal(carlos.mensalidadeDia, null, 'dia 45 não existe');
+  assert.equal(carlos.revisaoEm, '', '30 de fevereiro não existe');
+  assert.equal(carlos.documentoVence, '2027-03-10');
+  assert.equal(carlos.semLembretes, true);
+});

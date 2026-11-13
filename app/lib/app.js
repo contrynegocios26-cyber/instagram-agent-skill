@@ -8,10 +8,11 @@ import { fileURLToPath } from 'node:url';
 import QRCode from 'qrcode';
 
 import { criarStore, novoId, novoToken } from './store.js';
-import { semear } from './semente.js';
+import { semear, completarConfig } from './semente.js';
 import { criarAgenda } from './agenda.js';
 import { criarIA } from './ia.js';
 import { criarAtendente } from './atendente.js';
+import { criarEquipe, AGENTES } from './equipe.js';
 import { relatorio } from './relatorio.js';
 import { assinar, verificar, senhaConfere, lerCookies, criarLimite } from './auth.js';
 import { agora, definirFuso, dataValida, horaValida, normalizarHora, dataPorExtenso, dataCurta, horaFalada } from './tempo.js';
@@ -55,6 +56,7 @@ const texto = (v, max) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
 export function criarApp({ dir, semente = 'vazio' }) {
   const store = criarStore(dir);
   semear(store, semente);
+  completarConfig(store);
   definirFuso(store.config.fuso);
   const agenda = criarAgenda(store);
   const ia = criarIA();
@@ -94,6 +96,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
   }
 
   const atendente = criarAtendente({ store, agenda, ia, avisar });
+  const equipe = criarEquipe({ store, agenda, ia, avisar, urlBase: (process.env.URL_PUBLICA || '').replace(/\/$/, '') });
 
   const app = express();
   app.set('trust proxy', 1);
@@ -280,7 +283,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
       next();
     };
   }
-  const equipe = exigir('equipe');
+  const equipe_ = exigir('equipe');
   const admin = exigir('admin');
 
   app.post('/api/painel/login', (req, res) => {
@@ -367,24 +370,27 @@ export function criarApp({ dir, semente = 'vazio' }) {
       conversas,
       leads: agenda.leads().slice(0, 60).map(comTelefone),
       clientes: store.clientes.map((c) => ({ id: c.id, nome: c.nome, embarcacao: c.embarcacao })),
+      sugestoes: equipe.pendentes().slice(0, 100),
+      agentes: equipe.resumo(),
       contadores: {
         chamados: abertos.length,
         emergencias: abertos.filter((c) => c.urgencia === 'emergencia').length,
         rascunhos: store.rascunhos.length,
         pendentes: pend.length,
+        sugestoes: equipe.pendentes().length,
         naoLidas: conversas.reduce((t, c) => t + c.naoLidas, 0),
       },
     };
   }
 
-  app.get('/api/painel/estado', equipe, (req, res) => {
+  app.get('/api/painel/estado', equipe_, (req, res) => {
     const data = dataValida(req.query.data) ? req.query.data : agora().data;
     const responder = () => res.json(estadoDoPainel(data));
     if (req.query.espera !== '1' || Number(req.query.v) !== versao) return responder();
     esperar(esperaPainel, req, res, responder);
   });
 
-  app.get('/api/painel/conversa/:id', equipe, (req, res) => {
+  app.get('/api/painel/conversa/:id', equipe_, (req, res) => {
     const c = store.conversas.get(req.params.id);
     if (!c) return erro(res, 404, 'Conversa não encontrada.');
     atendente.marcarLida(c.id);
@@ -408,36 +414,36 @@ export function criarApp({ dir, semente = 'vazio' }) {
     });
   });
 
-  app.get('/api/painel/foto/:nome', equipe, (req, res) => enviarFoto(res, req.params.nome));
+  app.get('/api/painel/foto/:nome', equipe_, (req, res) => enviarFoto(res, req.params.nome));
 
-  app.post('/api/painel/conversa/:id/responder', equipe, (req, res) => {
+  app.post('/api/painel/conversa/:id/responder', equipe_, (req, res) => {
     const t = texto(req.body?.texto, 3000);
     if (!t) return erro(res, 400, 'Escreva a resposta.');
     const r = atendente.responderComoEquipe(req.params.id, t, req.sessao.n);
     return r.ok ? res.json(r) : erro(res, 404, r.erro);
   });
 
-  app.post('/api/painel/conversa/:id/estado', equipe, (req, res) => {
+  app.post('/api/painel/conversa/:id/estado', equipe_, (req, res) => {
     const r = atendente.mudarEstado(req.params.id, req.body?.estado);
     return r.ok ? res.json(r) : erro(res, 400, r.erro);
   });
 
-  app.post('/api/painel/rascunho/:id/aprovar', equipe, (req, res) => {
+  app.post('/api/painel/rascunho/:id/aprovar', equipe_, (req, res) => {
     const r = atendente.aprovarRascunho(req.params.id, { texto: req.body?.texto, por: req.sessao.n });
     return r.ok ? res.json(r) : erro(res, 409, r.erro);
   });
 
-  app.post('/api/painel/rascunho/:id/descartar', equipe, (req, res) => {
+  app.post('/api/painel/rascunho/:id/descartar', equipe_, (req, res) => {
     const r = atendente.descartarRascunho(req.params.id, { resposta: req.body?.resposta, por: req.sessao.n });
     return r.ok ? res.json(r) : erro(res, 409, r.erro);
   });
 
-  app.post('/api/painel/chamado/:id/resolver', equipe, (req, res) => {
+  app.post('/api/painel/chamado/:id/resolver', equipe_, (req, res) => {
     const ch = atendente.resolverChamado(req.params.id, req.sessao.n);
     return ch ? res.json({ ok: true }) : erro(res, 404, 'Chamado não encontrado.');
   });
 
-  app.post('/api/painel/aviso', equipe, (req, res) => {
+  app.post('/api/painel/aviso', equipe_, (req, res) => {
     const a = agora();
     store.config.avisoDoDia = { texto: texto(req.body?.texto, 500), atualizadoEm: `${dataPorExtenso(a.data)}, ${a.hora}` };
     store.salvar('config');
@@ -445,7 +451,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     res.json({ ok: true });
   });
 
-  app.post('/api/painel/modo', equipe, (req, res) => {
+  app.post('/api/painel/modo', equipe_, (req, res) => {
     const modo = req.body?.modo;
     if (!['auto', 'sombra', 'desligado'].includes(modo)) return erro(res, 400, 'Modo inválido.');
     if (modo === 'auto' && req.sessao.p !== 'admin') return erro(res, 403, 'Só o administrador liga o modo automático.');
@@ -461,7 +467,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     return `${oQue}${quando}`;
   }
 
-  app.post('/api/painel/registro/:id/acao', equipe, (req, res) => {
+  app.post('/api/painel/registro/:id/acao', equipe_, (req, res) => {
     const { acao } = req.body || {};
     const motivo = texto(req.body?.motivo, 300);
     const por = req.sessao.n;
@@ -496,7 +502,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
     res.json({ ok: true, aviso });
   });
 
-  app.post('/api/painel/registro', equipe, (req, res) => {
+  app.post('/api/painel/registro', equipe_, (req, res) => {
     const b = req.body || {};
     if (!['descida', 'subida', 'servico', 'reserva'].includes(b.tipo)) return erro(res, 400, 'Tipo inválido.');
     const cliente = b.clienteId ? store.clientes.find((c) => c.id === b.clienteId) || null : null;
@@ -522,7 +528,34 @@ export function criarApp({ dir, semente = 'vazio' }) {
     res.json(r);
   });
 
-  app.get('/api/painel/qr', equipe, async (req, res) => {
+  // ---------- equipe de agentes ----------
+
+  app.post('/api/painel/agente/:id/rodar', equipe_, async (req, res) => {
+    if (!permitido(`agente:${req.sessao.n}`, 20, 600_000)) return erro(res, 429, 'Muitas execuções em pouco tempo. Aguarde um pouco.');
+    const r = await equipe.rodar(req.params.id, { por: req.sessao.n });
+    return r.ok ? res.json(r) : erro(res, 409, r.erro);
+  });
+
+  app.post('/api/painel/sugestao/:id', equipe_, (req, res) => {
+    const { acao } = req.body || {};
+    const novoTexto = texto(req.body?.texto, 3000);
+    const s = store.sugestoes.find((x) => x.id === req.params.id);
+    if (!s) return erro(res, 404, 'Sugestão não encontrada.');
+    if (acao === 'chat') {
+      if (s.status !== 'pendente') return erro(res, 409, 'Esta sugestão já foi tratada.');
+      const conversaId = s.para?.conversaId || [...store.conversas.values()].find((c) => c.clienteId && c.clienteId === s.para?.clienteId)?.id;
+      const cli = s.para?.clienteId ? store.clientes.find((c) => c.id === s.para.clienteId) : null;
+      const conversa = conversaId ? store.conversas.get(conversaId) : cli ? atendente.conversaDoCliente(cli) : null;
+      if (!conversa) return erro(res, 409, 'Esta pessoa não tem conversa no link de atendimento. Use o WhatsApp.');
+      atendente.recadoDaMarina(conversa.id, novoTexto || s.texto, req.sessao.n);
+    } else if (acao !== 'feita' && acao !== 'descartada') {
+      return erro(res, 400, 'Ação inválida.');
+    }
+    const r = equipe.concluir(s.id, { acao: acao === 'descartada' ? 'descartada' : 'feita', texto: novoTexto, por: req.sessao.n });
+    return r.ok ? res.json({ ok: true }) : erro(res, 409, r.erro);
+  });
+
+  app.get('/api/painel/qr', equipe_, async (req, res) => {
     const u = typeof req.query.u === 'string' ? req.query.u : '';
     if (!u.startsWith(baseUrl(req)) || u.length > 300) return erro(res, 400, 'Endereço inválido.');
     res.type('image/svg+xml').send(await QRCode.toString(u, { type: 'svg', margin: 1, width: 320 }));
@@ -553,8 +586,8 @@ export function criarApp({ dir, semente = 'vazio' }) {
     const nova = {
       ...c,
       nome: texto(b.nome, 80) || c.nome,
-      cidade: texto(b.cidade, 80),
-      agencia: texto(b.agencia, 60),
+      cidade: 'cidade' in b ? texto(b.cidade, 80) : c.cidade,
+      agencia: 'agencia' in b ? texto(b.agencia, 60) : c.agencia,
       rampa: {
         abre: hhmm(rampa.abre, c.rampa.abre),
         ultimaDescida: hhmm(rampa.ultimaDescida, c.rampa.ultimaDescida),
@@ -571,8 +604,26 @@ export function criarApp({ dir, semente = 'vazio' }) {
         ],
       },
       preReservaMin: inteiro(b.preReservaMin, 10, 2880, c.preReservaMin),
-      emergencia: { telefone: texto(b.emergencia?.telefone, 30) },
+      emergencia: { telefone: 'emergencia' in b ? texto(b.emergencia?.telefone, 30) : c.emergencia?.telefone || '' },
+      agentes: Object.fromEntries(
+        Object.keys(AGENTES).map((id) => [
+          id,
+          { ativo: typeof b.agentes?.[id]?.ativo === 'boolean' ? b.agentes[id].ativo : c.agentes[id].ativo, hora: hhmm(b.agentes?.[id]?.hora, c.agentes[id].hora) },
+        ]),
+      ),
+      contatos: {
+        dono: 'contatos' in b ? texto(b.contatos?.dono, 20).replace(/\D/g, '') : c.contatos.dono,
+        equipe: 'contatos' in b ? texto(b.contatos?.equipe, 20).replace(/\D/g, '') : c.contatos.equipe,
+      },
+      linkAvaliacao: 'linkAvaliacao' in b ? texto(b.linkAvaliacao, 300) : c.linkAvaliacao,
+      relacionamento: {
+        diasAntesVencimento: inteiro(b.relacionamento?.diasAntesVencimento, 0, 30, c.relacionamento.diasAntesVencimento),
+        diasAntesRevisao: inteiro(b.relacionamento?.diasAntesRevisao, 0, 90, c.relacionamento.diasAntesRevisao),
+        diasAntesDocumento: inteiro(b.relacionamento?.diasAntesDocumento, 0, 120, c.relacionamento.diasAntesDocumento),
+        diasSumido: inteiro(b.relacionamento?.diasSumido, 7, 365, c.relacionamento.diasSumido),
+      },
     };
+    if (nova.linkAvaliacao && !/^https:\/\/[^\s]+$/.test(nova.linkAvaliacao)) return erro(res, 400, 'O link de avaliação precisa começar com https://');
     if (nova.rampa.abre >= nova.rampa.ultimaDescida) return erro(res, 400, 'A última descida precisa ser depois da abertura da rampa.');
     if (Array.isArray(b.itensAluguel)) {
       const itens = [];
@@ -606,6 +657,10 @@ export function criarApp({ dir, semente = 'vazio' }) {
       autorizados: texto(b.autorizados, 200),
       pendencia: b.pendencia === true,
       obs: texto(b.obs, 300),
+      mensalidadeDia: Number.isInteger(b.mensalidadeDia) && b.mensalidadeDia >= 1 && b.mensalidadeDia <= 31 ? b.mensalidadeDia : null,
+      revisaoEm: dataValida(b.revisaoEm) ? b.revisaoEm : '',
+      documentoVence: dataValida(b.documentoVence) ? b.documentoVence : '',
+      semLembretes: b.semLembretes === true,
     };
   }
 
@@ -686,6 +741,7 @@ export function criarApp({ dir, semente = 'vazio' }) {
       clientes: store.clientes.map((c) => ({ ...c, token: undefined })),
       registros: store.registros,
       chamados: store.chamados,
+      sugestoes: store.sugestoes,
       conversas: [...store.conversas.values()].map((c) => ({ id: c.id, clienteId: c.clienteId, estado: c.estado, criadaEm: c.criadaEm, mensagens: c.mensagens })),
     });
   });
@@ -708,5 +764,5 @@ export function criarApp({ dir, semente = 'vazio' }) {
     erro(res, 500, 'Erro interno. Tente de novo.');
   });
 
-  return { app, store, agenda, atendente, senhas };
+  return { app, store, agenda, atendente, equipe, senhas };
 }

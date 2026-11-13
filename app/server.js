@@ -8,16 +8,18 @@ const aqui = path.dirname(fileURLToPath(import.meta.url));
 const dir = process.env.DADOS_DIR || path.join(aqui, 'data');
 const porta = Number(process.env.PORT || 3000);
 
-const { app, store, atendente } = criarApp({ dir, semente: process.env.SEMENTE || 'vazio' });
+const { app, store, atendente, equipe } = criarApp({ dir, semente: process.env.SEMENTE || 'vazio' });
 
 const retomadas = atendente.retomar();
-// De minuto em minuto: avisa quem está esperando demais e limpa conversas vazias.
+// De minuto em minuto: avisa quem está esperando demais, limpa conversas
+// vazias e roda os agentes de retaguarda que estão na hora.
 setInterval(() => {
   try {
     atendente.vigiar();
   } catch (e) {
     console.error('[vigia]', e);
   }
+  equipe.tique().catch((e) => console.error('[equipe]', e));
 }, 60_000).unref();
 const servidor = app.listen(porta, () => {
   console.log(`Atendimento da ${store.config.nome} no ar: http://localhost:${porta}  (painel em /painel)`);

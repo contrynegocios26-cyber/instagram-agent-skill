@@ -112,13 +112,18 @@ function whats(telefone, texto, rotulo = 'WhatsApp') {
   return url ? h('a', { class: 'botao', href: url, target: '_blank', rel: 'noopener noreferrer' }, rotulo) : null;
 }
 
-async function copiar(texto) {
+async function copiar(texto, mensagem = 'Link copiado.') {
   try {
     await navigator.clipboard.writeText(texto);
-    aviso('Link copiado.');
+    aviso(mensagem);
   } catch {
     aviso(texto);
   }
+}
+
+/** Caixa de marcar cujo estado sobrevive ao redesenho, como campo(). */
+function caixa(chave, padrao) {
+  return h('input', { type: 'checkbox', 'data-chave': chave, checked: local.has(chave) ? local.get(chave) : !!padrao });
 }
 
 // ---------- som e avisos ----------
@@ -244,6 +249,7 @@ function desenharMoldura() {
     ['chamados', 'Chamados', c.chamados, c.emergencias > 0],
     ['conversas', 'Conversas', c.naoLidas],
     ['interessados', 'Interessados', 0],
+    ['agentes', 'Agentes', c.sugestoes],
   ];
   if (eu.papel === 'admin') abas.push(['clientes', 'Clientes', 0], ['config', 'Configuração', 0], ['relatorio', 'Relatório', 0]);
   $('abas').replaceChildren(
@@ -284,7 +290,7 @@ function desenhar() {
   const rolagemMsgs = msgs ? msgs.scrollTop : 0;
 
   desenharMoldura();
-  const telas = { rampa: telaRampa, aprovar: telaAprovar, chamados: telaChamados, conversas: telaConversas, interessados: telaInteressados, clientes: telaClientes, config: telaConfig, relatorio: telaRelatorio };
+  const telas = { rampa: telaRampa, aprovar: telaAprovar, chamados: telaChamados, conversas: telaConversas, interessados: telaInteressados, agentes: telaAgentes, clientes: telaClientes, config: telaConfig, relatorio: telaRelatorio };
   conteudo.replaceChildren(...[telas[aba]()].flat().filter(Boolean));
 
   window.scrollTo(0, rolagem);
@@ -766,6 +772,72 @@ function telaInteressados() {
   );
 }
 
+// ---------- agentes ----------
+
+const DESTINO = { cliente: 'Cliente', interessado: 'Interessado', dono: 'Dono da marina', equipe: 'Equipe da rampa', agencia: 'Agência' };
+
+function cartaoSugestao(s) {
+  const chave = `sug:${s.id}`;
+  const textoAtual = () => valor(chave, s.texto);
+  const concluir = (acao) =>
+    agir(async () => {
+      await api('POST', `/api/painel/sugestao/${s.id}`, { acao, texto: textoAtual() });
+      local.delete(chave);
+    });
+  const agente = E.agentes.find((a) => a.id === s.agente)?.nome || s.agente;
+  const temChat = !!(s.para.clienteId || s.para.conversaId);
+  return h(
+    'div',
+    { class: 'cartao pilha' },
+    h('div', { class: 'linha' }, h('h3', { class: 'cresce' }, s.titulo), h('span', { class: 'selo' }, agente), s.viaIA ? h('span', { class: 'selo neutro' }, 'texto da IA') : null),
+    h('small', {}, `Para: ${DESTINO[s.para.quem] || ''}${s.para.nome && s.para.quem !== 'equipe' && s.para.quem !== 'dono' && s.para.quem !== 'agencia' ? ` · ${s.para.nome}` : ''}${s.para.telefone ? ` · ${s.para.telefone}` : ' · sem WhatsApp cadastrado'} · ${instante(s.criadoEm)}`),
+    campo('textarea', chave, s.texto, { rows: Math.min(14, Math.max(3, s.texto.split('\n').length + 1)), maxlength: 3000, 'aria-label': 'Texto da sugestão' }),
+    h(
+      'div',
+      { class: 'linha' },
+      s.para.telefone ? botao('Abrir no WhatsApp', () => window.open(linkWhats(s.para.telefone, textoAtual()), '_blank', 'noopener'), 'primario') : null,
+      temChat ? botao('Deixar no chat do cliente', () => concluir('chat')) : null,
+      botao('Copiar texto', () => copiar(textoAtual(), 'Texto copiado.')),
+      botao('Marcar como enviada', () => concluir('feita'), 'ok'),
+      botao('Descartar', () => concluir('descartada'), 'perigo'),
+    ),
+  );
+}
+
+function cartaoAgente(a) {
+  return h(
+    'div',
+    { class: 'cartao pilha' },
+    h('div', { class: 'linha' }, h('h3', { class: 'cresce' }, a.nome), h('span', { class: `selo ${a.ativo ? 'ok' : 'neutro'}` }, a.ativo ? 'ligado' : 'desligado')),
+    h('div', {}, a.oQue),
+    h('small', {}, `Roda ${a.quando}, a partir das ${horaBr(a.hora)}. ${a.ultimaEm ? `Última vez: ${a.ultimaEm}.` : 'Ainda não rodou.'}`),
+    a.erro ? h('small', { class: 'erro' }, `Na última vez a IA falhou e os textos-modelo foram usados. ${a.erro}`) : null,
+    h(
+      'div',
+      { class: 'linha' },
+      botao('Rodar agora', () =>
+        agir(async () => {
+          const r = await api('POST', `/api/painel/agente/${a.id}/rodar`, {});
+          aviso(r.criadas ? `${r.criadas} sugestão(ões) preparada(s).` : 'Nada novo para sugerir agora.');
+        }),
+      ),
+      a.pendentes ? h('small', {}, `${a.pendentes} sugestão(ões) esperando`) : null,
+    ),
+  );
+}
+
+function telaAgentes() {
+  return [
+    h('h2', {}, `Sugestões para conferir e enviar (${E.sugestoes.length})`),
+    E.sugestoes.length
+      ? h('div', { class: 'pilha' }, E.sugestoes.map(cartaoSugestao))
+      : h('div', { class: 'vazio' }, 'Nenhuma sugestão esperando. Os agentes preparam mensagens e resumos; nada é enviado sem alguém da equipe conferir.'),
+    h('h2', {}, 'Equipe de agentes'),
+    h('small', {}, 'O atendente conversa com o cliente. Estes cinco trabalham nos bastidores e deixam o texto pronto para a equipe enviar pelo WhatsApp da marina.'),
+    h('div', { class: 'grade janela' }, E.agentes.map(cartaoAgente)),
+  ];
+}
+
 // ---------- administração ----------
 
 async function carregarAdm() {
@@ -790,6 +862,10 @@ function formCliente(c) {
     obs: h('input', { value: c?.obs || '', maxlength: 300, placeholder: 'Ex.: fala direto com o dono' }),
     pendencia: h('input', { type: 'checkbox', checked: !!c?.pendencia }),
     novoLink: h('input', { type: 'checkbox' }),
+    mensalidadeDia: h('input', { type: 'number', min: 1, max: 31, value: c?.mensalidadeDia ?? '', placeholder: 'ex.: 10' }),
+    revisaoEm: h('input', { type: 'date', value: c?.revisaoEm || '' }),
+    documentoVence: h('input', { type: 'date', value: c?.documentoVence || '' }),
+    semLembretes: h('input', { type: 'checkbox', checked: !!c?.semLembretes }),
   };
   dialogo(
     c ? 'Editar cliente' : 'Novo cliente',
@@ -801,6 +877,10 @@ function formCliente(c) {
       h('label', { class: 'larga' }, 'Embarcação', f.embarcacao),
       h('label', { class: 'larga' }, 'Autorizados', f.autorizados),
       h('label', { class: 'larga' }, 'Observação para o assistente', f.obs),
+      h('label', {}, 'Dia do vencimento da mensalidade', f.mensalidadeDia),
+      h('label', {}, 'Próxima revisão do motor', f.revisaoEm),
+      h('label', {}, 'Documento da embarcação vence em', f.documentoVence),
+      h('label', { class: 'caixa larga' }, f.semLembretes, 'Não preparar lembretes para este cliente'),
       h('label', { class: 'caixa larga' }, f.pendencia, 'Pendência no cadastro (o assistente não confirma descida e chama a equipe)'),
       c ? h('label', { class: 'caixa larga' }, f.novoLink, 'Gerar link novo (o link antigo para de funcionar)') : null,
     ),
@@ -809,7 +889,19 @@ function formCliente(c) {
         'Salvar',
         () =>
           agir(async () => {
-            const corpo = { nome: f.nome.value, telefone: f.telefone.value, embarcacao: f.embarcacao.value, autorizados: f.autorizados.value, obs: f.obs.value, pendencia: f.pendencia.checked, novoLink: f.novoLink.checked };
+            const corpo = {
+              nome: f.nome.value,
+              telefone: f.telefone.value,
+              embarcacao: f.embarcacao.value,
+              autorizados: f.autorizados.value,
+              obs: f.obs.value,
+              pendencia: f.pendencia.checked,
+              novoLink: f.novoLink.checked,
+              mensalidadeDia: f.mensalidadeDia.value ? Number(f.mensalidadeDia.value) : null,
+              revisaoEm: f.revisaoEm.value,
+              documentoVence: f.documentoVence.value,
+              semLembretes: f.semLembretes.checked,
+            };
             await api(c ? 'PUT' : 'POST', c ? `/api/painel/cliente/${c.id}` : '/api/painel/cliente', corpo);
             fecharDialogo();
             await carregarAdm();
@@ -914,6 +1006,15 @@ function telaConfig() {
         preReservaMin: num('cfg:pre', c.preReservaMin),
         emergencia: { telefone: valor('cfg:tel', c.emergencia?.telefone || '') },
         itensAluguel: itens.map((i) => ({ id: i.id, nome: i.nome, unidades: Number(i.unidades) })),
+        agentes: Object.fromEntries(E.agentes.map((a) => [a.id, { ativo: valor(`cfg:ag:${a.id}:ativo`, c.agentes[a.id].ativo), hora: valor(`cfg:ag:${a.id}:hora`, c.agentes[a.id].hora) }])),
+        contatos: { dono: valor('cfg:dono', c.contatos.dono), equipe: valor('cfg:equipe', c.contatos.equipe) },
+        linkAvaliacao: valor('cfg:aval', c.linkAvaliacao),
+        relacionamento: {
+          diasAntesVencimento: num('cfg:dv', c.relacionamento.diasAntesVencimento),
+          diasAntesRevisao: num('cfg:dr', c.relacionamento.diasAntesRevisao),
+          diasAntesDocumento: num('cfg:dd', c.relacionamento.diasAntesDocumento),
+          diasSumido: num('cfg:ds', c.relacionamento.diasSumido),
+        },
       });
       adm.config = r.config;
       for (const chave of [...local.keys()]) if (chave.startsWith('cfg:')) local.delete(chave);
@@ -959,6 +1060,32 @@ function telaConfig() {
       h('small', {}, 'O sistema controla quantas unidades estão livres por dia. Preços e condições ficam na ficha.'),
       itens.map(linhaItem),
       h('div', { class: 'linha' }, botao('+ Item', () => { itens.push({ id: '', nome: '', unidades: 1 }); guardarItens(); desenhar(); }), h('span', { class: 'cresce' }), botao('Salvar configuração', salvarConfig, 'primario')),
+    ),
+    h('h2', {}, 'Equipe de agentes'),
+    h(
+      'div',
+      { class: 'cartao pilha' },
+      h('small', {}, 'Cada agente prepara sugestões na aba Agentes, no horário marcado. Nada é enviado sem alguém conferir.'),
+      E.agentes.map((a) =>
+        h(
+          'div',
+          { class: 'linha' },
+          h('label', { class: 'caixa cresce' }, caixa(`cfg:ag:${a.id}:ativo`, c.agentes[a.id].ativo), h('span', {}, h('b', {}, a.nome), ` · ${a.quando}`)),
+          h('label', { class: 'campo' }, 'a partir das', k(`ag:${a.id}:hora`, c.agentes[a.id].hora, { type: 'time' })),
+        ),
+      ),
+      h(
+        'div',
+        { class: 'formulario' },
+        h('label', {}, 'WhatsApp do dono (recebe o resumo da semana)', k('dono', c.contatos.dono, { maxlength: 20, inputmode: 'tel' })),
+        h('label', {}, 'WhatsApp da equipe da rampa (recebe o resumo do dia)', k('equipe', c.contatos.equipe, { maxlength: 20, inputmode: 'tel' })),
+        h('label', { class: 'larga' }, 'Link para avaliar a marina no Google (vai na mensagem de pós-passeio)', k('aval', c.linkAvaliacao, { maxlength: 300, placeholder: 'https://' })),
+        h('label', {}, 'Lembrar do vencimento quantos dias antes', k('dv', c.relacionamento.diasAntesVencimento, { type: 'number', min: 0, max: 30 })),
+        h('label', {}, 'Lembrar da revisão quantos dias antes', k('dr', c.relacionamento.diasAntesRevisao, { type: 'number', min: 0, max: 90 })),
+        h('label', {}, 'Lembrar do documento quantos dias antes', k('dd', c.relacionamento.diasAntesDocumento, { type: 'number', min: 0, max: 120 })),
+        h('label', {}, 'Cliente "sumido" depois de quantos dias sem sair', k('ds', c.relacionamento.diasSumido, { type: 'number', min: 7, max: 365 })),
+      ),
+      h('div', { class: 'linha' }, h('span', { class: 'cresce' }), botao('Salvar configuração', salvarConfig, 'primario')),
     ),
     h('h2', {}, 'Ficha da marina'),
     h(

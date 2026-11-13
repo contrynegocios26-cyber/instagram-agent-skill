@@ -143,6 +143,35 @@ export function criarReal(client = new Anthropic({ timeout: 120_000, maxRetries:
   return criar;
 }
 
+/**
+ * Chamada simples com saída em JSON, usada pelos agentes de retaguarda
+ * (lembretes, retorno a interessados, resumo da semana, ideias de post).
+ * Sem ferramentas e sem histórico: um pedido, uma resposta.
+ */
+export function criarRedator(client = new Anthropic({ timeout: 120_000, maxRetries: 2 })) {
+  return async function redigir({ sistema, dados, schema }) {
+    let r;
+    try {
+      r = await client.messages.create({
+        model: MODELO,
+        max_tokens: 8000,
+        system: sistema,
+        messages: [{ role: 'user', content: JSON.stringify(dados) }],
+        output_config: { format: { type: 'json_schema', schema }, ...(ESFORCO ? { effort: ESFORCO } : {}) },
+      });
+    } catch (e) {
+      throw traduzir(e);
+    }
+    if (r.stop_reason === 'refusal') throw new FalhaIA('recusa', 'O modelo recusou responder.');
+    if (r.stop_reason === 'max_tokens') throw new FalhaIA('corte', 'A resposta foi cortada por tamanho.');
+    try {
+      return { saida: JSON.parse(r.content.find((b) => b.type === 'text')?.text ?? ''), usage: r.usage, model: r.model };
+    } catch {
+      throw new FalhaIA('corte', 'O modelo não devolveu o formato pedido.');
+    }
+  };
+}
+
 // ---------- modo demonstração ----------
 
 let seq = 0;
@@ -150,7 +179,7 @@ const usoFake = { input_tokens: 120, output_tokens: 60, cache_read_input_tokens:
 const msg = (content, stop_reason) => ({ id: `msg_fake_${++seq}`, model: 'fake', role: 'assistant', content, stop_reason, usage: usoFake });
 const texto = (t) => msg([{ type: 'text', text: t }], 'end_turn');
 const usar = (name, input) => msg([{ type: 'tool_use', id: `toolu_fake_${++seq}`, name, input }], 'tool_use');
-const vazio = { data: null, hora: null, item_aluguel: null, registro_id: null, detalhes: '', status: 'confirmado', nome_cliente: null, embarcacao: null };
+const vazio = { data: null, hora: null, item_aluguel: null, registro_id: null, detalhes: '', status: 'confirmado', nome_cliente: null, embarcacao: null, telefone: null };
 
 function criarFake() {
   return async function criar({ messages }) {
@@ -192,7 +221,10 @@ function criarFake() {
 }
 
 export function criarIA() {
-  if (process.env.IA_FAKE === '1') return { criar: criarFake(), modelo: 'fake', demonstracao: true, formato: () => 'fake' };
-  const criar = criarReal();
-  return { criar, modelo: MODELO, demonstracao: false, formato: criar.formato };
+  // No modo de demonstração não há redator: os agentes de retaguarda usam
+  // os textos-modelo, que são os mesmos usados quando a IA falha.
+  if (process.env.IA_FAKE === '1') return { criar: criarFake(), redigir: null, modelo: 'fake', demonstracao: true, formato: () => 'fake' };
+  const client = new Anthropic({ timeout: 120_000, maxRetries: 2 });
+  const criar = criarReal(client);
+  return { criar, redigir: criarRedator(client), modelo: MODELO, demonstracao: false, formato: criar.formato };
 }

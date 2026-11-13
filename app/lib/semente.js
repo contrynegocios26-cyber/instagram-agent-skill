@@ -29,6 +29,31 @@ export function configPadrao() {
     emergencia: { telefone: '' },
     avisoDoDia: { texto: '', atualizadoEm: null },
     agencia: '',
+    // Equipe de agentes de retaguarda: cada um prepara sugestões que alguém
+    // da marina confere e envia. Nada sai sozinho para o cliente.
+    agentes: {
+      operacao: { ativo: true, hora: '06:30' },
+      relacionamento: { ativo: true, hora: '08:30' },
+      vendas: { ativo: true, hora: '10:00' },
+      gerente: { ativo: true, hora: '07:30' },
+      conteudo: { ativo: true, hora: '09:00' },
+    },
+    contatos: { dono: '', equipe: '' },
+    linkAvaliacao: '',
+    relacionamento: { diasAntesVencimento: 3, diasAntesRevisao: 15, diasAntesDocumento: 30, diasSumido: 45 },
+  };
+}
+
+/** Configuração gravada por uma versão anterior ganha os campos novos. */
+export function completarConfig(store) {
+  const p = configPadrao();
+  const c = store.config;
+  store.config = {
+    ...p,
+    ...c,
+    agentes: Object.fromEntries(Object.keys(p.agentes).map((k) => [k, { ...p.agentes[k], ...(c.agentes?.[k] || {}) }])),
+    contatos: { ...p.contatos, ...(c.contatos || {}) },
+    relacionamento: { ...p.relacionamento, ...(c.relacionamento || {}) },
   };
 }
 
@@ -46,10 +71,12 @@ export function semear(store, tipo) {
       ],
       emergencia: { telefone: '(44) 90000-0000' },
       avisoDoDia: { texto: 'Rampa operando normalmente. Rio em nível normal. Previsão do tempo: não informada.', atualizadoEm: null },
+      contatos: { dono: '44999000001', equipe: '44999000002' },
+      linkAvaliacao: 'https://g.page/r/marina-remanso-exemplo/review',
     };
     store.ficha = ler('ficha.md');
     store.clientes = [
-      { nome: 'Carlos Menezes', telefone: '44999001122', embarcacao: 'Lancha "Dona Lúcia", 24 pés', autorizados: 'Carlos; Lúcia (esposa)', pendencia: false },
+      { nome: 'Carlos Menezes', telefone: '44999001122', embarcacao: 'Lancha "Dona Lúcia", 24 pés', autorizados: 'Carlos; Lúcia (esposa)', pendencia: false, mensalidadeDia: 20 },
       { nome: 'Paulo Andrade', telefone: '44999003344', embarcacao: 'Lancha "Serena", 29 pés', autorizados: 'Paulo', pendencia: false },
       { nome: 'Marcos Tavares', telefone: '44999005566', embarcacao: 'Jet "MT-07"', autorizados: 'Marcos', pendencia: true },
       { nome: 'Fernanda Rocha', telefone: '44999007788', embarcacao: 'Lancha "Aquarela", 21 pés', autorizados: 'Fernanda; Bruno (marido)', pendencia: false },

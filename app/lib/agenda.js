@@ -219,6 +219,7 @@ export function criarAgenda(store) {
       hora: entrada.hora || null,
       item: null,
       detalhes: (entrada.detalhes || '').slice(0, 500),
+      telefone: c ? c.telefone || '' : String(entrada.telefone || '').replace(/\D/g, '').slice(0, 15),
       status: 'confirmado',
       origem: ctx.origem || 'assistente',
       conversaId: ctx.conversaId || null,
